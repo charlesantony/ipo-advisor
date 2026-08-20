@@ -1,0 +1,51 @@
+name: Daily IPO Outcome Sync
+
+on:
+  schedule:
+    # 18:07 IST avoids the top-of-hour Actions load peak.
+    - cron: "7 18 * * 1-5"
+      timezone: "Asia/Kolkata"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: ipo-advisor-state-and-pages
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Refresh 2026 outcomes and prospective report
+        run: python scripts/cloud_job.py daily
+
+      - name: Persist generated state
+        run: |
+          git config user.name "ipo-advisor-bot"
+          git config user.email "ipo-advisor-bot@users.noreply.github.com"
+          git add state site/data
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: daily IPO outcome sync"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push origin HEAD:"${GITHUB_REF_NAME}"
+          fi
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - uses: actions/deploy-pages@v4
