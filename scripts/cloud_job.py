@@ -15,7 +15,7 @@ STATE = ROOT / "state"
 SITE_DATA = ROOT / "site" / "data"
 DB_STATE = STATE / "ipo_advisor.db"
 DB_ENGINE = ENGINE / "ipo_advisor.db"
-SENT_LEDGER = STATE / "whatsapp_sent.json"
+SENT_LEDGER = STATE / "email_sent.json"
 IST = ZoneInfo("Asia/Kolkata")
 
 sys.path.insert(0, str(ENGINE))
@@ -171,7 +171,6 @@ def _export_static(
     health["generated_at_ist"] = (
         datetime.now(IST).isoformat()
     )
-    health["hosting"] = "GitHub Pages + GitHub Actions"
     health["v1_policy"] = "FROZEN"
     health["v2_policy"] = "SHADOW_ONLY"
 
@@ -189,6 +188,14 @@ def _export_static(
     )
     _json_write(
         SITE_DATA / "health.json", health
+    )
+    _json_write(
+        SITE_DATA / "config.json",
+        {
+            "subscription_endpoint": os.environ.get(
+                "SUBSCRIBE_ENDPOINT", ""
+            ).strip(),
+        },
     )
 
     return {
@@ -233,20 +240,20 @@ def _eligible_alerts(live_payload):
         })
     return out
 
-def _send_whatsapp_once(live_payload):
-    from whatsapp_sender import send_research_alerts
+def _send_email_once(live_payload):
+    from email_alert_sender import send_research_alerts
 
     alerts = _eligible_alerts(live_payload)
     if not alerts:
         print(
-            "WHATSAPP_NO_ALERTS "
+            "EMAIL_NO_ALERTS "
             "No STRONG SUBSCRIBE/SUBSCRIBE "
             "IPO closes today."
         )
         return {
             "eligible_alerts": 0,
             "new_alerts": 0,
-            "sent": 0,
+            "sent_alerts": 0,
         }
 
     today = datetime.now(IST).date().isoformat()
@@ -255,30 +262,29 @@ def _send_whatsapp_once(live_payload):
 
     new_alerts = []
     keys = []
-    for a in alerts:
+    for alert in alerts:
         identity = (
-            a.get("symbol")
-            or a.get("name")
+            alert.get("symbol")
+            or alert.get("name")
             or "ipo"
         )
         key = (
-            f"{today}|{a.get('segment')}|"
-            f"{identity}|{a.get('action')}"
+            f"{today}|{alert.get('segment')}|"
+            f"{identity}|{alert.get('action')}"
         )
         if key not in sent_map:
-            new_alerts.append(a)
+            new_alerts.append(alert)
             keys.append(key)
 
     if not new_alerts:
         print(
-            "WHATSAPP_DUPLICATE_GUARD "
-            "All today's eligible alerts were "
-            "already sent."
+            "EMAIL_DUPLICATE_GUARD "
+            "All today's eligible alerts were already sent."
         )
         return {
             "eligible_alerts": len(alerts),
             "new_alerts": 0,
-            "sent": 0,
+            "sent_alerts": 0,
         }
 
     result = send_research_alerts(
@@ -289,7 +295,7 @@ def _send_whatsapp_once(live_payload):
     )
 
     if result.get("configured") and (
-        result.get("failed") == 0
+        result.get("failed_alerts") == 0
     ):
         now = datetime.now(IST).isoformat()
         for key in keys:
@@ -299,7 +305,7 @@ def _send_whatsapp_once(live_payload):
     return {
         "eligible_alerts": len(alerts),
         "new_alerts": len(new_alerts),
-        "whatsapp": result,
+        "email": result,
     }
 
 def main():
@@ -342,7 +348,7 @@ def main():
             prospective_tracker,
             live_payload=live,
         )
-        whatsapp = _send_whatsapp_once(live)
+        email_alert = _send_email_once(live)
         result = {
             "mode": args.mode,
             "fetched_at_ist":
@@ -351,7 +357,7 @@ def main():
                 len(live.get("records") or []),
             "decision_saved_count":
                 live.get("decision_saved_count"),
-            "whatsapp": whatsapp,
+            "email_alert": email_alert,
             "prospective_status":
                 export["prospective"].get("status"),
         }
