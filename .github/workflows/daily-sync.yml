@@ -2,7 +2,6 @@ name: Daily IPO Outcome Sync
 
 on:
   schedule:
-    # 18:07 IST avoids the top-of-hour Actions load peak.
     - cron: "7 18 * * 1-5"
       timezone: "Asia/Kolkata"
   workflow_dispatch:
@@ -22,15 +21,17 @@ jobs:
     environment:
       name: github-pages
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
       - name: Refresh 2026 outcomes and prospective report
+        env:
+          SUBSCRIBE_ENDPOINT: ${{ vars.SUBSCRIBE_ENDPOINT }}
         run: python scripts/cloud_job.py daily
 
       - name: Persist generated state
@@ -44,8 +45,8 @@ jobs:
             git push origin HEAD:"${GITHUB_REF_NAME}"
           fi
 
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: site
-      - uses: actions/deploy-pages@v4
+      - uses: actions/deploy-pages@v5

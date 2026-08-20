@@ -1,0 +1,12 @@
+After applying this update, the old WhatsApp files are unused.
+
+Optional cleanup in your repository:
+
+rm -f scripts/whatsapp_sender.py
+rm -f WHATSAPP_TEMPLATE_EXAMPLE.md
+rm -f state/whatsapp_sent.json
+
+Then:
+git add -A
+git commit -m "Update IPO Advisor UI and email alerts"
+git push

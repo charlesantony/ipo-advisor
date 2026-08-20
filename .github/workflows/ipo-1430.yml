@@ -1,8 +1,8 @@
-name: 2:30 PM IPO Decision and WhatsApp
+name: 2:30 PM IPO Decision and Email
 
 on:
   schedule:
-    # Start 15 minutes early; the Python job waits until 14:30 IST.
+    # Start early, then wait in Python for the 14:30 IST snapshot.
     - cron: "15 14 * * 1-5"
       timezone: "Asia/Kolkata"
   workflow_dispatch:
@@ -22,24 +22,19 @@ jobs:
     environment:
       name: github-pages
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
       - name: Run canonical decision job
         env:
-          WHATSAPP_TOKEN: ${{ secrets.WHATSAPP_TOKEN }}
-          WHATSAPP_PHONE_NUMBER_ID: ${{ secrets.WHATSAPP_PHONE_NUMBER_ID }}
-          WHATSAPP_TEMPLATE_NAME: ${{ secrets.WHATSAPP_TEMPLATE_NAME }}
-          WHATSAPP_RECIPIENTS: ${{ secrets.WHATSAPP_RECIPIENTS }}
-          WHATSAPP_GRAPH_VERSION: ${{ vars.WHATSAPP_GRAPH_VERSION }}
-          WHATSAPP_TEMPLATE_LANG: ${{ vars.WHATSAPP_TEMPLATE_LANG }}
+          SUBSCRIBE_ENDPOINT: ${{ vars.SUBSCRIBE_ENDPOINT }}
+          EMAIL_ALERT_KEY: ${{ secrets.EMAIL_ALERT_KEY }}
           PUBLIC_DASHBOARD_URL: ${{ vars.PUBLIC_DASHBOARD_URL }}
-          WHATSAPP_DRY_RUN: ${{ vars.WHATSAPP_DRY_RUN }}
         run: python scripts/cloud_job.py decision --wait-until-1430
 
       - name: Persist generated state
@@ -53,8 +48,8 @@ jobs:
             git push origin HEAD:"${GITHUB_REF_NAME}"
           fi
 
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: site
-      - uses: actions/deploy-pages@v4
+      - uses: actions/deploy-pages@v5
