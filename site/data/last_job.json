@@ -1,10 +1,10 @@
 {
-  "completed_at_ist": "2026-08-20T22:10:00.375229+05:30",
+  "completed_at_ist": "2026-08-20T22:22:32.265461+05:30",
   "result": {
-    "mode": "bootstrap",
+    "mode": "daily",
     "sync": {
       "year": 2026,
-      "synced_at_ist": "2026-08-20T22:08:31.149236+05:30",
+      "synced_at_ist": "2026-08-20T22:22:09.430220+05:30",
       "records": 186,
       "page_meta": [
         {
@@ -32,10 +32,10 @@
           "url": "https://ipomarkets.com/ipo-calendar/2026/page/4"
         }
       ],
-      "detail_fetches": 131,
+      "detail_fetches": 20,
       "detail_errors": 35,
       "canonical_1430_used": 0,
-      "retrospective_gmp_used": 111,
+      "retrospective_gmp_used": 0,
       "subscription_only_proxy": 55,
       "summary": {
         "rows": 186,
@@ -44,7 +44,7 @@
         "subscribe": 13,
         "borderline": 16,
         "avoid": 127,
-        "last_updated_ist": "2026-08-20T22:08:31.149236+05:30"
+        "last_updated_ist": "2026-08-20T22:22:09.430220+05:30"
       },
       "audit_summary": {
         "policy": {
@@ -80,7 +80,7 @@
         "major_miss_count": 7,
         "selected_loss_count": 0
       },
-      "audit_report_file": "/home/runner/work/ipo-advisor/ipo-advisor/engine/logs/reports/20260820_220958_489934_MODEL_AUDIT_2026.json",
+      "audit_report_file": "/home/runner/work/ipo-advisor/ipo-advisor/engine/logs/reports/20260820_222232_166713_MODEL_AUDIT_2026.json",
       "prospective_summary": {
         "status": "COLLECTING_EXACT_1430_EVIDENCE",
         "progress": {
@@ -129,10 +129,9 @@
           "triggered_rows": 0
         }
       },
-      "prospective_report_file": "/home/runner/work/ipo-advisor/ipo-advisor/engine/logs/reports/20260820_220958_499100_PROSPECTIVE_EXPERIMENT_2026.json",
-      "report_file": "/home/runner/work/ipo-advisor/ipo-advisor/engine/logs/reports/20260820_220958_499496_YEAR_TRACKER_2026.json"
+      "prospective_report_file": "/home/runner/work/ipo-advisor/ipo-advisor/engine/logs/reports/20260820_222232_175611_PROSPECTIVE_EXPERIMENT_2026.json",
+      "report_file": "/home/runner/work/ipo-advisor/ipo-advisor/engine/logs/reports/20260820_222232_176056_YEAR_TRACKER_2026.json"
     },
-    "live_records": 6,
     "prospective_status": "COLLECTING_EXACT_1430_EVIDENCE"
   }
 }
