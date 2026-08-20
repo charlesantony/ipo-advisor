@@ -1,12 +1,117 @@
 {
+  "prospective_version": "prospective-experiment-v1",
+  "year": 2026,
   "target_exact_listed_rows": 20,
-  "status": "WAITING_FOR_FIRST_CLOUD_RUN",
-  "message": "Run the bootstrap workflow.",
+  "status": "COLLECTING_EXACT_1430_EVIDENCE",
+  "message": "Collect 20 more exact 2:30 PM listed observations before the first model-review checkpoint.",
   "progress": {
     "exact_captured_unique_ipos": 0,
     "exact_listed_rows": 0,
     "pending_listing_rows": 0,
-    "progress_pct": 0
+    "remaining_to_checkpoint": 20,
+    "progress_pct": 0.0,
+    "mainboard_listed_rows": 0,
+    "sme_listed_rows": 0
   },
-  "samples": []
+  "v1_exact_performance": {
+    "selected": {
+      "count": 0,
+      "positive_rate_pct": null,
+      "ge_10_rate_pct": null,
+      "ge_20_rate_pct": null,
+      "avg_gain_pct": null,
+      "median_gain_pct": null,
+      "worst_gain_pct": null,
+      "best_gain_pct": null,
+      "losses": 0
+    },
+    "all_ge_20_winners": 0,
+    "captured_ge_20_winners": 0,
+    "ge_20_winner_capture_rate_pct": null,
+    "selected_rows": 0
+  },
+  "v2_exact_performance": {
+    "status": "INSUFFICIENT_EXACT_SHADOW_TRIGGERS",
+    "minimum_shadow_trigger_target": 5,
+    "triggered": {
+      "count": 0,
+      "positive_rate_pct": null,
+      "ge_10_rate_pct": null,
+      "ge_20_rate_pct": null,
+      "avg_gain_pct": null,
+      "median_gain_pct": null,
+      "worst_gain_pct": null,
+      "best_gain_pct": null,
+      "losses": 0
+    },
+    "all_ge_20_winners": 0,
+    "captured_ge_20_winners": 0,
+    "ge_20_winner_capture_rate_pct": null,
+    "triggered_rows": 0
+  },
+  "combined_exact_performance": {
+    "selected": {
+      "count": 0,
+      "positive_rate_pct": null,
+      "ge_10_rate_pct": null,
+      "ge_20_rate_pct": null,
+      "avg_gain_pct": null,
+      "median_gain_pct": null,
+      "worst_gain_pct": null,
+      "best_gain_pct": null,
+      "losses": 0
+    },
+    "all_ge_20_winners": 0,
+    "captured_ge_20_winners": 0,
+    "ge_20_winner_capture_rate_pct": null,
+    "selected_rows": 0
+  },
+  "by_segment": {
+    "MAINBOARD": {
+      "listed_rows": 0,
+      "v1_selected": {
+        "count": 0,
+        "positive_rate_pct": null,
+        "ge_10_rate_pct": null,
+        "ge_20_rate_pct": null,
+        "avg_gain_pct": null,
+        "median_gain_pct": null,
+        "worst_gain_pct": null,
+        "best_gain_pct": null,
+        "losses": 0
+      }
+    },
+    "SME": {
+      "listed_rows": 0,
+      "v1_selected": {
+        "count": 0,
+        "positive_rate_pct": null,
+        "ge_10_rate_pct": null,
+        "ge_20_rate_pct": null,
+        "avg_gain_pct": null,
+        "median_gain_pct": null,
+        "worst_gain_pct": null,
+        "best_gain_pct": null,
+        "losses": 0
+      },
+      "v2_triggered": {
+        "count": 0,
+        "positive_rate_pct": null,
+        "ge_10_rate_pct": null,
+        "ge_20_rate_pct": null,
+        "avg_gain_pct": null,
+        "median_gain_pct": null,
+        "worst_gain_pct": null,
+        "best_gain_pct": null,
+        "losses": 0
+      }
+    }
+  },
+  "samples": [],
+  "guardrails": {
+    "v1_frozen": true,
+    "v2_shadow_only": true,
+    "auto_retune": false,
+    "checkpoint_rule": "At 20 exact 2:30 PM listed observations, review results manually. Do not automatically change V1 or promote V2."
+  }
 }
