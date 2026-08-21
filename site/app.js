@@ -19,9 +19,13 @@ const actionClass = a => ({
   "SUBSCRIBE":"subscribe",
   "BORDERLINE":"borderline",
   "AVOID":"avoid",
+  "LOCKED":"watch",
   "WATCH":"watch",
   "NOT READY":"watch",
 }[a] || "watch");
+
+const publicActionLabel = a =>
+  a === "LOCKED" ? "🔒 Relevant data not available" : (a || "NOT READY");
 
 function istParts(value = new Date()) {
   const d = value instanceof Date ? value : new Date(value);
@@ -161,6 +165,10 @@ function isClosingToday(n) {
 }
 
 function finalityText(n, r) {
+  if (r.action === "LOCKED" || r.public_signal?.locked) {
+    return "Relevant data not available.";
+  }
+
   const endDate = String(n.end_date || "");
   const today = istDateKey();
   const label = String(r.finality?.label || "");
@@ -253,8 +261,11 @@ function renderLive(data) {
             <h3>${esc(n.name || n.symbol || "IPO")}</h3>
             <div class="muted">${esc(n.type || "")}</div>
           </div>
-          <span class="action ${actionClass(r.action)}">
-            ${esc(r.action || "NOT READY")}
+          <span
+            class="action ${actionClass(r.action)}"
+            title="${r.action === "LOCKED" ? "Relevant data not available" : ""}"
+          >
+            ${esc(publicActionLabel(r.action))}
           </span>
         </div>
 
@@ -292,8 +303,11 @@ function renderTracker(t) {
       <td>${esc(r.ipo_type)}</td>
       <td>${esc(r.provider_status || "—")}</td>
       <td>
-        <span class="action table-action ${actionClass(r.model_action)}">
-          ${esc(r.model_action || "—")}
+        <span
+          class="action table-action ${actionClass(r.model_action)}"
+          title="${r.model_action === "LOCKED" ? "Relevant data not available" : ""}"
+        >
+          ${esc(publicActionLabel(r.model_action))}
         </span>
       </td>
       <td>${fmt(r.primary_prediction_pct,"%")}</td>

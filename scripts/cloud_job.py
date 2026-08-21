@@ -203,6 +203,145 @@ def _previous_live_payload():
         return None
 
 
+PUBLIC_SIGNAL_ACTIONS = {
+    "STRONG SUBSCRIBE",
+    "SUBSCRIBE",
+    "BORDERLINE",
+    "AVOID",
+}
+
+
+def _public_live_signal_state(record):
+    """Return whether a model signal is suitable for public display.
+
+    The model may still calculate and retain its raw internal action. Public
+    display is deliberately more conservative: the IPO must be live/open and
+    the current market snapshot must contain enough market evidence to make a
+    sufficiently grounded public call. The UI receives only a generic reason
+    when this gate is not satisfied.
+    """
+    rec = record.get("recommendation") or {}
+    preds = rec.get("predictions") or {}
+    action = str(rec.get("action") or "").strip().upper()
+    status = str(record.get("status") or "").strip().upper()
+    today = datetime.now(IST).date()
+    start = _parse_iso_date(record.get("start_date"))
+
+    if status != "LIVE":
+        return {
+            "locked": True,
+            "action": "LOCKED",
+            "reason": "RELEVANT_DATA_NOT_AVAILABLE",
+        }
+    if start and today < start:
+        return {
+            "locked": True,
+            "action": "LOCKED",
+            "reason": "RELEVANT_DATA_NOT_AVAILABLE",
+        }
+    if action not in PUBLIC_SIGNAL_ACTIONS:
+        return {
+            "locked": True,
+            "action": "LOCKED",
+            "reason": "RELEVANT_DATA_NOT_AVAILABLE",
+        }
+
+    # Current V1 can calculate a raw action from GMP alone. Do not expose that
+    # publicly until a current demand observation is also available.
+    if preds.get("total_subscription_x") is None:
+        return {
+            "locked": True,
+            "action": "LOCKED",
+            "reason": "RELEVANT_DATA_NOT_AVAILABLE",
+        }
+
+    return {
+        "locked": False,
+        "action": action,
+        "reason": None,
+    }
+
+
+def _apply_public_live_signal_gate(live_payload):
+    """Sanitize public live JSON while preserving raw model state in the DB."""
+    for record in live_payload.get("records") or []:
+        rec = dict(record.get("recommendation") or {})
+        # V2 remains available through Model Audit, not the normal public feed.
+        rec.pop("shadow_v2", None)
+        state = _public_live_signal_state(record)
+        rec["public_signal"] = state
+
+        if state["locked"]:
+            rec["action"] = "LOCKED"
+            rec["action_priority"] = 0
+            rec["research_confidence"] = None
+            rec["primary_prediction_pct"] = None
+            rec["ranking_score"] = -999.0
+            rec["signal_conflict"] = False
+            rec["reason"] = ["Relevant data not available."]
+
+            preds = dict(rec.get("predictions") or {})
+            # Keep observed market inputs visible, but hide derived model
+            # outputs so a locked call cannot be inferred from public JSON.
+            preds["gmp_prediction_pct"] = None
+            preds["subscription_prediction_pct"] = None
+            preds["log_total"] = None
+            rec["predictions"] = preds
+
+        record["recommendation"] = rec
+
+    live_payload["public_signal_policy"] = {
+        "version": "public-signal-gate-v1",
+        "locked_label": "Relevant data not available",
+    }
+    return live_payload
+
+
+def _public_tracker_row(row):
+    """Return a sanitized tracker row for the public site."""
+    item = dict(row)
+    # Keep experimental V2 fields internal to the normal tracker feed.
+    for key in list(item):
+        if key.startswith("shadow_v2_"):
+            item.pop(key, None)
+
+    action = str(item.get("model_action") or "").strip().upper()
+    today = datetime.now(IST).date()
+    open_date = _parse_iso_date(item.get("issue_open"))
+
+    locked = False
+    if open_date and today < open_date:
+        locked = True
+    if item.get("total_x") is None:
+        locked = True
+    if action not in PUBLIC_SIGNAL_ACTIONS:
+        locked = True
+
+    item["public_signal"] = {
+        "locked": locked,
+        "action": "LOCKED" if locked else action,
+        "reason": (
+            "RELEVANT_DATA_NOT_AVAILABLE"
+            if locked else None
+        ),
+    }
+
+    if locked:
+        item["model_action"] = "LOCKED"
+        item["model_confidence"] = None
+        item["primary_prediction_pct"] = None
+        item["gmp_prediction_pct"] = None
+        item["subscription_prediction_pct"] = None
+        item["signal_conflict"] = 0
+        item["outcome_vs_call"] = None
+
+    return item
+
+
+def _public_tracker_rows(rows):
+    return [_public_tracker_row(row) for row in rows or []]
+
+
 def _prepare_light_live_payload(db, live_payload):
     """Prepare a public live snapshot without recording a research checkpoint."""
     if (
@@ -220,6 +359,7 @@ def _prepare_light_live_payload(db, live_payload):
     live_payload = _retain_1430_display_decisions(
         db, live_payload
     )
+    live_payload = _apply_public_live_signal_gate(live_payload)
     live_payload["refresh_kind"] = "LIGHT_LIVE"
     live_payload["published_at_ist"] = datetime.now(IST).isoformat()
     return live_payload
@@ -272,6 +412,7 @@ def _export_static(
     live_payload = _retain_1430_display_decisions(
         db, live_payload
     )
+    live_payload = _apply_public_live_signal_gate(live_payload)
 
     tracker_rows = db.year_model_tracker_rows(
         year=2026, limit=5000
@@ -279,7 +420,7 @@ def _export_static(
     tracker = {
         "summary":
             db.year_model_tracker_summary(2026),
-        "rows": tracker_rows,
+        "rows": _public_tracker_rows(tracker_rows),
     }
     prospective = _prospective_payload(
         db, prospective_tracker
@@ -418,7 +559,11 @@ def _send_day2_email(live_payload):
         start = _parse_iso_date(record.get("start_date"))
         end = _parse_iso_date(record.get("end_date"))
         rec = record.get("recommendation") or {}
+        public_signal = rec.get("public_signal") or {}
         action = rec.get("action")
+
+        if public_signal.get("locked") or action == "LOCKED":
+            continue
 
         # Day-2 alert is useful only before the actual closing day.
         if not start or not end or not (start <= today < end):
@@ -495,8 +640,12 @@ def _send_closing_email(live_payload):
             continue
 
         rec = record.get("recommendation") or {}
+        public_signal = rec.get("public_signal") or {}
         action = rec.get("action") or "NOT READY"
         key = _record_key(record)
+
+        if public_signal.get("locked") or action == "LOCKED":
+            continue
         early = early_map.get(key)
         early_action = (
             early.get("action")
