@@ -27,6 +27,62 @@ const actionClass = a => ({
 const publicActionLabel = a =>
   a === "LOCKED" ? "🔒 Relevant data not available" : (a || "NOT READY");
 
+const PUBLISHABLE_ACTIONS = new Set([
+  "STRONG SUBSCRIBE",
+  "SUBSCRIBE",
+  "BORDERLINE",
+  "AVOID",
+]);
+
+function hasObservedValue(v) {
+  return v !== null && v !== undefined && v !== "";
+}
+
+function effectiveLiveSignal(n) {
+  const r = n.recommendation || {};
+  const p = r.predictions || {};
+  const action = String(r.action || "").trim().toUpperCase();
+
+  if (r.public_signal?.locked || action === "LOCKED") {
+    return {locked:true, action:"LOCKED"};
+  }
+
+  const status = String(n.status || "").trim().toUpperCase();
+  const startDate = String(n.start_date || "");
+  const today = istDateKey();
+
+  if (status !== "LIVE") return {locked:true, action:"LOCKED"};
+  if (startDate && startDate > today) return {locked:true, action:"LOCKED"};
+  if (!PUBLISHABLE_ACTIONS.has(action)) return {locked:true, action:"LOCKED"};
+
+  // Client-side safety fallback for already-deployed/stale JSON. The backend
+  // performs the authoritative public-signal gate. Until that JSON is
+  // regenerated, never reveal a model call when the current market evidence
+  // needed by the public gate is absent.
+  if (!hasObservedValue(p.total_subscription_x)) {
+    return {locked:true, action:"LOCKED"};
+  }
+
+  return {locked:false, action};
+}
+
+function effectiveTrackerSignal(r) {
+  const action = String(r.model_action || "").trim().toUpperCase();
+
+  if (r.public_signal?.locked || action === "LOCKED") {
+    return {locked:true, action:"LOCKED"};
+  }
+
+  const openDate = String(r.issue_open || "");
+  const today = istDateKey();
+
+  if (openDate && openDate > today) return {locked:true, action:"LOCKED"};
+  if (!hasObservedValue(r.total_x)) return {locked:true, action:"LOCKED"};
+  if (!PUBLISHABLE_ACTIONS.has(action)) return {locked:true, action:"LOCKED"};
+
+  return {locked:false, action};
+}
+
 function istParts(value = new Date()) {
   const d = value instanceof Date ? value : new Date(value);
   if (Number.isNaN(d.getTime())) return null;
@@ -210,9 +266,10 @@ function renderHealth(h, p, live) {
   const progress = p.progress || {};
   const records = live.records || [];
   const selectedToday = records.filter(n => {
-    const a = n.recommendation?.action;
+    const signal = effectiveLiveSignal(n);
     return isClosingToday(n) &&
-      (a === "STRONG SUBSCRIBE" || a === "SUBSCRIBE");
+      !signal.locked &&
+      (signal.action === "STRONG SUBSCRIBE" || signal.action === "SUBSCRIBE");
   }).length;
 
   $("stats").innerHTML = `
@@ -253,7 +310,11 @@ function renderLive(data) {
   $("liveCards").innerHTML = records.length ? records.map(n => {
     const r = n.recommendation || {};
     const p = r.predictions || {};
+    const signal = effectiveLiveSignal(n);
+    const publicAction = signal.action;
     const closingToday = isClosingToday(n);
+    const publicPred = signal.locked ? null : r.primary_prediction_pct;
+    const publicConfidence = signal.locked ? null : r.research_confidence;
     return `
       <article class="card">
         <div class="card-head">
@@ -262,17 +323,17 @@ function renderLive(data) {
             <div class="muted">${esc(n.type || "")}</div>
           </div>
           <span
-            class="action ${actionClass(r.action)}"
-            title="${r.action === "LOCKED" ? "Relevant data not available" : ""}"
+            class="action ${actionClass(publicAction)}"
+            title="${signal.locked ? "Relevant data not available" : ""}"
           >
-            ${esc(publicActionLabel(r.action))}
+            ${esc(publicActionLabel(publicAction))}
           </span>
         </div>
 
         <div class="metric-grid">
           <div class="metric">
             <small>Estimated gain</small>
-            <strong>${fmt(r.primary_prediction_pct,"%")}</strong>
+            <strong>${fmt(publicPred,"%")}</strong>
           </div>
           <div class="metric">
             <small>Latest GMP</small>
@@ -284,12 +345,14 @@ function renderLive(data) {
           </div>
           <div class="metric">
             <small>Confidence</small>
-            <strong>${esc(r.research_confidence || "—")}</strong>
+            <strong>${esc(publicConfidence || "—")}</strong>
           </div>
         </div>
 
         <div class="card-note ${closingToday ? "closing" : ""}">
-          ${esc(finalityText(n, r))}
+          ${esc(signal.locked
+            ? "Relevant data not available."
+            : finalityText(n, r))}
         </div>
       </article>`;
   }).join("") :
@@ -297,27 +360,34 @@ function renderLive(data) {
 }
 
 function renderTracker(t) {
-  $("trackerBody").innerHTML = (t.rows || []).map(r => `
+  $("trackerBody").innerHTML = (t.rows || []).map(r => {
+    const signal = effectiveTrackerSignal(r);
+    const publicAction = signal.action;
+    const publicPred = signal.locked ? null : r.primary_prediction_pct;
+    const publicOutcome = signal.locked ? null : r.outcome_vs_call;
+
+    return `
     <tr>
       <td><strong>${esc(r.name)}</strong></td>
       <td>${esc(r.ipo_type)}</td>
       <td>${esc(r.provider_status || "—")}</td>
       <td>
         <span
-          class="action table-action ${actionClass(r.model_action)}"
-          title="${r.model_action === "LOCKED" ? "Relevant data not available" : ""}"
+          class="action table-action ${actionClass(publicAction)}"
+          title="${signal.locked ? "Relevant data not available" : ""}"
         >
-          ${esc(publicActionLabel(r.model_action))}
+          ${esc(publicActionLabel(publicAction))}
         </span>
       </td>
-      <td>${fmt(r.primary_prediction_pct,"%")}</td>
+      <td>${fmt(publicPred,"%")}</td>
       <td>${fmt(r.gmp_used_pct,"%")}</td>
       <td>${fmt(r.total_x,"x")}</td>
       <td class="${trend(r.actual_listing_gain_pct)}">
         ${fmt(r.actual_listing_gain_pct,"%")}
       </td>
-      <td>${esc(r.outcome_vs_call || "—")}</td>
-    </tr>`).join("") ||
+      <td>${esc(publicOutcome || "—")}</td>
+    </tr>`;
+  }).join("") ||
     `<tr><td colspan="9">No tracker rows yet.</td></tr>`;
 }
 

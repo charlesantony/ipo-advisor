@@ -47,7 +47,13 @@ def _persist_state():
 def _wait_until_time(hour, minute, label):
     # Scheduled workflows can start a few minutes early so the Python job can
     # wait for the intended IST checkpoint. Manual runs should execute now.
-    if os.environ.get("GITHUB_EVENT_NAME") != "schedule":
+    force_wait = str(
+        os.environ.get("FORCE_CHECKPOINT_WAIT") or ""
+    ).strip().lower() in {"1", "true", "yes", "on"}
+    if (
+        os.environ.get("GITHUB_EVENT_NAME") != "schedule"
+        and not force_wait
+    ):
         return
 
     now = datetime.now(IST)

@@ -1,10 +1,12 @@
 name: Day-2 IPO Early Email
 
 on:
-  schedule:
-    # 14:55 UTC = 8:25 PM IST. Start early, then Python waits for 8:30 PM IST.
-    - cron: "55 14 * * 1-5"
   workflow_dispatch:
+    inputs:
+      wait_for_checkpoint:
+        description: Wait until 8:30 PM IST before evaluating
+        required: false
+        default: "false"
 
 permissions:
   contents: write
@@ -34,6 +36,7 @@ jobs:
           SUBSCRIBE_ENDPOINT: ${{ vars.SUBSCRIBE_ENDPOINT }}
           EMAIL_ALERT_KEY: ${{ secrets.EMAIL_ALERT_KEY }}
           PUBLIC_DASHBOARD_URL: ${{ vars.PUBLIC_DASHBOARD_URL }}
+          FORCE_CHECKPOINT_WAIT: ${{ inputs.wait_for_checkpoint }}
         run: python scripts/cloud_job.py day2 --wait-until-2030
 
       - name: Persist generated state

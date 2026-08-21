@@ -1,13 +1,6 @@
 name: Live IPO Dashboard Refresh
 
 on:
-  schedule:
-    # UTC schedules for the following IST times:
-    # 10:35, 11:05, 11:35, 12:05, 12:35, 13:05, 13:35,
-    # 14:05, 15:05, 15:35 and 16:35 on weekdays.
-    - cron: "5 5-8 * * 1-5"
-    - cron: "35 5-9 * * 1-5"
-    - cron: "5 10-11 * * 1-5"
   workflow_dispatch:
 
 permissions:
@@ -34,8 +27,6 @@ jobs:
       - name: Refresh public live IPO data only
         run: python scripts/cloud_job.py live
 
-      # Deliberately do not commit live.json. These frequent snapshots are for
-      # dashboard freshness only; research checkpoints continue to persist state.
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:
