@@ -1,6 +1,6 @@
 {
-  "fetched_at_utc": "2026-08-21T04:17:59.096426+00:00",
-  "fetched_at_ist": "2026-08-21T09:47:59.096426+05:30",
+  "fetched_at_utc": "2026-08-21T08:57:13.097485+00:00",
+  "fetched_at_ist": "2026-08-21T14:27:13.097485+05:30",
   "status_filter": "LIVE",
   "type_filter": "ALL",
   "records": [
@@ -22,11 +22,16 @@
       "issue_size_cr": 550.0,
       "fresh_issue_cr": 450.0,
       "ofs_cr": 100.0,
-      "gmp_value": 15.0,
-      "gmp_gain_pct": 9.38,
-      "gmp_date": "20 August",
+      "gmp_value": 18.0,
+      "gmp_gain_pct": 11.25,
+      "gmp_date": "21 August",
       "gmp_source": "https://ipowatch.in/gaja-alternative-asset-management-ipo-gmp-grey-market-premium",
       "gmp_trends": [
+        {
+          "date": "21 August",
+          "gmp": "₹18",
+          "gain": "11.25%"
+        },
         {
           "date": "20 August",
           "gmp": "₹15",
@@ -114,6 +119,11 @@
           "gmpSource": "https://ipowatch.in/gaja-alternative-asset-management-ipo-gmp-grey-market-premium",
           "gmpTrends": [
             {
+              "date": "21 August",
+              "gmp": "₹18",
+              "gain": "11.25%"
+            },
+            {
               "date": "20 August",
               "gmp": "₹15",
               "gain": "9.38%"
@@ -174,7 +184,7 @@
         "risks": true
       },
       "features": {
-        "gmp_latest_pct": 9.38,
+        "gmp_latest_pct": 11.25,
         "gmp_change_1obs": null,
         "gmp_change_3obs": null,
         "log_qib": 0.09531017980432487,
@@ -185,11 +195,11 @@
         "ofs_ratio": 0.18181818181818182
       },
       "velocity": {
-        "minutes_since_previous": 632.3,
-        "qib_x_per_hour": 0.001,
-        "nii_x_per_hour": 0.272,
-        "retail_x_per_hour": 0.183,
-        "total_x_per_hour": 0.149
+        "minutes_since_previous": 279.2,
+        "qib_x_per_hour": 0.0,
+        "nii_x_per_hour": 0.0,
+        "retail_x_per_hour": 0.0,
+        "total_x_per_hour": 0.0
       },
       "is_closing_today": true,
       "would_be_1430_decision_snapshot": false,
@@ -205,15 +215,15 @@
           "canonical": false
         },
         "predictions": {
-          "gmp_input_pct": 9.38,
+          "gmp_input_pct": 11.25,
           "total_subscription_x": 2.43,
           "log_total": 1.2325602611778486,
-          "gmp_prediction_pct": 6.35,
+          "gmp_prediction_pct": 8.34,
           "subscription_prediction_pct": -0.11,
           "prediction_cap_pct": null
         },
-        "primary_prediction_pct": 6.35,
-        "ranking_score": 6.35,
+        "primary_prediction_pct": 8.34,
+        "ranking_score": 8.34,
         "signal_conflict": false,
         "reason": [
           "GMP model is positive but below the +10% subscribe threshold.",
@@ -256,7 +266,7 @@
           "strength": "NONE",
           "total_subscription_x": 2.43,
           "subscription_prediction_pct": -0.11,
-          "gmp_prediction_pct": 6.35,
+          "gmp_prediction_pct": 8.34,
           "thresholds": {
             "candidate_total_x": 40.0,
             "candidate_subscription_prediction_pct": 25.0,
@@ -412,11 +422,11 @@
         "ofs_ratio": 0.8538461538461538
       },
       "velocity": {
-        "minutes_since_previous": 632.3,
-        "qib_x_per_hour": null,
-        "nii_x_per_hour": null,
-        "retail_x_per_hour": null,
-        "total_x_per_hour": null
+        "minutes_since_previous": 279.2,
+        "qib_x_per_hour": 0.0,
+        "nii_x_per_hour": 0.0,
+        "retail_x_per_hour": 0.0,
+        "total_x_per_hour": 0.0
       },
       "is_closing_today": false,
       "would_be_1430_decision_snapshot": false,
@@ -516,9 +526,14 @@
       "ofs_cr": 205.0,
       "gmp_value": 285.0,
       "gmp_gain_pct": 36.26,
-      "gmp_date": "20 August",
+      "gmp_date": "21 August",
       "gmp_source": "https://ipowatch.in/augmont-enterprises-ipo-gmp-grey-market-premium",
       "gmp_trends": [
+        {
+          "date": "21 August",
+          "gmp": "₹285",
+          "gain": "36.26%"
+        },
         {
           "date": "20 August",
           "gmp": "₹285",
@@ -596,6 +611,11 @@
           "gmpSource": "https://ipowatch.in/augmont-enterprises-ipo-gmp-grey-market-premium",
           "gmpTrends": [
             {
+              "date": "21 August",
+              "gmp": "₹285",
+              "gain": "36.26%"
+            },
+            {
               "date": "20 August",
               "gmp": "₹285",
               "gain": "36.26%"
@@ -635,7 +655,7 @@
         "ofs_ratio": 0.24848484848484848
       },
       "velocity": {
-        "minutes_since_previous": null,
+        "minutes_since_previous": 279.2,
         "qib_x_per_hour": null,
         "nii_x_per_hour": null,
         "retail_x_per_hour": null,
@@ -737,11 +757,16 @@
       "issue_size_cr": 26.73,
       "fresh_issue_cr": null,
       "ofs_cr": null,
-      "gmp_value": 8.0,
-      "gmp_gain_pct": 8.08,
-      "gmp_date": "20 August",
+      "gmp_value": 5.0,
+      "gmp_gain_pct": 5.05,
+      "gmp_date": "21 August",
       "gmp_source": "https://ipowatch.in/dhanwel-hybrid-seeds-ipo-gmp-grey-market-premium",
       "gmp_trends": [
+        {
+          "date": "21 August",
+          "gmp": "₹5",
+          "gain": "5.05%"
+        },
         {
           "date": "20 August",
           "gmp": "₹8",
@@ -820,6 +845,11 @@
           "gmpSource": "https://ipowatch.in/dhanwel-hybrid-seeds-ipo-gmp-grey-market-premium",
           "gmpTrends": [
             {
+              "date": "21 August",
+              "gmp": "₹5",
+              "gain": "5.05%"
+            },
+            {
               "date": "20 August",
               "gmp": "₹8",
               "gain": "8.08%"
@@ -856,7 +886,7 @@
         "price": true,
         "issue_size": true,
         "gmp": true,
-        "gmp_history": false,
+        "gmp_history": true,
         "qib": true,
         "nii": true,
         "retail": true,
@@ -865,7 +895,7 @@
         "risks": true
       },
       "features": {
-        "gmp_latest_pct": 8.08,
+        "gmp_latest_pct": 5.05,
         "gmp_change_1obs": null,
         "gmp_change_3obs": null,
         "log_qib": 0.0,
@@ -876,11 +906,11 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 632.3,
+        "minutes_since_previous": 279.2,
         "qib_x_per_hour": 0.0,
-        "nii_x_per_hour": 0.007,
-        "retail_x_per_hour": 0.119,
-        "total_x_per_hour": 0.059
+        "nii_x_per_hour": 0.0,
+        "retail_x_per_hour": 0.0,
+        "total_x_per_hour": 0.0
       },
       "is_closing_today": true,
       "would_be_1430_decision_snapshot": false,
@@ -896,15 +926,15 @@
           "canonical": false
         },
         "predictions": {
-          "gmp_input_pct": 8.08,
+          "gmp_input_pct": 5.05,
           "total_subscription_x": 0.71,
           "log_total": 0.5364933705145685,
-          "gmp_prediction_pct": -4.35,
+          "gmp_prediction_pct": -7.92,
           "subscription_prediction_pct": -30.68,
           "prediction_cap_pct": 90.0
         },
-        "primary_prediction_pct": -4.35,
-        "ranking_score": -4.35,
+        "primary_prediction_pct": -7.92,
+        "ranking_score": -7.92,
         "signal_conflict": false,
         "reason": [
           "SME GMP model is below +5%.",
@@ -946,7 +976,7 @@
           "strength": "NONE",
           "total_subscription_x": 0.71,
           "subscription_prediction_pct": -30.68,
-          "gmp_prediction_pct": -4.35,
+          "gmp_prediction_pct": -7.92,
           "thresholds": {
             "candidate_total_x": 40.0,
             "candidate_subscription_prediction_pct": 25.0,
@@ -978,11 +1008,16 @@
       "issue_size_cr": 27.26,
       "fresh_issue_cr": null,
       "ofs_cr": 5.18,
-      "gmp_value": 0.0,
-      "gmp_gain_pct": 0.0,
-      "gmp_date": "20 August",
+      "gmp_value": 1.0,
+      "gmp_gain_pct": 0.72,
+      "gmp_date": "21 August",
       "gmp_source": "https://ipowatch.in/mopshop-distribution-ipo-gmp-grey-market-premium",
       "gmp_trends": [
+        {
+          "date": "21 August",
+          "gmp": "₹1",
+          "gain": "0.72%"
+        },
         {
           "date": "20 August",
           "gmp": "₹0",
@@ -1076,6 +1111,11 @@
           "gmpSource": "https://ipowatch.in/mopshop-distribution-ipo-gmp-grey-market-premium",
           "gmpTrends": [
             {
+              "date": "21 August",
+              "gmp": "₹1",
+              "gain": "0.72%"
+            },
+            {
               "date": "20 August",
               "gmp": "₹0",
               "gain": "0.00%"
@@ -1132,7 +1172,7 @@
         "risks": true
       },
       "features": {
-        "gmp_latest_pct": 0.0,
+        "gmp_latest_pct": 0.72,
         "gmp_change_1obs": null,
         "gmp_change_3obs": null,
         "log_qib": null,
@@ -1143,11 +1183,11 @@
         "ofs_ratio": 0.19002201027145998
       },
       "velocity": {
-        "minutes_since_previous": 632.3,
+        "minutes_since_previous": 279.2,
         "qib_x_per_hour": null,
-        "nii_x_per_hour": -0.006,
-        "retail_x_per_hour": 0.062,
-        "total_x_per_hour": 0.028
+        "nii_x_per_hour": 0.0,
+        "retail_x_per_hour": 0.0,
+        "total_x_per_hour": 0.0
       },
       "is_closing_today": true,
       "would_be_1430_decision_snapshot": false,
@@ -1163,15 +1203,15 @@
           "canonical": false
         },
         "predictions": {
-          "gmp_input_pct": 0.0,
+          "gmp_input_pct": 0.72,
           "total_subscription_x": 1.07,
           "log_total": 0.7275486072772778,
-          "gmp_prediction_pct": -13.86,
+          "gmp_prediction_pct": -13.01,
           "subscription_prediction_pct": -27.43,
           "prediction_cap_pct": 90.0
         },
-        "primary_prediction_pct": -13.86,
-        "ranking_score": -13.86,
+        "primary_prediction_pct": -13.01,
+        "ranking_score": -13.01,
         "signal_conflict": false,
         "reason": [
           "SME GMP model is below +5%.",
@@ -1213,7 +1253,7 @@
           "strength": "NONE",
           "total_subscription_x": 1.07,
           "subscription_prediction_pct": -27.43,
-          "gmp_prediction_pct": -13.86,
+          "gmp_prediction_pct": -13.01,
           "thresholds": {
             "candidate_total_x": 40.0,
             "candidate_subscription_prediction_pct": 25.0,
@@ -1236,7 +1276,7 @@
       "api_status": "success",
       "api_status_code": 200,
       "message": "IPO details fetched successfully",
-      "response_bytes": 8760,
+      "response_bytes": 8863,
       "rate_remaining_endpoint": "119",
       "rate_remaining_global": "599",
       "count": 3
@@ -1248,7 +1288,7 @@
       "api_status": "success",
       "api_status_code": 200,
       "message": "IPO details fetched successfully",
-      "response_bytes": 7533,
+      "response_bytes": 7631,
       "rate_remaining_endpoint": "119",
       "rate_remaining_global": "599",
       "count": 2
