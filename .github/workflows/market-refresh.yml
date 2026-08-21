@@ -2,14 +2,11 @@ name: IPO Market Refreshes
 
 on:
   schedule:
-    - cron: "10 0 * * *"
-      timezone: "Asia/Kolkata"
-    - cron: "5 10 * * 1-5"
-      timezone: "Asia/Kolkata"
-    - cron: "5 16 * * 1-5"
-      timezone: "Asia/Kolkata"
-    - cron: "5 17 * * 1-5"
-      timezone: "Asia/Kolkata"
+    # Plain UTC cron, equivalent to the intended IST checkpoints.
+    - cron: "40 18 * * *"       # 12:10 AM IST (next calendar day)
+    - cron: "35 4 * * 1-5"     # 10:05 AM IST
+    - cron: "35 10 * * 1-5"    # 4:05 PM IST
+    - cron: "35 11 * * 1-5"    # 5:05 PM IST
   workflow_dispatch:
     inputs:
       phase:
@@ -60,10 +57,10 @@ jobs:
             exit 0
           fi
           case "$EVENT_SCHEDULE" in
-            "10 0 * * *") echo "value=rollover" >> "$GITHUB_OUTPUT" ;;
-            "5 10 * * 1-5") echo "value=morning" >> "$GITHUB_OUTPUT" ;;
-            "5 16 * * 1-5") echo "value=sme_close" >> "$GITHUB_OUTPUT" ;;
-            "5 17 * * 1-5") echo "value=mainboard_close" >> "$GITHUB_OUTPUT" ;;
+            "40 18 * * *") echo "value=rollover" >> "$GITHUB_OUTPUT" ;;
+            "35 4 * * 1-5") echo "value=morning" >> "$GITHUB_OUTPUT" ;;
+            "35 10 * * 1-5") echo "value=sme_close" >> "$GITHUB_OUTPUT" ;;
+            "35 11 * * 1-5") echo "value=mainboard_close" >> "$GITHUB_OUTPUT" ;;
             *) echo "value=manual" >> "$GITHUB_OUTPUT" ;;
           esac
 

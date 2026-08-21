@@ -2,8 +2,8 @@ name: Day-2 IPO Early Email
 
 on:
   schedule:
-    - cron: "30 20 * * 1-5"
-      timezone: "Asia/Kolkata"
+    # 14:55 UTC = 8:25 PM IST. Start early, then Python waits for 8:30 PM IST.
+    - cron: "55 14 * * 1-5"
   workflow_dispatch:
 
 permissions:
@@ -34,7 +34,7 @@ jobs:
           SUBSCRIBE_ENDPOINT: ${{ vars.SUBSCRIBE_ENDPOINT }}
           EMAIL_ALERT_KEY: ${{ secrets.EMAIL_ALERT_KEY }}
           PUBLIC_DASHBOARD_URL: ${{ vars.PUBLIC_DASHBOARD_URL }}
-        run: python scripts/cloud_job.py day2
+        run: python scripts/cloud_job.py day2 --wait-until-2030
 
       - name: Persist generated state
         run: |

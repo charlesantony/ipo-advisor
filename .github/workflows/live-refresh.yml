@@ -2,18 +2,12 @@ name: Live IPO Dashboard Refresh
 
 on:
   schedule:
-    # Lightweight refreshes between the research checkpoints.
-    # Checkpoint workflows already cover 10:05, 14:30, 16:05 and 17:05 IST.
-    - cron: "35 10 * * 1-5"
-      timezone: "Asia/Kolkata"
-    - cron: "5,35 11-13 * * 1-5"
-      timezone: "Asia/Kolkata"
-    - cron: "5 14 * * 1-5"
-      timezone: "Asia/Kolkata"
-    - cron: "5,35 15 * * 1-5"
-      timezone: "Asia/Kolkata"
-    - cron: "35 16 * * 1-5"
-      timezone: "Asia/Kolkata"
+    # UTC schedules for the following IST times:
+    # 10:35, 11:05, 11:35, 12:05, 12:35, 13:05, 13:35,
+    # 14:05, 15:05, 15:35 and 16:35 on weekdays.
+    - cron: "5 5-8 * * 1-5"
+    - cron: "35 5-9 * * 1-5"
+    - cron: "5 10-11 * * 1-5"
   workflow_dispatch:
 
 permissions:

@@ -44,20 +44,20 @@ def _persist_state():
         shutil.copy2(DB_ENGINE, DB_STATE)
 
 
-def _wait_until_1430():
-    # Scheduled workflow starts early to reduce the chance that GitHub
-    # scheduler delay pushes the actual capture past 14:30.
+def _wait_until_time(hour, minute, label):
+    # Scheduled workflows can start a few minutes early so the Python job can
+    # wait for the intended IST checkpoint. Manual runs should execute now.
     if os.environ.get("GITHUB_EVENT_NAME") != "schedule":
         return
 
     now = datetime.now(IST)
     target = now.replace(
-        hour=14, minute=30, second=0, microsecond=0
+        hour=hour, minute=minute, second=0, microsecond=0
     )
     seconds = (target - now).total_seconds()
     if seconds > 0:
         print(
-            "WAIT_FOR_1430 "
+            f"WAIT_FOR_{label} "
             f"now={now.isoformat()} "
             f"sleep_seconds={int(seconds)}"
         )
@@ -65,8 +65,17 @@ def _wait_until_1430():
     else:
         print(
             "SCHEDULE_DELAY_WARNING "
-            f"runner_started_after_1430={now.isoformat()}"
+            f"checkpoint={label} "
+            f"runner_started_after_target={now.isoformat()}"
         )
+
+
+def _wait_until_1430():
+    _wait_until_time(14, 30, "1430")
+
+
+def _wait_until_2030():
+    _wait_until_time(20, 30, "2030")
 
 
 def _ensure_training(server, db):
@@ -588,6 +597,10 @@ def main():
         action="store_true",
     )
     parser.add_argument(
+        "--wait-until-2030",
+        action="store_true",
+    )
+    parser.add_argument(
         "--phase",
         default="manual",
         choices=[
@@ -661,6 +674,9 @@ def main():
         }
 
     elif args.mode == "day2":
+        if args.wait_until_2030:
+            _wait_until_2030()
+
         live, export = _capture_and_export(
             server, db, model_audit, shadow_v2,
             recommendation, prospective_tracker,

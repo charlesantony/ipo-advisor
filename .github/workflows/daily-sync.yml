@@ -2,8 +2,8 @@ name: Daily IPO Outcome Sync
 
 on:
   schedule:
-    - cron: "7 18 * * 1-5"
-      timezone: "Asia/Kolkata"
+    # 12:37 UTC = 6:07 PM IST.
+    - cron: "37 12 * * 1-5"
   workflow_dispatch:
 
 permissions:

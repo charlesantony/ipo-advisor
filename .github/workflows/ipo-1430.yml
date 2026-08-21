@@ -2,9 +2,8 @@ name: 2:30 PM IPO Decision and Email
 
 on:
   schedule:
-    # Start early, then wait in Python for the 14:30 IST snapshot.
-    - cron: "15 14 * * 1-5"
-      timezone: "Asia/Kolkata"
+    # 08:45 UTC = 2:15 PM IST. Start early, then Python waits for 2:30 PM IST.
+    - cron: "45 8 * * 1-5"
   workflow_dispatch:
 
 permissions:
