@@ -1,6 +1,6 @@
 {
-  "fetched_at_utc": "2026-08-21T15:00:00.000149+00:00",
-  "fetched_at_ist": "2026-08-21T20:30:00.000149+05:30",
+  "fetched_at_utc": "2026-08-21T19:13:31.088427+00:00",
+  "fetched_at_ist": "2026-08-22T00:43:31.088427+05:30",
   "status_filter": "LIVE",
   "type_filter": "ALL",
   "records": [
@@ -53,10 +53,10 @@
           "gain": "6.25%"
         }
       ],
-      "qib_x": 0.1,
-      "nii_x": 3.93,
-      "retail_x": 3.13,
-      "total_x": 2.43,
+      "qib_x": 43.58,
+      "nii_x": 62.35,
+      "retail_x": 11.03,
+      "total_x": 31.33,
       "strengths": [
         "Well-established alternative asset management platform with a unique and differentiated business model.",
         "Proven track record of delivering consistent performance and returns across various Gaja Capital Funds.",
@@ -148,23 +148,23 @@
         "subscriptionNumbers": {
           "institutional": {
             "reserved": "72.36",
-            "applied": "7.18",
-            "subscription": "0.10x"
+            "applied": "3153.83",
+            "subscription": "43.58x"
           },
           "nii": {
             "reserved": "54.27",
-            "applied": "213.34",
-            "subscription": "3.93x"
+            "applied": "3384.15",
+            "subscription": "62.35x"
           },
           "retail": {
             "reserved": "126.64",
-            "applied": "396.15",
-            "subscription": "3.13x"
+            "applied": "1397.30",
+            "subscription": "11.03x"
           },
           "total": {
             "reserved": "253.28",
-            "applied": "616.67",
-            "subscription": "2.43x"
+            "applied": "7935.28",
+            "subscription": "31.33x"
           }
         },
         "exchanges": "BSE, NSE"
@@ -187,49 +187,48 @@
         "gmp_latest_pct": 7.5,
         "gmp_change_1obs": null,
         "gmp_change_3obs": null,
-        "log_qib": 0.09531017980432487,
-        "log_nii": 1.5953389880545987,
-        "log_retail": 1.4182774069729414,
-        "log_total": 1.2325602611778486,
+        "log_qib": 3.797285327957723,
+        "log_nii": 4.148674906767148,
+        "log_retail": 2.4874035299865875,
+        "log_total": 3.4759955917373415,
         "log_issue_size": 6.311734809152915,
         "ofs_ratio": 0.18181818181818182
       },
       "velocity": {
-        "minutes_since_previous": 186.9,
-        "qib_x_per_hour": 0.0,
-        "nii_x_per_hour": 0.0,
-        "retail_x_per_hour": 0.0,
-        "total_x_per_hour": 0.0
+        "minutes_since_previous": 253.5,
+        "qib_x_per_hour": 10.29,
+        "nii_x_per_hour": 13.826,
+        "retail_x_per_hour": 1.87,
+        "total_x_per_hour": 6.84
       },
-      "is_closing_today": true,
+      "is_closing_today": false,
       "would_be_1430_decision_snapshot": false,
       "recommendation": {
         "policy_version": "research-v1",
         "segment": "MAINBOARD",
-        "action": "BORDERLINE",
+        "action": "AVOID",
         "action_priority": 2,
-        "research_confidence": "LOW",
+        "research_confidence": "MEDIUM",
         "finality": {
-          "canonical": true,
-          "code": "CAPTURED_1430_IST",
-          "label": "CANONICAL_1430_RETAINED",
-          "captured_at_ist": "2026-08-21T14:30:41.094295+05:30"
+          "code": "EARLY",
+          "label": "EARLY SIGNAL — NOT FINAL; use closing-day 2:30 PM IST decision",
+          "canonical": false
         },
         "predictions": {
           "gmp_input_pct": 7.5,
-          "total_subscription_x": 2.43,
-          "log_total": 1.2325602611778486,
+          "total_subscription_x": 31.33,
+          "log_total": 3.4759955917373415,
           "gmp_prediction_pct": 4.34,
-          "subscription_prediction_pct": -0.11,
+          "subscription_prediction_pct": 36.74,
           "prediction_cap_pct": null
         },
-        "primary_prediction_pct": 8.34,
+        "primary_prediction_pct": 4.34,
         "ranking_score": 4.34,
         "signal_conflict": false,
         "reason": [
           "GMP model is below the +5% research threshold.",
-          "Total-subscription model is neutral/weak.",
-          "POST-2:30 PM — latest research signal; canonical snapshot should be retained"
+          "Total-subscription model is strongly supportive.",
+          "EARLY SIGNAL — NOT FINAL; use closing-day 2:30 PM IST decision"
         ],
         "training": {
           "source_year": 2024,
@@ -258,10 +257,9 @@
           }
         },
         "disclaimer": "Research model only. It estimates listing-gain potential from historical GMP and subscription patterns; it does not consider your financial situation or guarantee profit.",
-        "display_decision_source": "CAPTURED_1430_IST",
         "public_signal": {
           "locked": false,
-          "action": "BORDERLINE",
+          "action": "AVOID",
           "reason": null
         }
       }
@@ -289,10 +287,10 @@
       "gmp_date": null,
       "gmp_source": "https://ipowatch.in/tempsens-instruments-ipo-gmp-grey-market-premium",
       "gmp_trends": [],
-      "qib_x": 0.05,
-      "nii_x": 12.5,
-      "retail_x": 6.44,
-      "total_x": 5.93,
+      "qib_x": 3.31,
+      "nii_x": 52.97,
+      "retail_x": 18.65,
+      "total_x": 21.65,
       "strengths": [
         "Largest manufacturer of temperature sensors in India by revenue.",
         "Diversified business across temperature sensing, electrical heating, and specialised cables.",
@@ -362,23 +360,23 @@
         "subscriptionNumbers": {
           "institutional": {
             "reserved": "43.23",
-            "applied": "2.34",
-            "subscription": "0.05x"
+            "applied": "143.27",
+            "subscription": "3.31x"
           },
           "nii": {
             "reserved": "32.43",
-            "applied": "405.33",
-            "subscription": "12.50x"
+            "applied": "1717.41",
+            "subscription": "52.97x"
           },
           "retail": {
             "reserved": "75.66",
-            "applied": "487.59",
-            "subscription": "6.44x"
+            "applied": "1411.21",
+            "subscription": "18.65x"
           },
           "total": {
             "reserved": "151.82",
-            "applied": "899.96",
-            "subscription": "5.93x"
+            "applied": "3286.32",
+            "subscription": "21.65x"
           }
         }
       },
@@ -400,28 +398,28 @@
         "gmp_latest_pct": null,
         "gmp_change_1obs": null,
         "gmp_change_3obs": null,
-        "log_qib": 0.04879016416943201,
-        "log_nii": 2.6026896854443837,
-        "log_retail": 2.0068708488450007,
-        "log_total": 1.9358598132018119,
+        "log_qib": 1.4609379041156565,
+        "log_nii": 3.9884283366305513,
+        "log_retail": 2.9780773383152703,
+        "log_total": 3.120159851929043,
         "log_issue_size": 6.478509642208569,
         "ofs_ratio": 0.8538461538461538
       },
       "velocity": {
-        "minutes_since_previous": 186.9,
-        "qib_x_per_hour": 0.0,
-        "nii_x_per_hour": 0.0,
-        "retail_x_per_hour": 0.0,
-        "total_x_per_hour": 0.0
+        "minutes_since_previous": 253.5,
+        "qib_x_per_hour": 0.772,
+        "nii_x_per_hour": 9.578,
+        "retail_x_per_hour": 2.89,
+        "total_x_per_hour": 3.72
       },
       "is_closing_today": false,
       "would_be_1430_decision_snapshot": false,
       "recommendation": {
         "policy_version": "research-v1",
         "segment": "MAINBOARD",
-        "action": "BORDERLINE",
-        "action_priority": 3,
-        "research_confidence": "LOW",
+        "action": "SUBSCRIBE",
+        "action_priority": 4,
+        "research_confidence": "MEDIUM",
         "finality": {
           "code": "EARLY",
           "label": "EARLY SIGNAL — NOT FINAL; use closing-day 2:30 PM IST decision",
@@ -429,17 +427,17 @@
         },
         "predictions": {
           "gmp_input_pct": null,
-          "total_subscription_x": 5.93,
-          "log_total": 1.9358598132018119,
+          "total_subscription_x": 21.65,
+          "log_total": 3.120159851929043,
           "gmp_prediction_pct": null,
-          "subscription_prediction_pct": 11.44,
+          "subscription_prediction_pct": 30.9,
           "prediction_cap_pct": null
         },
-        "primary_prediction_pct": 11.44,
-        "ranking_score": 11.44,
+        "primary_prediction_pct": 30.9,
+        "ranking_score": 30.9,
         "signal_conflict": false,
         "reason": [
-          "GMP is unavailable; subscription model is only moderately positive.",
+          "GMP is unavailable; broad subscription model is at or above +20%.",
           "EARLY SIGNAL — NOT FINAL; use closing-day 2:30 PM IST decision"
         ],
         "training": {
@@ -471,7 +469,7 @@
         "disclaimer": "Research model only. It estimates listing-gain potential from historical GMP and subscription patterns; it does not consider your financial situation or guarantee profit.",
         "public_signal": {
           "locked": false,
-          "action": "BORDERLINE",
+          "action": "SUBSCRIBE",
           "reason": null
         }
       }
@@ -515,10 +513,10 @@
           "gain": "24.11%"
         }
       ],
-      "qib_x": null,
-      "nii_x": null,
-      "retail_x": null,
-      "total_x": null,
+      "qib_x": 1.76,
+      "nii_x": 3.97,
+      "retail_x": 2.79,
+      "total_x": 2.74,
       "strengths": [
         "An integrated player with offerings across the gold value chain.",
         "Operates a B2B platform and a B2C platform for digital gold and silver.",
@@ -597,6 +595,28 @@
             }
           ]
         },
+        "subscriptionNumbers": {
+          "institutional": {
+            "reserved": "21.89",
+            "applied": "38.47",
+            "subscription": "1.76x"
+          },
+          "nii": {
+            "reserved": "16.42",
+            "applied": "65.25",
+            "subscription": "3.97x"
+          },
+          "retail": {
+            "reserved": "38.31",
+            "applied": "106.86",
+            "subscription": "2.79x"
+          },
+          "total": {
+            "reserved": "77.20",
+            "applied": "211.33",
+            "subscription": "2.74x"
+          }
+        },
         "exchanges": "BSE, NSE"
       },
       "readiness": {
@@ -606,10 +626,10 @@
         "issue_size": true,
         "gmp": true,
         "gmp_history": true,
-        "qib": false,
-        "nii": false,
-        "retail": false,
-        "total_subscription": false,
+        "qib": true,
+        "nii": true,
+        "retail": true,
+        "total_subscription": true,
         "prospectus": true,
         "risks": true
       },
@@ -617,15 +637,15 @@
         "gmp_latest_pct": 38.17,
         "gmp_change_1obs": null,
         "gmp_change_3obs": null,
-        "log_qib": null,
-        "log_nii": null,
-        "log_retail": null,
-        "log_total": null,
+        "log_qib": 1.0152306797290587,
+        "log_nii": 1.6034198401085373,
+        "log_retail": 1.332366019094335,
+        "log_total": 1.3190856114264407,
         "log_issue_size": 6.716594773520978,
         "ofs_ratio": 0.24848484848484848
       },
       "velocity": {
-        "minutes_since_previous": 186.9,
+        "minutes_since_previous": 253.5,
         "qib_x_per_hour": null,
         "nii_x_per_hour": null,
         "retail_x_per_hour": null,
@@ -636,9 +656,9 @@
       "recommendation": {
         "policy_version": "research-v1",
         "segment": "MAINBOARD",
-        "action": "LOCKED",
-        "action_priority": 0,
-        "research_confidence": null,
+        "action": "STRONG SUBSCRIBE",
+        "action_priority": 5,
+        "research_confidence": "HIGHER",
         "finality": {
           "code": "EARLY",
           "label": "EARLY SIGNAL — NOT FINAL; use closing-day 2:30 PM IST decision",
@@ -646,17 +666,19 @@
         },
         "predictions": {
           "gmp_input_pct": 38.17,
-          "total_subscription_x": null,
-          "log_total": null,
-          "gmp_prediction_pct": null,
-          "subscription_prediction_pct": null,
+          "total_subscription_x": 2.74,
+          "log_total": 1.3190856114264407,
+          "gmp_prediction_pct": 37.02,
+          "subscription_prediction_pct": 1.31,
           "prediction_cap_pct": null
         },
-        "primary_prediction_pct": null,
-        "ranking_score": -999.0,
+        "primary_prediction_pct": 37.02,
+        "ranking_score": 37.02,
         "signal_conflict": false,
         "reason": [
-          "Relevant data not available."
+          "GMP model is at or above the +20% research threshold.",
+          "Total-subscription model is neutral/weak.",
+          "EARLY SIGNAL — NOT FINAL; use closing-day 2:30 PM IST decision"
         ],
         "training": {
           "source_year": 2024,
@@ -686,9 +708,9 @@
         },
         "disclaimer": "Research model only. It estimates listing-gain potential from historical GMP and subscription patterns; it does not consider your financial situation or guarantee profit.",
         "public_signal": {
-          "locked": true,
-          "action": "LOCKED",
-          "reason": "RELEVANT_DATA_NOT_AVAILABLE"
+          "locked": false,
+          "action": "STRONG SUBSCRIBE",
+          "reason": null
         }
       }
     },
@@ -726,10 +748,10 @@
           "gain": "8.08%"
         }
       ],
-      "qib_x": 0.0,
-      "nii_x": 0.09,
-      "retail_x": 1.41,
-      "total_x": 0.71,
+      "qib_x": 1.0,
+      "nii_x": 0.31,
+      "retail_x": 3.08,
+      "total_x": 1.62,
       "strengths": [
         "Operates an integrated seed business covering sourcing, production, processing, quality control, and distribution.",
         "Works with experienced agronomists, field staff, and technicians to maintain seed quality standards.",
@@ -812,23 +834,23 @@
         "subscriptionNumbers": {
           "institutional": {
             "reserved": "0.28",
-            "applied": "0",
-            "subscription": "0.00x"
+            "applied": "0.28",
+            "subscription": "1x"
           },
           "nii": {
             "reserved": "14.04",
-            "applied": "1.30",
-            "subscription": "0.09x"
+            "applied": "1.304.40",
+            "subscription": "0.31x"
           },
           "retail": {
             "reserved": "12.67",
-            "applied": "17.90",
-            "subscription": "1.41x"
+            "applied": "39.02",
+            "subscription": "3.08x"
           },
           "total": {
             "reserved": "27",
-            "applied": "19..20",
-            "subscription": "0.71x"
+            "applied": "43.72",
+            "subscription": "1.62x"
           }
         },
         "exchanges": "BSE SME"
@@ -851,21 +873,21 @@
         "gmp_latest_pct": 5.05,
         "gmp_change_1obs": null,
         "gmp_change_3obs": null,
-        "log_qib": 0.0,
-        "log_nii": 0.08617769624105233,
-        "log_retail": 0.8796267475025636,
-        "log_total": 0.5364933705145685,
+        "log_qib": 0.6931471805599453,
+        "log_nii": 0.27002713721306015,
+        "log_retail": 1.4060969884160703,
+        "log_total": 0.9631743177730056,
         "log_issue_size": 3.322514859627687,
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 186.9,
-        "qib_x_per_hour": 0.0,
-        "nii_x_per_hour": 0.0,
-        "retail_x_per_hour": 0.0,
-        "total_x_per_hour": 0.0
+        "minutes_since_previous": 253.5,
+        "qib_x_per_hour": 0.237,
+        "nii_x_per_hour": 0.052,
+        "retail_x_per_hour": 0.395,
+        "total_x_per_hour": 0.215
       },
-      "is_closing_today": true,
+      "is_closing_today": false,
       "would_be_1430_decision_snapshot": false,
       "recommendation": {
         "policy_version": "research-v1",
@@ -874,17 +896,16 @@
         "action_priority": 2,
         "research_confidence": "MEDIUM",
         "finality": {
-          "canonical": true,
-          "code": "CAPTURED_1430_IST",
-          "label": "CANONICAL_1430_RETAINED",
-          "captured_at_ist": "2026-08-21T14:30:41.094295+05:30"
+          "code": "EARLY",
+          "label": "EARLY SIGNAL — NOT FINAL; use closing-day 2:30 PM IST decision",
+          "canonical": false
         },
         "predictions": {
           "gmp_input_pct": 5.05,
-          "total_subscription_x": 0.71,
-          "log_total": 0.5364933705145685,
+          "total_subscription_x": 1.62,
+          "log_total": 0.9631743177730056,
           "gmp_prediction_pct": -7.92,
-          "subscription_prediction_pct": -30.68,
+          "subscription_prediction_pct": -23.41,
           "prediction_cap_pct": 90.0
         },
         "primary_prediction_pct": -7.92,
@@ -892,7 +913,7 @@
         "signal_conflict": false,
         "reason": [
           "SME GMP model is below +5%.",
-          "POST-2:30 PM — latest research signal; canonical snapshot should be retained"
+          "EARLY SIGNAL — NOT FINAL; use closing-day 2:30 PM IST decision"
         ],
         "training": {
           "source_year": 2024,
@@ -921,7 +942,6 @@
           }
         },
         "disclaimer": "Research model only. It estimates listing-gain potential from historical GMP and subscription patterns; it does not consider your financial situation or guarantee profit.",
-        "display_decision_source": "CAPTURED_1430_IST",
         "public_signal": {
           "locked": false,
           "action": "AVOID",
@@ -979,9 +999,9 @@
         }
       ],
       "qib_x": null,
-      "nii_x": 0.06,
-      "retail_x": 2.09,
-      "total_x": 1.07,
+      "nii_x": 0.27,
+      "retail_x": 2.91,
+      "total_x": 1.59,
       "strengths": [
         "Extensive presence across multiple geographical locations, serving over 300 corporate clients.",
         "Operations are streamlined by a proprietary B2B online order management platform.",
@@ -1080,18 +1100,18 @@
           "institutional": null,
           "nii": {
             "reserved": "9.38",
-            "applied": "0.54",
-            "subscription": "0.06x"
+            "applied": "2.57",
+            "subscription": "0.27x"
           },
           "retail": {
             "reserved": "9.38",
-            "applied": "19.62",
-            "subscription": "2.09x"
+            "applied": "27.30",
+            "subscription": "2.91x"
           },
           "total": {
             "reserved": "18.76",
-            "applied": "20.16",
-            "subscription": "1.07x"
+            "applied": "29.87",
+            "subscription": "1.59x"
           }
         },
         "exchanges": "BSE SME"
@@ -1115,20 +1135,20 @@
         "gmp_change_1obs": null,
         "gmp_change_3obs": null,
         "log_qib": null,
-        "log_nii": 0.058268908123975775,
-        "log_retail": 1.128171090909654,
-        "log_total": 0.7275486072772778,
+        "log_nii": 0.23901690047049992,
+        "log_retail": 1.3635373739972745,
+        "log_total": 0.9516578757114464,
         "log_issue_size": 3.3414473772563813,
         "ofs_ratio": 0.19002201027145998
       },
       "velocity": {
-        "minutes_since_previous": 186.9,
+        "minutes_since_previous": 253.5,
         "qib_x_per_hour": null,
-        "nii_x_per_hour": 0.0,
-        "retail_x_per_hour": 0.0,
-        "total_x_per_hour": 0.0
+        "nii_x_per_hour": 0.05,
+        "retail_x_per_hour": 0.194,
+        "total_x_per_hour": 0.123
       },
-      "is_closing_today": true,
+      "is_closing_today": false,
       "would_be_1430_decision_snapshot": false,
       "recommendation": {
         "policy_version": "research-v1",
@@ -1137,17 +1157,16 @@
         "action_priority": 2,
         "research_confidence": "MEDIUM",
         "finality": {
-          "canonical": true,
-          "code": "CAPTURED_1430_IST",
-          "label": "CANONICAL_1430_RETAINED",
-          "captured_at_ist": "2026-08-21T14:30:41.094295+05:30"
+          "code": "EARLY",
+          "label": "EARLY SIGNAL — NOT FINAL; use closing-day 2:30 PM IST decision",
+          "canonical": false
         },
         "predictions": {
           "gmp_input_pct": 0.72,
-          "total_subscription_x": 1.07,
-          "log_total": 0.7275486072772778,
+          "total_subscription_x": 1.59,
+          "log_total": 0.9516578757114464,
           "gmp_prediction_pct": -13.01,
-          "subscription_prediction_pct": -27.43,
+          "subscription_prediction_pct": -23.61,
           "prediction_cap_pct": 90.0
         },
         "primary_prediction_pct": -13.01,
@@ -1155,7 +1174,7 @@
         "signal_conflict": false,
         "reason": [
           "SME GMP model is below +5%.",
-          "POST-2:30 PM — latest research signal; canonical snapshot should be retained"
+          "EARLY SIGNAL — NOT FINAL; use closing-day 2:30 PM IST decision"
         ],
         "training": {
           "source_year": 2024,
@@ -1184,7 +1203,6 @@
           }
         },
         "disclaimer": "Research model only. It estimates listing-gain potential from historical GMP and subscription patterns; it does not consider your financial situation or guarantee profit.",
-        "display_decision_source": "CAPTURED_1430_IST",
         "public_signal": {
           "locked": false,
           "action": "AVOID",
@@ -1201,7 +1219,7 @@
       "api_status": "success",
       "api_status_code": 200,
       "message": "IPO details fetched successfully",
-      "response_bytes": 8862,
+      "response_bytes": 9192,
       "rate_remaining_endpoint": "119",
       "rate_remaining_global": "599",
       "count": 3
@@ -1213,7 +1231,7 @@
       "api_status": "success",
       "api_status_code": 200,
       "message": "IPO details fetched successfully",
-      "response_bytes": 7631,
+      "response_bytes": 7634,
       "rate_remaining_endpoint": "119",
       "rate_remaining_global": "599",
       "count": 2
@@ -1222,7 +1240,7 @@
   "errors": [],
   "decision_saved_count": 5,
   "saved_count": 5,
-  "capture_reason": "github_action_day2_2030",
+  "capture_reason": "github_action_refresh_rollover",
   "public_signal_policy": {
     "version": "public-signal-gate-v1",
     "locked_label": "Relevant data not available"
