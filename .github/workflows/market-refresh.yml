@@ -2,9 +2,9 @@ name: IPO Market Refreshes
 
 on:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "10 0 * * *"
       timezone: "Asia/Kolkata"
-    - cron: "0 10 * * 1-5"
+    - cron: "5 10 * * 1-5"
       timezone: "Asia/Kolkata"
     - cron: "5 16 * * 1-5"
       timezone: "Asia/Kolkata"
@@ -60,8 +60,8 @@ jobs:
             exit 0
           fi
           case "$EVENT_SCHEDULE" in
-            "0 0 * * *") echo "value=rollover" >> "$GITHUB_OUTPUT" ;;
-            "0 10 * * 1-5") echo "value=morning" >> "$GITHUB_OUTPUT" ;;
+            "10 0 * * *") echo "value=rollover" >> "$GITHUB_OUTPUT" ;;
+            "5 10 * * 1-5") echo "value=morning" >> "$GITHUB_OUTPUT" ;;
             "5 16 * * 1-5") echo "value=sme_close" >> "$GITHUB_OUTPUT" ;;
             "5 17 * * 1-5") echo "value=mainboard_close" >> "$GITHUB_OUTPUT" ;;
             *) echo "value=manual" >> "$GITHUB_OUTPUT" ;;
