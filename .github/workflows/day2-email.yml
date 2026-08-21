@@ -2,7 +2,10 @@ name: Day-2 IPO Early Email
 
 on:
   schedule:
-    - cron: "55 14 * * 1-5"     # 8:25 PM IST; Python waits until 8:30 PM
+    # 14:15 UTC = 7:45 PM IST.
+    # Start 45 minutes early to absorb GitHub scheduler delays.
+    # Python waits until 8:30 PM IST before evaluating the Day-2 signal.
+    - cron: "15 14 * * 1-5"
   workflow_dispatch:
     inputs:
       wait_for_checkpoint:
@@ -16,7 +19,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: ipo-advisor-state-and-pages
+  group: ipo-advisor-day2-checkpoint
   cancel-in-progress: false
 
 jobs:

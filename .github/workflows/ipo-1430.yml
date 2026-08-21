@@ -2,7 +2,10 @@ name: 2:30 PM IPO Decision and Email
 
 on:
   schedule:
-    - cron: "45 8 * * 1-5"      # 2:15 PM IST; Python waits until 2:30 PM
+    # 08:15 UTC = 1:45 PM IST.
+    # Start 45 minutes early to absorb GitHub scheduler delays.
+    # Python waits until 2:30 PM IST before the canonical capture.
+    - cron: "15 8 * * 1-5"
   workflow_dispatch:
     inputs:
       wait_for_checkpoint:
@@ -16,7 +19,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: ipo-advisor-state-and-pages
+  group: ipo-advisor-1430-checkpoint
   cancel-in-progress: false
 
 jobs:
