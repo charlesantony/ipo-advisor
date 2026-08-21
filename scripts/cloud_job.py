@@ -194,6 +194,45 @@ def _previous_live_payload():
         return None
 
 
+def _prepare_light_live_payload(db, live_payload):
+    """Prepare a public live snapshot without recording a research checkpoint."""
+    if (
+        not (live_payload.get("records") or [])
+        and (live_payload.get("errors") or [])
+    ):
+        previous = _previous_live_payload()
+        if previous and (previous.get("records") or []):
+            previous["refresh_warning"] = {
+                "at_ist": datetime.now(IST).isoformat(),
+                "errors": live_payload.get("errors") or [],
+            }
+            live_payload = previous
+
+    live_payload = _retain_1430_display_decisions(
+        db, live_payload
+    )
+    live_payload["refresh_kind"] = "LIGHT_LIVE"
+    live_payload["published_at_ist"] = datetime.now(IST).isoformat()
+    return live_payload
+
+
+def _log_live_rate_budget(live_payload):
+    endpoint_values = []
+    global_values = []
+    for meta in live_payload.get("source_meta") or []:
+        endpoint = meta.get("rate_remaining_endpoint")
+        global_remaining = meta.get("rate_remaining_global")
+        if endpoint is not None:
+            endpoint_values.append(endpoint)
+        if global_remaining is not None:
+            global_values.append(global_remaining)
+    print(
+        "LIVE_REFRESH_RATE "
+        f"endpoint_remaining={endpoint_values or 'unknown'} "
+        f"global_remaining={global_values or 'unknown'}"
+    )
+
+
 def _export_static(
     db, model_audit, shadow_v2,
     recommendation, prospective_tracker,
@@ -540,7 +579,7 @@ def main():
     parser.add_argument(
         "mode",
         choices=[
-            "decision", "day2", "refresh",
+            "decision", "day2", "refresh", "live",
             "daily", "bootstrap"
         ],
     )
@@ -570,6 +609,33 @@ def main():
     import year_tracker
 
     _ensure_training(server, db)
+
+    if args.mode == "live":
+        # Lightweight public-dashboard refresh. This intentionally does not
+        # call capture_live(), save snapshots/research decisions, persist the
+        # database, update the experiment report, or send email.
+        live = server.fetch_normalized(
+            status="LIVE",
+            ipo_type="ALL",
+        )
+        live = _prepare_light_live_payload(db, live)
+        _json_write(SITE_DATA / "live.json", live)
+        _log_live_rate_budget(live)
+        result = {
+            "mode": "live",
+            "fetched_at_ist": live.get("fetched_at_ist"),
+            "published_at_ist": live.get("published_at_ist"),
+            "live_records": len(live.get("records") or []),
+            "errors": live.get("errors") or [],
+        }
+        print(
+            json.dumps(
+                result, indent=2,
+                ensure_ascii=False,
+                default=str,
+            )
+        )
+        return
 
     if args.mode == "decision":
         if args.wait_until_1430:

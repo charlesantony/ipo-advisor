@@ -70,6 +70,68 @@ function formatIstTimestamp(value) {
     `${get("hour")}:${get("minute")} ${get("dayPeriod").toUpperCase()} IST`;
 }
 
+function timestampMs(value) {
+  if (!value) return 0;
+  const d = new Date(value);
+  return Number.isNaN(d.getTime()) ? 0 : d.getTime();
+}
+
+function newestTimestamp(...values) {
+  let best = "";
+  let bestMs = 0;
+  for (const value of values) {
+    const ms = timestampMs(value);
+    if (ms > bestMs) {
+      best = value;
+      bestMs = ms;
+    }
+  }
+  return best;
+}
+
+function ageMinutes(value) {
+  const ms = timestampMs(value);
+  if (!ms) return null;
+  return Math.max(0, Math.floor((Date.now() - ms) / 60000));
+}
+
+function relativeAge(value) {
+  const mins = ageMinutes(value);
+  if (mins === null) return "";
+  if (mins < 1) return "just now";
+  if (mins === 1) return "1 min ago";
+  if (mins < 60) return `${mins} min ago`;
+  const hours = Math.floor(mins / 60);
+  if (hours === 1) return "1 hr ago";
+  return `${hours} hrs ago`;
+}
+
+function isIstMarketWindow(value = new Date()) {
+  const weekday = new Intl.DateTimeFormat("en-US", {
+    timeZone: "Asia/Kolkata",
+    weekday: "short",
+  }).format(value);
+  if (!["Mon", "Tue", "Wed", "Thu", "Fri"].includes(weekday)) {
+    return false;
+  }
+  const minutes = istClockMinutes(value);
+  return minutes >= 10 * 60 && minutes <= 17 * 60 + 15;
+}
+
+function liveFreshnessText(data) {
+  const value = data.fetched_at_ist;
+  if (!value) return "No live snapshot yet.";
+
+  const age = ageMinutes(value);
+  let text = `Updated: ${formatIstTimestamp(value)}`;
+  const relative = relativeAge(value);
+  if (relative) text += ` · ${relative}`;
+  if (isIstMarketWindow() && age !== null && age > 45) {
+    text += " · ⚠ Data may be delayed";
+  }
+  return text;
+}
+
 async function loadJson(path, fallback={}) {
   try {
     const r = await fetch(`${path}?t=${Date.now()}`, {cache:"no-store"});
@@ -163,15 +225,17 @@ function renderHealth(h, p, live) {
       <strong>${fmt(h.year_tracker_rows)}</strong>
     </div>`;
 
-  $("generatedAt").textContent = h.generated_at_ist
-    ? `Last updated: ${formatIstTimestamp(h.generated_at_ist)}`
+  const latestUpdate = newestTimestamp(
+    h.generated_at_ist,
+    live.fetched_at_ist
+  );
+  $("generatedAt").textContent = latestUpdate
+    ? `Last updated: ${formatIstTimestamp(latestUpdate)}`
     : "Waiting for data…";
 }
 
 function renderLive(data) {
-  $("liveUpdated").textContent = data.fetched_at_ist
-    ? `Updated: ${formatIstTimestamp(data.fetched_at_ist)}`
-    : "No live snapshot yet.";
+  $("liveUpdated").textContent = liveFreshnessText(data);
 
   const records = [...(data.records || [])].sort((a,b) =>
     (b.recommendation?.action_priority || 0) -
@@ -397,6 +461,33 @@ function setupSubscription(config) {
   }
 }
 
+const dashboardState = {
+  live: {records: []},
+  tracker: {rows: []},
+  prospective: {progress: {}, samples: []},
+  audit: {},
+  health: {},
+  config: {subscription_endpoint: ""},
+};
+
+function rerenderLiveView() {
+  renderHealth(
+    dashboardState.health,
+    dashboardState.prospective,
+    dashboardState.live
+  );
+  renderLive(dashboardState.live);
+}
+
+async function refreshLiveView() {
+  const live = await loadJson(
+    "data/live.json",
+    dashboardState.live
+  );
+  dashboardState.live = live;
+  rerenderLiveView();
+}
+
 async function main() {
   setupTabs();
 
@@ -411,12 +502,25 @@ async function main() {
     loadJson("data/config.json",{subscription_endpoint:""}),
   ]);
 
-  renderHealth(health, prospective, live);
-  renderLive(live);
+  dashboardState.live = live;
+  dashboardState.tracker = tracker;
+  dashboardState.prospective = prospective;
+  dashboardState.audit = audit;
+  dashboardState.health = health;
+  dashboardState.config = config;
+
+  rerenderLiveView();
   renderTracker(tracker);
   renderProspective(prospective);
   renderAudit(audit);
   setupSubscription(config);
+
+  // The backend publishes a lightweight live snapshot roughly every 30 min.
+  // An open browser checks for a newer deployed JSON file every 5 minutes.
+  setInterval(refreshLiveView, 5 * 60 * 1000);
+
+  // Update relative-age / stale-data wording without making a network request.
+  setInterval(rerenderLiveView, 60 * 1000);
 }
 
 main();

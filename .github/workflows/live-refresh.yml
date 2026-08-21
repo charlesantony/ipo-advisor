@@ -1,0 +1,49 @@
+name: Live IPO Dashboard Refresh
+
+on:
+  schedule:
+    # Lightweight refreshes between the research checkpoints.
+    # Checkpoint workflows already cover 10:05, 14:30, 16:05 and 17:05 IST.
+    - cron: "35 10 * * 1-5"
+      timezone: "Asia/Kolkata"
+    - cron: "5,35 11-13 * * 1-5"
+      timezone: "Asia/Kolkata"
+    - cron: "5 14 * * 1-5"
+      timezone: "Asia/Kolkata"
+    - cron: "5,35 15 * * 1-5"
+      timezone: "Asia/Kolkata"
+    - cron: "35 16 * * 1-5"
+      timezone: "Asia/Kolkata"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: ipo-advisor-state-and-pages
+  cancel-in-progress: false
+
+jobs:
+  live-refresh:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Refresh public live IPO data only
+        run: python scripts/cloud_job.py live
+
+      # Deliberately do not commit live.json. These frequent snapshots are for
+      # dashboard freshness only; research checkpoints continue to persist state.
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: site
+      - uses: actions/deploy-pages@v5
