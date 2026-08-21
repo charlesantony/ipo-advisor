@@ -1,6 +1,6 @@
 {
-  "fetched_at_utc": "2026-08-21T09:00:41.094295+00:00",
-  "fetched_at_ist": "2026-08-21T14:30:41.094295+05:30",
+  "fetched_at_utc": "2026-08-21T10:03:21.618617+00:00",
+  "fetched_at_ist": "2026-08-21T15:33:21.618617+05:30",
   "status_filter": "LIVE",
   "type_filter": "ALL",
   "records": [
@@ -195,14 +195,14 @@
         "ofs_ratio": 0.18181818181818182
       },
       "velocity": {
-        "minutes_since_previous": 3.5,
+        "minutes_since_previous": 62.7,
         "qib_x_per_hour": 0.0,
         "nii_x_per_hour": 0.0,
         "retail_x_per_hour": 0.0,
         "total_x_per_hour": 0.0
       },
       "is_closing_today": true,
-      "would_be_1430_decision_snapshot": true,
+      "would_be_1430_decision_snapshot": false,
       "recommendation": {
         "policy_version": "research-v1",
         "segment": "MAINBOARD",
@@ -228,7 +228,8 @@
         "signal_conflict": false,
         "reason": [
           "GMP model is positive but below the +10% subscribe threshold.",
-          "Total-subscription model is neutral/weak."
+          "Total-subscription model is neutral/weak.",
+          "POST-2:30 PM — latest research signal; canonical snapshot should be retained"
         ],
         "training": {
           "source_year": 2024,
@@ -257,28 +258,12 @@
           }
         },
         "disclaimer": "Research model only. It estimates listing-gain potential from historical GMP and subscription patterns; it does not consider your financial situation or guarantee profit.",
-        "shadow_v2": {
-          "version": "sme-demand-override-shadow-v2.1",
-          "segment": "MAINBOARD",
-          "v1_action": "BORDERLINE",
-          "triggered": false,
-          "shadow_action": "NOT APPLICABLE",
-          "strength": "NONE",
-          "total_subscription_x": 2.43,
-          "subscription_prediction_pct": -0.11,
-          "gmp_prediction_pct": 8.34,
-          "thresholds": {
-            "candidate_total_x": 40.0,
-            "candidate_subscription_prediction_pct": 25.0,
-            "strong_total_x": 60.0,
-            "strong_subscription_prediction_pct": 30.0
-          },
-          "reason": [
-            "Shadow V2 is intentionally SME-only."
-          ],
-          "disclaimer": "Shadow V2 only. It does not replace or alter Research Model V1."
-        },
-        "display_decision_source": "CAPTURED_1430_IST"
+        "display_decision_source": "CAPTURED_1430_IST",
+        "public_signal": {
+          "locked": false,
+          "action": "BORDERLINE",
+          "reason": null
+        }
       }
     },
     {
@@ -423,7 +408,7 @@
         "ofs_ratio": 0.8538461538461538
       },
       "velocity": {
-        "minutes_since_previous": 3.5,
+        "minutes_since_previous": 62.7,
         "qib_x_per_hour": 0.0,
         "nii_x_per_hour": 0.0,
         "retail_x_per_hour": 0.0,
@@ -484,26 +469,10 @@
           }
         },
         "disclaimer": "Research model only. It estimates listing-gain potential from historical GMP and subscription patterns; it does not consider your financial situation or guarantee profit.",
-        "shadow_v2": {
-          "version": "sme-demand-override-shadow-v2.1",
-          "segment": "MAINBOARD",
-          "v1_action": "BORDERLINE",
-          "triggered": false,
-          "shadow_action": "NOT APPLICABLE",
-          "strength": "NONE",
-          "total_subscription_x": 5.93,
-          "subscription_prediction_pct": 11.44,
-          "gmp_prediction_pct": null,
-          "thresholds": {
-            "candidate_total_x": 40.0,
-            "candidate_subscription_prediction_pct": 25.0,
-            "strong_total_x": 60.0,
-            "strong_subscription_prediction_pct": 30.0
-          },
-          "reason": [
-            "Shadow V2 is intentionally SME-only."
-          ],
-          "disclaimer": "Shadow V2 only. It does not replace or alter Research Model V1."
+        "public_signal": {
+          "locked": false,
+          "action": "BORDERLINE",
+          "reason": null
         }
       }
     },
@@ -656,7 +625,7 @@
         "ofs_ratio": 0.24848484848484848
       },
       "velocity": {
-        "minutes_since_previous": 3.5,
+        "minutes_since_previous": 62.7,
         "qib_x_per_hour": null,
         "nii_x_per_hour": null,
         "retail_x_per_hour": null,
@@ -667,9 +636,9 @@
       "recommendation": {
         "policy_version": "research-v1",
         "segment": "MAINBOARD",
-        "action": "STRONG SUBSCRIBE",
-        "action_priority": 5,
-        "research_confidence": "HIGHER",
+        "action": "LOCKED",
+        "action_priority": 0,
+        "research_confidence": null,
         "finality": {
           "code": "EARLY",
           "label": "EARLY SIGNAL — NOT FINAL; use closing-day 2:30 PM IST decision",
@@ -679,16 +648,15 @@
           "gmp_input_pct": 36.26,
           "total_subscription_x": null,
           "log_total": null,
-          "gmp_prediction_pct": 34.98,
+          "gmp_prediction_pct": null,
           "subscription_prediction_pct": null,
           "prediction_cap_pct": null
         },
-        "primary_prediction_pct": 34.98,
-        "ranking_score": 34.98,
+        "primary_prediction_pct": null,
+        "ranking_score": -999.0,
         "signal_conflict": false,
         "reason": [
-          "GMP model is at or above the +20% research threshold.",
-          "EARLY SIGNAL — NOT FINAL; use closing-day 2:30 PM IST decision"
+          "Relevant data not available."
         ],
         "training": {
           "source_year": 2024,
@@ -717,26 +685,10 @@
           }
         },
         "disclaimer": "Research model only. It estimates listing-gain potential from historical GMP and subscription patterns; it does not consider your financial situation or guarantee profit.",
-        "shadow_v2": {
-          "version": "sme-demand-override-shadow-v2.1",
-          "segment": "MAINBOARD",
-          "v1_action": "STRONG SUBSCRIBE",
-          "triggered": false,
-          "shadow_action": "NOT APPLICABLE",
-          "strength": "NONE",
-          "total_subscription_x": null,
-          "subscription_prediction_pct": null,
-          "gmp_prediction_pct": 34.98,
-          "thresholds": {
-            "candidate_total_x": 40.0,
-            "candidate_subscription_prediction_pct": 25.0,
-            "strong_total_x": 60.0,
-            "strong_subscription_prediction_pct": 30.0
-          },
-          "reason": [
-            "Shadow V2 is intentionally SME-only."
-          ],
-          "disclaimer": "Shadow V2 only. It does not replace or alter Research Model V1."
+        "public_signal": {
+          "locked": true,
+          "action": "LOCKED",
+          "reason": "RELEVANT_DATA_NOT_AVAILABLE"
         }
       }
     },
@@ -907,14 +859,14 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 3.5,
+        "minutes_since_previous": 62.7,
         "qib_x_per_hour": 0.0,
         "nii_x_per_hour": 0.0,
         "retail_x_per_hour": 0.0,
         "total_x_per_hour": 0.0
       },
       "is_closing_today": true,
-      "would_be_1430_decision_snapshot": true,
+      "would_be_1430_decision_snapshot": false,
       "recommendation": {
         "policy_version": "research-v1",
         "segment": "SME",
@@ -939,7 +891,8 @@
         "ranking_score": -7.92,
         "signal_conflict": false,
         "reason": [
-          "SME GMP model is below +5%."
+          "SME GMP model is below +5%.",
+          "POST-2:30 PM — latest research signal; canonical snapshot should be retained"
         ],
         "training": {
           "source_year": 2024,
@@ -968,28 +921,12 @@
           }
         },
         "disclaimer": "Research model only. It estimates listing-gain potential from historical GMP and subscription patterns; it does not consider your financial situation or guarantee profit.",
-        "shadow_v2": {
-          "version": "sme-demand-override-shadow-v2.1",
-          "segment": "SME",
-          "v1_action": "AVOID",
-          "triggered": false,
-          "shadow_action": "NO OVERRIDE",
-          "strength": "NONE",
-          "total_subscription_x": 0.71,
-          "subscription_prediction_pct": -30.68,
-          "gmp_prediction_pct": -7.92,
-          "thresholds": {
-            "candidate_total_x": 40.0,
-            "candidate_subscription_prediction_pct": 25.0,
-            "strong_total_x": 60.0,
-            "strong_subscription_prediction_pct": 30.0
-          },
-          "reason": [
-            "Strong-demand override thresholds are not both satisfied."
-          ],
-          "disclaimer": "Shadow V2 only. It does not replace or alter Research Model V1."
-        },
-        "display_decision_source": "CAPTURED_1430_IST"
+        "display_decision_source": "CAPTURED_1430_IST",
+        "public_signal": {
+          "locked": false,
+          "action": "AVOID",
+          "reason": null
+        }
       }
     },
     {
@@ -1185,14 +1122,14 @@
         "ofs_ratio": 0.19002201027145998
       },
       "velocity": {
-        "minutes_since_previous": 3.5,
+        "minutes_since_previous": 62.7,
         "qib_x_per_hour": null,
         "nii_x_per_hour": 0.0,
         "retail_x_per_hour": 0.0,
         "total_x_per_hour": 0.0
       },
       "is_closing_today": true,
-      "would_be_1430_decision_snapshot": true,
+      "would_be_1430_decision_snapshot": false,
       "recommendation": {
         "policy_version": "research-v1",
         "segment": "SME",
@@ -1217,7 +1154,8 @@
         "ranking_score": -13.01,
         "signal_conflict": false,
         "reason": [
-          "SME GMP model is below +5%."
+          "SME GMP model is below +5%.",
+          "POST-2:30 PM — latest research signal; canonical snapshot should be retained"
         ],
         "training": {
           "source_year": 2024,
@@ -1246,28 +1184,12 @@
           }
         },
         "disclaimer": "Research model only. It estimates listing-gain potential from historical GMP and subscription patterns; it does not consider your financial situation or guarantee profit.",
-        "shadow_v2": {
-          "version": "sme-demand-override-shadow-v2.1",
-          "segment": "SME",
-          "v1_action": "AVOID",
-          "triggered": false,
-          "shadow_action": "NO OVERRIDE",
-          "strength": "NONE",
-          "total_subscription_x": 1.07,
-          "subscription_prediction_pct": -27.43,
-          "gmp_prediction_pct": -13.01,
-          "thresholds": {
-            "candidate_total_x": 40.0,
-            "candidate_subscription_prediction_pct": 25.0,
-            "strong_total_x": 60.0,
-            "strong_subscription_prediction_pct": 30.0
-          },
-          "reason": [
-            "Strong-demand override thresholds are not both satisfied."
-          ],
-          "disclaimer": "Shadow V2 only. It does not replace or alter Research Model V1."
-        },
-        "display_decision_source": "CAPTURED_1430_IST"
+        "display_decision_source": "CAPTURED_1430_IST",
+        "public_signal": {
+          "locked": false,
+          "action": "AVOID",
+          "reason": null
+        }
       }
     }
   ],
@@ -1300,5 +1222,9 @@
   "errors": [],
   "decision_saved_count": 5,
   "saved_count": 5,
-  "capture_reason": "github_action_1430"
+  "capture_reason": "github_action_refresh_manual",
+  "public_signal_policy": {
+    "version": "public-signal-gate-v1",
+    "locked_label": "Relevant data not available"
+  }
 }
