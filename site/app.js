@@ -23,6 +23,53 @@ const actionClass = a => ({
   "NOT READY":"watch",
 }[a] || "watch");
 
+function istParts(value = new Date()) {
+  const d = value instanceof Date ? value : new Date(value);
+  if (Number.isNaN(d.getTime())) return null;
+  const parts = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Asia/Kolkata",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23",
+  }).formatToParts(d);
+  const out = {};
+  for (const p of parts) {
+    if (p.type !== "literal") out[p.type] = p.value;
+  }
+  return out;
+}
+
+function istDateKey(value = new Date()) {
+  const p = istParts(value);
+  return p ? `${p.year}-${p.month}-${p.day}` : "";
+}
+
+function istClockMinutes(value = new Date()) {
+  const p = istParts(value);
+  return p ? Number(p.hour) * 60 + Number(p.minute) : 0;
+}
+
+function formatIstTimestamp(value) {
+  if (!value) return "—";
+  const d = new Date(value);
+  if (Number.isNaN(d.getTime())) return String(value);
+  const parts = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Asia/Kolkata",
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  }).formatToParts(d);
+  const get = type => parts.find(p => p.type === type)?.value || "";
+  return `${get("day")} ${get("month")} ${get("year")}, ` +
+    `${get("hour")}:${get("minute")} ${get("dayPeriod").toUpperCase()} IST`;
+}
+
 async function loadJson(path, fallback={}) {
   try {
     const r = await fetch(`${path}?t=${Date.now()}`, {cache:"no-store"});
@@ -47,18 +94,46 @@ function setupTabs() {
   });
 }
 
+function isClosingToday(n) {
+  return Boolean(n.end_date) && String(n.end_date) === istDateKey();
+}
+
 function finalityText(n, r) {
+  const endDate = String(n.end_date || "");
+  const today = istDateKey();
   const label = String(r.finality?.label || "");
-  if (n.is_closing_today) {
-    if (
-      label.includes("POST_1430") ||
-      label.includes("CANONICAL_1430")
-    ) {
-      return "Final closing-day call captured";
-    }
-    return "Closes today · final call at 2:30 PM IST";
+  const canonical = Boolean(r.finality?.canonical) ||
+    label.includes("CANONICAL_1430");
+
+  if (!endDate) {
+    return "Closing date unavailable";
   }
-  return "Early signal · final call on closing day at 2:30 PM IST";
+  if (endDate < today) {
+    return canonical
+      ? "Bidding closed · final 2:30 PM call retained"
+      : "Bidding closed";
+  }
+  if (endDate > today) {
+    return "Early signal · final call on closing day at 2:30 PM IST";
+  }
+
+  const segment = String(n.type || "").toUpperCase();
+  const isSme = segment === "SME";
+  const closeMinutes = isSme ? 16 * 60 : 17 * 60;
+  const closeText = isSme ? "4:00 PM IST" : "5:00 PM IST";
+  const nowMinutes = istClockMinutes();
+
+  if (nowMinutes >= closeMinutes) {
+    return canonical
+      ? `Bidding closed · final 2:30 PM call retained`
+      : `Bidding closed · latest decision update pending`;
+  }
+  if (nowMinutes >= 14 * 60 + 30) {
+    return canonical
+      ? `Final call captured at 2:30 PM IST · bidding closes at ${closeText}`
+      : `2:30 PM decision update pending · bidding closes at ${closeText}`;
+  }
+  return `Closes today · final call at 2:30 PM IST · bidding closes at ${closeText}`;
 }
 
 function renderHealth(h, p, live) {
@@ -66,7 +141,7 @@ function renderHealth(h, p, live) {
   const records = live.records || [];
   const selectedToday = records.filter(n => {
     const a = n.recommendation?.action;
-    return n.is_closing_today &&
+    return isClosingToday(n) &&
       (a === "STRONG SUBSCRIBE" || a === "SUBSCRIBE");
   }).length;
 
@@ -89,13 +164,13 @@ function renderHealth(h, p, live) {
     </div>`;
 
   $("generatedAt").textContent = h.generated_at_ist
-    ? `Last updated: ${h.generated_at_ist}`
+    ? `Last updated: ${formatIstTimestamp(h.generated_at_ist)}`
     : "Waiting for data…";
 }
 
 function renderLive(data) {
   $("liveUpdated").textContent = data.fetched_at_ist
-    ? `Updated: ${data.fetched_at_ist}`
+    ? `Updated: ${formatIstTimestamp(data.fetched_at_ist)}`
     : "No live snapshot yet.";
 
   const records = [...(data.records || [])].sort((a,b) =>
@@ -106,6 +181,7 @@ function renderLive(data) {
   $("liveCards").innerHTML = records.length ? records.map(n => {
     const r = n.recommendation || {};
     const p = r.predictions || {};
+    const closingToday = isClosingToday(n);
     return `
       <article class="card">
         <div class="card-head">
@@ -124,11 +200,11 @@ function renderLive(data) {
             <strong>${fmt(r.primary_prediction_pct,"%")}</strong>
           </div>
           <div class="metric">
-            <small>GMP</small>
+            <small>Latest GMP</small>
             <strong>${fmt(p.gmp_input_pct,"%")}</strong>
           </div>
           <div class="metric">
-            <small>Total subscription</small>
+            <small>Latest subscription</small>
             <strong>${fmt(p.total_subscription_x,"x")}</strong>
           </div>
           <div class="metric">
@@ -137,7 +213,7 @@ function renderLive(data) {
           </div>
         </div>
 
-        <div class="card-note ${n.is_closing_today ? "closing" : ""}">
+        <div class="card-note ${closingToday ? "closing" : ""}">
           ${esc(finalityText(n, r))}
         </div>
       </article>`;
@@ -156,7 +232,6 @@ function renderTracker(t) {
           ${esc(r.model_action || "—")}
         </span>
       </td>
-      <td>${esc(r.shadow_v2_action || "—")}</td>
       <td>${fmt(r.primary_prediction_pct,"%")}</td>
       <td>${fmt(r.gmp_used_pct,"%")}</td>
       <td>${fmt(r.total_x,"x")}</td>
@@ -165,7 +240,7 @@ function renderTracker(t) {
       </td>
       <td>${esc(r.outcome_vs_call || "—")}</td>
     </tr>`).join("") ||
-    `<tr><td colspan="10">No tracker rows yet.</td></tr>`;
+    `<tr><td colspan="9">No tracker rows yet.</td></tr>`;
 }
 
 function renderProspective(p) {
@@ -201,7 +276,7 @@ function renderProspective(p) {
     <tr>
       <td><strong>${esc(r.name)}</strong></td>
       <td>${esc(r.ipo_type)}</td>
-      <td>${esc(r.captured_at_ist || "—")}</td>
+      <td>${r.captured_at_ist ? esc(formatIstTimestamp(r.captured_at_ist)) : "—"}</td>
       <td>${esc(r.v1_action || "—")}</td>
       <td>${fmt(r.v1_primary_prediction_pct,"%")}</td>
       <td>${esc(r.v2_shadow_action || "—")}</td>

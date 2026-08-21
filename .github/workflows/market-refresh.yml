@@ -1,0 +1,90 @@
+name: IPO Market Refreshes
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+      timezone: "Asia/Kolkata"
+    - cron: "0 10 * * 1-5"
+      timezone: "Asia/Kolkata"
+    - cron: "5 16 * * 1-5"
+      timezone: "Asia/Kolkata"
+    - cron: "5 17 * * 1-5"
+      timezone: "Asia/Kolkata"
+  workflow_dispatch:
+    inputs:
+      phase:
+        description: Refresh phase
+        required: false
+        default: manual
+        type: choice
+        options:
+          - manual
+          - rollover
+          - morning
+          - sme_close
+          - mainboard_close
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: ipo-advisor-state-and-pages
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Resolve refresh phase
+        id: phase
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_SCHEDULE: ${{ github.event.schedule }}
+          MANUAL_PHASE: ${{ inputs.phase }}
+        run: |
+          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+            echo "value=${MANUAL_PHASE:-manual}" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          case "$EVENT_SCHEDULE" in
+            "0 0 * * *") echo "value=rollover" >> "$GITHUB_OUTPUT" ;;
+            "0 10 * * 1-5") echo "value=morning" >> "$GITHUB_OUTPUT" ;;
+            "5 16 * * 1-5") echo "value=sme_close" >> "$GITHUB_OUTPUT" ;;
+            "5 17 * * 1-5") echo "value=mainboard_close" >> "$GITHUB_OUTPUT" ;;
+            *) echo "value=manual" >> "$GITHUB_OUTPUT" ;;
+          esac
+
+      - name: Refresh live IPO dashboard
+        env:
+          SUBSCRIBE_ENDPOINT: ${{ vars.SUBSCRIBE_ENDPOINT }}
+        run: python scripts/cloud_job.py refresh --phase "${{ steps.phase.outputs.value }}"
+
+      - name: Persist generated state
+        run: |
+          git config user.name "ipo-advisor-bot"
+          git config user.email "ipo-advisor-bot@users.noreply.github.com"
+          git add state site/data
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: IPO market refresh (${{ steps.phase.outputs.value }})"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push origin HEAD:"${GITHUB_REF_NAME}"
+          fi
+
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: site
+      - uses: actions/deploy-pages@v5

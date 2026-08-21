@@ -1,0 +1,54 @@
+name: Day-2 IPO Early Email
+
+on:
+  schedule:
+    - cron: "30 20 * * 1-5"
+      timezone: "Asia/Kolkata"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: ipo-advisor-state-and-pages
+  cancel-in-progress: false
+
+jobs:
+  day2:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Run Day-2 early signal job
+        env:
+          SUBSCRIBE_ENDPOINT: ${{ vars.SUBSCRIBE_ENDPOINT }}
+          EMAIL_ALERT_KEY: ${{ secrets.EMAIL_ALERT_KEY }}
+          PUBLIC_DASHBOARD_URL: ${{ vars.PUBLIC_DASHBOARD_URL }}
+        run: python scripts/cloud_job.py day2
+
+      - name: Persist generated state
+        run: |
+          git config user.name "ipo-advisor-bot"
+          git config user.email "ipo-advisor-bot@users.noreply.github.com"
+          git add state site/data
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: Day-2 IPO early signal snapshot"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push origin HEAD:"${GITHUB_REF_NAME}"
+          fi
+
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: site
+      - uses: actions/deploy-pages@v5

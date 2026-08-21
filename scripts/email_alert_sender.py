@@ -30,7 +30,7 @@ def _post_form(url, fields):
         method="POST",
         headers={
             "Content-Type": "application/x-www-form-urlencoded",
-            "User-Agent": "IPO-Advisor-GitHub-Action/0.5.1",
+            "User-Agent": "IPO-Advisor-GitHub-Action/0.5.2",
         },
     )
     try:
@@ -85,6 +85,8 @@ def send_research_alerts(alerts, dashboard_url=""):
             "gmp": _fmt_pct(alert.get("gmp_gain_pct")),
             "total_subscription": _fmt_x(alert.get("total_x")),
             "dashboard_url": dashboard_url or "",
+            "alert_kind": alert.get("alert_kind") or "CLOSING_DAY",
+            "previous_signal": alert.get("previous_signal") or "",
         }
         status, response = _post_form(endpoint, fields)
         ok = 200 <= int(status) < 300 and response.get("ok", True) is not False
@@ -94,12 +96,14 @@ def send_research_alerts(alerts, dashboard_url=""):
             failed += 1
         details.append({
             "ipo": alert.get("name"),
+            "alert_kind": alert.get("alert_kind"),
             "status": status,
             "ok": ok,
             "response": response,
         })
         print(
             "EMAIL_ALERT_SEND "
+            f"kind={alert.get('alert_kind')!r} "
             f"ipo={alert.get('name')!r} status={status} ok={ok}"
         )
 

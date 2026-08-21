@@ -5,7 +5,7 @@ import os
 import shutil
 import sys
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -21,6 +21,7 @@ IST = ZoneInfo("Asia/Kolkata")
 sys.path.insert(0, str(ENGINE))
 sys.path.insert(0, str(ROOT / "scripts"))
 
+
 def _json_write(path, value):
     path.parent.mkdir(parents=True, exist_ok=True)
     temp = path.with_suffix(path.suffix + ".tmp")
@@ -30,15 +31,18 @@ def _json_write(path, value):
     )
     temp.replace(path)
 
+
 def _restore_state():
     STATE.mkdir(parents=True, exist_ok=True)
     SITE_DATA.mkdir(parents=True, exist_ok=True)
     if DB_STATE.exists():
         shutil.copy2(DB_STATE, DB_ENGINE)
 
+
 def _persist_state():
     if DB_ENGINE.exists():
         shutil.copy2(DB_ENGINE, DB_STATE)
+
 
 def _wait_until_1430():
     # Scheduled workflow starts early to reduce the chance that GitHub
@@ -63,6 +67,7 @@ def _wait_until_1430():
             "SCHEDULE_DELAY_WARNING "
             f"runner_started_after_1430={now.isoformat()}"
         )
+
 
 def _ensure_training(server, db):
     rows = db.historical_market_rows(limit=20000)
@@ -93,6 +98,7 @@ def _ensure_training(server, db):
             2025, target_gmp_per_segment=25
         )
 
+
 def _audit_payload(db, model_audit, shadow_v2, recommendation):
     rows = db.year_model_tracker_rows(
         year=2026, limit=5000
@@ -116,6 +122,7 @@ def _audit_payload(db, model_audit, shadow_v2, recommendation):
     }
     return audit
 
+
 def _prospective_payload(db, prospective_tracker):
     return prospective_tracker.build_prospective_experiment(
         db.canonical_research_decisions(),
@@ -125,32 +132,98 @@ def _prospective_payload(db, prospective_tracker):
         year=2026,
     )
 
+
+def _canonical_key(value):
+    symbol = str(value.get("symbol") or "").strip().upper()
+    name = str(value.get("name") or "").strip().upper()
+    segment = str(
+        value.get("ipo_type") or value.get("type") or ""
+    ).strip().upper()
+    end_date = str(value.get("end_date") or "").strip()
+    identity = symbol or name
+    return (segment, identity, end_date)
+
+
+def _retain_1430_display_decisions(db, live_payload):
+    """Keep the canonical 14:30 decision while allowing later market data refreshes."""
+    now = datetime.now(IST)
+    if (now.hour, now.minute) < (14, 30):
+        return live_payload
+
+    today = now.date().isoformat()
+    canonical = {}
+    for row in db.canonical_research_decisions():
+        key = _canonical_key(row)
+        if not key[1] or not key[2]:
+            continue
+        # Rows are newest first, so keep the first one seen.
+        canonical.setdefault(key, row)
+
+    for record in live_payload.get("records") or []:
+        if str(record.get("end_date") or "") != today:
+            continue
+        row = canonical.get(_canonical_key(record))
+        if not row:
+            continue
+
+        rec = record.get("recommendation") or {}
+        rec["action"] = row.get("action")
+        rec["research_confidence"] = row.get("research_confidence")
+        rec["primary_prediction_pct"] = row.get("primary_prediction_pct")
+        rec["policy_version"] = row.get("policy_version")
+        rec["signal_conflict"] = bool(row.get("signal_conflict"))
+        rec["finality"] = {
+            "canonical": True,
+            "code": "CAPTURED_1430_IST",
+            "label": "CANONICAL_1430_RETAINED",
+            "captured_at_ist": row.get("created_at_ist"),
+        }
+        rec["display_decision_source"] = "CAPTURED_1430_IST"
+        record["recommendation"] = rec
+
+    return live_payload
+
+
+def _previous_live_payload():
+    live_path = SITE_DATA / "live.json"
+    if not live_path.exists():
+        return None
+    try:
+        return json.loads(live_path.read_text(encoding="utf-8"))
+    except Exception:
+        return None
+
+
 def _export_static(
     db, model_audit, shadow_v2,
     recommendation, prospective_tracker,
     live_payload=None,
 ):
     if live_payload is None:
-        live_path = SITE_DATA / "live.json"
-        if live_path.exists():
-            try:
-                live_payload = json.loads(
-                    live_path.read_text(
-                        encoding="utf-8"
-                    )
-                )
-            except Exception:
-                live_payload = {
-                    "records": [],
-                    "errors": [
-                        "Could not read previous live.json"
-                    ],
-                }
-        else:
+        live_payload = _previous_live_payload()
+        if live_payload is None:
             live_payload = {
                 "records": [],
                 "errors": [],
             }
+
+    # If a live refresh failed completely, retain the previous public snapshot
+    # rather than replacing the dashboard with an empty error response.
+    if (
+        not (live_payload.get("records") or [])
+        and (live_payload.get("errors") or [])
+    ):
+        previous = _previous_live_payload()
+        if previous and (previous.get("records") or []):
+            previous["refresh_warning"] = {
+                "at_ist": datetime.now(IST).isoformat(),
+                "errors": live_payload.get("errors") or [],
+            }
+            live_payload = previous
+
+    live_payload = _retain_1430_display_decisions(
+        db, live_payload
+    )
 
     tracker_rows = db.year_model_tracker_rows(
         year=2026, limit=5000
@@ -203,52 +276,119 @@ def _export_static(
         "prospective": prospective,
         "audit": audit,
         "health": health,
+        "live": live_payload,
     }
 
+
 def _load_ledger():
+    base = {
+        "sent": {},
+        "day2": {},
+        "closing": {},
+    }
     if not SENT_LEDGER.exists():
-        return {"sent": {}}
+        return base
     try:
-        return json.loads(
+        value = json.loads(
             SENT_LEDGER.read_text(encoding="utf-8")
         )
+        if not isinstance(value, dict):
+            return base
+        value.setdefault("sent", {})
+        value.setdefault("day2", {})
+        value.setdefault("closing", {})
+        return value
     except Exception:
-        return {"sent": {}}
+        return base
 
-def _eligible_alerts(live_payload):
-    out = []
-    for n in live_payload.get("records") or []:
-        rec = n.get("recommendation") or {}
-        if not n.get("is_closing_today"):
-            continue
-        if rec.get("action") not in {
-            "STRONG SUBSCRIBE", "SUBSCRIBE"
-        }:
-            continue
-        preds = rec.get("predictions") or {}
-        out.append({
-            "name": n.get("name"),
-            "symbol": n.get("symbol"),
-            "segment": n.get("type"),
-            "action": rec.get("action"),
-            "predicted_gain_pct":
-                rec.get("primary_prediction_pct"),
-            "gmp_gain_pct":
-                preds.get("gmp_input_pct"),
-            "total_x":
-                preds.get("total_subscription_x"),
-        })
-    return out
 
-def _send_email_once(live_payload):
+def _parse_iso_date(value):
+    try:
+        return datetime.strptime(
+            str(value or ""), "%Y-%m-%d"
+        ).date()
+    except (TypeError, ValueError):
+        return None
+
+
+def _bidding_day_number(start_date, current_date):
+    """Weekday-based bidding-day number; LIVE provider status is also required."""
+    if not start_date or current_date < start_date:
+        return 0
+    cursor = start_date
+    count = 0
+    while cursor <= current_date:
+        if cursor.weekday() < 5:
+            count += 1
+        cursor += timedelta(days=1)
+    return count
+
+
+def _record_key(record):
+    segment = str(record.get("type") or "").strip().upper()
+    identity = str(
+        record.get("symbol")
+        or record.get("name")
+        or "ipo"
+    ).strip().upper()
+    start_date = str(record.get("start_date") or "").strip()
+    return f"{segment}|{identity}|{start_date}"
+
+
+def _alert_from_record(
+    record, alert_kind, previous_signal=""
+):
+    rec = record.get("recommendation") or {}
+    preds = rec.get("predictions") or {}
+    return {
+        "name": record.get("name"),
+        "symbol": record.get("symbol"),
+        "segment": record.get("type"),
+        "action": rec.get("action") or "NOT READY",
+        "predicted_gain_pct":
+            rec.get("primary_prediction_pct"),
+        "gmp_gain_pct":
+            preds.get("gmp_input_pct"),
+        "total_x":
+            preds.get("total_subscription_x"),
+        "start_date": record.get("start_date"),
+        "end_date": record.get("end_date"),
+        "alert_kind": alert_kind,
+        "previous_signal": previous_signal,
+    }
+
+
+def _send_day2_email(live_payload):
     from email_alert_sender import send_research_alerts
 
-    alerts = _eligible_alerts(live_payload)
-    if not alerts:
+    today = datetime.now(IST).date()
+    ledger = _load_ledger()
+    sent_map = ledger.setdefault("day2", {})
+    candidates = []
+
+    for record in live_payload.get("records") or []:
+        start = _parse_iso_date(record.get("start_date"))
+        end = _parse_iso_date(record.get("end_date"))
+        rec = record.get("recommendation") or {}
+        action = rec.get("action")
+
+        # Day-2 alert is useful only before the actual closing day.
+        if not start or not end or not (start <= today < end):
+            continue
+        if _bidding_day_number(start, today) != 2:
+            continue
+        if action not in {"STRONG SUBSCRIBE", "SUBSCRIBE"}:
+            continue
+
+        key = _record_key(record)
+        if key in sent_map:
+            continue
+        candidates.append((key, record))
+
+    if not candidates:
         print(
-            "EMAIL_NO_ALERTS "
-            "No STRONG SUBSCRIBE/SUBSCRIBE "
-            "IPO closes today."
+            "EMAIL_DAY2_NO_ALERTS "
+            "No new Day-2 STRONG SUBSCRIBE/SUBSCRIBE signals."
         )
         return {
             "eligible_alerts": 0,
@@ -256,39 +396,12 @@ def _send_email_once(live_payload):
             "sent_alerts": 0,
         }
 
-    today = datetime.now(IST).date().isoformat()
-    ledger = _load_ledger()
-    sent_map = ledger.setdefault("sent", {})
-
-    new_alerts = []
-    keys = []
-    for alert in alerts:
-        identity = (
-            alert.get("symbol")
-            or alert.get("name")
-            or "ipo"
-        )
-        key = (
-            f"{today}|{alert.get('segment')}|"
-            f"{identity}|{alert.get('action')}"
-        )
-        if key not in sent_map:
-            new_alerts.append(alert)
-            keys.append(key)
-
-    if not new_alerts:
-        print(
-            "EMAIL_DUPLICATE_GUARD "
-            "All today's eligible alerts were already sent."
-        )
-        return {
-            "eligible_alerts": len(alerts),
-            "new_alerts": 0,
-            "sent_alerts": 0,
-        }
-
+    alerts = [
+        _alert_from_record(record, "DAY2_EARLY")
+        for _, record in candidates
+    ]
     result = send_research_alerts(
-        new_alerts,
+        alerts,
         dashboard_url=os.environ.get(
             "PUBLIC_DASHBOARD_URL", ""
         ).strip(),
@@ -298,27 +411,150 @@ def _send_email_once(live_payload):
         result.get("failed_alerts") == 0
     ):
         now = datetime.now(IST).isoformat()
-        for key in keys:
-            sent_map[key] = now
+        for key, record in candidates:
+            action = (
+                (record.get("recommendation") or {})
+                .get("action")
+            )
+            sent_map[key] = {
+                "sent_at_ist": now,
+                "action": action,
+                "name": record.get("name"),
+                "segment": record.get("type"),
+                "start_date": record.get("start_date"),
+                "end_date": record.get("end_date"),
+            }
         _json_write(SENT_LEDGER, ledger)
 
     return {
-        "eligible_alerts": len(alerts),
-        "new_alerts": len(new_alerts),
+        "eligible_alerts": len(candidates),
+        "new_alerts": len(candidates),
         "email": result,
     }
+
+
+def _send_closing_email(live_payload):
+    from email_alert_sender import send_research_alerts
+
+    today = datetime.now(IST).date().isoformat()
+    ledger = _load_ledger()
+    early_map = ledger.setdefault("day2", {})
+    closing_map = ledger.setdefault("closing", {})
+    candidates = []
+
+    for record in live_payload.get("records") or []:
+        if str(record.get("end_date") or "") != today:
+            continue
+
+        rec = record.get("recommendation") or {}
+        action = rec.get("action") or "NOT READY"
+        key = _record_key(record)
+        early = early_map.get(key)
+        early_action = (
+            early.get("action")
+            if isinstance(early, dict)
+            else ""
+        )
+
+        # Normal closing-day email is sent only for a positive V1 signal.
+        # If a Day-2 early alert was sent, always send the closing-day update
+        # so the subscriber sees whether that early signal strengthened,
+        # weakened, or reversed.
+        qualifies_now = action in {
+            "STRONG SUBSCRIBE", "SUBSCRIBE"
+        }
+        if not qualifies_now and not early:
+            continue
+        if key in closing_map:
+            continue
+
+        alert_kind = (
+            "CLOSING_UPDATE" if early
+            else "CLOSING_DAY"
+        )
+        alert = _alert_from_record(
+            record,
+            alert_kind,
+            previous_signal=early_action,
+        )
+        candidates.append((key, record, alert))
+
+    if not candidates:
+        print(
+            "EMAIL_CLOSING_NO_ALERTS "
+            "No new closing-day email is required."
+        )
+        return {
+            "eligible_alerts": 0,
+            "new_alerts": 0,
+            "sent_alerts": 0,
+        }
+
+    result = send_research_alerts(
+        [item[2] for item in candidates],
+        dashboard_url=os.environ.get(
+            "PUBLIC_DASHBOARD_URL", ""
+        ).strip(),
+    )
+
+    if result.get("configured") and (
+        result.get("failed_alerts") == 0
+    ):
+        now = datetime.now(IST).isoformat()
+        for key, record, alert in candidates:
+            closing_map[key] = {
+                "sent_at_ist": now,
+                "action": alert.get("action"),
+                "previous_signal":
+                    alert.get("previous_signal") or "",
+                "name": record.get("name"),
+                "segment": record.get("type"),
+                "end_date": record.get("end_date"),
+            }
+        _json_write(SENT_LEDGER, ledger)
+
+    return {
+        "eligible_alerts": len(candidates),
+        "new_alerts": len(candidates),
+        "email": result,
+    }
+
+
+def _capture_and_export(
+    server, db, model_audit, shadow_v2,
+    recommendation, prospective_tracker,
+    reason,
+):
+    live = server.capture_live(reason=reason)
+    export = _export_static(
+        db, model_audit, shadow_v2,
+        recommendation,
+        prospective_tracker,
+        live_payload=live,
+    )
+    return export["live"], export
+
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "mode",
         choices=[
-            "decision", "daily", "bootstrap"
+            "decision", "day2", "refresh",
+            "daily", "bootstrap"
         ],
     )
     parser.add_argument(
         "--wait-until-1430",
         action="store_true",
+    )
+    parser.add_argument(
+        "--phase",
+        default="manual",
+        choices=[
+            "manual", "rollover", "morning",
+            "sme_close", "mainboard_close"
+        ],
     )
     args = parser.parse_args()
 
@@ -339,16 +575,12 @@ def main():
         if args.wait_until_1430:
             _wait_until_1430()
 
-        live = server.capture_live(
-            reason="github_action_1430"
+        live, export = _capture_and_export(
+            server, db, model_audit, shadow_v2,
+            recommendation, prospective_tracker,
+            reason="github_action_1430",
         )
-        export = _export_static(
-            db, model_audit, shadow_v2,
-            recommendation,
-            prospective_tracker,
-            live_payload=live,
-        )
-        email_alert = _send_email_once(live)
+        email_alert = _send_closing_email(live)
         result = {
             "mode": args.mode,
             "fetched_at_ist":
@@ -358,6 +590,42 @@ def main():
             "decision_saved_count":
                 live.get("decision_saved_count"),
             "email_alert": email_alert,
+            "prospective_status":
+                export["prospective"].get("status"),
+        }
+
+    elif args.mode == "day2":
+        live, export = _capture_and_export(
+            server, db, model_audit, shadow_v2,
+            recommendation, prospective_tracker,
+            reason="github_action_day2_2030",
+        )
+        email_alert = _send_day2_email(live)
+        result = {
+            "mode": args.mode,
+            "fetched_at_ist":
+                live.get("fetched_at_ist"),
+            "live_records":
+                len(live.get("records") or []),
+            "email_alert": email_alert,
+            "prospective_status":
+                export["prospective"].get("status"),
+        }
+
+    elif args.mode == "refresh":
+        reason = f"github_action_refresh_{args.phase}"
+        live, export = _capture_and_export(
+            server, db, model_audit, shadow_v2,
+            recommendation, prospective_tracker,
+            reason=reason,
+        )
+        result = {
+            "mode": args.mode,
+            "phase": args.phase,
+            "fetched_at_ist":
+                live.get("fetched_at_ist"),
+            "live_records":
+                len(live.get("records") or []),
             "prospective_status":
                 export["prospective"].get("status"),
         }
@@ -398,7 +666,7 @@ def main():
             "mode": args.mode,
             "sync": sync,
             "live_records":
-                len(live.get("records") or []),
+                len((export["live"] or {}).get("records") or []),
             "prospective_status":
                 export["prospective"].get("status"),
         }
@@ -419,6 +687,7 @@ def main():
             default=str,
         )
     )
+
 
 if __name__ == "__main__":
     main()

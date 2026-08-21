@@ -164,7 +164,9 @@ function _sendConfirmation(email, token) {
   const text = [
     "You are subscribed to IPO Advisor research alerts.",
     "",
-    "You will receive a closing-day email only when the research signal is Subscribe or Strong Subscribe.",
+    "If a Day-2 signal is Subscribe or Strong Subscribe, you may receive an early alert at about 8:30 PM IST.",
+    "If an early alert was sent, you will also receive the closing-day 2:30 PM IST update even if the signal changes.",
+    "Otherwise, closing-day email is sent when the 2:30 PM signal is Subscribe or Strong Subscribe.",
     "",
     "This is an experimental research tool, not financial advice.",
     unsubscribe ? "" : null,
@@ -199,7 +201,9 @@ function _notify(e) {
     gmp: _param(e, "gmp"),
     totalSubscription:
       _param(e, "total_subscription"),
-    dashboardUrl: _param(e, "dashboard_url")
+    dashboardUrl: _param(e, "dashboard_url"),
+    alertKind: _param(e, "alert_kind") || "CLOSING_DAY",
+    previousSignal: _param(e, "previous_signal")
   };
 
   const subscribers = _activeSubscribers();
@@ -223,11 +227,7 @@ function _notify(e) {
     try {
       MailApp.sendEmail({
         to: email,
-        subject:
-          "IPO Advisor research alert: " +
-          fields.ipoName +
-          " — " +
-          fields.signal,
+        subject: _alertSubject(fields),
         body: _alertText(fields),
         htmlBody: _alertHtml(fields)
       });
@@ -251,12 +251,48 @@ function _notify(e) {
   });
 }
 
+function _alertSubject(f) {
+  let prefix = "IPO Advisor closing-day signal";
+  if (f.alertKind === "DAY2_EARLY") {
+    prefix = "IPO Advisor Day-2 early signal";
+  } else if (f.alertKind === "CLOSING_UPDATE") {
+    prefix = "IPO Advisor closing-day update";
+  }
+  return prefix + ": " + f.ipoName + " — " + f.signal;
+}
+
+function _alertTitle(f) {
+  if (f.alertKind === "DAY2_EARLY") {
+    return "IPO Advisor — Day-2 Early Signal";
+  }
+  if (f.alertKind === "CLOSING_UPDATE") {
+    return "IPO Advisor — Closing-Day Update";
+  }
+  return "IPO Advisor — Closing-Day Signal";
+}
+
+function _signalLines(f) {
+  if (f.alertKind === "CLOSING_UPDATE" && f.previousSignal) {
+    return [
+      "Day-2 signal: " + f.previousSignal,
+      "Current 2:30 PM signal: " + f.signal
+    ];
+  }
+  if (f.alertKind === "DAY2_EARLY") {
+    return [
+      "Day-2 signal: " + f.signal,
+      "Closing-day decision will be refreshed at 2:30 PM IST."
+    ];
+  }
+  return ["2:30 PM signal: " + f.signal];
+}
+
 function _alertText(f) {
   return [
-    "IPO Advisor Research Alert",
+    _alertTitle(f),
     "",
     f.ipoName + " (" + f.segment + ")",
-    "Signal: " + f.signal,
+    ..._signalLines(f),
     "Estimated listing gain: " + f.predictedGain,
     "GMP: " + f.gmp,
     "Total subscription: " + f.totalSubscription,
@@ -276,13 +312,16 @@ function _alertHtml(f) {
       '">Open IPO Advisor</a></p>'
     : "";
 
+  const signalHtml = _signalLines(f).map(function(line) {
+    return '<div><strong>' + _html(line) + '</strong></div>';
+  }).join("");
+
   return (
     '<div style="font-family:Arial,sans-serif;line-height:1.5">' +
-    '<h2 style="margin-bottom:6px">IPO Advisor Research Alert</h2>' +
+    '<h2 style="margin-bottom:6px">' + _html(_alertTitle(f)) + '</h2>' +
     '<h3>' + _html(f.ipoName) + '</h3>' +
     '<p><strong>' + _html(f.segment) + '</strong></p>' +
-    '<p style="font-size:18px"><strong>Signal: ' +
-      _html(f.signal) + '</strong></p>' +
+    '<div style="font-size:17px;margin:12px 0">' + signalHtml + '</div>' +
     '<p>Estimated listing gain: <strong>' +
       _html(f.predictedGain) + '</strong><br>' +
     'GMP: <strong>' + _html(f.gmp) + '</strong><br>' +
