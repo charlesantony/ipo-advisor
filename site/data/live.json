@@ -1,6 +1,6 @@
 {
-  "fetched_at_utc": "2026-08-21T08:57:13.097485+00:00",
-  "fetched_at_ist": "2026-08-21T14:27:13.097485+05:30",
+  "fetched_at_utc": "2026-08-21T09:00:41.094295+00:00",
+  "fetched_at_ist": "2026-08-21T14:30:41.094295+05:30",
   "status_filter": "LIVE",
   "type_filter": "ALL",
   "records": [
@@ -195,14 +195,14 @@
         "ofs_ratio": 0.18181818181818182
       },
       "velocity": {
-        "minutes_since_previous": 279.2,
+        "minutes_since_previous": 3.5,
         "qib_x_per_hour": 0.0,
         "nii_x_per_hour": 0.0,
         "retail_x_per_hour": 0.0,
         "total_x_per_hour": 0.0
       },
       "is_closing_today": true,
-      "would_be_1430_decision_snapshot": false,
+      "would_be_1430_decision_snapshot": true,
       "recommendation": {
         "policy_version": "research-v1",
         "segment": "MAINBOARD",
@@ -210,9 +210,10 @@
         "action_priority": 3,
         "research_confidence": "LOW",
         "finality": {
-          "code": "CLOSING_DAY_PRE_1430",
-          "label": "PRELIMINARY — closes today; wait for 2:30 PM IST snapshot",
-          "canonical": false
+          "canonical": true,
+          "code": "CAPTURED_1430_IST",
+          "label": "CANONICAL_1430_RETAINED",
+          "captured_at_ist": "2026-08-21T14:30:41.094295+05:30"
         },
         "predictions": {
           "gmp_input_pct": 11.25,
@@ -227,8 +228,7 @@
         "signal_conflict": false,
         "reason": [
           "GMP model is positive but below the +10% subscribe threshold.",
-          "Total-subscription model is neutral/weak.",
-          "PRELIMINARY — closes today; wait for 2:30 PM IST snapshot"
+          "Total-subscription model is neutral/weak."
         ],
         "training": {
           "source_year": 2024,
@@ -277,7 +277,8 @@
             "Shadow V2 is intentionally SME-only."
           ],
           "disclaimer": "Shadow V2 only. It does not replace or alter Research Model V1."
-        }
+        },
+        "display_decision_source": "CAPTURED_1430_IST"
       }
     },
     {
@@ -422,7 +423,7 @@
         "ofs_ratio": 0.8538461538461538
       },
       "velocity": {
-        "minutes_since_previous": 279.2,
+        "minutes_since_previous": 3.5,
         "qib_x_per_hour": 0.0,
         "nii_x_per_hour": 0.0,
         "retail_x_per_hour": 0.0,
@@ -655,7 +656,7 @@
         "ofs_ratio": 0.24848484848484848
       },
       "velocity": {
-        "minutes_since_previous": 279.2,
+        "minutes_since_previous": 3.5,
         "qib_x_per_hour": null,
         "nii_x_per_hour": null,
         "retail_x_per_hour": null,
@@ -906,14 +907,14 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 279.2,
+        "minutes_since_previous": 3.5,
         "qib_x_per_hour": 0.0,
         "nii_x_per_hour": 0.0,
         "retail_x_per_hour": 0.0,
         "total_x_per_hour": 0.0
       },
       "is_closing_today": true,
-      "would_be_1430_decision_snapshot": false,
+      "would_be_1430_decision_snapshot": true,
       "recommendation": {
         "policy_version": "research-v1",
         "segment": "SME",
@@ -921,9 +922,10 @@
         "action_priority": 2,
         "research_confidence": "MEDIUM",
         "finality": {
-          "code": "CLOSING_DAY_PRE_1430",
-          "label": "PRELIMINARY — closes today; wait for 2:30 PM IST snapshot",
-          "canonical": false
+          "canonical": true,
+          "code": "CAPTURED_1430_IST",
+          "label": "CANONICAL_1430_RETAINED",
+          "captured_at_ist": "2026-08-21T14:30:41.094295+05:30"
         },
         "predictions": {
           "gmp_input_pct": 5.05,
@@ -937,8 +939,7 @@
         "ranking_score": -7.92,
         "signal_conflict": false,
         "reason": [
-          "SME GMP model is below +5%.",
-          "PRELIMINARY — closes today; wait for 2:30 PM IST snapshot"
+          "SME GMP model is below +5%."
         ],
         "training": {
           "source_year": 2024,
@@ -987,7 +988,8 @@
             "Strong-demand override thresholds are not both satisfied."
           ],
           "disclaimer": "Shadow V2 only. It does not replace or alter Research Model V1."
-        }
+        },
+        "display_decision_source": "CAPTURED_1430_IST"
       }
     },
     {
@@ -1183,14 +1185,14 @@
         "ofs_ratio": 0.19002201027145998
       },
       "velocity": {
-        "minutes_since_previous": 279.2,
+        "minutes_since_previous": 3.5,
         "qib_x_per_hour": null,
         "nii_x_per_hour": 0.0,
         "retail_x_per_hour": 0.0,
         "total_x_per_hour": 0.0
       },
       "is_closing_today": true,
-      "would_be_1430_decision_snapshot": false,
+      "would_be_1430_decision_snapshot": true,
       "recommendation": {
         "policy_version": "research-v1",
         "segment": "SME",
@@ -1198,9 +1200,10 @@
         "action_priority": 2,
         "research_confidence": "MEDIUM",
         "finality": {
-          "code": "CLOSING_DAY_PRE_1430",
-          "label": "PRELIMINARY — closes today; wait for 2:30 PM IST snapshot",
-          "canonical": false
+          "canonical": true,
+          "code": "CAPTURED_1430_IST",
+          "label": "CANONICAL_1430_RETAINED",
+          "captured_at_ist": "2026-08-21T14:30:41.094295+05:30"
         },
         "predictions": {
           "gmp_input_pct": 0.72,
@@ -1214,8 +1217,7 @@
         "ranking_score": -13.01,
         "signal_conflict": false,
         "reason": [
-          "SME GMP model is below +5%.",
-          "PRELIMINARY — closes today; wait for 2:30 PM IST snapshot"
+          "SME GMP model is below +5%."
         ],
         "training": {
           "source_year": 2024,
@@ -1264,7 +1266,8 @@
             "Strong-demand override thresholds are not both satisfied."
           ],
           "disclaimer": "Shadow V2 only. It does not replace or alter Research Model V1."
-        }
+        },
+        "display_decision_source": "CAPTURED_1430_IST"
       }
     }
   ],
@@ -1297,5 +1300,5 @@
   "errors": [],
   "decision_saved_count": 5,
   "saved_count": 5,
-  "capture_reason": "github_action_refresh_manual"
+  "capture_reason": "github_action_1430"
 }
