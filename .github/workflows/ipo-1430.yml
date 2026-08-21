@@ -1,6 +1,8 @@
 name: 2:30 PM IPO Decision and Email
 
 on:
+  schedule:
+    - cron: "45 8 * * 1-5"      # 2:15 PM IST; Python waits until 2:30 PM
   workflow_dispatch:
     inputs:
       wait_for_checkpoint:

@@ -1,6 +1,8 @@
 name: Day-2 IPO Early Email
 
 on:
+  schedule:
+    - cron: "55 14 * * 1-5"     # 8:25 PM IST; Python waits until 8:30 PM
   workflow_dispatch:
     inputs:
       wait_for_checkpoint:

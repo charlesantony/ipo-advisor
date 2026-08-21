@@ -1,6 +1,15 @@
 name: Live IPO Dashboard Refresh
 
 on:
+  schedule:
+    # Plain UTC cron. IST live refreshes:
+    # 10:35, 11:05, 11:35, 12:05, 12:35, 13:05, 13:35,
+    # 14:05, 15:05, 15:35 and 16:35 on weekdays.
+    # 14:35 is intentionally skipped because the 14:30 canonical workflow
+    # has just run. 16:05 and 17:05 are handled by market-refresh.yml.
+    - cron: "5 5-8 * * 1-5"
+    - cron: "35 5-9 * * 1-5"
+    - cron: "5 10-11 * * 1-5"
   workflow_dispatch:
 
 permissions:

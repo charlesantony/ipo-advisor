@@ -1,6 +1,8 @@
 name: Daily IPO Outcome Sync
 
 on:
+  schedule:
+    - cron: "37 12 * * 1-5"     # 6:07 PM IST
   workflow_dispatch:
 
 permissions:
