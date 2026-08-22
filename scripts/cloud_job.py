@@ -160,23 +160,23 @@ def _canonical_key(value):
 
 
 def _retain_1430_display_decisions(db, live_payload):
-    """Keep the canonical 14:30 decision while allowing later market data refreshes."""
+    """Keep every captured 14:30 decision immutable after its checkpoint."""
     now = datetime.now(IST)
-    if (now.hour, now.minute) < (14, 30):
-        return live_payload
-
-    today = now.date().isoformat()
+    today = now.date()
     canonical = {}
     for row in db.canonical_research_decisions():
         key = _canonical_key(row)
         if not key[1] or not key[2]:
             continue
-        # Rows are newest first, so keep the first one seen.
         canonical.setdefault(key, row)
 
     for record in live_payload.get("records") or []:
-        if str(record.get("end_date") or "") != today:
+        end = _parse_iso_date(record.get("end_date"))
+        if not end or end > today:
             continue
+        if end == today and (now.hour, now.minute) < (14, 30):
+            continue
+
         row = canonical.get(_canonical_key(record))
         if not row:
             continue
@@ -207,6 +207,24 @@ def _previous_live_payload():
         return json.loads(live_path.read_text(encoding="utf-8"))
     except Exception:
         return None
+
+
+def _filter_closed_public_live(live_payload):
+    """Remove records whose actual issue end date has passed."""
+    today = datetime.now(IST).date()
+    kept = []
+    removed = []
+    for record in live_payload.get("records") or []:
+        end = _parse_iso_date(record.get("end_date"))
+        if end and end < today:
+            removed.append(record.get("name") or record.get("symbol"))
+            continue
+        kept.append(record)
+    live_payload["records"] = kept
+    live_payload["public_filtered_closed_count"] = len(removed)
+    if removed:
+        live_payload["public_filtered_closed_names"] = removed
+    return live_payload
 
 
 PUBLIC_SIGNAL_ACTIONS = {
@@ -246,6 +264,19 @@ def _public_live_signal_state(record):
             "reason": "RELEVANT_DATA_NOT_AVAILABLE",
         }
     if action not in PUBLIC_SIGNAL_ACTIONS:
+        return {
+            "locked": True,
+            "action": "LOCKED",
+            "reason": "RELEVANT_DATA_NOT_AVAILABLE",
+        }
+
+    # A subscription-only V1 signal may be published only after the missing
+    # GMP validation itself has completed.
+    gmp_validation = record.get("gmp_validation") or {}
+    if (
+        preds.get("gmp_input_pct") is None
+        and not bool(gmp_validation.get("complete"))
+    ):
         return {
             "locked": True,
             "action": "LOCKED",
@@ -365,6 +396,7 @@ def _prepare_light_live_payload(db, live_payload):
     live_payload = _retain_1430_display_decisions(
         db, live_payload
     )
+    live_payload = _filter_closed_public_live(live_payload)
     live_payload = _apply_public_live_signal_gate(live_payload)
     live_payload["refresh_kind"] = "LIGHT_LIVE"
     live_payload["published_at_ist"] = datetime.now(IST).isoformat()
@@ -418,6 +450,7 @@ def _export_static(
     live_payload = _retain_1430_display_decisions(
         db, live_payload
     )
+    live_payload = _filter_closed_public_live(live_payload)
     live_payload = _apply_public_live_signal_gate(live_payload)
 
     tracker_rows = db.year_model_tracker_rows(

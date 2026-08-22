@@ -2,7 +2,8 @@ name: Daily IPO Outcome Sync
 
 on:
   schedule:
-    - cron: "37 12 * * 1-5"     # 6:07 PM IST
+    - cron: "5 6 * * 1-5"       # 11:35 AM IST listing/outcome refresh
+    - cron: "37 12 * * 1-5"     # 6:07 PM IST end-of-day outcome refresh
   workflow_dispatch:
 
 permissions:

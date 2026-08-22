@@ -36,6 +36,7 @@ from prospective_tracker import (
     build_prospective_experiment, log_prospective_experiment,
 )
 from providers.finapi import FinAPIProvider
+from gmp_fallback import validate_or_fill_gmp
 from logging_utils import logger, LOG_FILE, RAW_DIR, tail_log, clear_log, save_json_report, list_reports
 
 ROOT = Path(__file__).resolve().parent
@@ -81,7 +82,9 @@ def fetch_normalized(status="LIVE", ipo_type="ALL"):
             result = provider.fetch_ipos(status=status, ipo_type=t)
             normalized = []
             for raw in result["data"]:
-                n = enrich(normalize_ipo(raw), utc, ist)
+                n = normalize_ipo(raw)
+                n = validate_or_fill_gmp(n)
+                n = enrich(n, utc, ist)
                 n["recommendation"] = research_engine.attach_shadow_v2(
                     research_engine.recommend(n, ist)
                 )

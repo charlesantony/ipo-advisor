@@ -29,9 +29,31 @@ function shortIstDate(dateKey) {
   }).format(d);
 }
 
+function isPubliclyLiveRecord(n) {
+  const endDate = String(n?.end_date || "");
+  return !endDate || endDate >= istDateKey();
+}
+
+const effectiveLiveSignalBeforeV059 = effectiveLiveSignal;
+effectiveLiveSignal = function(n) {
+  const signal = effectiveLiveSignalBeforeV059(n);
+  if (signal.locked) return signal;
+
+  const p = n?.recommendation?.predictions || {};
+  const validation = n?.gmp_validation || {};
+  if (
+    !hasObservedValue(p.gmp_input_pct) &&
+    validation.complete !== true
+  ) {
+    return {locked:true, action:"LOCKED"};
+  }
+  return signal;
+};
+
 function trackerLiveMap(live) {
   const map = new Map();
   for (const n of (live?.records || [])) {
+    if (!isPubliclyLiveRecord(n)) continue;
     const key = trackerCanon(n.name || n.symbol);
     if (key) map.set(key, n);
   }
@@ -62,7 +84,13 @@ function trackerLifecycleStatus(row, liveRecord=null) {
     provider.includes("listed");
 
   if (listed) {
-    return "Listed";
+    if (!hasObservedValue(row.actual_listing_gain_pct)) {
+      return "Listed · Result pending";
+    }
+    const gain = Number(row.actual_listing_gain_pct);
+    return Number.isFinite(gain)
+      ? `Listed · ${gain >= 0 ? "+" : ""}${fmt(gain,"%")}`
+      : "Listed";
   }
 
   if (openDate && today < openDate) {
@@ -232,11 +260,16 @@ renderTracker = function(t) {
  * even when year_tracker.json itself has not been regenerated yet.
  */
 rerenderLiveView = function() {
+  const publicLive = {
+    ...dashboardState.live,
+    records: (dashboardState.live?.records || [])
+      .filter(isPubliclyLiveRecord),
+  };
   renderHealth(
     dashboardState.health,
     dashboardState.prospective,
-    dashboardState.live
+    publicLive
   );
-  renderLive(dashboardState.live);
+  renderLive(publicLive);
   renderTracker(dashboardState.tracker);
 };
