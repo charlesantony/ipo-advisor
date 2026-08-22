@@ -21,53 +21,53 @@
   },
   "overall": {
     "overall": {
-      "listed_rows": 158,
-      "positive_rate_pct": 57.6,
-      "ge_5_rate_pct": 43.7,
-      "ge_10_rate_pct": 34.8,
-      "ge_20_rate_pct": 22.8,
-      "avg_actual_gain_pct": 9.86,
-      "median_actual_gain_pct": 2.71,
+      "listed_rows": 159,
+      "positive_rate_pct": 57.9,
+      "ge_5_rate_pct": 44.0,
+      "ge_10_rate_pct": 35.2,
+      "ge_20_rate_pct": 23.3,
+      "avg_actual_gain_pct": 10.36,
+      "median_actual_gain_pct": 2.78,
       "worst_actual_gain_pct": -34.62,
       "best_actual_gain_pct": 95.65,
-      "prediction_rows": 158,
-      "mae_pp": 15.16,
-      "correlation": 0.673,
+      "prediction_rows": 159,
+      "mae_pp": 15.5,
+      "correlation": 0.669,
       "quality_counts": {
-        "EXCELLENT": 36,
+        "EXCELLENT": 37,
         "WEAK": 41,
         "GOOD": 19,
         "LOSS": 48,
         "MARGINAL": 14
       },
       "decision_source_counts": {
-        "RETROSPECTIVE_PRE1430_PROXY": 107,
+        "RETROSPECTIVE_PRE1430_PROXY": 108,
         "RETROSPECTIVE_SUBSCRIPTION_ONLY_PROXY": 51
       }
     },
     "by_action": {
       "STRONG SUBSCRIBE": {
-        "listed_rows": 22,
+        "listed_rows": 23,
         "positive_rate_pct": 100.0,
         "ge_5_rate_pct": 100.0,
-        "ge_10_rate_pct": 95.5,
-        "ge_20_rate_pct": 90.9,
-        "avg_actual_gain_pct": 49.35,
-        "median_actual_gain_pct": 41.6,
+        "ge_10_rate_pct": 95.7,
+        "ge_20_rate_pct": 91.3,
+        "avg_actual_gain_pct": 51.11,
+        "median_actual_gain_pct": 43.62,
         "worst_actual_gain_pct": 9.88,
         "best_actual_gain_pct": 95.65,
-        "prediction_rows": 22,
-        "mae_pp": 17.61,
-        "correlation": 0.5,
+        "prediction_rows": 23,
+        "mae_pp": 19.87,
+        "correlation": 0.4,
         "quality_counts": {
-          "EXCELLENT": 20,
+          "EXCELLENT": 21,
           "GOOD": 1,
           "MARGINAL": 1
         },
         "decision_source_counts": {
-          "RETROSPECTIVE_PRE1430_PROXY": 22
+          "RETROSPECTIVE_PRE1430_PROXY": 23
         },
-        "total_rows": 22
+        "total_rows": 23
       },
       "SUBSCRIBE": {
         "listed_rows": 12,
@@ -147,23 +147,23 @@
       }
     },
     "opportunity_efficiency": {
-      "listed_rows": 158,
-      "selected_rows": 34,
-      "apply_rate_pct": 21.5,
+      "listed_rows": 159,
+      "selected_rows": 35,
+      "apply_rate_pct": 22.0,
       "selected_positive_rate_pct": 100.0,
-      "selected_ge_10_rate_pct": 88.2,
-      "selected_ge_20_rate_pct": 76.5,
-      "selected_avg_gain_pct": 41.65,
-      "selected_median_gain_pct": 37.33,
+      "selected_ge_10_rate_pct": 88.6,
+      "selected_ge_20_rate_pct": 77.1,
+      "selected_avg_gain_pct": 43.03,
+      "selected_median_gain_pct": 37.77,
       "selected_worst_gain_pct": 3.03,
-      "all_ge_10_winners": 55,
-      "captured_ge_10_winners": 30,
-      "ge_10_winner_capture_rate_pct": 54.5,
-      "all_ge_20_winners": 36,
-      "captured_ge_20_winners": 26,
-      "ge_20_winner_capture_rate_pct": 72.2,
-      "ge_20_opportunity_efficiency_x": 3.36,
-      "positive_gain_capture_pct": 65.4
+      "all_ge_10_winners": 56,
+      "captured_ge_10_winners": 31,
+      "ge_10_winner_capture_rate_pct": 55.4,
+      "all_ge_20_winners": 37,
+      "captured_ge_20_winners": 27,
+      "ge_20_winner_capture_rate_pct": 73.0,
+      "ge_20_opportunity_efficiency_x": 3.32,
+      "positive_gain_capture_pct": 66.7
     }
   },
   "by_segment": {
@@ -311,52 +311,52 @@
     },
     "SME": {
       "overall": {
-        "listed_rows": 111,
-        "positive_rate_pct": 55.9,
-        "ge_5_rate_pct": 38.7,
-        "ge_10_rate_pct": 31.5,
-        "ge_20_rate_pct": 21.6,
-        "avg_actual_gain_pct": 9.28,
-        "median_actual_gain_pct": 2.23,
+        "listed_rows": 112,
+        "positive_rate_pct": 56.2,
+        "ge_5_rate_pct": 39.3,
+        "ge_10_rate_pct": 32.1,
+        "ge_20_rate_pct": 22.3,
+        "avg_actual_gain_pct": 10.0,
+        "median_actual_gain_pct": 2.25,
         "worst_actual_gain_pct": -20.0,
         "best_actual_gain_pct": 90.0,
-        "prediction_rows": 111,
-        "mae_pp": 17.97,
+        "prediction_rows": 112,
+        "mae_pp": 18.43,
         "correlation": 0.645,
         "quality_counts": {
+          "EXCELLENT": 25,
           "WEAK": 34,
           "LOSS": 34,
-          "EXCELLENT": 24,
           "GOOD": 11,
           "MARGINAL": 8
         },
         "decision_source_counts": {
-          "RETROSPECTIVE_PRE1430_PROXY": 64,
+          "RETROSPECTIVE_PRE1430_PROXY": 65,
           "RETROSPECTIVE_SUBSCRIPTION_ONLY_PROXY": 47
         }
       },
       "by_action": {
         "STRONG SUBSCRIBE": {
-          "listed_rows": 11,
+          "listed_rows": 12,
           "positive_rate_pct": 100.0,
           "ge_5_rate_pct": 100.0,
-          "ge_10_rate_pct": 90.9,
-          "ge_20_rate_pct": 90.9,
-          "avg_actual_gain_pct": 56.47,
-          "median_actual_gain_pct": 56.15,
+          "ge_10_rate_pct": 91.7,
+          "ge_20_rate_pct": 91.7,
+          "avg_actual_gain_pct": 59.27,
+          "median_actual_gain_pct": 61.19,
           "worst_actual_gain_pct": 9.88,
           "best_actual_gain_pct": 90.0,
-          "prediction_rows": 11,
-          "mae_pp": 23.3,
-          "correlation": 0.403,
+          "prediction_rows": 12,
+          "mae_pp": 27.16,
+          "correlation": 0.272,
           "quality_counts": {
-            "EXCELLENT": 10,
+            "EXCELLENT": 11,
             "MARGINAL": 1
           },
           "decision_source_counts": {
-            "RETROSPECTIVE_PRE1430_PROXY": 11
+            "RETROSPECTIVE_PRE1430_PROXY": 12
           },
-          "total_rows": 11
+          "total_rows": 12
         },
         "SUBSCRIBE": {
           "listed_rows": 7,
@@ -435,54 +435,54 @@
         }
       },
       "opportunity_efficiency": {
-        "listed_rows": 111,
-        "selected_rows": 18,
-        "apply_rate_pct": 16.2,
+        "listed_rows": 112,
+        "selected_rows": 19,
+        "apply_rate_pct": 17.0,
         "selected_positive_rate_pct": 100.0,
-        "selected_ge_10_rate_pct": 83.3,
-        "selected_ge_20_rate_pct": 83.3,
-        "selected_avg_gain_pct": 48.79,
-        "selected_median_gain_pct": 45.04,
+        "selected_ge_10_rate_pct": 84.2,
+        "selected_ge_20_rate_pct": 84.2,
+        "selected_avg_gain_pct": 50.96,
+        "selected_median_gain_pct": 46.46,
         "selected_worst_gain_pct": 3.03,
-        "all_ge_10_winners": 35,
-        "captured_ge_10_winners": 15,
-        "ge_10_winner_capture_rate_pct": 42.9,
-        "all_ge_20_winners": 24,
-        "captured_ge_20_winners": 15,
-        "ge_20_winner_capture_rate_pct": 62.5,
-        "ge_20_opportunity_efficiency_x": 3.85,
-        "positive_gain_capture_pct": 58.7
+        "all_ge_10_winners": 36,
+        "captured_ge_10_winners": 16,
+        "ge_10_winner_capture_rate_pct": 44.4,
+        "all_ge_20_winners": 25,
+        "captured_ge_20_winners": 16,
+        "ge_20_winner_capture_rate_pct": 64.0,
+        "ge_20_opportunity_efficiency_x": 3.77,
+        "positive_gain_capture_pct": 61.0
       }
     }
   },
   "decision_basis": {
     "RETROSPECTIVE_PROXY": {
-      "listed_rows": 158,
-      "positive_rate_pct": 57.6,
-      "ge_5_rate_pct": 43.7,
-      "ge_10_rate_pct": 34.8,
-      "ge_20_rate_pct": 22.8,
-      "avg_actual_gain_pct": 9.86,
-      "median_actual_gain_pct": 2.71,
+      "listed_rows": 159,
+      "positive_rate_pct": 57.9,
+      "ge_5_rate_pct": 44.0,
+      "ge_10_rate_pct": 35.2,
+      "ge_20_rate_pct": 23.3,
+      "avg_actual_gain_pct": 10.36,
+      "median_actual_gain_pct": 2.78,
       "worst_actual_gain_pct": -34.62,
       "best_actual_gain_pct": 95.65,
-      "prediction_rows": 158,
-      "mae_pp": 15.16,
-      "correlation": 0.673,
+      "prediction_rows": 159,
+      "mae_pp": 15.5,
+      "correlation": 0.669,
       "quality_counts": {
-        "EXCELLENT": 36,
+        "EXCELLENT": 37,
         "WEAK": 41,
         "GOOD": 19,
         "LOSS": 48,
         "MARGINAL": 14
       },
       "decision_source_counts": {
-        "RETROSPECTIVE_PRE1430_PROXY": 107,
+        "RETROSPECTIVE_PRE1430_PROXY": 108,
         "RETROSPECTIVE_SUBSCRIPTION_ONLY_PROXY": 51
       },
-      "selected_rows": 34,
+      "selected_rows": 35,
       "selected_positive_rate_pct": 100.0,
-      "selected_ge_20_rate_pct": 76.5
+      "selected_ge_20_rate_pct": 77.1
     }
   },
   "misses": {
@@ -1065,7 +1065,7 @@
         "strong_total_x": 60.0,
         "strong_subscription_prediction_pct": 30.0
       },
-      "listed_sme_rows": 111,
+      "listed_sme_rows": 112,
       "triggered_performance": {
         "count": 16,
         "positive_rate_pct": 75.0,
