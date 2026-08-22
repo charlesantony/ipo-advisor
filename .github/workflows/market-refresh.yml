@@ -68,6 +68,17 @@ jobs:
           SUBSCRIBE_ENDPOINT: ${{ vars.SUBSCRIBE_ENDPOINT }}
         run: python scripts/cloud_job.py refresh --phase "${{ steps.phase.outputs.value }}"
 
+      - name: Upload diagnostic log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ipo-advisor-market-refresh-${{ github.run_id }}-logs
+          path: |
+            engine/logs/ipo_advisor.log
+            engine/logs/ipo_advisor.log.*
+          if-no-files-found: warn
+          retention-days: 7
+
       - name: Persist generated state
         run: |
           git config user.name "ipo-advisor-bot"

@@ -36,6 +36,17 @@ jobs:
       - name: Refresh public live IPO data only
         run: python scripts/cloud_job.py live
 
+      - name: Upload diagnostic log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ipo-advisor-live-refresh-${{ github.run_id }}-logs
+          path: |
+            engine/logs/ipo_advisor.log
+            engine/logs/ipo_advisor.log.*
+          if-no-files-found: warn
+          retention-days: 7
+
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:
