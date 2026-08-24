@@ -410,12 +410,47 @@ def previous_snapshot(symbol):
         ).fetchone()
     return dict(row) if row else None
 
+def latest_subscription_snapshot(symbol=None, name=None, end_date=None):
+    # Newest snapshot for this IPO whose total subscription is non-null.
+    clauses = ["total_x IS NOT NULL"]
+    params = []
+
+    if symbol:
+        clauses.append("symbol=?")
+        params.append(symbol)
+    elif name:
+        clauses.append("name=?")
+        params.append(name)
+    else:
+        return None
+
+    if end_date:
+        clauses.append("end_date=?")
+        params.append(end_date)
+
+    where = " AND ".join(clauses)
+    sql = (
+        "SELECT * FROM snapshots WHERE "
+        + where
+        + " ORDER BY fetched_at_utc DESC LIMIT 1"
+    )
+    with connect() as conn:
+        row = conn.execute(sql, params).fetchone()
+    return dict(row) if row else None
+
 def save_snapshots(records, fetched_at_utc, fetched_at_ist, source="finapi",
                    capture_reason="manual", local_date=None, decision_window=False):
     with connect() as conn:
         for n in records:
             is_closing = int(bool(local_date and n.get("end_date") == local_date))
-            is_decision = int(bool(is_closing and decision_window))
+            finality = (
+                ((n.get("recommendation") or {}).get("finality") or {})
+            )
+            is_decision = int(bool(
+                is_closing
+                and decision_window
+                and finality.get("canonical")
+            ))
             conn.execute(
                 """
                 INSERT INTO snapshots (

@@ -11,6 +11,7 @@ from zoneinfo import ZoneInfo
 from collector import AutoCollector
 from db import (
     save_snapshots, recent_snapshots, dataset_summary, previous_snapshot,
+    latest_subscription_snapshot,
     upsert_historical, historical_rows, upsert_historical_web, historical_web_rows,
     upsert_historical_gmp, historical_gmp_rows,
     upsert_historical_market, historical_market_rows, market_integrity_summary,
@@ -37,6 +38,10 @@ from prospective_tracker import (
 )
 from providers.finapi import FinAPIProvider
 from gmp_fallback import validate_or_fill_gmp
+from subscription_fallback import (
+    validate_or_fill_subscription,
+    enforce_canonical_subscription_freshness,
+)
 from logging_utils import logger, LOG_FILE, RAW_DIR, tail_log, clear_log, save_json_report, list_reports
 
 ROOT = Path(__file__).resolve().parent
@@ -84,9 +89,25 @@ def fetch_normalized(status="LIVE", ipo_type="ALL"):
             for raw in result["data"]:
                 n = normalize_ipo(raw)
                 n = validate_or_fill_gmp(n)
+
+                previous_sub = latest_subscription_snapshot(
+                    symbol=n.get("symbol"),
+                    name=n.get("name"),
+                    end_date=n.get("end_date"),
+                )
+                n = validate_or_fill_subscription(
+                    n,
+                    previous=previous_sub,
+                    now_ist=ist,
+                )
+
                 n = enrich(n, utc, ist)
+                recommendation = research_engine.recommend(n, ist)
+                recommendation = enforce_canonical_subscription_freshness(
+                    n, recommendation, ist
+                )
                 n["recommendation"] = research_engine.attach_shadow_v2(
-                    research_engine.recommend(n, ist)
+                    recommendation
                 )
                 normalized.append(n)
                 rec = n.get("recommendation") or {}
@@ -94,6 +115,7 @@ def fetch_normalized(status="LIVE", ipo_type="ALL"):
                     "RESEARCH_RECOMMENDATION symbol=%r name=%r segment=%s status=%s "
                     "closing_today=%s policy=%s action=%r confidence=%s finality=%s "
                     "primary_pred=%s gmp_input=%s total_x=%s gmp_pred=%s sub_pred=%s "
+                    "sub_source=%s sub_age_min=%s "
                     "conflict=%s shadow_v2=%s shadow_triggered=%s reasons=%s",
                     n.get("symbol"), n.get("name"), n.get("type"), n.get("status"),
                     n.get("is_closing_today"), rec.get("policy_version"),
@@ -104,6 +126,8 @@ def fetch_normalized(status="LIVE", ipo_type="ALL"):
                     ((rec.get("predictions") or {}).get("total_subscription_x")),
                     ((rec.get("predictions") or {}).get("gmp_prediction_pct")),
                     ((rec.get("predictions") or {}).get("subscription_prediction_pct")),
+                    ((n.get("subscription_validation") or {}).get("source_kind")),
+                    ((n.get("subscription_validation") or {}).get("age_minutes")),
                     rec.get("signal_conflict"),
                     ((rec.get("shadow_v2") or {}).get("shadow_action")),
                     ((rec.get("shadow_v2") or {}).get("triggered")),

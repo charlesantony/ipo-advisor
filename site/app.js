@@ -192,6 +192,25 @@ function liveFreshnessText(data) {
   return text;
 }
 
+function subscriptionEvidenceText(n) {
+  const v = n.subscription_validation || {};
+  if (!v.complete) return "";
+
+  if (v.status === "CARRIED_FORWARD") {
+    const age = relativeAge(v.observed_at_ist);
+    return age ? `Last known · ${age}` : "Last known value";
+  }
+
+  if (v.status === "FALLBACK") {
+    if (String(v.source_kind || "").startsWith("NSE")) {
+      return "Exchange fallback";
+    }
+    return "Fallback verified";
+  }
+
+  return "";
+}
+
 async function loadJson(path, fallback={}) {
   try {
     const r = await fetch(`${path}?t=${Date.now()}`, {cache:"no-store"});
@@ -342,6 +361,9 @@ function renderLive(data) {
           <div class="metric">
             <small>Latest subscription</small>
             <strong>${fmt(p.total_subscription_x,"x")}</strong>
+            ${subscriptionEvidenceText(n)
+              ? `<div class="muted">${esc(subscriptionEvidenceText(n))}</div>`
+              : ""}
           </div>
           <div class="metric">
             <small>Confidence</small>
