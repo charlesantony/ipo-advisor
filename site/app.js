@@ -211,6 +211,14 @@ function subscriptionEvidenceText(n) {
   return "";
 }
 
+function lockedDataMessage(n) {
+  const v = n.subscription_validation || {};
+  if (v.status === "ZERO_NOT_READY") {
+    return "Bidding data not available yet.";
+  }
+  return "Relevant data not available.";
+}
+
 async function loadJson(path, fallback={}) {
   try {
     const r = await fetch(`${path}?t=${Date.now()}`, {cache:"no-store"});
@@ -373,7 +381,7 @@ function renderLive(data) {
 
         <div class="card-note ${closingToday ? "closing" : ""}">
           ${esc(signal.locked
-            ? "Relevant data not available."
+            ? lockedDataMessage(n)
             : finalityText(n, r))}
         </div>
       </article>`;

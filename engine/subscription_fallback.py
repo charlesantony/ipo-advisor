@@ -284,6 +284,21 @@ def _nse_candidate(record):
         if total is None:
             continue
 
+        # NSE can expose noOfTime=0 before usable bid data has populated.
+        # Do not treat that placeholder as verified zero demand.
+        if total <= 0:
+            return {
+                "qib_x": None,
+                "nii_x": None,
+                "retail_x": None,
+                "total_x": None,
+                "source": NSE_CURRENT_ISSUE_URL,
+                "source_kind": "NSE_CURRENT_ISSUE_TOTAL",
+                "zero_not_ready": True,
+                "raw_total_x": total,
+                "row": row,
+            }
+
         return {
             "qib_x": None,
             "nii_x": None,
@@ -291,6 +306,7 @@ def _nse_candidate(record):
             "total_x": total,
             "source": NSE_CURRENT_ISSUE_URL,
             "source_kind": "NSE_CURRENT_ISSUE_TOTAL",
+            "zero_not_ready": False,
             "row": row,
         }
     return None
@@ -376,6 +392,26 @@ def validate_or_fill_subscription(record, previous=None, now_ist=None):
                 f"nse: {type(exc).__name__}: {exc}"
             )
 
+    if direct_candidate is not None and direct_candidate.get("zero_not_ready"):
+        validation.update(
+            {
+                "complete": False,
+                "status": "ZERO_NOT_READY",
+                "source": direct_candidate["source"],
+                "source_kind": direct_candidate["source_kind"],
+                "observed_at_ist": now.isoformat(),
+                "age_minutes": 0.0,
+                "raw_total_x": direct_candidate.get("raw_total_x"),
+            }
+        )
+        logger.info(
+            "SUBSCRIPTION_NSE_ZERO_NOT_READY "
+            "name=%r raw_total_x=%s",
+            item.get("name"),
+            direct_candidate.get("raw_total_x"),
+        )
+        direct_candidate = None
+
     if direct_candidate is not None:
         changed = _copy_missing_subscription_fields(item, direct_candidate)
         observed = now.isoformat()
@@ -445,11 +481,20 @@ def validate_or_fill_subscription(record, previous=None, now_ist=None):
         return item
 
     item["subscription_validation"] = validation
-    logger.warning(
-        "SUBSCRIPTION_FALLBACK_INCOMPLETE name=%r errors=%r",
-        item.get("name"),
-        validation["errors"],
-    )
+    if validation.get("status") == "ZERO_NOT_READY":
+        logger.warning(
+            "SUBSCRIPTION_FALLBACK_WAITING_FOR_BIDS "
+            "name=%r source=%s raw_total_x=%s",
+            item.get("name"),
+            validation.get("source_kind"),
+            validation.get("raw_total_x"),
+        )
+    else:
+        logger.warning(
+            "SUBSCRIPTION_FALLBACK_INCOMPLETE name=%r errors=%r",
+            item.get("name"),
+            validation["errors"],
+        )
     return item
 
 
