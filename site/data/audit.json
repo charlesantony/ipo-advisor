@@ -31,8 +31,8 @@
       "worst_actual_gain_pct": -34.62,
       "best_actual_gain_pct": 95.65,
       "prediction_rows": 162,
-      "mae_pp": 15.43,
-      "correlation": 0.666,
+      "mae_pp": 15.41,
+      "correlation": 0.668,
       "quality_counts": {
         "WEAK": 42,
         "LOSS": 49,
@@ -41,8 +41,8 @@
         "MARGINAL": 14
       },
       "decision_source_counts": {
-        "RETROSPECTIVE_SUBSCRIPTION_ONLY_PROXY": 57,
-        "RETROSPECTIVE_PRE1430_PROXY": 105
+        "RETROSPECTIVE_SUBSCRIPTION_ONLY_PROXY": 58,
+        "RETROSPECTIVE_PRE1430_PROXY": 104
       }
     },
     "by_action": {
@@ -130,8 +130,8 @@
         "worst_actual_gain_pct": -34.62,
         "best_actual_gain_pct": 90.0,
         "prediction_rows": 113,
-        "mae_pp": 14.96,
-        "correlation": 0.091,
+        "mae_pp": 14.94,
+        "correlation": 0.101,
         "quality_counts": {
           "WEAK": 36,
           "LOSS": 49,
@@ -140,8 +140,8 @@
           "EXCELLENT": 7
         },
         "decision_source_counts": {
-          "RETROSPECTIVE_SUBSCRIPTION_ONLY_PROXY": 51,
-          "RETROSPECTIVE_PRE1430_PROXY": 62
+          "RETROSPECTIVE_SUBSCRIPTION_ONLY_PROXY": 52,
+          "RETROSPECTIVE_PRE1430_PROXY": 61
         },
         "total_rows": 113
       }
@@ -321,8 +321,8 @@
         "worst_actual_gain_pct": -20.0,
         "best_actual_gain_pct": 90.0,
         "prediction_rows": 115,
-        "mae_pp": 18.27,
-        "correlation": 0.643,
+        "mae_pp": 18.25,
+        "correlation": 0.645,
         "quality_counts": {
           "WEAK": 35,
           "LOSS": 35,
@@ -331,8 +331,8 @@
           "MARGINAL": 8
         },
         "decision_source_counts": {
-          "RETROSPECTIVE_SUBSCRIPTION_ONLY_PROXY": 53,
-          "RETROSPECTIVE_PRE1430_PROXY": 62
+          "RETROSPECTIVE_SUBSCRIPTION_ONLY_PROXY": 54,
+          "RETROSPECTIVE_PRE1430_PROXY": 61
         }
       },
       "by_action": {
@@ -418,8 +418,8 @@
           "worst_actual_gain_pct": -20.0,
           "best_actual_gain_pct": 90.0,
           "prediction_rows": 85,
-          "mae_pp": 17.4,
-          "correlation": 0.123,
+          "mae_pp": 17.38,
+          "correlation": 0.136,
           "quality_counts": {
             "WEAK": 30,
             "LOSS": 35,
@@ -428,8 +428,8 @@
             "EXCELLENT": 7
           },
           "decision_source_counts": {
-            "RETROSPECTIVE_SUBSCRIPTION_ONLY_PROXY": 48,
-            "RETROSPECTIVE_PRE1430_PROXY": 37
+            "RETROSPECTIVE_SUBSCRIPTION_ONLY_PROXY": 49,
+            "RETROSPECTIVE_PRE1430_PROXY": 36
           },
           "total_rows": 85
         }
@@ -467,8 +467,8 @@
       "worst_actual_gain_pct": -34.62,
       "best_actual_gain_pct": 95.65,
       "prediction_rows": 162,
-      "mae_pp": 15.43,
-      "correlation": 0.666,
+      "mae_pp": 15.41,
+      "correlation": 0.668,
       "quality_counts": {
         "WEAK": 42,
         "LOSS": 49,
@@ -477,8 +477,8 @@
         "MARGINAL": 14
       },
       "decision_source_counts": {
-        "RETROSPECTIVE_SUBSCRIPTION_ONLY_PROXY": 57,
-        "RETROSPECTIVE_PRE1430_PROXY": 105
+        "RETROSPECTIVE_SUBSCRIPTION_ONLY_PROXY": 58,
+        "RETROSPECTIVE_PRE1430_PROXY": 104
       },
       "selected_rows": 36,
       "selected_positive_rate_pct": 100.0,
@@ -1014,15 +1014,15 @@
     },
     "correct_avoids_le_0": {
       "count": 49,
-      "median_gmp_used_pct": 4.9,
+      "median_gmp_used_pct": 5.0,
       "median_total_subscription_x": 1.55,
       "median_primary_prediction_pct": -13.86,
-      "median_gmp_prediction_pct": -8.09,
+      "median_gmp_prediction_pct": -7.98,
       "median_subscription_prediction_pct": -23.87,
-      "missing_gmp_pct": 55.1,
+      "missing_gmp_pct": 57.1,
       "decision_source_counts": {
-        "RETROSPECTIVE_PRE1430_PROXY": 22,
-        "RETROSPECTIVE_SUBSCRIPTION_ONLY_PROXY": 27
+        "RETROSPECTIVE_PRE1430_PROXY": 21,
+        "RETROSPECTIVE_SUBSCRIPTION_ONLY_PROXY": 28
       }
     },
     "interpretation_hint": "Compare missing GMP rate, GMP level and total subscription between major SME misses and correct SME avoids. This is feature-discovery only; V1 thresholds remain frozen."

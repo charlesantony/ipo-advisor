@@ -1,6 +1,6 @@
 {
-  "fetched_at_utc": "2026-08-24T05:12:12.387736+00:00",
-  "fetched_at_ist": "2026-08-24T10:42:12.387736+05:30",
+  "fetched_at_utc": "2026-08-24T05:13:01.332394+00:00",
+  "fetched_at_ist": "2026-08-24T10:43:01.332394+05:30",
   "status_filter": "LIVE",
   "type_filter": "ALL",
   "records": [
@@ -77,14 +77,14 @@
         "gmp_gain_pct": 104.33
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-08-24T10:42:12.387736+05:30",
+      "subscription_observed_at_ist": "2026-08-24T10:43:01.332394+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-08-24T10:42:12.387736+05:30",
+        "observed_at_ist": "2026-08-24T10:43:01.332394+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -124,11 +124,11 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 609.8,
-        "qib_x_per_hour": null,
-        "nii_x_per_hour": null,
-        "retail_x_per_hour": null,
-        "total_x_per_hour": null
+        "minutes_since_previous": 0.8,
+        "qib_x_per_hour": 0.0,
+        "nii_x_per_hour": 0.0,
+        "retail_x_per_hour": 0.0,
+        "total_x_per_hour": 0.0
       },
       "is_closing_today": true,
       "would_be_1430_decision_snapshot": false,
@@ -266,14 +266,14 @@
         "gmp_gain_pct": 48.22
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-08-24T10:42:12.387736+05:30",
+      "subscription_observed_at_ist": "2026-08-24T10:43:01.332394+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-08-24T10:42:12.387736+05:30",
+        "observed_at_ist": "2026-08-24T10:43:01.332394+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -313,11 +313,11 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 609.8,
-        "qib_x_per_hour": null,
-        "nii_x_per_hour": null,
-        "retail_x_per_hour": null,
-        "total_x_per_hour": null
+        "minutes_since_previous": 0.8,
+        "qib_x_per_hour": 0.0,
+        "nii_x_per_hour": 0.0,
+        "retail_x_per_hour": 0.0,
+        "total_x_per_hour": 0.0
       },
       "is_closing_today": false,
       "would_be_1430_decision_snapshot": false,
@@ -415,7 +415,7 @@
       "qib_x": null,
       "nii_x": null,
       "retail_x": null,
-      "total_x": 0.1458476994010195,
+      "total_x": 0.15016428020930517,
       "strengths": [],
       "risks": [],
       "about_company": null,
@@ -455,14 +455,14 @@
         "gmp_gain_pct": 25.36
       },
       "subscription_source": "NSE_CURRENT_ISSUE_TOTAL",
-      "subscription_observed_at_ist": "2026-08-24T10:42:12.387736+05:30",
+      "subscription_observed_at_ist": "2026-08-24T10:43:01.332394+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://www.nseindia.com/api/ipo-current-issue",
         "source_kind": "NSE_CURRENT_ISSUE_TOTAL",
-        "observed_at_ist": "2026-08-24T10:42:12.387736+05:30",
+        "observed_at_ist": "2026-08-24T10:43:01.332394+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -495,16 +495,16 @@
         "log_qib": null,
         "log_nii": null,
         "log_retail": null,
-        "log_total": 0.13614471190505575,
+        "log_total": 0.13990478452865004,
         "log_issue_size": null,
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": null,
+        "minutes_since_previous": 0.8,
         "qib_x_per_hour": null,
         "nii_x_per_hour": null,
         "retail_x_per_hour": null,
-        "total_x_per_hour": null
+        "total_x_per_hour": 0.317
       },
       "is_closing_today": false,
       "would_be_1430_decision_snapshot": false,
@@ -521,10 +521,10 @@
         },
         "predictions": {
           "gmp_input_pct": 25.36,
-          "total_subscription_x": 0.1458476994010195,
-          "log_total": 0.13614471190505575,
+          "total_subscription_x": 0.15016428020930517,
+          "log_total": 0.13990478452865004,
           "gmp_prediction_pct": 23.37,
-          "subscription_prediction_pct": -18.12,
+          "subscription_prediction_pct": -18.06,
           "prediction_cap_pct": null
         },
         "primary_prediction_pct": 23.37,
@@ -602,7 +602,7 @@
       "qib_x": null,
       "nii_x": null,
       "retail_x": null,
-      "total_x": 0.8096317051269065,
+      "total_x": 0.8308269872826213,
       "strengths": [],
       "risks": [],
       "about_company": null,
@@ -642,14 +642,14 @@
         "gmp_gain_pct": 47.17
       },
       "subscription_source": "NSE_CURRENT_ISSUE_TOTAL",
-      "subscription_observed_at_ist": "2026-08-24T10:42:12.387736+05:30",
+      "subscription_observed_at_ist": "2026-08-24T10:43:01.332394+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://www.nseindia.com/api/ipo-current-issue",
         "source_kind": "NSE_CURRENT_ISSUE_TOTAL",
-        "observed_at_ist": "2026-08-24T10:42:12.387736+05:30",
+        "observed_at_ist": "2026-08-24T10:43:01.332394+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -682,16 +682,16 @@
         "log_qib": null,
         "log_nii": null,
         "log_retail": null,
-        "log_total": 0.5931233467428736,
+        "log_total": 0.6047677703936563,
         "log_issue_size": null,
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": null,
+        "minutes_since_previous": 0.8,
         "qib_x_per_hour": null,
         "nii_x_per_hour": null,
         "retail_x_per_hour": null,
-        "total_x_per_hour": null
+        "total_x_per_hour": 1.559
       },
       "is_closing_today": false,
       "would_be_1430_decision_snapshot": false,
@@ -708,10 +708,10 @@
         },
         "predictions": {
           "gmp_input_pct": 47.17,
-          "total_subscription_x": 0.8096317051269065,
-          "log_total": 0.5931233467428736,
+          "total_subscription_x": 0.8308269872826213,
+          "log_total": 0.6047677703936563,
           "gmp_prediction_pct": 46.61,
-          "subscription_prediction_pct": -10.62,
+          "subscription_prediction_pct": -10.43,
           "prediction_cap_pct": null
         },
         "primary_prediction_pct": 46.61,
@@ -789,7 +789,7 @@
       "qib_x": null,
       "nii_x": null,
       "retail_x": null,
-      "total_x": 0.07532612176416345,
+      "total_x": 0.07810327964440798,
       "strengths": [],
       "risks": [],
       "about_company": null,
@@ -829,14 +829,14 @@
         "gmp_gain_pct": 41.4
       },
       "subscription_source": "NSE_CURRENT_ISSUE_TOTAL",
-      "subscription_observed_at_ist": "2026-08-24T10:42:12.387736+05:30",
+      "subscription_observed_at_ist": "2026-08-24T10:43:01.332394+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://www.nseindia.com/api/ipo-current-issue",
         "source_kind": "NSE_CURRENT_ISSUE_TOTAL",
-        "observed_at_ist": "2026-08-24T10:42:12.387736+05:30",
+        "observed_at_ist": "2026-08-24T10:43:01.332394+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -869,16 +869,16 @@
         "log_qib": null,
         "log_nii": null,
         "log_retail": null,
-        "log_total": 0.07262398465547314,
+        "log_total": 0.07520327461786475,
         "log_issue_size": null,
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": null,
+        "minutes_since_previous": 0.8,
         "qib_x_per_hour": null,
         "nii_x_per_hour": null,
         "retail_x_per_hour": null,
-        "total_x_per_hour": null
+        "total_x_per_hour": 0.204
       },
       "is_closing_today": false,
       "would_be_1430_decision_snapshot": false,
@@ -895,10 +895,10 @@
         },
         "predictions": {
           "gmp_input_pct": 41.4,
-          "total_subscription_x": 0.07532612176416345,
-          "log_total": 0.07262398465547314,
+          "total_subscription_x": 0.07810327964440798,
+          "log_total": 0.07520327461786475,
           "gmp_prediction_pct": 40.46,
-          "subscription_prediction_pct": -19.17,
+          "subscription_prediction_pct": -19.13,
           "prediction_cap_pct": null
         },
         "primary_prediction_pct": 40.46,
@@ -1010,14 +1010,14 @@
         "raw_gmp_gain_pct": 0.0
       },
       "subscription_source": "NSE_CURRENT_ISSUE_TOTAL",
-      "subscription_observed_at_ist": "2026-08-24T10:42:12.387736+05:30",
+      "subscription_observed_at_ist": "2026-08-24T10:43:01.332394+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://www.nseindia.com/api/ipo-current-issue",
         "source_kind": "NSE_CURRENT_ISSUE_TOTAL",
-        "observed_at_ist": "2026-08-24T10:42:12.387736+05:30",
+        "observed_at_ist": "2026-08-24T10:43:01.332394+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -1055,11 +1055,11 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": null,
+        "minutes_since_previous": 0.8,
         "qib_x_per_hour": null,
         "nii_x_per_hour": null,
         "retail_x_per_hour": null,
-        "total_x_per_hour": null
+        "total_x_per_hour": 0.0
       },
       "is_closing_today": false,
       "would_be_1430_decision_snapshot": false,
@@ -1196,14 +1196,14 @@
         "gmp_gain_pct": 9.0
       },
       "subscription_source": "NSE_CURRENT_ISSUE_TOTAL",
-      "subscription_observed_at_ist": "2026-08-24T10:42:12.387736+05:30",
+      "subscription_observed_at_ist": "2026-08-24T10:43:01.332394+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://www.nseindia.com/api/ipo-current-issue",
         "source_kind": "NSE_CURRENT_ISSUE_TOTAL",
-        "observed_at_ist": "2026-08-24T10:42:12.387736+05:30",
+        "observed_at_ist": "2026-08-24T10:43:01.332394+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -1241,11 +1241,11 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": null,
+        "minutes_since_previous": 0.8,
         "qib_x_per_hour": null,
         "nii_x_per_hour": null,
         "retail_x_per_hour": null,
-        "total_x_per_hour": null
+        "total_x_per_hour": 0.0
       },
       "is_closing_today": false,
       "would_be_1430_decision_snapshot": false,
@@ -1337,9 +1337,6 @@
     }
   ],
   "errors": [],
-  "decision_saved_count": 7,
-  "saved_count": 7,
-  "capture_reason": "github_action_refresh_morning",
   "public_filtered_closed_count": 0,
   "public_signal_policy": {
     "version": "public-signal-gate-v1",
