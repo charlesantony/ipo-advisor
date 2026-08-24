@@ -216,7 +216,7 @@ def build_prospective_experiment(decisions, tracker_rows, year=2026):
     else:
         status = "COLLECTING_EXACT_1430_EVIDENCE"
         message = (
-            f"Collect {EXACT_LISTED_TARGET - exact_listed} more exact 2:30 PM "
+            f"Collect {EXACT_LISTED_TARGET - exact_listed} more closing-day checkpoint "
             "listed observations before the first model-review checkpoint."
         )
 
@@ -281,7 +281,9 @@ def build_prospective_experiment(decisions, tracker_rows, year=2026):
             "v2_shadow_only": True,
             "auto_retune": False,
             "checkpoint_rule": (
-                "At 20 exact 2:30 PM listed observations, review results manually. "
+                "At 20 listed closing-day checkpoint observations, review results manually. "
+                "The dedicated scheduled 2:30 PM workflow defines the checkpoint and the "
+                "actual capture timestamp is retained for audit. "
                 "Do not automatically change V1 or promote V2."
             ),
         },

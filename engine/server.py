@@ -163,6 +163,39 @@ def capture_live(reason="manual"):
     payload = fetch_normalized(status="LIVE", ipo_type="ALL")
     if payload["records"]:
         ist = datetime.fromisoformat(payload["fetched_at_ist"])
+
+        # The dedicated scheduled 2:30 workflow is the prospective checkpoint.
+        # GitHub/network delay is outside our control, so do not reject the
+        # observation just because processing completed after a wall-clock
+        # cutoff. Keep the actual capture timestamp for audit.
+        workflow_checkpoint = reason == "github_action_1430"
+        if workflow_checkpoint:
+            for n in payload["records"]:
+                if not n.get("is_closing_today"):
+                    continue
+
+                rec = n.get("recommendation") or {}
+                rec = enforce_canonical_subscription_freshness(
+                    n,
+                    rec,
+                    ist,
+                    force_checkpoint=True,
+                )
+
+                if rec.get("action") != "NOT READY":
+                    rec["finality"] = {
+                        "canonical": True,
+                        "code": "CANONICAL_1430_WORKFLOW",
+                        "label": "2:30 PM WORKFLOW CHECKPOINT RESEARCH DECISION",
+                        "captured_at_ist": payload["fetched_at_ist"],
+                    }
+                    rec["display_decision_source"] = "CAPTURED_1430_WORKFLOW"
+                    n["would_be_1430_decision_snapshot"] = True
+                else:
+                    n["would_be_1430_decision_snapshot"] = False
+
+                n["recommendation"] = rec
+
         save_snapshots(
             payload["records"],
             payload["fetched_at_utc"],
@@ -170,7 +203,7 @@ def capture_live(reason="manual"):
             source="finapi",
             capture_reason=reason,
             local_date=ist.date().isoformat(),
-            decision_window=is_decision_window(ist),
+            decision_window=workflow_checkpoint or is_decision_window(ist),
         )
         payload["decision_saved_count"] = save_research_decisions(
             payload["records"],

@@ -323,10 +323,6 @@ function renderHealth(h, p, live) {
       <strong>${fmt(selectedToday)}</strong>
     </div>
     <div class="stat">
-      <small>Exact 2:30 results</small>
-      <strong>${fmt(progress.exact_listed_rows)} / ${fmt(p.target_exact_listed_rows || 20)}</strong>
-    </div>
-    <div class="stat">
       <small>2026 IPOs tracked</small>
       <strong>${fmt(h.year_tracker_rows)}</strong>
     </div>`;
@@ -451,7 +447,7 @@ function renderProspective(p) {
 
   $("prospectiveStats").innerHTML = `
     <div class="stat">
-      <small>Exact captures</small>
+      <small>Checkpoint captures</small>
       <strong>${fmt(g.exact_captured_unique_ipos)}</strong>
     </div>
     <div class="stat">
@@ -481,7 +477,7 @@ function renderProspective(p) {
       <td>${esc(r.v1_outcome || "—")}</td>
       <td>${esc(r.v2_outcome || "—")}</td>
     </tr>`).join("") ||
-    `<tr><td colspan="9">No exact 2:30 PM samples yet.</td></tr>`;
+    `<tr><td colspan="9">No closing-day checkpoint samples yet.</td></tr>`;
 }
 
 function renderAudit(a) {

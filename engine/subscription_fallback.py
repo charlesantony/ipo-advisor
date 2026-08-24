@@ -503,14 +503,18 @@ def enforce_canonical_subscription_freshness(
     recommendation,
     ist,
     max_age_minutes=MAX_CANONICAL_SUBSCRIPTION_AGE_MINUTES,
+    force_checkpoint=False,
 ):
-    """Block an exact 2:30 capture when subscription evidence is too stale."""
+    """Block a closing-day checkpoint when subscription evidence is too stale."""
     rec = dict(recommendation or {})
     if not record.get("is_closing_today"):
         return rec
 
     minute = ist.hour * 60 + ist.minute
-    if not (14 * 60 + 28 <= minute <= 14 * 60 + 32):
+    if (
+        not force_checkpoint
+        and not (14 * 60 + 28 <= minute <= 14 * 60 + 32)
+    ):
         return rec
 
     validation = record.get("subscription_validation") or {}

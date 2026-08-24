@@ -745,11 +745,40 @@ def canonical_research_decisions():
         rows = conn.execute(
             """
             SELECT * FROM research_decisions
-            WHERE is_1430_decision_snapshot=1
+            WHERE
+                is_1430_decision_snapshot=1
+                OR (
+                    capture_reason='github_action_1430'
+                    AND is_closing_day=1
+                    AND action IN (
+                        'STRONG SUBSCRIBE',
+                        'SUBSCRIBE',
+                        'BORDERLINE',
+                        'AVOID'
+                    )
+                )
             ORDER BY created_at_utc DESC
             """
         ).fetchall()
-    return [dict(r) for r in rows]
+
+    out = []
+    for row in rows:
+        item = dict(row)
+        if (
+            item.get("capture_reason") == "github_action_1430"
+            and item.get("is_closing_day")
+            and item.get("action") in {
+                "STRONG SUBSCRIBE",
+                "SUBSCRIBE",
+                "BORDERLINE",
+                "AVOID",
+            }
+        ):
+            # Backward-compatible promotion for scheduled checkpoint rows
+            # saved before workflow-based checkpoint semantics were introduced.
+            item["is_1430_decision_snapshot"] = 1
+        out.append(item)
+    return out
 
 def dataset_summary():
     with connect() as conn:

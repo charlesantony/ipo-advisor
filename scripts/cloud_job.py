@@ -846,10 +846,15 @@ def main():
         if args.wait_until_1430:
             _wait_until_1430()
 
+        checkpoint_reason = (
+            "github_action_1430"
+            if os.environ.get("GITHUB_EVENT_NAME") == "schedule"
+            else "manual_1430"
+        )
         live, export = _capture_and_export(
             server, db, model_audit, shadow_v2,
             recommendation, prospective_tracker,
-            reason="github_action_1430",
+            reason=checkpoint_reason,
         )
         email_alert = _send_closing_email(live)
         result = {
