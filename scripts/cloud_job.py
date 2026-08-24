@@ -909,14 +909,27 @@ def main():
             year=2026,
             force_detail_refresh=False,
         )
+
+        # Never let the tracker/outcome job republish an older checked-in
+        # live.json over a newer Pages-only Live Refresh. Re-fetch current
+        # live data (including GMP/subscription fallbacks) before deployment.
+        live = server.fetch_normalized(
+            status="LIVE",
+            ipo_type="ALL",
+        )
         export = _export_static(
             db, model_audit, shadow_v2,
             recommendation,
             prospective_tracker,
+            live_payload=live,
         )
         result = {
             "mode": args.mode,
             "sync": sync,
+            "live_fetched_at_ist":
+                (export.get("live") or {}).get("fetched_at_ist"),
+            "live_records":
+                len((export.get("live") or {}).get("records") or []),
             "prospective_status":
                 export["prospective"].get("status"),
         }
