@@ -44,6 +44,15 @@ def _status_is_listed(row):
         or "listed" in str(row.get("status_text") or "").lower()
     )
 
+def _usable_gmp(value, quality=None):
+    try:
+        value = float(value)
+    except (TypeError, ValueError):
+        return False
+    if abs(value) < 1e-12 and str(quality or "") != "VERIFIED_ZERO_GMP":
+        return False
+    return True
+
 def _load_annual_rows(year):
     all_rows = []
     page_meta = []
@@ -134,7 +143,17 @@ def sync_year_tracker(year=2026, force_detail_refresh=False):
             if canonical_decision:
                 canonical_used += 1
                 decision_source = "CAPTURED_1430_IST"
-                gmp_used_pct = canonical_decision.get("gmp_input_pct")
+                raw_canonical_gmp = canonical_decision.get("gmp_input_pct")
+                if _usable_gmp(raw_canonical_gmp, "EXACT_LOCAL_1430_CAPTURE"):
+                    gmp_used_pct = raw_canonical_gmp
+                    gmp_quality = "EXACT_LOCAL_1430_CAPTURE"
+                else:
+                    gmp_used_pct = None
+                    gmp_quality = (
+                        "EXACT_1430_GMP_ZERO_UNVERIFIED"
+                        if raw_canonical_gmp is not None
+                        else "EXACT_1430_GMP_NOT_AVAILABLE"
+                    )
                 total_x = canonical_decision.get("total_subscription_x")
                 action = canonical_decision.get("action")
                 confidence = canonical_decision.get("research_confidence")
@@ -142,7 +161,6 @@ def sync_year_tracker(year=2026, force_detail_refresh=False):
                 gmp_pred = canonical_decision.get("gmp_prediction_pct")
                 sub_pred = canonical_decision.get("subscription_prediction_pct")
                 conflict = bool(canonical_decision.get("signal_conflict"))
-                gmp_quality = "EXACT_LOCAL_1430_CAPTURE"
                 gmp_used_at_ist = canonical_decision.get("created_at_ist")
                 try:
                     canonical_json = json.loads(
@@ -165,7 +183,10 @@ def sync_year_tracker(year=2026, force_detail_refresh=False):
                 if _status_is_listed(r):
                     if (
                         not force_detail_refresh
-                        and existing.get("gmp_used_pct") is not None
+                        and _usable_gmp(
+                            existing.get("gmp_used_pct"),
+                            existing.get("gmp_quality"),
+                        )
                         and str(existing.get("decision_source") or "").startswith("RETROSPECTIVE")
                     ):
                         gmp_used_pct = existing.get("gmp_used_pct")
@@ -195,6 +216,9 @@ def sync_year_tracker(year=2026, force_detail_refresh=False):
                                 name, r.get("detail_url"), str(exc)
                             )
 
+                    if gmp_used_pct is None and gmp_quality is None:
+                        gmp_quality = "RETROSPECTIVE_GMP_NOT_AVAILABLE"
+
                     decision_source = (
                         "RETROSPECTIVE_PRE1430_PROXY"
                         if gmp_used_pct is not None
@@ -203,9 +227,25 @@ def sync_year_tracker(year=2026, force_detail_refresh=False):
                     if gmp_used_pct is None:
                         sub_only_proxy += 1
                 else:
-                    gmp_used_pct = r.get("gmp_gain_pct")
-                    gmp_used_rupees = r.get("gmp_rupees")
-                    gmp_quality = "CURRENT_PROVIDER_STATE"
+                    row_gmp_state = str(r.get("gmp_state") or "")
+                    if (
+                        row_gmp_state == "OBSERVED"
+                        and _usable_gmp(
+                            r.get("gmp_gain_pct"),
+                            "CURRENT_PROVIDER_STATE",
+                        )
+                    ):
+                        gmp_used_pct = r.get("gmp_gain_pct")
+                        gmp_used_rupees = r.get("gmp_rupees")
+                        gmp_quality = "CURRENT_PROVIDER_STATE"
+                    else:
+                        gmp_used_pct = None
+                        gmp_used_rupees = None
+                        gmp_quality = (
+                            "CURRENT_GMP_ZERO_UNVERIFIED"
+                            if row_gmp_state == "UNVERIFIED_ZERO"
+                            else "CURRENT_GMP_NOT_AVAILABLE"
+                        )
                     decision_source = "CURRENT_DAILY_SIGNAL"
 
                 recommendation = engine.classify_proxy(
@@ -266,6 +306,7 @@ def sync_year_tracker(year=2026, force_detail_refresh=False):
                     "annual_row": r,
                     "decision_source": decision_source,
                     "gmp_quality": gmp_quality,
+                    "gmp_state": r.get("gmp_state"),
                 }, ensure_ascii=False),
             }
             output.append(item)

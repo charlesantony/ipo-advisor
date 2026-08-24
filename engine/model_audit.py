@@ -89,7 +89,7 @@ def call_outcome_label(action, gain):
             "LOSS": "BORDERLINE — LOSS",
         }[quality]
 
-    return quality
+    return "NOT EVALUABLE"
 
 def _row_for_json(r):
     keys = (

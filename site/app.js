@@ -211,6 +211,20 @@ function subscriptionEvidenceText(n) {
   return "";
 }
 
+function gmpDisplayText(value, quality="") {
+  if (hasObservedValue(value)) return fmt(value, "%");
+
+  const q = String(quality || "").toUpperCase();
+  if (
+    q.includes("ZERO_UNVERIFIED") ||
+    q.includes("NOT_AVAILABLE") ||
+    q === "VERIFIED_ABSENT"
+  ) {
+    return "Not available";
+  }
+  return "—";
+}
+
 function lockedDataMessage(n) {
   const v = n.subscription_validation || {};
   if (v.status === "ZERO_NOT_READY") {
@@ -364,7 +378,10 @@ function renderLive(data) {
           </div>
           <div class="metric">
             <small>Latest GMP</small>
-            <strong>${fmt(p.gmp_input_pct,"%")}</strong>
+            <strong>${esc(gmpDisplayText(
+              p.gmp_input_pct,
+              n.gmp_validation?.status || n.gmp_status || ""
+            ))}</strong>
           </div>
           <div class="metric">
             <small>Latest subscription</small>
@@ -410,7 +427,7 @@ function renderTracker(t) {
         </span>
       </td>
       <td>${fmt(publicPred,"%")}</td>
-      <td>${fmt(r.gmp_used_pct,"%")}</td>
+      <td>${esc(gmpDisplayText(r.gmp_used_pct, r.gmp_quality))}</td>
       <td>${fmt(r.total_x,"x")}</td>
       <td class="${trend(r.actual_listing_gain_pct)}">
         ${fmt(r.actual_listing_gain_pct,"%")}

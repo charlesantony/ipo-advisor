@@ -63,6 +63,24 @@ def _same_company(a, b):
     return len(shorter) >= 8 and shorter in longer
 
 
+def _is_zero(value):
+    try:
+        return abs(float(value)) < 1e-12
+    except (TypeError, ValueError):
+        return False
+
+
+def _gmp_state(value, gain_pct):
+    if value is None and gain_pct is None:
+        return "NOT_AVAILABLE"
+    if (
+        (_is_zero(value) and (gain_pct is None or _is_zero(gain_pct)))
+        or (_is_zero(gain_pct) and (value is None or _is_zero(value)))
+    ):
+        return "UNVERIFIED_ZERO"
+    return "OBSERVED"
+
+
 def _money(value):
     text = str(value or "").replace(",", "")
     m = re.search(
@@ -152,9 +170,11 @@ def _from_dashboard(name, price_high):
         value = _money(row[1])
         if value is None:
             return None
+        gain_pct = _gain_from_gmp(value, price_high, row)
         return {
             "gmp_value": value,
-            "gmp_gain_pct": _gain_from_gmp(value, price_high, row),
+            "gmp_gain_pct": gain_pct,
+            "gmp_state": _gmp_state(value, gain_pct),
             "gmp_date": datetime.now(IST).strftime("%d %B"),
             "source": IPOWATCH_DASHBOARD,
             "source_kind": "IPOWATCH_LATEST_DASHBOARD",
@@ -183,9 +203,11 @@ def _from_detail_page(url, price_high):
         value = _money(row[1])
         if value is None:
             continue
+        gain_pct = _gain_from_gmp(value, price_high, row)
         return {
             "gmp_value": value,
-            "gmp_gain_pct": _gain_from_gmp(value, price_high, row),
+            "gmp_gain_pct": gain_pct,
+            "gmp_state": _gmp_state(value, gain_pct),
             "gmp_date": row[0],
             "source": url,
             "source_kind": "IPOWATCH_DETAIL_PAGE",
@@ -198,8 +220,14 @@ def validate_or_fill_gmp(record):
     """Validate current GMP and fill it from IPOWatch when FinAPI omitted it."""
     item = dict(record or {})
     existing = item.get("gmp_gain_pct")
+    existing_value = item.get("gmp_value")
+    provider_zero_unverified = (
+        existing is not None
+        and _gmp_state(existing_value, existing) == "UNVERIFIED_ZERO"
+    )
 
-    if existing is not None:
+    if existing is not None and not provider_zero_unverified:
+        item["gmp_status"] = "VERIFIED"
         item["gmp_validation"] = {
             "complete": True,
             "status": "PROVIDER",
@@ -207,6 +235,12 @@ def validate_or_fill_gmp(record):
             "provider_gmp_missing": False,
         }
         return item
+
+    if provider_zero_unverified:
+        item["gmp_raw_value"] = existing_value
+        item["gmp_raw_gain_pct"] = existing
+        item["gmp_value"] = None
+        item["gmp_gain_pct"] = None
 
     validation = {
         "complete": False,
@@ -216,6 +250,7 @@ def validate_or_fill_gmp(record):
         "errors": [],
     }
     candidate = None
+    zero_candidate = None
     successful_fetch = False
 
     try:
@@ -224,6 +259,9 @@ def validate_or_fill_gmp(record):
             item.get("name"), item.get("price_high")
         )
         successful_fetch = True
+        if candidate and candidate.get("gmp_state") == "UNVERIFIED_ZERO":
+            zero_candidate = candidate
+            candidate = None
     except Exception as exc:
         validation["errors"].append(
             f"dashboard: {type(exc).__name__}: {exc}"
@@ -237,17 +275,48 @@ def validate_or_fill_gmp(record):
                 source, item.get("price_high")
             )
             successful_fetch = True
+            if candidate and candidate.get("gmp_state") == "UNVERIFIED_ZERO":
+                zero_candidate = candidate
+                candidate = None
         except Exception as exc:
             validation["errors"].append(
                 f"detail: {type(exc).__name__}: {exc}"
             )
 
-    if candidate is not None:
+    if candidate is None and zero_candidate is not None:
+        candidate = zero_candidate
+
+    if candidate is not None and candidate.get("gmp_state") == "UNVERIFIED_ZERO":
+        item["gmp_raw_value"] = candidate["gmp_value"]
+        item["gmp_raw_gain_pct"] = candidate["gmp_gain_pct"]
+        item["gmp_value"] = None
+        item["gmp_gain_pct"] = None
+        item["gmp_status"] = "NOT_AVAILABLE"
+        validation.update(
+            {
+                "complete": True,
+                "status": "ZERO_UNVERIFIED",
+                "source": candidate["source"],
+                "source_kind": candidate["source_kind"],
+                "raw_gmp_value": candidate["gmp_value"],
+                "raw_gmp_gain_pct": candidate["gmp_gain_pct"],
+            }
+        )
+        logger.warning(
+            "GMP_ZERO_TREATED_AS_UNAVAILABLE "
+            "name=%r raw_value=%s raw_gain_pct=%s source=%s",
+            item.get("name"),
+            candidate["gmp_value"],
+            candidate["gmp_gain_pct"],
+            candidate["source_kind"],
+        )
+    elif candidate is not None:
         item["gmp_value"] = candidate["gmp_value"]
         item["gmp_gain_pct"] = candidate["gmp_gain_pct"]
         item["gmp_date"] = candidate["gmp_date"]
         item["gmp_source"] = candidate["source"]
         item["gmp_fallback_source"] = candidate["source_kind"]
+        item["gmp_status"] = "VERIFIED"
 
         trends = list(item.get("gmp_trends") or [])
         trends.insert(
@@ -282,6 +351,9 @@ def validate_or_fill_gmp(record):
             candidate["source_kind"],
         )
     elif successful_fetch:
+        item["gmp_value"] = None
+        item["gmp_gain_pct"] = None
+        item["gmp_status"] = "NOT_AVAILABLE"
         validation.update(
             {
                 "complete": True,
@@ -294,6 +366,9 @@ def validate_or_fill_gmp(record):
             item.get("name"),
         )
     else:
+        item["gmp_value"] = None
+        item["gmp_gain_pct"] = None
+        item["gmp_status"] = "FETCH_INCOMPLETE"
         logger.warning(
             "GMP_FALLBACK_INCOMPLETE name=%r errors=%r",
             item.get("name"),

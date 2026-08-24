@@ -38,6 +38,28 @@ def _upper_price(s):
     nums = re.findall(r"[0-9]+(?:\.[0-9]+)?", str(s).replace(",", ""))
     return float(nums[-1]) if nums else None
 
+def _gmp_state(rupees, gain_pct):
+    def zero(v):
+        try:
+            return abs(float(v)) < 1e-12
+        except (TypeError, ValueError):
+            return False
+
+    if rupees is None and gain_pct is None:
+        return "NOT_AVAILABLE"
+    if (
+        (zero(rupees) and (gain_pct is None or zero(gain_pct)))
+        or (zero(gain_pct) and (rupees is None or zero(rupees)))
+    ):
+        return "UNVERIFIED_ZERO"
+    return "OBSERVED"
+
+def _sanitize_gmp(rupees, gain_pct):
+    state = _gmp_state(rupees, gain_pct)
+    if state == "UNVERIFIED_ZERO":
+        return None, None, state
+    return rupees, gain_pct, state
+
 def _date_from_text(s, default_year=DEFAULT_YEAR):
     if not s:
         return None
@@ -232,6 +254,12 @@ def parse_annual_page(body, archive_year=DEFAULT_YEAR, listed_only=True):
         if gmp_gain_pct is None and gmp_rupees is not None and issue_price:
             gmp_gain_pct = gmp_rupees / issue_price * 100.0
 
+        raw_gmp_rupees = gmp_rupees
+        raw_gmp_gain_pct = gmp_gain_pct
+        gmp_rupees, gmp_gain_pct, gmp_state = _sanitize_gmp(
+            gmp_rupees, gmp_gain_pct
+        )
+
         rows.append({
             "year": int(archive_year),
             "ipo_type": segment,
@@ -246,6 +274,9 @@ def parse_annual_page(body, archive_year=DEFAULT_YEAR, listed_only=True):
             "listing_gain_pct": listing_gain_pct,
             "gmp_rupees": gmp_rupees,
             "gmp_gain_pct": gmp_gain_pct,
+            "gmp_state": gmp_state,
+            "raw_gmp_rupees": raw_gmp_rupees,
+            "raw_gmp_gain_pct": raw_gmp_gain_pct,
             "raw_index": {
                 "company": company_cell["text"],
                 "status": status_text,
@@ -305,6 +336,14 @@ def parse_detail_page(body):
                     out["gmp_gain_pct"] = _percent(first[pct_idx]["text"])
             if out["gmp_gain_pct"] is not None or out["gmp_rupees"] is not None:
                 break
+
+    out["raw_gmp_rupees"] = out["gmp_rupees"]
+    out["raw_gmp_gain_pct"] = out["gmp_gain_pct"]
+    (
+        out["gmp_rupees"],
+        out["gmp_gain_pct"],
+        out["gmp_state"],
+    ) = _sanitize_gmp(out["gmp_rupees"], out["gmp_gain_pct"])
 
     # Subscription table: Category | Subscription | ...
     for table in parser.tables:
@@ -398,16 +437,24 @@ def parse_gmp_history_page(body):
             dt = _parse_ist_datetime(row[date_idx]["text"])
             if not dt:
                 continue
+            raw_rupees = (
+                _num(row[gmp_idx]["text"])
+                if gmp_idx is not None and gmp_idx < len(row) else None
+            )
+            raw_gain_pct = (
+                _percent(row[pct_idx]["text"])
+                if pct_idx is not None and pct_idx < len(row) else None
+            )
+            gmp_rupees, gmp_gain_pct, gmp_state = _sanitize_gmp(
+                raw_rupees, raw_gain_pct
+            )
             readings.append({
                 "at_ist": dt.isoformat(),
-                "gmp_rupees": (
-                    _num(row[gmp_idx]["text"])
-                    if gmp_idx is not None and gmp_idx < len(row) else None
-                ),
-                "gmp_gain_pct": (
-                    _percent(row[pct_idx]["text"])
-                    if pct_idx is not None and pct_idx < len(row) else None
-                ),
+                "gmp_rupees": gmp_rupees,
+                "gmp_gain_pct": gmp_gain_pct,
+                "gmp_state": gmp_state,
+                "raw_gmp_rupees": raw_rupees,
+                "raw_gmp_gain_pct": raw_gain_pct,
             })
 
         if readings:
@@ -475,6 +522,12 @@ def fetch_pre1430_gmp(detail_url, issue_close, save_raw=False):
     return {
         "url": url,
         "reading_count": len(readings),
+        "observed_count": sum(
+            1 for r in readings if r.get("gmp_state") == "OBSERVED"
+        ),
+        "zero_unverified_count": sum(
+            1 for r in readings if r.get("gmp_state") == "UNVERIFIED_ZERO"
+        ),
         "selected": select_pre1430_gmp(readings, issue_close),
     }
 

@@ -138,6 +138,10 @@ function trackerDisplayState(row, liveRecord=null) {
       signal,
       pred: signal.locked ? null : rec.primary_prediction_pct,
       gmp: preds.gmp_input_pct,
+      gmpQuality:
+        liveRecord.gmp_validation?.status ||
+        liveRecord.gmp_status ||
+        "",
       total: preds.total_subscription_x,
       confidence: signal.locked ? null : rec.research_confidence,
       source: "LIVE",
@@ -149,6 +153,7 @@ function trackerDisplayState(row, liveRecord=null) {
     signal,
     pred: signal.locked ? null : row.primary_prediction_pct,
     gmp: row.gmp_used_pct,
+    gmpQuality: row.gmp_quality || "",
     total: row.total_x,
     confidence: signal.locked ? null : row.model_confidence,
     source: row.decision_source || "TRACKER",
@@ -244,7 +249,7 @@ renderTracker = function(t) {
         </span>
       </td>
       <td>${fmt(d.pred,"%")}</td>
-      <td>${fmt(d.gmp,"%")}</td>
+      <td>${esc(gmpDisplayText(d.gmp, d.gmpQuality))}</td>
       <td>${fmt(d.total,"x")}</td>
       <td class="${trend(row.actual_listing_gain_pct)}">
         ${fmt(row.actual_listing_gain_pct,"%")}

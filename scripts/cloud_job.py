@@ -370,7 +370,11 @@ def _public_tracker_row(row):
         item["gmp_prediction_pct"] = None
         item["subscription_prediction_pct"] = None
         item["signal_conflict"] = 0
-        item["outcome_vs_call"] = None
+        item["outcome_vs_call"] = (
+            "NOT EVALUABLE"
+            if item.get("actual_listing_gain_pct") is not None
+            else None
+        )
 
     return item
 
