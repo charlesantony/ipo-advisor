@@ -67,6 +67,10 @@ function doPost(e) {
     return _subscribe(_param(e, "email"));
   }
 
+  if (action === "notify_batch") {
+    return _notifyBatch(e);
+  }
+
   if (action === "notify") {
     return _notify(e);
   }
@@ -178,6 +182,185 @@ function _sendConfirmation(email, token) {
     subject: "IPO Advisor email alerts — subscription confirmed",
     body: text
   });
+}
+
+function _notifyBatch(e) {
+  const suppliedKey = _param(e, "key");
+  const expectedKey = PropertiesService.getScriptProperties()
+    .getProperty(PROP_ALERT_KEY);
+
+  if (!expectedKey || suppliedKey !== expectedKey) {
+    return _json({ok: false, error: "Unauthorized"});
+  }
+
+  let alerts;
+  try {
+    alerts = JSON.parse(_param(e, "alerts_json") || "[]");
+  } catch (err) {
+    return _json({ok: false, error: "Invalid alerts_json"});
+  }
+  if (!Array.isArray(alerts) || !alerts.length) {
+    return _json({ok: false, error: "No alerts supplied"});
+  }
+
+  const batch = {
+    kind: (_param(e, "batch_kind") || "CLOSING").toUpperCase(),
+    date: _param(e, "batch_date"),
+    dashboardUrl: _param(e, "dashboard_url"),
+    alerts: alerts.map(_normalizeBatchAlert)
+  };
+
+  const subscribers = _activeSubscribers();
+  if (!subscribers.length) {
+    return _json({
+      ok: true, sent: 0, subscribers: 0,
+      alerts: batch.alerts.length,
+      message: "No active subscribers"
+    });
+  }
+
+  let remaining = MailApp.getRemainingDailyQuota();
+  let sent = 0;
+  const failed = [];
+  for (const email of subscribers) {
+    if (remaining <= 0) {
+      failed.push({email: email, error: "MailApp daily quota exhausted"});
+      continue;
+    }
+    try {
+      MailApp.sendEmail({
+        to: email,
+        subject: _batchSubject(batch),
+        body: _batchText(batch),
+        htmlBody: _batchHtml(batch)
+      });
+      sent++;
+      remaining--;
+    } catch (err) {
+      failed.push({email: email, error: String(err)});
+    }
+  }
+
+  return _json({
+    ok: failed.length === 0 && sent === subscribers.length,
+    sent: sent,
+    subscribers: subscribers.length,
+    alerts: batch.alerts.length,
+    failed: failed.length,
+    quota_remaining: remaining
+  });
+}
+
+function _normalizeBatchAlert(a) {
+  a = a || {};
+  return {
+    ipoName: String(a.name || "IPO"),
+    symbol: String(a.symbol || ""),
+    segment: String(a.segment || ""),
+    signal: String(a.signal || ""),
+    predictedGain: String(a.predicted_gain || "N/A"),
+    gmp: String(a.gmp || "N/A"),
+    totalSubscription: String(a.total_subscription || "N/A"),
+    closingDate: String(a.closing_date || ""),
+    alertKind: String(a.alert_kind || ""),
+    previousSignal: String(a.previous_signal || "")
+  };
+}
+
+function _displayDate(value) {
+  const m = String(value || "").match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!m) return String(value || "Date unavailable");
+  const months = [
+    "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+  ];
+  return Number(m[3]) + " " + (months[Number(m[2]) - 1] || m[2]) + " " + m[1];
+}
+
+function _batchSubject(batch) {
+  const date = _displayDate(batch.date);
+  return batch.kind === "DAY2"
+    ? "IPO Advisor — Day-2 Signals — " + date
+    : "IPO Advisor — Closing-Day Final Recommendations — " + date;
+}
+
+function _batchTitle(batch) {
+  return batch.kind === "DAY2"
+    ? "IPO Advisor — Day-2 Signals"
+    : "IPO Advisor — Closing-Day Final Recommendations";
+}
+
+function _signalChanged(a) {
+  return Boolean(
+    a.previousSignal && a.signal && a.previousSignal !== a.signal
+  );
+}
+
+function _batchText(batch) {
+  const lines = [_batchTitle(batch), "Date: " + _displayDate(batch.date), ""];
+  batch.alerts.forEach(function(a, index) {
+    const symbol = a.symbol ? " / " + a.symbol : "";
+    lines.push((index + 1) + ". " + a.ipoName + symbol + " (" + a.segment + ")");
+    lines.push(
+      "Recommendation: " + a.signal +
+      (_signalChanged(a) ? " (Day-2: " + a.previousSignal + ")" : "")
+    );
+    lines.push("Estimated listing gain: " + a.predictedGain);
+    lines.push("GMP: " + a.gmp);
+    lines.push("Total subscription: " + a.totalSubscription);
+    lines.push("Closing date: " + _displayDate(a.closingDate));
+    lines.push("");
+  });
+
+  lines.push(batch.kind === "DAY2"
+    ? "These are Day-2 research signals. The closing-day decision will be refreshed at the scheduled 2:30 PM IST checkpoint."
+    : "These are the closing-day checkpoint recommendations. If a Day-2 signal changed, the earlier signal is shown for comparison."
+  );
+  if (batch.dashboardUrl) {
+    lines.push("", "Dashboard: " + batch.dashboardUrl);
+  }
+  lines.push("", "Research signal only. This is not investment advice. Verify all IPO information independently before applying.");
+  return lines.join("\n");
+}
+
+function _batchHtml(batch) {
+  const rows = batch.alerts.map(function(a) {
+    const symbol = a.symbol
+      ? '<div style="font-size:11px;color:#667085">' + _html(a.symbol) + '</div>'
+      : "";
+    const previous = _signalChanged(a)
+      ? '<div style="font-size:11px;color:#667085">Day-2: ' + _html(a.previousSignal) + '</div>'
+      : "";
+    const cell = 'padding:8px;border-bottom:1px solid #e5e7eb;';
+    return '<tr>' +
+      '<td style="' + cell + '"><strong>' + _html(a.ipoName) + '</strong>' + symbol + '</td>' +
+      '<td style="' + cell + '">' + _html(a.segment) + '</td>' +
+      '<td style="' + cell + '"><strong>' + _html(a.signal || "NOT READY") + '</strong>' + previous + '</td>' +
+      '<td style="' + cell + 'white-space:nowrap">' + _html(a.predictedGain) + '</td>' +
+      '<td style="' + cell + 'white-space:nowrap">' + _html(a.gmp) + '</td>' +
+      '<td style="' + cell + 'white-space:nowrap">' + _html(a.totalSubscription) + '</td>' +
+      '<td style="' + cell + 'white-space:nowrap">' + _html(_displayDate(a.closingDate)) + '</td>' +
+      '</tr>';
+  }).join("");
+
+  const note = batch.kind === "DAY2"
+    ? "These are Day-2 research signals. The closing-day decision will be refreshed at the scheduled 2:30 PM IST checkpoint."
+    : "These are the closing-day checkpoint recommendations. If a Day-2 signal changed, the earlier signal is shown below the current recommendation.";
+  const dashboard = batch.dashboardUrl
+    ? '<p><a href="' + _html(batch.dashboardUrl) + '">Open IPO Advisor</a></p>'
+    : "";
+
+  return '<div style="font-family:Arial,sans-serif;line-height:1.45;color:#182230">' +
+    '<h2 style="margin-bottom:4px">' + _html(_batchTitle(batch)) + '</h2>' +
+    '<p style="margin-top:0;color:#667085">' + _html(_displayDate(batch.date)) + '</p>' +
+    '<div style="overflow-x:auto"><table style="border-collapse:collapse;width:100%;font-size:12px">' +
+    '<thead><tr style="background:#f7f9fb;text-align:left">' +
+    '<th style="padding:8px">IPO / Symbol</th><th style="padding:8px">Type</th>' +
+    '<th style="padding:8px">Recommendation</th><th style="padding:8px">Est. Gain</th>' +
+    '<th style="padding:8px">GMP</th><th style="padding:8px">Subscription</th>' +
+    '<th style="padding:8px">Closing Date</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
+    '<p style="margin-top:14px">' + _html(note) + '</p>' + dashboard +
+    '<hr><p style="font-size:12px;color:#666">Research signal only. This is an experimental tool, not investment advice. Verify all IPO information independently before applying.</p></div>';
 }
 
 function _notify(e) {

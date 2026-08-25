@@ -3,6 +3,10 @@ import os
 import urllib.error
 import urllib.parse
 import urllib.request
+from datetime import datetime
+from zoneinfo import ZoneInfo
+
+IST = ZoneInfo("Asia/Kolkata")
 
 
 def _f(value):
@@ -50,7 +54,31 @@ def _post_form(url, fields):
         return exc.code, body
 
 
+def _batch_kind(alerts):
+    kinds = {
+        str(a.get("alert_kind") or "").strip().upper()
+        for a in alerts
+    }
+    return "DAY2" if kinds == {"DAY2_EARLY"} else "CLOSING"
+
+
+def _wire_alert(alert):
+    return {
+        "name": alert.get("name") or "IPO",
+        "symbol": alert.get("symbol") or "",
+        "segment": alert.get("segment") or "",
+        "signal": alert.get("action") or "",
+        "predicted_gain": _fmt_pct(alert.get("predicted_gain_pct")),
+        "gmp": _fmt_pct(alert.get("gmp_gain_pct")),
+        "total_subscription": _fmt_x(alert.get("total_x")),
+        "closing_date": alert.get("end_date") or "",
+        "alert_kind": alert.get("alert_kind") or "CLOSING_DAY",
+        "previous_signal": alert.get("previous_signal") or "",
+    }
+
+
 def send_research_alerts(alerts, dashboard_url=""):
+    """Send one consolidated email payload per scheduled alert run."""
     endpoint = os.environ.get("SUBSCRIBE_ENDPOINT", "").strip()
     alert_key = os.environ.get("EMAIL_ALERT_KEY", "").strip()
 
@@ -70,47 +98,48 @@ def send_research_alerts(alerts, dashboard_url=""):
             "missing": missing,
         }
 
-    sent = 0
-    failed = 0
-    details = []
-
-    for alert in alerts:
-        fields = {
-            "action": "notify",
-            "key": alert_key,
-            "ipo_name": alert.get("name") or "IPO",
-            "segment": alert.get("segment") or "",
-            "signal": alert.get("action") or "",
-            "predicted_gain": _fmt_pct(alert.get("predicted_gain_pct")),
-            "gmp": _fmt_pct(alert.get("gmp_gain_pct")),
-            "total_subscription": _fmt_x(alert.get("total_x")),
-            "dashboard_url": dashboard_url or "",
-            "alert_kind": alert.get("alert_kind") or "CLOSING_DAY",
-            "previous_signal": alert.get("previous_signal") or "",
+    alerts = list(alerts or [])
+    if not alerts:
+        return {
+            "configured": True,
+            "alerts": 0,
+            "sent_alerts": 0,
+            "failed_alerts": 0,
+            "batch_sent": False,
         }
-        status, response = _post_form(endpoint, fields)
-        ok = 200 <= int(status) < 300 and response.get("ok", True) is not False
-        if ok:
-            sent += 1
-        else:
-            failed += 1
-        details.append({
-            "ipo": alert.get("name"),
-            "alert_kind": alert.get("alert_kind"),
-            "status": status,
-            "ok": ok,
-            "response": response,
-        })
-        print(
-            "EMAIL_ALERT_SEND "
-            f"kind={alert.get('alert_kind')!r} "
-            f"ipo={alert.get('name')!r} status={status} ok={ok}"
-        )
+
+    batch_kind = _batch_kind(alerts)
+    fields = {
+        "action": "notify_batch",
+        "key": alert_key,
+        "batch_kind": batch_kind,
+        "batch_date": datetime.now(IST).date().isoformat(),
+        "alerts_json": json.dumps(
+            [_wire_alert(a) for a in alerts],
+            ensure_ascii=False,
+            separators=(",", ":"),
+        ),
+        "dashboard_url": dashboard_url or "",
+    }
+
+    status, response = _post_form(endpoint, fields)
+    ok = (
+        200 <= int(status) < 300
+        and response.get("ok", True) is not False
+    )
+    print(
+        "EMAIL_ALERT_BATCH_SEND "
+        f"kind={batch_kind!r} alerts={len(alerts)} "
+        f"status={status} ok={ok}"
+    )
 
     return {
         "configured": True,
         "alerts": len(alerts),
-        "sent_alerts": sent,
-        "failed_alerts": failed,
-        "details": details,
+        "sent_alerts": len(alerts) if ok else 0,
+        "failed_alerts": 0 if ok else len(alerts),
+        "batch_sent": bool(ok),
+        "batch_kind": batch_kind,
+        "status": status,
+        "response": response,
     }

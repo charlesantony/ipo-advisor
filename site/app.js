@@ -402,6 +402,9 @@ function renderLive(data) {
           <div class="card-title">
             <h3>${esc(n.name || n.symbol || "IPO")}</h3>
             <div class="muted">${esc(n.type || "")}</div>
+            <div class="muted card-close-date">
+              Closes: ${esc(shortListedDate(n.end_date) || "—")}
+            </div>
           </div>
           <span
             class="action ${actionClass(publicAction)}"
