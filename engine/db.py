@@ -438,6 +438,38 @@ def latest_subscription_snapshot(symbol=None, name=None, end_date=None):
         row = conn.execute(sql, params).fetchone()
     return dict(row) if row else None
 
+
+def latest_gmp_snapshot(symbol=None, name=None, end_date=None):
+    """Newest previously observed non-zero GMP for this IPO."""
+    clauses = [
+        "gmp_gain_pct IS NOT NULL",
+        "ABS(gmp_gain_pct) > 0.000001",
+    ]
+    params = []
+
+    if symbol:
+        clauses.append("symbol=?")
+        params.append(symbol)
+    elif name:
+        clauses.append("name=?")
+        params.append(name)
+    else:
+        return None
+
+    if end_date:
+        clauses.append("end_date=?")
+        params.append(end_date)
+
+    where = " AND ".join(clauses)
+    sql = (
+        "SELECT * FROM snapshots WHERE "
+        + where
+        + " ORDER BY fetched_at_utc DESC LIMIT 1"
+    )
+    with connect() as conn:
+        row = conn.execute(sql, params).fetchone()
+    return dict(row) if row else None
+
 def save_snapshots(records, fetched_at_utc, fetched_at_ist, source="finapi",
                    capture_reason="manual", local_date=None, decision_window=False):
     with connect() as conn:

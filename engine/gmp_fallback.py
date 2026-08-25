@@ -216,8 +216,66 @@ def _from_detail_page(url, price_high):
     return None
 
 
-def validate_or_fill_gmp(record):
-    """Validate current GMP and fill it from IPOWatch when FinAPI omitted it."""
+def _parse_ist(value):
+    if not value:
+        return None
+    try:
+        dt = datetime.fromisoformat(str(value))
+    except (TypeError, ValueError):
+        return None
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=IST)
+    return dt.astimezone(IST)
+
+
+def _age_minutes(observed_at_ist, now_ist):
+    observed = _parse_ist(observed_at_ist)
+    current = _parse_ist(now_ist) or datetime.now(IST)
+    if observed is None:
+        return None
+    return max(
+        0.0,
+        round((current - observed).total_seconds() / 60.0, 1),
+    )
+
+
+def _previous_gmp_candidate(previous, now_ist, max_age_minutes):
+    if not previous:
+        return None
+
+    gain_pct = previous.get("gmp_gain_pct")
+    value = previous.get("gmp_value")
+    if (
+        gain_pct is None
+        or _gmp_state(value, gain_pct) != "OBSERVED"
+    ):
+        return None
+
+    observed = (
+        previous.get("fetched_at_ist")
+        or previous.get("created_at_ist")
+    )
+    age = _age_minutes(observed, now_ist)
+    if age is None or age > float(max_age_minutes):
+        return None
+
+    return {
+        "gmp_value": value,
+        "gmp_gain_pct": gain_pct,
+        "gmp_date": previous.get("gmp_date"),
+        "observed_at_ist": observed,
+        "age_minutes": age,
+        "source_kind": "LOCAL_LAST_KNOWN_GMP",
+    }
+
+
+def validate_or_fill_gmp(
+    record,
+    previous=None,
+    now_ist=None,
+    max_carry_age_minutes=120,
+):
+    """Validate current GMP, using a recent prior GMP only on fetch failure."""
     item = dict(record or {})
     existing = item.get("gmp_gain_pct")
     existing_value = item.get("gmp_value")
@@ -366,14 +424,69 @@ def validate_or_fill_gmp(record):
             item.get("name"),
         )
     else:
-        item["gmp_value"] = None
-        item["gmp_gain_pct"] = None
-        item["gmp_status"] = "FETCH_INCOMPLETE"
-        logger.warning(
-            "GMP_FALLBACK_INCOMPLETE name=%r errors=%r",
-            item.get("name"),
-            validation["errors"],
+        carried = _previous_gmp_candidate(
+            previous,
+            now_ist,
+            max_carry_age_minutes,
         )
+
+        if carried is not None:
+            item["gmp_value"] = carried["gmp_value"]
+            item["gmp_gain_pct"] = carried["gmp_gain_pct"]
+            item["gmp_date"] = carried.get("gmp_date")
+            item["gmp_source"] = carried["source_kind"]
+            item["gmp_fallback_source"] = carried["source_kind"]
+            item["gmp_status"] = "CARRIED_FORWARD"
+
+            trends = list(item.get("gmp_trends") or [])
+            trends.insert(
+                0,
+                {
+                    "date": carried.get("gmp_date"),
+                    "gmp": (
+                        f"₹{carried['gmp_value']:g}"
+                        if carried.get("gmp_value") is not None
+                        else None
+                    ),
+                    "gain": f"{float(carried['gmp_gain_pct']):.2f}%",
+                    "source": carried["source_kind"],
+                },
+            )
+            item["gmp_trends"] = trends
+
+            validation.update(
+                {
+                    "complete": True,
+                    "status": "CARRIED_FORWARD",
+                    "source": carried["source_kind"],
+                    "source_kind": carried["source_kind"],
+                    "observed_at_ist": carried["observed_at_ist"],
+                    "age_minutes": carried["age_minutes"],
+                    "gmp_value": carried["gmp_value"],
+                    "gmp_gain_pct": carried["gmp_gain_pct"],
+                    "fallback_errors": list(validation["errors"]),
+                    "max_carry_age_minutes": max_carry_age_minutes,
+                }
+            )
+            logger.warning(
+                "GMP_CARRY_FORWARD name=%r value=%s gain_pct=%s "
+                "observed_at=%s age_minutes=%s fallback_errors=%r",
+                item.get("name"),
+                carried["gmp_value"],
+                carried["gmp_gain_pct"],
+                carried["observed_at_ist"],
+                carried["age_minutes"],
+                validation["errors"],
+            )
+        else:
+            item["gmp_value"] = None
+            item["gmp_gain_pct"] = None
+            item["gmp_status"] = "FETCH_INCOMPLETE"
+            logger.warning(
+                "GMP_FALLBACK_INCOMPLETE name=%r errors=%r",
+                item.get("name"),
+                validation["errors"],
+            )
 
     item["gmp_validation"] = validation
     return item

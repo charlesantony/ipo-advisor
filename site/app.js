@@ -262,6 +262,13 @@ function gmpDisplayText(value, quality="") {
   return "—";
 }
 
+function gmpEvidenceText(n) {
+  const v = n.gmp_validation || {};
+  if (v.status !== "CARRIED_FORWARD") return "";
+  const age = relativeAge(v.observed_at_ist);
+  return age ? `Last known · ${age}` : "Last known value";
+}
+
 function lockedDataMessage(n) {
   const v = n.subscription_validation || {};
   if (v.status === "ZERO_NOT_READY") {
@@ -415,6 +422,9 @@ function renderLive(data) {
               p.gmp_input_pct,
               n.gmp_validation?.status || n.gmp_status || ""
             ))}</strong>
+            ${gmpEvidenceText(n)
+              ? `<div class="muted">${esc(gmpEvidenceText(n))}</div>`
+              : ""}
           </div>
           <div class="metric">
             <small>Latest subscription</small>

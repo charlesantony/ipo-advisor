@@ -11,7 +11,7 @@ from zoneinfo import ZoneInfo
 from collector import AutoCollector
 from db import (
     save_snapshots, recent_snapshots, dataset_summary, previous_snapshot,
-    latest_subscription_snapshot,
+    latest_subscription_snapshot, latest_gmp_snapshot,
     upsert_historical, historical_rows, upsert_historical_web, historical_web_rows,
     upsert_historical_gmp, historical_gmp_rows,
     upsert_historical_market, historical_market_rows, market_integrity_summary,
@@ -88,7 +88,17 @@ def fetch_normalized(status="LIVE", ipo_type="ALL"):
             normalized = []
             for raw in result["data"]:
                 n = normalize_ipo(raw)
-                n = validate_or_fill_gmp(n)
+
+                previous_gmp = latest_gmp_snapshot(
+                    symbol=n.get("symbol"),
+                    name=n.get("name"),
+                    end_date=n.get("end_date"),
+                )
+                n = validate_or_fill_gmp(
+                    n,
+                    previous=previous_gmp,
+                    now_ist=ist,
+                )
 
                 previous_sub = latest_subscription_snapshot(
                     symbol=n.get("symbol"),
