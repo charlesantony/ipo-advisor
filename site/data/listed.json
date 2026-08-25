@@ -1,12 +1,12 @@
 {
   "version": "listed-tracker-v1",
-  "generated_at_ist": "2026-08-25T10:35:57.408911+05:30",
+  "generated_at_ist": "2026-08-25T12:34:12.381528+05:30",
   "current_prices_as_of_ist": "2026-08-24T16:00:00+05:30",
   "summary": {
     "listed_records": 174,
     "market_identity_resolved": 108,
     "current_price_available": 102,
-    "unlock_schedule_available": 30
+    "unlock_schedule_available": 60
   },
   "records": [
     {
@@ -1680,10 +1680,55 @@
       "current_return_pct": 25.1,
       "current_price_as_of_ist": "2026-08-24T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-11-01",
+          "source_url": "https://ipomarkets.com/ipo/manipal-health-enterprises-ipo-r2jg7m9",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 68
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — holding above 20%",
+          "duration": "6 months",
+          "unlock_date": "2027-02-03",
+          "source_url": "https://ipomarkets.com/ipo/manipal-health-enterprises-ipo-r2jg7m9",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 162
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "6 months",
+          "unlock_date": "2027-02-03",
+          "source_url": "https://ipomarkets.com/ipo/manipal-health-enterprises-ipo-r2jg7m9",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 162
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — minimum contribution (20%)",
+          "duration": "18 months",
+          "unlock_date": "2028-02-03",
+          "source_url": "https://ipomarkets.com/ipo/manipal-health-enterprises-ipo-r2jg7m9",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 527
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — remaining 50%",
+        "duration": "90 days",
+        "unlock_date": "2026-11-01",
+        "source_url": "https://ipomarkets.com/ipo/manipal-health-enterprises-ipo-r2jg7m9",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 68
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-25T12:34:12.381528+05:30",
       "detail_url": "https://ipomarkets.com/ipo/manipal-health-enterprises-ipo-r2jg7m9"
     },
     {
@@ -1701,10 +1746,37 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-11-01",
+          "source_url": "https://ipomarkets.com/ipo/hr-hygiene-products-ipo-z1wb9vn",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 68
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-08-03",
+          "source_url": "https://ipomarkets.com/ipo/hr-hygiene-products-ipo-z1wb9vn",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 343
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — remaining 50%",
+        "duration": "90 days",
+        "unlock_date": "2026-11-01",
+        "source_url": "https://ipomarkets.com/ipo/hr-hygiene-products-ipo-z1wb9vn",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 68
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-25T12:34:12.381528+05:30",
       "detail_url": "https://ipomarkets.com/ipo/hr-hygiene-products-ipo-z1wb9vn"
     },
     {
@@ -1722,10 +1794,46 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — first 50%",
+          "duration": "30 days",
+          "unlock_date": "2026-08-29",
+          "source_url": "https://ipomarkets.com/ipo/poojaa-precision-engg-ipo-cbwjq65",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 4
+        },
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-10-29",
+          "source_url": "https://ipomarkets.com/ipo/poojaa-precision-engg-ipo-cbwjq65",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 65
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-07-31",
+          "source_url": "https://ipomarkets.com/ipo/poojaa-precision-engg-ipo-cbwjq65",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 340
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — first 50%",
+        "duration": "30 days",
+        "unlock_date": "2026-08-29",
+        "source_url": "https://ipomarkets.com/ipo/poojaa-precision-engg-ipo-cbwjq65",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 4
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-25T12:34:12.381528+05:30",
       "detail_url": "https://ipomarkets.com/ipo/poojaa-precision-engg-ipo-cbwjq65"
     },
     {
@@ -1743,10 +1851,28 @@
       "current_return_pct": 8.19,
       "current_price_as_of_ist": "2026-08-24T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-07-30",
+          "source_url": "https://ipomarkets.com/ipo/propshop-events-exhibitions-ipo-advn72n",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 339
+        }
+      ],
+      "next_unlock": {
+        "category": "PRE_IPO",
+        "label": "Non-promoter pre-issue shares",
+        "duration": "1 year",
+        "unlock_date": "2027-07-30",
+        "source_url": "https://ipomarkets.com/ipo/propshop-events-exhibitions-ipo-advn72n",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 339
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-25T12:34:12.381528+05:30",
       "detail_url": "https://ipomarkets.com/ipo/propshop-events-exhibitions-ipo-advn72n"
     },
     {
@@ -1764,10 +1890,28 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-07-30",
+          "source_url": "https://ipomarkets.com/ipo/advance-technoforge-ipo-b0ch5d6",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 339
+        }
+      ],
+      "next_unlock": {
+        "category": "PRE_IPO",
+        "label": "Non-promoter pre-issue shares",
+        "duration": "1 year",
+        "unlock_date": "2027-07-30",
+        "source_url": "https://ipomarkets.com/ipo/advance-technoforge-ipo-b0ch5d6",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 339
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-25T12:34:12.381528+05:30",
       "detail_url": "https://ipomarkets.com/ipo/advance-technoforge-ipo-b0ch5d6"
     },
     {
@@ -1785,10 +1929,46 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — first 50%",
+          "duration": "30 days",
+          "unlock_date": "2026-08-28",
+          "source_url": "https://ipomarkets.com/ipo/silverstorm-parks-resorts-ipo-sesencn",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 3
+        },
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-10-27",
+          "source_url": "https://ipomarkets.com/ipo/silverstorm-parks-resorts-ipo-sesencn",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 63
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-07-29",
+          "source_url": "https://ipomarkets.com/ipo/silverstorm-parks-resorts-ipo-sesencn",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 338
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — first 50%",
+        "duration": "30 days",
+        "unlock_date": "2026-08-28",
+        "source_url": "https://ipomarkets.com/ipo/silverstorm-parks-resorts-ipo-sesencn",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 3
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-25T12:34:12.381528+05:30",
       "detail_url": "https://ipomarkets.com/ipo/silverstorm-parks-resorts-ipo-sesencn"
     },
     {
@@ -1806,10 +1986,46 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — first 50%",
+          "duration": "30 days",
+          "unlock_date": "2026-08-28",
+          "source_url": "https://ipomarkets.com/ipo/cube-highways-trust-invit-h3dz20k",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 3
+        },
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-10-27",
+          "source_url": "https://ipomarkets.com/ipo/cube-highways-trust-invit-h3dz20k",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 63
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "6 months",
+          "unlock_date": "2027-01-29",
+          "source_url": "https://ipomarkets.com/ipo/cube-highways-trust-invit-h3dz20k",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 157
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — first 50%",
+        "duration": "30 days",
+        "unlock_date": "2026-08-28",
+        "source_url": "https://ipomarkets.com/ipo/cube-highways-trust-invit-h3dz20k",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 3
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-25T12:34:12.381528+05:30",
       "detail_url": "https://ipomarkets.com/ipo/cube-highways-trust-invit-h3dz20k"
     },
     {
@@ -1827,10 +2043,64 @@
       "current_return_pct": 32.36,
       "current_price_as_of_ist": "2026-08-24T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — first 50%",
+          "duration": "30 days",
+          "unlock_date": "2026-08-28",
+          "source_url": "https://ipomarkets.com/ipo/xtranet-technologies-ipo-a6rgsgb",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 3
+        },
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-10-26",
+          "source_url": "https://ipomarkets.com/ipo/xtranet-technologies-ipo-a6rgsgb",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 62
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — holding above 20%",
+          "duration": "6 months",
+          "unlock_date": "2027-01-28",
+          "source_url": "https://ipomarkets.com/ipo/xtranet-technologies-ipo-a6rgsgb",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 156
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "6 months",
+          "unlock_date": "2027-01-28",
+          "source_url": "https://ipomarkets.com/ipo/xtranet-technologies-ipo-a6rgsgb",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 156
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — minimum contribution (20%)",
+          "duration": "18 months",
+          "unlock_date": "2028-01-28",
+          "source_url": "https://ipomarkets.com/ipo/xtranet-technologies-ipo-a6rgsgb",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 521
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — first 50%",
+        "duration": "30 days",
+        "unlock_date": "2026-08-28",
+        "source_url": "https://ipomarkets.com/ipo/xtranet-technologies-ipo-a6rgsgb",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 3
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-25T12:34:12.381528+05:30",
       "detail_url": "https://ipomarkets.com/ipo/xtranet-technologies-ipo-a6rgsgb"
     },
     {
@@ -1848,10 +2118,46 @@
       "current_return_pct": 36.24,
       "current_price_as_of_ist": "2026-08-24T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — first 50%",
+          "duration": "30 days",
+          "unlock_date": "2026-08-26",
+          "source_url": "https://ipomarkets.com/ipo/lohia-corp-ipo-y857a99",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 1
+        },
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-10-26",
+          "source_url": "https://ipomarkets.com/ipo/lohia-corp-ipo-y857a99",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 62
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "6 months",
+          "unlock_date": "2027-01-28",
+          "source_url": "https://ipomarkets.com/ipo/lohia-corp-ipo-y857a99",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 156
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — first 50%",
+        "duration": "30 days",
+        "unlock_date": "2026-08-26",
+        "source_url": "https://ipomarkets.com/ipo/lohia-corp-ipo-y857a99",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 1
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-25T12:34:12.381528+05:30",
       "detail_url": "https://ipomarkets.com/ipo/lohia-corp-ipo-y857a99"
     },
     {
@@ -1869,10 +2175,64 @@
       "current_return_pct": 83.64,
       "current_price_as_of_ist": "2026-08-24T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — first 50%",
+          "duration": "30 days",
+          "unlock_date": "2026-08-26",
+          "source_url": "https://ipomarkets.com/ipo/indo-mim-ipo-sgv93vp",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 1
+        },
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-10-26",
+          "source_url": "https://ipomarkets.com/ipo/indo-mim-ipo-sgv93vp",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 62
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — holding above 20%",
+          "duration": "6 months",
+          "unlock_date": "2027-01-28",
+          "source_url": "https://ipomarkets.com/ipo/indo-mim-ipo-sgv93vp",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 156
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "6 months",
+          "unlock_date": "2027-01-28",
+          "source_url": "https://ipomarkets.com/ipo/indo-mim-ipo-sgv93vp",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 156
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — minimum contribution (20%)",
+          "duration": "18 months",
+          "unlock_date": "2028-01-28",
+          "source_url": "https://ipomarkets.com/ipo/indo-mim-ipo-sgv93vp",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 521
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — first 50%",
+        "duration": "30 days",
+        "unlock_date": "2026-08-26",
+        "source_url": "https://ipomarkets.com/ipo/indo-mim-ipo-sgv93vp",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 1
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-25T12:34:12.381528+05:30",
       "detail_url": "https://ipomarkets.com/ipo/indo-mim-ipo-sgv93vp"
     },
     {
@@ -1890,10 +2250,46 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — first 50%",
+          "duration": "30 days",
+          "unlock_date": "2026-08-25",
+          "source_url": "https://ipomarkets.com/ipo/shree-balaji-mala-ipo-r2qf73p",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 0
+        },
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-10-25",
+          "source_url": "https://ipomarkets.com/ipo/shree-balaji-mala-ipo-r2qf73p",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 61
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-07-27",
+          "source_url": "https://ipomarkets.com/ipo/shree-balaji-mala-ipo-r2qf73p",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 336
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — first 50%",
+        "duration": "30 days",
+        "unlock_date": "2026-08-25",
+        "source_url": "https://ipomarkets.com/ipo/shree-balaji-mala-ipo-r2qf73p",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 0
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-25T12:34:12.381528+05:30",
       "detail_url": "https://ipomarkets.com/ipo/shree-balaji-mala-ipo-r2qf73p"
     },
     {
@@ -1911,10 +2307,37 @@
       "current_return_pct": 80.52,
       "current_price_as_of_ist": "2026-08-24T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-10-22",
+          "source_url": "https://ipomarkets.com/ipo/metalic-technoforge-ipo-wka5pwn",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 58
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-07-24",
+          "source_url": "https://ipomarkets.com/ipo/metalic-technoforge-ipo-wka5pwn",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 333
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — remaining 50%",
+        "duration": "90 days",
+        "unlock_date": "2026-10-22",
+        "source_url": "https://ipomarkets.com/ipo/metalic-technoforge-ipo-wka5pwn",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 58
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-25T12:34:12.381528+05:30",
       "detail_url": "https://ipomarkets.com/ipo/metalic-technoforge-ipo-wka5pwn"
     },
     {
@@ -1932,10 +2355,28 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-07-23",
+          "source_url": "https://ipomarkets.com/ipo/gulf-lloyds-ipo-a0xve8k",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 332
+        }
+      ],
+      "next_unlock": {
+        "category": "PRE_IPO",
+        "label": "Non-promoter pre-issue shares",
+        "duration": "1 year",
+        "unlock_date": "2027-07-23",
+        "source_url": "https://ipomarkets.com/ipo/gulf-lloyds-ipo-a0xve8k",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 332
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-25T12:34:12.381528+05:30",
       "detail_url": "https://ipomarkets.com/ipo/gulf-lloyds-ipo-a0xve8k"
     },
     {
@@ -1953,10 +2394,55 @@
       "current_return_pct": 24.81,
       "current_price_as_of_ist": "2026-08-24T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-10-20",
+          "source_url": "https://ipomarkets.com/ipo/caliber-mining-ipo-n5hbabe",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 56
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — holding above 20%",
+          "duration": "6 months",
+          "unlock_date": "2027-01-22",
+          "source_url": "https://ipomarkets.com/ipo/caliber-mining-ipo-n5hbabe",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 150
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "6 months",
+          "unlock_date": "2027-01-22",
+          "source_url": "https://ipomarkets.com/ipo/caliber-mining-ipo-n5hbabe",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 150
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — minimum contribution (20%)",
+          "duration": "18 months",
+          "unlock_date": "2028-01-22",
+          "source_url": "https://ipomarkets.com/ipo/caliber-mining-ipo-n5hbabe",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 515
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — remaining 50%",
+        "duration": "90 days",
+        "unlock_date": "2026-10-20",
+        "source_url": "https://ipomarkets.com/ipo/caliber-mining-ipo-n5hbabe",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 56
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-25T12:34:12.381528+05:30",
       "detail_url": "https://ipomarkets.com/ipo/caliber-mining-ipo-n5hbabe"
     },
     {
@@ -1974,10 +2460,37 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-10-19",
+          "source_url": "https://ipomarkets.com/ipo/sotefin-bharat-ipo-n6ysamv",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 55
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-07-21",
+          "source_url": "https://ipomarkets.com/ipo/sotefin-bharat-ipo-n6ysamv",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 330
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — remaining 50%",
+        "duration": "90 days",
+        "unlock_date": "2026-10-19",
+        "source_url": "https://ipomarkets.com/ipo/sotefin-bharat-ipo-n6ysamv",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 55
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-25T12:34:12.381528+05:30",
       "detail_url": "https://ipomarkets.com/ipo/sotefin-bharat-ipo-n6ysamv"
     },
     {
@@ -1995,10 +2508,37 @@
       "current_return_pct": -5.85,
       "current_price_as_of_ist": "2026-08-24T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-10-15",
+          "source_url": "https://ipomarkets.com/ipo/sbi-funds-management-ipo-p1r0agy",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 51
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "6 months",
+          "unlock_date": "2027-01-17",
+          "source_url": "https://ipomarkets.com/ipo/sbi-funds-management-ipo-p1r0agy",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 145
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — remaining 50%",
+        "duration": "90 days",
+        "unlock_date": "2026-10-15",
+        "source_url": "https://ipomarkets.com/ipo/sbi-funds-management-ipo-p1r0agy",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 51
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-25T12:34:12.381528+05:30",
       "detail_url": "https://ipomarkets.com/ipo/sbi-funds-management-ipo-p1r0agy"
     },
     {
@@ -2016,10 +2556,37 @@
       "current_return_pct": -37.92,
       "current_price_as_of_ist": "2026-08-24T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-10-15",
+          "source_url": "https://ipomarkets.com/ipo/millworks-technologies-ipo-j37krye",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 51
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-07-17",
+          "source_url": "https://ipomarkets.com/ipo/millworks-technologies-ipo-j37krye",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 326
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — remaining 50%",
+        "duration": "90 days",
+        "unlock_date": "2026-10-15",
+        "source_url": "https://ipomarkets.com/ipo/millworks-technologies-ipo-j37krye",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 51
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-25T12:34:12.381528+05:30",
       "detail_url": "https://ipomarkets.com/ipo/millworks-technologies-ipo-j37krye"
     },
     {
@@ -2037,10 +2604,46 @@
       "current_return_pct": -45.25,
       "current_price_as_of_ist": "2026-08-24T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — holding above 20%",
+          "duration": "6 months",
+          "unlock_date": "2027-01-17",
+          "source_url": "https://ipomarkets.com/ipo/alpine-texworld-ipo-payz7ke",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 145
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "6 months",
+          "unlock_date": "2027-01-17",
+          "source_url": "https://ipomarkets.com/ipo/alpine-texworld-ipo-payz7ke",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 145
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — minimum contribution (20%)",
+          "duration": "18 months",
+          "unlock_date": "2028-01-17",
+          "source_url": "https://ipomarkets.com/ipo/alpine-texworld-ipo-payz7ke",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 510
+        }
+      ],
+      "next_unlock": {
+        "category": "PROMOTER",
+        "label": "Promoter — holding above 20%",
+        "duration": "6 months",
+        "unlock_date": "2027-01-17",
+        "source_url": "https://ipomarkets.com/ipo/alpine-texworld-ipo-payz7ke",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 145
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-25T12:34:12.381528+05:30",
       "detail_url": "https://ipomarkets.com/ipo/alpine-texworld-ipo-payz7ke"
     },
     {
@@ -2058,10 +2661,55 @@
       "current_return_pct": 56.07,
       "current_price_as_of_ist": "2026-08-24T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-10-12",
+          "source_url": "https://ipomarkets.com/ipo/laser-power-infra-ipo-mfx0gg3",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 48
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — holding above 20%",
+          "duration": "6 months",
+          "unlock_date": "2027-01-14",
+          "source_url": "https://ipomarkets.com/ipo/laser-power-infra-ipo-mfx0gg3",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 142
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "6 months",
+          "unlock_date": "2027-01-14",
+          "source_url": "https://ipomarkets.com/ipo/laser-power-infra-ipo-mfx0gg3",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 142
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — minimum contribution (20%)",
+          "duration": "18 months",
+          "unlock_date": "2028-01-14",
+          "source_url": "https://ipomarkets.com/ipo/laser-power-infra-ipo-mfx0gg3",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 507
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — remaining 50%",
+        "duration": "90 days",
+        "unlock_date": "2026-10-12",
+        "source_url": "https://ipomarkets.com/ipo/laser-power-infra-ipo-mfx0gg3",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 48
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-25T12:34:12.381528+05:30",
       "detail_url": "https://ipomarkets.com/ipo/laser-power-infra-ipo-mfx0gg3"
     },
     {
@@ -2079,10 +2727,37 @@
       "current_return_pct": 54.24,
       "current_price_as_of_ist": "2026-08-24T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-10-12",
+          "source_url": "https://ipomarkets.com/ipo/happy-steels-ipo-fdqkttb",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 48
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-07-14",
+          "source_url": "https://ipomarkets.com/ipo/happy-steels-ipo-fdqkttb",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 323
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — remaining 50%",
+        "duration": "90 days",
+        "unlock_date": "2026-10-12",
+        "source_url": "https://ipomarkets.com/ipo/happy-steels-ipo-fdqkttb",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 48
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-25T12:34:12.381528+05:30",
       "detail_url": "https://ipomarkets.com/ipo/happy-steels-ipo-fdqkttb"
     },
     {
@@ -2100,10 +2775,37 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-10-12",
+          "source_url": "https://ipomarkets.com/ipo/devson-catalyst-ipo-s4s7grm",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 48
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-07-14",
+          "source_url": "https://ipomarkets.com/ipo/devson-catalyst-ipo-s4s7grm",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 323
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — remaining 50%",
+        "duration": "90 days",
+        "unlock_date": "2026-10-12",
+        "source_url": "https://ipomarkets.com/ipo/devson-catalyst-ipo-s4s7grm",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 48
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-25T12:34:12.381528+05:30",
       "detail_url": "https://ipomarkets.com/ipo/devson-catalyst-ipo-s4s7grm"
     },
     {
@@ -2121,10 +2823,37 @@
       "current_return_pct": 44.65,
       "current_price_as_of_ist": "2026-08-24T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-10-11",
+          "source_url": "https://ipomarkets.com/ipo/kusumgar-ipo-kk61zar",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 47
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "6 months",
+          "unlock_date": "2027-01-13",
+          "source_url": "https://ipomarkets.com/ipo/kusumgar-ipo-kk61zar",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 141
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — remaining 50%",
+        "duration": "90 days",
+        "unlock_date": "2026-10-11",
+        "source_url": "https://ipomarkets.com/ipo/kusumgar-ipo-kk61zar",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 47
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-25T12:34:12.381528+05:30",
       "detail_url": "https://ipomarkets.com/ipo/kusumgar-ipo-kk61zar"
     },
     {
@@ -2142,10 +2871,37 @@
       "current_return_pct": 40.05,
       "current_price_as_of_ist": "2026-08-24T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-10-06",
+          "source_url": "https://ipomarkets.com/ipo/ic-electricals-ipo-yd1adj8",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 42
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-07-08",
+          "source_url": "https://ipomarkets.com/ipo/ic-electricals-ipo-yd1adj8",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 317
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — remaining 50%",
+        "duration": "90 days",
+        "unlock_date": "2026-10-06",
+        "source_url": "https://ipomarkets.com/ipo/ic-electricals-ipo-yd1adj8",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 42
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-25T12:34:12.381528+05:30",
       "detail_url": "https://ipomarkets.com/ipo/ic-electricals-ipo-yd1adj8"
     },
     {
@@ -2163,10 +2919,55 @@
       "current_return_pct": 18.71,
       "current_price_as_of_ist": "2026-08-24T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-10-04",
+          "source_url": "https://ipomarkets.com/ipo/knack-packaging-ipo-ksstgvn",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 40
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "6 months",
+          "unlock_date": "2027-01-06",
+          "source_url": "https://ipomarkets.com/ipo/knack-packaging-ipo-ksstgvn",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 134
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — holding above 20%",
+          "duration": "1 year",
+          "unlock_date": "2027-07-06",
+          "source_url": "https://ipomarkets.com/ipo/knack-packaging-ipo-ksstgvn",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 315
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — minimum contribution (20%)",
+          "duration": "3 years",
+          "unlock_date": "2029-07-06",
+          "source_url": "https://ipomarkets.com/ipo/knack-packaging-ipo-ksstgvn",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 1046
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — remaining 50%",
+        "duration": "90 days",
+        "unlock_date": "2026-10-04",
+        "source_url": "https://ipomarkets.com/ipo/knack-packaging-ipo-ksstgvn",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 40
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-25T12:34:12.381528+05:30",
       "detail_url": "https://ipomarkets.com/ipo/knack-packaging-ipo-ksstgvn"
     },
     {
@@ -2184,10 +2985,28 @@
       "current_return_pct": -58.39,
       "current_price_as_of_ist": "2026-08-24T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-07-03",
+          "source_url": "https://ipomarkets.com/ipo/vinit-mobile-ipo-gkvwx1m",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 312
+        }
+      ],
+      "next_unlock": {
+        "category": "PRE_IPO",
+        "label": "Non-promoter pre-issue shares",
+        "duration": "1 year",
+        "unlock_date": "2027-07-03",
+        "source_url": "https://ipomarkets.com/ipo/vinit-mobile-ipo-gkvwx1m",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 312
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-25T12:34:12.381528+05:30",
       "detail_url": "https://ipomarkets.com/ipo/vinit-mobile-ipo-gkvwx1m"
     },
     {
@@ -2205,10 +3024,28 @@
       "current_return_pct": 44.48,
       "current_price_as_of_ist": "2026-08-24T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-07-03",
+          "source_url": "https://ipomarkets.com/ipo/teja-engineering-industries-ipo-q2exmvf",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 312
+        }
+      ],
+      "next_unlock": {
+        "category": "PRE_IPO",
+        "label": "Non-promoter pre-issue shares",
+        "duration": "1 year",
+        "unlock_date": "2027-07-03",
+        "source_url": "https://ipomarkets.com/ipo/teja-engineering-industries-ipo-q2exmvf",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 312
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-25T12:34:12.381528+05:30",
       "detail_url": "https://ipomarkets.com/ipo/teja-engineering-industries-ipo-q2exmvf"
     },
     {
@@ -2226,10 +3063,28 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-07-03",
+          "source_url": "https://ipomarkets.com/ipo/seemax-resources-ipo-xctm32a",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 312
+        }
+      ],
+      "next_unlock": {
+        "category": "PRE_IPO",
+        "label": "Non-promoter pre-issue shares",
+        "duration": "1 year",
+        "unlock_date": "2027-07-03",
+        "source_url": "https://ipomarkets.com/ipo/seemax-resources-ipo-xctm32a",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 312
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-25T12:34:12.381528+05:30",
       "detail_url": "https://ipomarkets.com/ipo/seemax-resources-ipo-xctm32a"
     },
     {
@@ -2247,10 +3102,37 @@
       "current_return_pct": -23.93,
       "current_price_as_of_ist": "2026-08-24T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-10-01",
+          "source_url": "https://ipomarkets.com/ipo/sampark-india-logistics-ipo-c2etmpg",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 37
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-07-03",
+          "source_url": "https://ipomarkets.com/ipo/sampark-india-logistics-ipo-c2etmpg",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 312
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — remaining 50%",
+        "duration": "90 days",
+        "unlock_date": "2026-10-01",
+        "source_url": "https://ipomarkets.com/ipo/sampark-india-logistics-ipo-c2etmpg",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 37
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-25T12:34:12.381528+05:30",
       "detail_url": "https://ipomarkets.com/ipo/sampark-india-logistics-ipo-c2etmpg"
     },
     {
@@ -2268,10 +3150,37 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-10-01",
+          "source_url": "https://ipomarkets.com/ipo/kratikal-tech-ipo-t0rcepb",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 37
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-07-03",
+          "source_url": "https://ipomarkets.com/ipo/kratikal-tech-ipo-t0rcepb",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 312
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — remaining 50%",
+        "duration": "90 days",
+        "unlock_date": "2026-10-01",
+        "source_url": "https://ipomarkets.com/ipo/kratikal-tech-ipo-t0rcepb",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 37
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-25T12:34:12.381528+05:30",
       "detail_url": "https://ipomarkets.com/ipo/kratikal-tech-ipo-t0rcepb"
     },
     {
@@ -2289,10 +3198,37 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-10-01",
+          "source_url": "https://ipomarkets.com/ipo/atharva-polyplast-ipo-jb47e6v",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 37
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-07-03",
+          "source_url": "https://ipomarkets.com/ipo/atharva-polyplast-ipo-jb47e6v",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 312
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — remaining 50%",
+        "duration": "90 days",
+        "unlock_date": "2026-10-01",
+        "source_url": "https://ipomarkets.com/ipo/atharva-polyplast-ipo-jb47e6v",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 37
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-25T12:34:12.381528+05:30",
       "detail_url": "https://ipomarkets.com/ipo/atharva-polyplast-ipo-jb47e6v"
     },
     {
