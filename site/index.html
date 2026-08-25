@@ -61,9 +61,9 @@
 
     <nav class="tabs">
       <button class="tab active" data-tab="live">Live IPOs</button>
-      <button class="tab" data-tab="tracker">2026 Tracker</button>
+      <button class="tab" data-tab="tracker">IPO Tracker</button>
+      <button class="tab" data-tab="listed">Listed IPOs</button>
       <button class="tab" data-tab="prospective">Prospective</button>
-      <button class="tab" data-tab="audit">Model Audit</button>
     </nav>
 
     <section id="tab-live" class="tabpane active">
@@ -79,10 +79,10 @@
     <section id="tab-tracker" class="tabpane">
       <div class="section-head">
         <div>
-          <h2>2026 prediction vs listing result</h2>
+          <h2>IPO Tracker</h2>
           <p class="muted">
-            Uses the latest live market data while an IPO is active, then retains
-            the closing-day 2:30 PM research signal for listing comparison.
+            Tracks the research signal through the IPO lifecycle and compares
+            the retained closing-day checkpoint with the eventual listing result.
           </p>
         </div>
       </div>
@@ -96,6 +96,32 @@
             </tr>
           </thead>
           <tbody id="trackerBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="tab-listed" class="tabpane">
+      <div class="section-head">
+        <div>
+          <h2>Listed IPOs</h2>
+          <p id="listedUpdated" class="muted">
+            Tracking issue, listing and latest market prices with upcoming share unlocks.
+          </p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="listed-table">
+          <thead>
+            <tr>
+              <th>IPO / Symbol</th>
+              <th>Type</th>
+              <th>Issue Price</th>
+              <th>Listing Price</th>
+              <th>Current Price</th>
+              <th>Unlock Events</th>
+            </tr>
+          </thead>
+          <tbody id="listedBody"></tbody>
         </table>
       </div>
     </section>
@@ -122,15 +148,6 @@
           <tbody id="prospectiveBody"></tbody>
         </table>
       </div>
-    </section>
-
-    <section id="tab-audit" class="tabpane">
-      <h2>Model audit</h2>
-      <div id="auditSummary" class="stats small"></div>
-      <h3>SME V2 shadow</h3>
-      <div id="shadowSummary" class="panel"></div>
-      <h3>2025 cross-check</h3>
-      <div id="crosscheckSummary" class="panel"></div>
     </section>
 
     <footer>

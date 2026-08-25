@@ -451,3 +451,63 @@ footer {
     padding:6px 8px;
   }
 }
+
+/* v0.5.17 Listed IPOs */
+.listed-table {
+  min-width: 920px;
+}
+
+.listed-table .price-cell {
+  white-space: nowrap;
+  font-weight: 700;
+}
+
+.listed-symbol {
+  margin-top: 3px;
+  font-size: 11px;
+}
+
+.unlock-cell {
+  min-width: 260px;
+}
+
+.unlock-next {
+  line-height: 1.35;
+}
+
+.unlock-next > div,
+.unlock-event > div {
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.unlock-details {
+  margin-top: 7px;
+  color: var(--muted);
+}
+
+.unlock-details summary {
+  cursor: pointer;
+  color: var(--blue);
+  font-weight: 700;
+}
+
+.unlock-list {
+  margin-top: 7px;
+  padding-top: 7px;
+  border-top: 1px solid #edf0f3;
+}
+
+.unlock-event {
+  padding: 5px 0;
+}
+
+.unlock-event + .unlock-event {
+  border-top: 1px solid #f0f2f5;
+}
+
+@media(max-width:600px) {
+  .listed-table {
+    min-width: 850px;
+  }
+}

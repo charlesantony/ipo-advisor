@@ -277,4 +277,5 @@ rerenderLiveView = function() {
   );
   renderLive(publicLive);
   renderTracker(dashboardState.tracker);
+  renderListed(dashboardState.listed);
 };

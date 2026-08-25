@@ -14,6 +14,43 @@ const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({
 
 const trend = v => Number(v) > 0 ? "pos" : Number(v) < 0 ? "neg" : "";
 
+const money = v => {
+  if (v === null || v === undefined || v === "") return "—";
+  const n = Number(v);
+  if (!Number.isFinite(n)) return String(v);
+  return `₹${n.toLocaleString("en-IN", {
+    minimumFractionDigits: Number.isInteger(n) ? 0 : 2,
+    maximumFractionDigits: 2,
+  })}`;
+};
+
+function signedPct(value) {
+  if (value === null || value === undefined || value === "") return "";
+  const n = Number(value);
+  if (!Number.isFinite(n)) return "";
+  return `${n > 0 ? "+" : ""}${n.toFixed(2).replace(/\.00$/, "")}%`;
+}
+
+function priceWithReturn(price, returnPct) {
+  const priceText = money(price);
+  if (priceText === "—" || !hasObservedValue(returnPct)) return esc(priceText);
+  const pct = Number(returnPct);
+  const klass = Number.isFinite(pct) ? trend(pct) : "";
+  return `${esc(priceText)} <span class="${klass}">(${esc(signedPct(returnPct))})</span>`;
+}
+
+function shortListedDate(dateKey) {
+  if (!dateKey) return "";
+  const d = new Date(`${dateKey}T00:00:00+05:30`);
+  if (Number.isNaN(d.getTime())) return String(dateKey);
+  return new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Asia/Kolkata",
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  }).format(d);
+}
+
 const actionClass = a => ({
   "STRONG SUBSCRIBE":"strong",
   "SUBSCRIBE":"subscribe",
@@ -323,7 +360,7 @@ function renderHealth(h, p, live) {
       <strong>${fmt(selectedToday)}</strong>
     </div>
     <div class="stat">
-      <small>2026 IPOs tracked</small>
+      <small>IPOs tracked</small>
       <strong>${fmt(h.year_tracker_rows)}</strong>
     </div>`;
 
@@ -434,6 +471,84 @@ function renderTracker(t) {
     `<tr><td colspan="9">No tracker rows yet.</td></tr>`;
 }
 
+function unlockEventsHtml(row) {
+  const events = row.unlock_events || [];
+  if (!events.length) {
+    const label = row.unlock_status === "PENDING_DISCOVERY"
+      ? "Checking unlock schedule…"
+      : (row.unlock_status === "AVAILABLE"
+          ? "No upcoming unlocks"
+          : "Not available");
+    return `<span class="muted">${esc(label)}</span>`;
+  }
+
+  const next = events[0];
+  const days = Number(next.days_remaining);
+  const dayText = Number.isFinite(days)
+    ? (days === 0 ? "Today" : `${days} day${days === 1 ? "" : "s"}`)
+    : "";
+  const nextHtml = `
+    <div class="unlock-next">
+      <strong>${esc(next.label || "Unlock")}</strong>
+      <div>${esc(shortListedDate(next.unlock_date))}${dayText ? ` · ${esc(dayText)}` : ""}</div>
+    </div>`;
+
+  if (events.length === 1) return nextHtml;
+
+  const rest = events.map(event => {
+    const remaining = Number(event.days_remaining);
+    const remainingText = Number.isFinite(remaining)
+      ? (remaining === 0 ? "Today" : `${remaining} day${remaining === 1 ? "" : "s"}`)
+      : "";
+    return `
+      <div class="unlock-event">
+        <strong>${esc(event.label || "Unlock")}</strong>
+        <div>${esc(shortListedDate(event.unlock_date))}${remainingText ? ` · ${esc(remainingText)}` : ""}</div>
+      </div>`;
+  }).join("");
+
+  return `${nextHtml}
+    <details class="unlock-details">
+      <summary>View all ${events.length} events</summary>
+      <div class="unlock-list">${rest}</div>
+    </details>`;
+}
+
+function renderListed(data) {
+  const records = data.records || [];
+  const summary = data.summary || {};
+  const asOf = data.current_prices_as_of_ist || data.generated_at_ist;
+
+  $("listedUpdated").textContent = asOf
+    ? `Latest price snapshot: ${formatIstTimestamp(asOf)} · ` +
+      `${fmt(summary.current_price_available)} of ${fmt(summary.listed_records)} prices available`
+    : "Waiting for listed-market data…";
+
+  $("listedBody").innerHTML = records.map(row => `
+    <tr>
+      <td>
+        <strong>${esc(row.name || "IPO")}</strong>
+        <div class="muted listed-symbol">
+          ${esc(row.symbol || "Symbol not available")}
+          ${row.market ? ` · ${esc(row.market)}` : ""}
+        </div>
+      </td>
+      <td>${esc(row.ipo_type || "—")}</td>
+      <td class="price-cell">${esc(money(row.issue_price))}</td>
+      <td class="price-cell">
+        ${priceWithReturn(row.listing_price, row.listing_return_pct)}
+      </td>
+      <td class="price-cell">
+        ${priceWithReturn(row.current_price, row.current_return_pct)}
+      </td>
+      <td class="unlock-cell">${unlockEventsHtml(row)}</td>
+    </tr>
+  `).join("") || `
+    <tr>
+      <td colspan="6">No listed IPO records are available yet.</td>
+    </tr>`;
+}
+
 function renderProspective(p) {
   const g = p.progress || {};
   $("prospectiveStatus").innerHTML = `
@@ -478,42 +593,6 @@ function renderProspective(p) {
       <td>${esc(r.v2_outcome || "—")}</td>
     </tr>`).join("") ||
     `<tr><td colspan="9">No closing-day checkpoint samples yet.</td></tr>`;
-}
-
-function renderAudit(a) {
-  const o = a.overall?.overall || {};
-  $("auditSummary").innerHTML = `
-    <div class="stat">
-      <small>Listed rows</small><strong>${fmt(o.listed_rows)}</strong>
-    </div>
-    <div class="stat">
-      <small>Positive rate</small><strong>${fmt(o.positive_rate_pct,"%")}</strong>
-    </div>
-    <div class="stat">
-      <small>≥20% rate</small><strong>${fmt(o.ge_20_rate_pct,"%")}</strong>
-    </div>
-    <div class="stat">
-      <small>MAE</small><strong>${fmt(o.mae_pp," pp")}</strong>
-    </div>`;
-
-  const d = a.shadow_v2?.discovery_2026 || {};
-  const dp = d.triggered_performance || {};
-  $("shadowSummary").innerHTML = `
-    Triggers: <strong>${fmt(dp.count)}</strong> ·
-    ≥20% hit: <strong>${fmt(dp.ge_20_rate_pct,"%")}</strong> ·
-    Avg gain: <strong>${fmt(dp.avg_gain_pct,"%")}</strong> ·
-    Worst: <strong>${fmt(dp.worst_gain_pct,"%")}</strong> ·
-    Major winners recovered:
-    <strong>${fmt(d.recovered_major_winners)} / ${fmt(d.v1_missed_major_winners)}</strong>`;
-
-  const c = a.shadow_v2?.historical_crosscheck_2025 || {};
-  const cp = c.triggered_performance || {};
-  $("crosscheckSummary").innerHTML = `
-    Available SME rows: <strong>${fmt(c.available_2025_sme_rows)}</strong> ·
-    Triggers: <strong>${fmt(cp.count)}</strong> ·
-    Positive: <strong>${fmt(cp.positive_rate_pct,"%")}</strong> ·
-    ≥20%: <strong>${fmt(cp.ge_20_rate_pct,"%")}</strong> ·
-    Avg gain: <strong>${fmt(cp.avg_gain_pct,"%")}</strong>`;
 }
 
 function setupSubscription(config) {
@@ -591,8 +670,8 @@ function setupSubscription(config) {
 const dashboardState = {
   live: {records: []},
   tracker: {rows: []},
+  listed: {records: [], summary: {}},
   prospective: {progress: {}, samples: []},
-  audit: {},
   health: {},
   config: {subscription_endpoint: ""},
 };
@@ -607,39 +686,41 @@ function rerenderLiveView() {
 }
 
 async function refreshLiveView() {
-  const live = await loadJson(
-    "data/live.json",
-    dashboardState.live
-  );
+  const [live, listed] = await Promise.all([
+    loadJson("data/live.json", dashboardState.live),
+    loadJson("data/listed.json", dashboardState.listed),
+  ]);
   dashboardState.live = live;
+  dashboardState.listed = listed;
   rerenderLiveView();
+  renderListed(dashboardState.listed);
 }
 
 async function main() {
   setupTabs();
 
   const [
-    live, tracker, prospective, audit, health, config
+    live, tracker, listed, prospective, health, config
   ] = await Promise.all([
     loadJson("data/live.json",{records:[]}),
     loadJson("data/year_tracker.json",{rows:[]}),
+    loadJson("data/listed.json",{records:[],summary:{}}),
     loadJson("data/prospective.json",{progress:{},samples:[]}),
-    loadJson("data/audit.json",{}),
     loadJson("data/health.json",{}),
     loadJson("data/config.json",{subscription_endpoint:""}),
   ]);
 
   dashboardState.live = live;
   dashboardState.tracker = tracker;
+  dashboardState.listed = listed;
   dashboardState.prospective = prospective;
-  dashboardState.audit = audit;
   dashboardState.health = health;
   dashboardState.config = config;
 
   rerenderLiveView();
   renderTracker(tracker);
+  renderListed(listed);
   renderProspective(prospective);
-  renderAudit(audit);
   setupSubscription(config);
 
   // The backend publishes a lightweight live snapshot roughly every 30 min.

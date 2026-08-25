@@ -428,6 +428,7 @@ def _export_static(
     db, model_audit, shadow_v2,
     recommendation, prospective_tracker,
     live_payload=None,
+    listed_payload=None,
 ):
     if live_payload is None:
         live_payload = _previous_live_payload()
@@ -465,6 +466,15 @@ def _export_static(
             db.year_model_tracker_summary(2026),
         "rows": _public_tracker_rows(tracker_rows),
     }
+
+    if listed_payload is None:
+        import listed_tracker
+        listed_payload = listed_tracker.build_listed_payload(
+            tracker_rows,
+            deep_refresh=False,
+            persist=False,
+        )
+
     prospective = _prospective_payload(
         db, prospective_tracker
     )
@@ -489,8 +499,15 @@ def _export_static(
         SITE_DATA / "prospective.json", prospective
     )
     _json_write(
-        SITE_DATA / "audit.json", audit
+        SITE_DATA / "listed.json", listed_payload
     )
+
+    # Model audit remains generated internally, but it is not a public-site
+    # artifact. Remove any old public copy left by earlier releases.
+    public_audit = SITE_DATA / "audit.json"
+    if public_audit.exists():
+        public_audit.unlink()
+
     _json_write(
         SITE_DATA / "health.json", health
     )
@@ -507,6 +524,7 @@ def _export_static(
         "tracker": tracker,
         "prospective": prospective,
         "audit": audit,
+        "listed": listed_payload,
         "health": health,
         "live": live_payload,
     }
@@ -806,6 +824,7 @@ def main():
 
     # Import after state is restored.
     import db
+    import listed_tracker
     import model_audit
     import prospective_tracker
     import recommendation
@@ -825,12 +844,27 @@ def main():
         )
         live = _prepare_light_live_payload(db, live)
         _json_write(SITE_DATA / "live.json", live)
+
+        listed = listed_tracker.build_listed_payload(
+            db.year_model_tracker_rows(
+                year=2026, limit=5000
+            ),
+            deep_refresh=False,
+            persist=False,
+        )
+        _json_write(SITE_DATA / "listed.json", listed)
+
         _log_live_rate_budget(live)
         result = {
             "mode": "live",
             "fetched_at_ist": live.get("fetched_at_ist"),
             "published_at_ist": live.get("published_at_ist"),
             "live_records": len(live.get("records") or []),
+            "listed_records": len(listed.get("records") or []),
+            "listed_prices": (
+                (listed.get("summary") or {})
+                .get("current_price_available")
+            ),
             "errors": live.get("errors") or [],
         }
         print(
@@ -922,11 +956,19 @@ def main():
             status="LIVE",
             ipo_type="ALL",
         )
+        listed = listed_tracker.build_listed_payload(
+            db.year_model_tracker_rows(
+                year=2026, limit=5000
+            ),
+            deep_refresh=True,
+            persist=True,
+        )
         export = _export_static(
             db, model_audit, shadow_v2,
             recommendation,
             prospective_tracker,
             live_payload=live,
+            listed_payload=listed,
         )
         result = {
             "mode": args.mode,
@@ -948,17 +990,27 @@ def main():
             status="LIVE",
             ipo_type="ALL",
         )
+        listed = listed_tracker.build_listed_payload(
+            db.year_model_tracker_rows(
+                year=2026, limit=5000
+            ),
+            deep_refresh=True,
+            persist=True,
+        )
         export = _export_static(
             db, model_audit, shadow_v2,
             recommendation,
             prospective_tracker,
             live_payload=live,
+            listed_payload=listed,
         )
         result = {
             "mode": args.mode,
             "sync": sync,
             "live_records":
                 len((export["live"] or {}).get("records") or []),
+            "listed_records":
+                len((export["listed"] or {}).get("records") or []),
             "prospective_status":
                 export["prospective"].get("status"),
         }
