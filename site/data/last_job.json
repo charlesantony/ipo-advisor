@@ -1,9 +1,138 @@
 {
-  "completed_at_ist": "2026-08-26T17:26:56.150777+05:30",
+  "completed_at_ist": "2026-08-26T19:07:35.983194+05:30",
   "result": {
-    "mode": "refresh",
-    "phase": "mainboard_close",
-    "fetched_at_ist": "2026-08-26T17:26:49.524154+05:30",
+    "mode": "daily",
+    "sync": {
+      "year": 2026,
+      "synced_at_ist": "2026-08-26T19:05:06.723099+05:30",
+      "records": 197,
+      "page_meta": [
+        {
+          "page": 1,
+          "http_status": 200,
+          "rows": 50,
+          "url": "https://ipomarkets.com/ipo-calendar/2026"
+        },
+        {
+          "page": 2,
+          "http_status": 200,
+          "rows": 50,
+          "url": "https://ipomarkets.com/ipo-calendar/2026/page/2"
+        },
+        {
+          "page": 3,
+          "http_status": 200,
+          "rows": 50,
+          "url": "https://ipomarkets.com/ipo-calendar/2026/page/3"
+        },
+        {
+          "page": 4,
+          "http_status": 200,
+          "rows": 47,
+          "url": "https://ipomarkets.com/ipo-calendar/2026/page/4"
+        }
+      ],
+      "detail_fetches": 30,
+      "detail_errors": 35,
+      "canonical_1430_used": 6,
+      "retrospective_gmp_used": 1,
+      "subscription_only_proxy": 64,
+      "summary": {
+        "rows": 197,
+        "listed_with_gain": 167,
+        "strong_subscribe": 34,
+        "subscribe": 15,
+        "borderline": 18,
+        "avoid": 127,
+        "last_updated_ist": "2026-08-26T19:05:06.723099+05:30"
+      },
+      "audit_summary": {
+        "policy": {
+          "version": "research-v1",
+          "frozen": true,
+          "status": "FROZEN_FOR_PROSPECTIVE_VALIDATION",
+          "reason": "Do not tune V1 thresholds on the same 2026 retrospective outcomes used to evaluate them. New ideas must become a separate shadow V2."
+        },
+        "prospective_validation": {
+          "exact_1430_listed_rows": 2,
+          "status": "INSUFFICIENT_EXACT_1430_SAMPLE",
+          "minimum_target_rows": 20
+        },
+        "overall_opportunity_efficiency": {
+          "listed_rows": 167,
+          "selected_rows": 38,
+          "apply_rate_pct": 22.8,
+          "selected_positive_rate_pct": 100.0,
+          "selected_ge_10_rate_pct": 86.8,
+          "selected_ge_20_rate_pct": 76.3,
+          "selected_avg_gain_pct": 42.69,
+          "selected_median_gain_pct": 37.33,
+          "selected_worst_gain_pct": 3.03,
+          "all_ge_10_winners": 59,
+          "captured_ge_10_winners": 33,
+          "ge_10_winner_capture_rate_pct": 55.9,
+          "all_ge_20_winners": 39,
+          "captured_ge_20_winners": 29,
+          "ge_20_winner_capture_rate_pct": 74.4,
+          "ge_20_opportunity_efficiency_x": 3.27,
+          "positive_gain_capture_pct": 67.9
+        },
+        "major_miss_count": 7,
+        "selected_loss_count": 0
+      },
+      "audit_report_file": "/home/runner/work/ipo-advisor/ipo-advisor/engine/logs/reports/20260826_190640_022828_MODEL_AUDIT_2026.json",
+      "prospective_summary": {
+        "status": "COLLECTING_EXACT_1430_EVIDENCE",
+        "progress": {
+          "exact_captured_unique_ipos": 7,
+          "exact_listed_rows": 2,
+          "pending_listing_rows": 5,
+          "remaining_to_checkpoint": 18,
+          "progress_pct": 10.0,
+          "mainboard_listed_rows": 0,
+          "sme_listed_rows": 0
+        },
+        "v1_exact_performance": {
+          "selected": {
+            "count": 1,
+            "positive_rate_pct": 100.0,
+            "ge_10_rate_pct": 0.0,
+            "ge_20_rate_pct": 0.0,
+            "avg_gain_pct": 9.97,
+            "median_gain_pct": 9.97,
+            "worst_gain_pct": 9.97,
+            "best_gain_pct": 9.97,
+            "losses": 0
+          },
+          "all_ge_20_winners": 0,
+          "captured_ge_20_winners": 0,
+          "ge_20_winner_capture_rate_pct": null,
+          "selected_rows": 1
+        },
+        "v2_exact_performance": {
+          "status": "INSUFFICIENT_EXACT_SHADOW_TRIGGERS",
+          "minimum_shadow_trigger_target": 5,
+          "triggered": {
+            "count": 0,
+            "positive_rate_pct": null,
+            "ge_10_rate_pct": null,
+            "ge_20_rate_pct": null,
+            "avg_gain_pct": null,
+            "median_gain_pct": null,
+            "worst_gain_pct": null,
+            "best_gain_pct": null,
+            "losses": 0
+          },
+          "all_ge_20_winners": 0,
+          "captured_ge_20_winners": 0,
+          "ge_20_winner_capture_rate_pct": null,
+          "triggered_rows": 0
+        }
+      },
+      "prospective_report_file": "/home/runner/work/ipo-advisor/ipo-advisor/engine/logs/reports/20260826_190640_033727_PROSPECTIVE_EXPERIMENT_2026.json",
+      "report_file": "/home/runner/work/ipo-advisor/ipo-advisor/engine/logs/reports/20260826_190640_034394_YEAR_TRACKER_2026.json"
+    },
+    "live_fetched_at_ist": "2026-08-26T19:06:40.035968+05:30",
     "live_records": 7,
     "prospective_status": "COLLECTING_EXACT_1430_EVIDENCE"
   }
