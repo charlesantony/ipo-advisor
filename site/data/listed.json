@@ -1,14 +1,53 @@
 {
   "version": "listed-tracker-v1",
-  "generated_at_ist": "2026-08-27T20:54:26.621632+05:30",
+  "generated_at_ist": "2026-08-27T23:05:44.196312+05:30",
   "current_prices_as_of_ist": "2026-08-27T16:00:00+05:30",
   "summary": {
     "listed_records": 177,
     "market_identity_resolved": 109,
     "current_price_available": 108,
-    "unlock_schedule_available": 141
+    "unlock_schedule_available": 167
   },
   "records": [
+    {
+      "tracker_key": "2026|SME|mopshopdistribution",
+      "name": "Mopshop Distribution",
+      "symbol": null,
+      "market": null,
+      "market_symbol": null,
+      "ipo_type": "SME",
+      "listing_date": "2026-08-26",
+      "issue_price": 138.0,
+      "listing_price": 137.0,
+      "listing_return_pct": -0.72,
+      "current_price": null,
+      "current_return_pct": null,
+      "current_price_as_of_ist": null,
+      "current_price_source": null,
+      "unlock_events": [
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-08-24",
+          "source_url": "https://ipomarkets.com/ipo/mopshop-distribution-ipo-dtferg8",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 362
+        }
+      ],
+      "next_unlock": {
+        "category": "PRE_IPO",
+        "label": "Non-promoter pre-issue shares",
+        "duration": "1 year",
+        "unlock_date": "2027-08-24",
+        "source_url": "https://ipomarkets.com/ipo/mopshop-distribution-ipo-dtferg8",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 362
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-26T12:33:42.971772+05:30",
+      "detail_url": "https://ipomarkets.com/ipo/mopshop-distribution-ipo-dtferg8"
+    },
     {
       "tracker_key": "2026|MAINBOARD|gajaalternativeassetmanagement",
       "name": "Gaja Alternative Asset Management",
@@ -18,8 +57,8 @@
       "ipo_type": "MAINBOARD",
       "listing_date": "2026-08-26",
       "issue_price": 160.0,
-      "listing_price": null,
-      "listing_return_pct": null,
+      "listing_price": 185.0,
+      "listing_return_pct": 15.63,
       "current_price": 165.07,
       "current_return_pct": 3.17,
       "current_price_as_of_ist": "2026-08-27T16:00:00+05:30",
@@ -74,6 +113,45 @@
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-08-26T12:33:42.971772+05:30",
       "detail_url": "https://ipomarkets.com/ipo/gaja-alternative-asset-management-ipo-gcy2jvy"
+    },
+    {
+      "tracker_key": "2026|SME|dhanwelhybridseeds",
+      "name": "Dhanwel Hybrid Seeds",
+      "symbol": null,
+      "market": null,
+      "market_symbol": null,
+      "ipo_type": "SME",
+      "listing_date": "2026-08-26",
+      "issue_price": 99.0,
+      "listing_price": 99.0,
+      "listing_return_pct": 0.0,
+      "current_price": null,
+      "current_return_pct": null,
+      "current_price_as_of_ist": null,
+      "current_price_source": null,
+      "unlock_events": [
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-08-24",
+          "source_url": "https://ipomarkets.com/ipo/dhanwel-hybrid-seeds-ipo-bc4mwpd",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 362
+        }
+      ],
+      "next_unlock": {
+        "category": "PRE_IPO",
+        "label": "Non-promoter pre-issue shares",
+        "duration": "1 year",
+        "unlock_date": "2027-08-24",
+        "source_url": "https://ipomarkets.com/ipo/dhanwel-hybrid-seeds-ipo-bc4mwpd",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 362
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-26T12:33:42.971772+05:30",
+      "detail_url": "https://ipomarkets.com/ipo/dhanwel-hybrid-seeds-ipo-bc4mwpd"
     },
     {
       "tracker_key": "2026|MAINBOARD|sunshinepictures",
@@ -6741,10 +6819,28 @@
       "current_return_pct": 41.71,
       "current_price_as_of_ist": "2026-08-27T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — minimum contribution (20%)",
+          "duration": "18 months",
+          "unlock_date": "2027-08-12",
+          "source_url": "https://ipomarkets.com/ipo/aye-finance-ipo-jsy6xqg",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 350
+        }
+      ],
+      "next_unlock": {
+        "category": "PROMOTER",
+        "label": "Promoter — minimum contribution (20%)",
+        "duration": "18 months",
+        "unlock_date": "2027-08-12",
+        "source_url": "https://ipomarkets.com/ipo/aye-finance-ipo-jsy6xqg",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 350
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-27T23:05:44.196312+05:30",
       "detail_url": "https://ipomarkets.com/ipo/aye-finance-ipo-jsy6xqg"
     },
     {
@@ -6762,10 +6858,28 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-02-11",
+          "source_url": "https://ipomarkets.com/ipo/pan-hr-solutions-ipo-bx5pbzm",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 168
+        }
+      ],
+      "next_unlock": {
+        "category": "PRE_IPO",
+        "label": "Non-promoter pre-issue shares",
+        "duration": "1 year",
+        "unlock_date": "2027-02-11",
+        "source_url": "https://ipomarkets.com/ipo/pan-hr-solutions-ipo-bx5pbzm",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 168
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-27T23:05:44.196312+05:30",
       "detail_url": "https://ipomarkets.com/ipo/pan-hr-solutions-ipo-bx5pbzm"
     },
     {
@@ -6783,10 +6897,28 @@
       "current_return_pct": -34.26,
       "current_price_as_of_ist": "2026-08-27T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-02-11",
+          "source_url": "https://ipomarkets.com/ipo/biopol-chemicals-ipo-k8jtqvr",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 168
+        }
+      ],
+      "next_unlock": {
+        "category": "PRE_IPO",
+        "label": "Non-promoter pre-issue shares",
+        "duration": "1 year",
+        "unlock_date": "2027-02-11",
+        "source_url": "https://ipomarkets.com/ipo/biopol-chemicals-ipo-k8jtqvr",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 168
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-27T23:05:44.196312+05:30",
       "detail_url": "https://ipomarkets.com/ipo/biopol-chemicals-ipo-k8jtqvr"
     },
     {
@@ -6804,10 +6936,28 @@
       "current_return_pct": 183.52,
       "current_price_as_of_ist": "2026-08-27T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-02-09",
+          "source_url": "https://ipomarkets.com/ipo/grover-jewells-ipo-yegxsab",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 166
+        }
+      ],
+      "next_unlock": {
+        "category": "PRE_IPO",
+        "label": "Non-promoter pre-issue shares",
+        "duration": "1 year",
+        "unlock_date": "2027-02-09",
+        "source_url": "https://ipomarkets.com/ipo/grover-jewells-ipo-yegxsab",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 166
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-27T23:05:44.196312+05:30",
       "detail_url": "https://ipomarkets.com/ipo/grover-jewells-ipo-yegxsab"
     },
     {
@@ -6825,10 +6975,28 @@
       "current_return_pct": -8.81,
       "current_price_as_of_ist": "2026-08-27T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-02-09",
+          "source_url": "https://ipomarkets.com/ipo/brandman-retail-ipo-xxwtbdv",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 166
+        }
+      ],
+      "next_unlock": {
+        "category": "PRE_IPO",
+        "label": "Non-promoter pre-issue shares",
+        "duration": "1 year",
+        "unlock_date": "2027-02-09",
+        "source_url": "https://ipomarkets.com/ipo/brandman-retail-ipo-xxwtbdv",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 166
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-27T23:05:44.196312+05:30",
       "detail_url": "https://ipomarkets.com/ipo/brandman-retail-ipo-xxwtbdv"
     },
     {
@@ -6846,10 +7014,28 @@
       "current_return_pct": -1.84,
       "current_price_as_of_ist": "2026-08-27T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-02-04",
+          "source_url": "https://ipomarkets.com/ipo/c-k-k-retail-mart-ipo-va1mkzw",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 161
+        }
+      ],
+      "next_unlock": {
+        "category": "PRE_IPO",
+        "label": "Non-promoter pre-issue shares",
+        "duration": "1 year",
+        "unlock_date": "2027-02-04",
+        "source_url": "https://ipomarkets.com/ipo/c-k-k-retail-mart-ipo-va1mkzw",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 161
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-27T23:05:44.196312+05:30",
       "detail_url": "https://ipomarkets.com/ipo/c-k-k-retail-mart-ipo-va1mkzw"
     },
     {
@@ -6867,10 +7053,28 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-02-02",
+          "source_url": "https://ipomarkets.com/ipo/msafe-equipments-ipo-keg7ge3",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 159
+        }
+      ],
+      "next_unlock": {
+        "category": "PRE_IPO",
+        "label": "Non-promoter pre-issue shares",
+        "duration": "1 year",
+        "unlock_date": "2027-02-02",
+        "source_url": "https://ipomarkets.com/ipo/msafe-equipments-ipo-keg7ge3",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 159
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-27T23:05:44.196312+05:30",
       "detail_url": "https://ipomarkets.com/ipo/msafe-equipments-ipo-keg7ge3"
     },
     {
@@ -6888,10 +7092,28 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-02-02",
+          "source_url": "https://ipomarkets.com/ipo/kanishk-aluminium-india-ipo-zjwx45t",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 159
+        }
+      ],
+      "next_unlock": {
+        "category": "PRE_IPO",
+        "label": "Non-promoter pre-issue shares",
+        "duration": "1 year",
+        "unlock_date": "2027-02-02",
+        "source_url": "https://ipomarkets.com/ipo/kanishk-aluminium-india-ipo-zjwx45t",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 159
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-27T23:05:44.196312+05:30",
       "detail_url": "https://ipomarkets.com/ipo/kanishk-aluminium-india-ipo-zjwx45t"
     },
     {
@@ -6909,10 +7131,28 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-02-02",
+          "source_url": "https://ipomarkets.com/ipo/accretion-nutraveda-ipo-acvjhhw",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 159
+        }
+      ],
+      "next_unlock": {
+        "category": "PRE_IPO",
+        "label": "Non-promoter pre-issue shares",
+        "duration": "1 year",
+        "unlock_date": "2027-02-02",
+        "source_url": "https://ipomarkets.com/ipo/accretion-nutraveda-ipo-acvjhhw",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 159
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-27T23:05:44.196312+05:30",
       "detail_url": "https://ipomarkets.com/ipo/accretion-nutraveda-ipo-acvjhhw"
     },
     {
@@ -6930,10 +7170,28 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-01-30",
+          "source_url": "https://ipomarkets.com/ipo/kasturi-metal-ipo-eb9yjrr",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 156
+        }
+      ],
+      "next_unlock": {
+        "category": "PRE_IPO",
+        "label": "Non-promoter pre-issue shares",
+        "duration": "1 year",
+        "unlock_date": "2027-01-30",
+        "source_url": "https://ipomarkets.com/ipo/kasturi-metal-ipo-eb9yjrr",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 156
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-27T23:05:44.196312+05:30",
       "detail_url": "https://ipomarkets.com/ipo/kasturi-metal-ipo-eb9yjrr"
     },
     {
@@ -6951,10 +7209,28 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-01-29",
+          "source_url": "https://ipomarkets.com/ipo/hannah-joseph-ipo-myyayfp",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 155
+        }
+      ],
+      "next_unlock": {
+        "category": "PRE_IPO",
+        "label": "Non-promoter pre-issue shares",
+        "duration": "1 year",
+        "unlock_date": "2027-01-29",
+        "source_url": "https://ipomarkets.com/ipo/hannah-joseph-ipo-myyayfp",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 155
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-27T23:05:44.196312+05:30",
       "detail_url": "https://ipomarkets.com/ipo/hannah-joseph-ipo-myyayfp"
     },
     {
@@ -6972,10 +7248,28 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-01-28",
+          "source_url": "https://ipomarkets.com/ipo/shayona-engineering-ipo-z02qyzw",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 154
+        }
+      ],
+      "next_unlock": {
+        "category": "PRE_IPO",
+        "label": "Non-promoter pre-issue shares",
+        "duration": "1 year",
+        "unlock_date": "2027-01-28",
+        "source_url": "https://ipomarkets.com/ipo/shayona-engineering-ipo-z02qyzw",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 154
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-27T23:05:44.196312+05:30",
       "detail_url": "https://ipomarkets.com/ipo/shayona-engineering-ipo-z02qyzw"
     },
     {
@@ -6993,10 +7287,28 @@
       "current_return_pct": 107.89,
       "current_price_as_of_ist": "2026-08-27T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-01-27",
+          "source_url": "https://ipomarkets.com/ipo/krm-ayurveda-ipo-eeqhdvg",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 153
+        }
+      ],
+      "next_unlock": {
+        "category": "PRE_IPO",
+        "label": "Non-promoter pre-issue shares",
+        "duration": "1 year",
+        "unlock_date": "2027-01-27",
+        "source_url": "https://ipomarkets.com/ipo/krm-ayurveda-ipo-eeqhdvg",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 153
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-27T23:05:44.196312+05:30",
       "detail_url": "https://ipomarkets.com/ipo/krm-ayurveda-ipo-eeqhdvg"
     },
     {
@@ -7014,10 +7326,28 @@
       "current_return_pct": 93.43,
       "current_price_as_of_ist": "2026-08-27T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — minimum contribution (20%)",
+          "duration": "18 months",
+          "unlock_date": "2027-07-23",
+          "source_url": "https://ipomarkets.com/ipo/shadowfax-technologies-ipo-naqsfef",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 330
+        }
+      ],
+      "next_unlock": {
+        "category": "PROMOTER",
+        "label": "Promoter — minimum contribution (20%)",
+        "duration": "18 months",
+        "unlock_date": "2027-07-23",
+        "source_url": "https://ipomarkets.com/ipo/shadowfax-technologies-ipo-naqsfef",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 330
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-27T23:05:44.196312+05:30",
       "detail_url": "https://ipomarkets.com/ipo/shadowfax-technologies-ipo-naqsfef"
     },
     {
@@ -7035,10 +7365,28 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-01-23",
+          "source_url": "https://ipomarkets.com/ipo/digilogic-systems-ipo-p5bdy8r",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 149
+        }
+      ],
+      "next_unlock": {
+        "category": "PRE_IPO",
+        "label": "Non-promoter pre-issue shares",
+        "duration": "1 year",
+        "unlock_date": "2027-01-23",
+        "source_url": "https://ipomarkets.com/ipo/digilogic-systems-ipo-p5bdy8r",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 149
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-27T23:05:44.196312+05:30",
       "detail_url": "https://ipomarkets.com/ipo/digilogic-systems-ipo-p5bdy8r"
     },
     {
@@ -7056,10 +7404,28 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-01-21",
+          "source_url": "https://ipomarkets.com/ipo/aritas-vinyl-ipo-jwg9jmc",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 147
+        }
+      ],
+      "next_unlock": {
+        "category": "PRE_IPO",
+        "label": "Non-promoter pre-issue shares",
+        "duration": "1 year",
+        "unlock_date": "2027-01-21",
+        "source_url": "https://ipomarkets.com/ipo/aritas-vinyl-ipo-jwg9jmc",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 147
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-27T23:05:44.196312+05:30",
       "detail_url": "https://ipomarkets.com/ipo/aritas-vinyl-ipo-jwg9jmc"
     },
     {
@@ -7077,10 +7443,28 @@
       "current_return_pct": -68.25,
       "current_price_as_of_ist": "2026-08-27T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-01-20",
+          "source_url": "https://ipomarkets.com/ipo/armour-security-india-ipo-msdptsv",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 146
+        }
+      ],
+      "next_unlock": {
+        "category": "PRE_IPO",
+        "label": "Non-promoter pre-issue shares",
+        "duration": "1 year",
+        "unlock_date": "2027-01-20",
+        "source_url": "https://ipomarkets.com/ipo/armour-security-india-ipo-msdptsv",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 146
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-27T23:05:44.196312+05:30",
       "detail_url": "https://ipomarkets.com/ipo/armour-security-india-ipo-msdptsv"
     },
     {
@@ -7098,10 +7482,28 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-01-19",
+          "source_url": "https://ipomarkets.com/ipo/narmadesh-brass-industries-ipo-e93e1m6",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 145
+        }
+      ],
+      "next_unlock": {
+        "category": "PRE_IPO",
+        "label": "Non-promoter pre-issue shares",
+        "duration": "1 year",
+        "unlock_date": "2027-01-19",
+        "source_url": "https://ipomarkets.com/ipo/narmadesh-brass-industries-ipo-e93e1m6",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 145
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-27T23:05:44.196312+05:30",
       "detail_url": "https://ipomarkets.com/ipo/narmadesh-brass-industries-ipo-e93e1m6"
     },
     {
@@ -7119,10 +7521,28 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-01-19",
+          "source_url": "https://ipomarkets.com/ipo/indo-smc-ipo-pz1jcsc",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 145
+        }
+      ],
+      "next_unlock": {
+        "category": "PRE_IPO",
+        "label": "Non-promoter pre-issue shares",
+        "duration": "1 year",
+        "unlock_date": "2027-01-19",
+        "source_url": "https://ipomarkets.com/ipo/indo-smc-ipo-pz1jcsc",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 145
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-27T23:05:44.196312+05:30",
       "detail_url": "https://ipomarkets.com/ipo/indo-smc-ipo-pz1jcsc"
     },
     {
@@ -7140,10 +7560,28 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-01-19",
+          "source_url": "https://ipomarkets.com/ipo/gre-renew-enertech-ipo-appk42k",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 145
+        }
+      ],
+      "next_unlock": {
+        "category": "PRE_IPO",
+        "label": "Non-promoter pre-issue shares",
+        "duration": "1 year",
+        "unlock_date": "2027-01-19",
+        "source_url": "https://ipomarkets.com/ipo/gre-renew-enertech-ipo-appk42k",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 145
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-27T23:05:44.196312+05:30",
       "detail_url": "https://ipomarkets.com/ipo/gre-renew-enertech-ipo-appk42k"
     },
     {
@@ -7161,10 +7599,28 @@
       "current_return_pct": 60.36,
       "current_price_as_of_ist": "2026-08-27T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — minimum contribution (20%)",
+          "duration": "18 months",
+          "unlock_date": "2027-07-19",
+          "source_url": "https://ipomarkets.com/ipo/amagi-media-labs-ipo-d48w00s",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 326
+        }
+      ],
+      "next_unlock": {
+        "category": "PROMOTER",
+        "label": "Promoter — minimum contribution (20%)",
+        "duration": "18 months",
+        "unlock_date": "2027-07-19",
+        "source_url": "https://ipomarkets.com/ipo/amagi-media-labs-ipo-d48w00s",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 326
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-27T23:05:44.196312+05:30",
       "detail_url": "https://ipomarkets.com/ipo/amagi-media-labs-ipo-d48w00s"
     },
     {
@@ -7182,10 +7638,28 @@
       "current_return_pct": 150.0,
       "current_price_as_of_ist": "2026-08-27T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-01-15",
+          "source_url": "https://ipomarkets.com/ipo/avana-electrosystems-ipo-hbb4nbw",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 141
+        }
+      ],
+      "next_unlock": {
+        "category": "PRE_IPO",
+        "label": "Non-promoter pre-issue shares",
+        "duration": "1 year",
+        "unlock_date": "2027-01-15",
+        "source_url": "https://ipomarkets.com/ipo/avana-electrosystems-ipo-hbb4nbw",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 141
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-27T23:05:44.196312+05:30",
       "detail_url": "https://ipomarkets.com/ipo/avana-electrosystems-ipo-hbb4nbw"
     },
     {
@@ -7203,10 +7677,28 @@
       "current_return_pct": 185.14,
       "current_price_as_of_ist": "2026-08-27T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-01-14",
+          "source_url": "https://ipomarkets.com/ipo/defrail-technologies-ipo-vwnrzbh",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 140
+        }
+      ],
+      "next_unlock": {
+        "category": "PRE_IPO",
+        "label": "Non-promoter pre-issue shares",
+        "duration": "1 year",
+        "unlock_date": "2027-01-14",
+        "source_url": "https://ipomarkets.com/ipo/defrail-technologies-ipo-vwnrzbh",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 140
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-27T23:05:44.196312+05:30",
       "detail_url": "https://ipomarkets.com/ipo/defrail-technologies-ipo-vwnrzbh"
     },
     {
@@ -7226,8 +7718,8 @@
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [],
       "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-27T23:05:44.196312+05:30",
       "detail_url": "https://ipomarkets.com/ipo/bharat-coking-coal-ipo-bm36jy8"
     },
     {
@@ -7245,10 +7737,28 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-01-12",
+          "source_url": "https://ipomarkets.com/ipo/yajur-fibres-ipo-qv9mv68",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 138
+        }
+      ],
+      "next_unlock": {
+        "category": "PRE_IPO",
+        "label": "Non-promoter pre-issue shares",
+        "duration": "1 year",
+        "unlock_date": "2027-01-12",
+        "source_url": "https://ipomarkets.com/ipo/yajur-fibres-ipo-qv9mv68",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 138
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-27T23:05:44.196312+05:30",
       "detail_url": "https://ipomarkets.com/ipo/yajur-fibres-ipo-qv9mv68"
     },
     {
@@ -7266,10 +7776,28 @@
       "current_return_pct": -60.98,
       "current_price_as_of_ist": "2026-08-27T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-01-12",
+          "source_url": "https://ipomarkets.com/ipo/victory-electric-vehicles-ipo-pvpanvj",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 138
+        }
+      ],
+      "next_unlock": {
+        "category": "PRE_IPO",
+        "label": "Non-promoter pre-issue shares",
+        "duration": "1 year",
+        "unlock_date": "2027-01-12",
+        "source_url": "https://ipomarkets.com/ipo/victory-electric-vehicles-ipo-pvpanvj",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 138
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-27T23:05:44.196312+05:30",
       "detail_url": "https://ipomarkets.com/ipo/victory-electric-vehicles-ipo-pvpanvj"
     },
     {
@@ -7287,89 +7815,29 @@
       "current_return_pct": 152.96,
       "current_price_as_of_ist": "2026-08-27T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-01-09",
+          "source_url": "https://ipomarkets.com/ipo/gabion-technologies-india-ipo-f0020c4",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 135
+        }
+      ],
+      "next_unlock": {
+        "category": "PRE_IPO",
+        "label": "Non-promoter pre-issue shares",
+        "duration": "1 year",
+        "unlock_date": "2027-01-09",
+        "source_url": "https://ipomarkets.com/ipo/gabion-technologies-india-ipo-f0020c4",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 135
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-27T23:05:44.196312+05:30",
       "detail_url": "https://ipomarkets.com/ipo/gabion-technologies-india-ipo-f0020c4"
-    },
-    {
-      "tracker_key": "2026|SME|mopshopdistribution",
-      "name": "Mopshop Distribution",
-      "symbol": null,
-      "market": null,
-      "market_symbol": null,
-      "ipo_type": "SME",
-      "listing_date": null,
-      "issue_price": 138.0,
-      "listing_price": null,
-      "listing_return_pct": null,
-      "current_price": null,
-      "current_return_pct": null,
-      "current_price_as_of_ist": null,
-      "current_price_source": null,
-      "unlock_events": [
-        {
-          "category": "PRE_IPO",
-          "label": "Non-promoter pre-issue shares",
-          "duration": "1 year",
-          "unlock_date": "2027-08-24",
-          "source_url": "https://ipomarkets.com/ipo/mopshop-distribution-ipo-dtferg8",
-          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
-          "days_remaining": 362
-        }
-      ],
-      "next_unlock": {
-        "category": "PRE_IPO",
-        "label": "Non-promoter pre-issue shares",
-        "duration": "1 year",
-        "unlock_date": "2027-08-24",
-        "source_url": "https://ipomarkets.com/ipo/mopshop-distribution-ipo-dtferg8",
-        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
-        "days_remaining": 362
-      },
-      "unlock_status": "AVAILABLE",
-      "unlock_checked_at_ist": "2026-08-26T12:33:42.971772+05:30",
-      "detail_url": "https://ipomarkets.com/ipo/mopshop-distribution-ipo-dtferg8"
-    },
-    {
-      "tracker_key": "2026|SME|dhanwelhybridseeds",
-      "name": "Dhanwel Hybrid Seeds",
-      "symbol": null,
-      "market": null,
-      "market_symbol": null,
-      "ipo_type": "SME",
-      "listing_date": null,
-      "issue_price": null,
-      "listing_price": null,
-      "listing_return_pct": null,
-      "current_price": null,
-      "current_return_pct": null,
-      "current_price_as_of_ist": null,
-      "current_price_source": null,
-      "unlock_events": [
-        {
-          "category": "PRE_IPO",
-          "label": "Non-promoter pre-issue shares",
-          "duration": "1 year",
-          "unlock_date": "2027-08-24",
-          "source_url": "https://ipomarkets.com/ipo/dhanwel-hybrid-seeds-ipo-bc4mwpd",
-          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
-          "days_remaining": 362
-        }
-      ],
-      "next_unlock": {
-        "category": "PRE_IPO",
-        "label": "Non-promoter pre-issue shares",
-        "duration": "1 year",
-        "unlock_date": "2027-08-24",
-        "source_url": "https://ipomarkets.com/ipo/dhanwel-hybrid-seeds-ipo-bc4mwpd",
-        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
-        "days_remaining": 362
-      },
-      "unlock_status": "AVAILABLE",
-      "unlock_checked_at_ist": "2026-08-26T12:33:42.971772+05:30",
-      "detail_url": "https://ipomarkets.com/ipo/dhanwel-hybrid-seeds-ipo-bc4mwpd"
     }
   ],
   "sources": {
