@@ -1,14 +1,80 @@
 {
   "version": "listed-tracker-v1",
-  "generated_at_ist": "2026-08-28T02:35:12.082847+05:30",
+  "generated_at_ist": "2026-08-28T04:02:45.657695+05:30",
   "current_prices_as_of_ist": "2026-08-27T16:00:00+05:30",
   "summary": {
-    "listed_records": 177,
-    "market_identity_resolved": 109,
+    "listed_records": 178,
+    "market_identity_resolved": 110,
     "current_price_available": 108,
-    "unlock_schedule_available": 167
+    "unlock_schedule_available": 168
   },
   "records": [
+    {
+      "tracker_key": "2026|MAINBOARD|tempsensinstrumentsindia",
+      "name": "Tempsens Instruments (India)",
+      "symbol": "TEMPSENS",
+      "market": "NSE",
+      "market_symbol": "TEMPSENS.NS",
+      "ipo_type": "MAINBOARD",
+      "listing_date": "2026-08-28",
+      "issue_price": 300.0,
+      "listing_price": null,
+      "listing_return_pct": null,
+      "current_price": null,
+      "current_return_pct": null,
+      "current_price_as_of_ist": null,
+      "current_price_source": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-11-23",
+          "source_url": "https://ipomarkets.com/ipo/tempsens-instruments-india-ipo-f5hf0xv",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 87
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — holding above 20%",
+          "duration": "6 months",
+          "unlock_date": "2027-02-25",
+          "source_url": "https://ipomarkets.com/ipo/tempsens-instruments-india-ipo-f5hf0xv",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 181
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "6 months",
+          "unlock_date": "2027-02-25",
+          "source_url": "https://ipomarkets.com/ipo/tempsens-instruments-india-ipo-f5hf0xv",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 181
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — minimum contribution (20%)",
+          "duration": "18 months",
+          "unlock_date": "2028-02-25",
+          "source_url": "https://ipomarkets.com/ipo/tempsens-instruments-india-ipo-f5hf0xv",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 546
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — remaining 50%",
+        "duration": "90 days",
+        "unlock_date": "2026-11-23",
+        "source_url": "https://ipomarkets.com/ipo/tempsens-instruments-india-ipo-f5hf0xv",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 87
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-08-28T04:02:45.657695+05:30",
+      "detail_url": "https://ipomarkets.com/ipo/tempsens-instruments-india-ipo-f5hf0xv"
+    },
     {
       "tracker_key": "2026|SME|mopshopdistribution",
       "name": "Mopshop Distribution",
