@@ -17,6 +17,7 @@ DB_STATE = STATE / "ipo_advisor.db"
 DB_ENGINE = ENGINE / "ipo_advisor.db"
 SENT_LEDGER = STATE / "email_sent.json"
 IST = ZoneInfo("Asia/Kolkata")
+STALE_SCHEDULE_MARKER = ROOT / ".stale_schedule_skip"
 
 sys.path.insert(0, str(ENGINE))
 sys.path.insert(0, str(ROOT / "scripts"))
@@ -44,23 +45,48 @@ def _persist_state():
         shutil.copy2(DB_ENGINE, DB_STATE)
 
 
-def _wait_until_time(hour, minute, label):
-    # Scheduled workflows can start a few minutes early so the Python job can
-    # wait for the intended IST checkpoint. Manual runs should execute now.
+def _wait_until_time(
+    hour,
+    minute,
+    label,
+    max_schedule_early_minutes=30,
+):
+    # Primary cron entries start only shortly before the intended checkpoint.
+    # If a scheduled occurrence reaches a runner many hours later (for example
+    # after midnight), its target on the current date is in the future. The
+    # old implementation then slept until that evening. Treat that as stale.
     force_wait = str(
         os.environ.get("FORCE_CHECKPOINT_WAIT") or ""
     ).strip().lower() in {"1", "true", "yes", "on"}
-    if (
-        os.environ.get("GITHUB_EVENT_NAME") != "schedule"
-        and not force_wait
-    ):
-        return
+    event_name = str(
+        os.environ.get("GITHUB_EVENT_NAME") or ""
+    ).strip().lower()
+
+    if event_name != "schedule" and not force_wait:
+        print(
+            f"{label}_MANUAL_NO_WAIT "
+            f"event={event_name or 'local'}"
+        )
+        return True
 
     now = datetime.now(IST)
     target = now.replace(
         hour=hour, minute=minute, second=0, microsecond=0
     )
     seconds = (target - now).total_seconds()
+
+    if (
+        event_name == "schedule"
+        and seconds > max_schedule_early_minutes * 60
+    ):
+        print(
+            f"{label}_STALE_SCHEDULE_SKIP "
+            f"now={now.isoformat()} "
+            f"target={target.isoformat()} "
+            f"seconds_until_current_day_target={int(seconds)}"
+        )
+        return False
+
     if seconds > 0:
         print(
             f"WAIT_FOR_{label} "
@@ -68,20 +94,23 @@ def _wait_until_time(hour, minute, label):
             f"sleep_seconds={int(seconds)}"
         )
         time.sleep(seconds)
-    else:
-        print(
-            "SCHEDULE_DELAY_WARNING "
-            f"checkpoint={label} "
-            f"runner_started_after_target={now.isoformat()}"
-        )
+        return True
+
+    print(
+        "SCHEDULE_DELAY_WARNING "
+        f"checkpoint={label} "
+        f"runner_started_after_target={now.isoformat()} "
+        "running_immediately=true"
+    )
+    return True
 
 
 def _wait_until_1430():
-    _wait_until_time(14, 30, "1430")
+    return _wait_until_time(14, 30, "1430")
 
 
 def _wait_until_2030():
-    _wait_until_time(20, 30, "2030")
+    return _wait_until_time(20, 30, "2030")
 
 
 def _ensure_training(server, db):
@@ -687,6 +716,53 @@ def _send_day2_email(live_payload):
     }
 
 
+def _promote_emailed_manual_recoveries(db):
+    """Promote manual closing-day recovery batches that actually sent email."""
+    ledger = _load_ledger()
+    closing = ledger.get("closing") or {}
+    seen = set()
+    promoted = 0
+
+    for entry in closing.values():
+        if not isinstance(entry, dict):
+            continue
+        end_date = str(entry.get("end_date") or "").strip()
+        sent_at = str(entry.get("sent_at_ist") or "").strip()
+        if not end_date or not sent_at:
+            continue
+
+        batch_key = (end_date, sent_at)
+        if batch_key in seen:
+            continue
+        seen.add(batch_key)
+
+        try:
+            sent_dt = datetime.fromisoformat(sent_at)
+            if sent_dt.tzinfo is None:
+                sent_dt = sent_dt.replace(tzinfo=IST)
+            sent_dt = sent_dt.astimezone(IST)
+        except (TypeError, ValueError):
+            continue
+
+        # Research decisions are saved immediately before the email is sent.
+        # Promote the whole closing-day batch, not just positive emailed IPOs,
+        # so the prospective sample remains unbiased.
+        start = (sent_dt - timedelta(minutes=20)).isoformat()
+        finish = (sent_dt + timedelta(minutes=2)).isoformat()
+        promoted += db.promote_manual_checkpoint_batch(
+            end_date=end_date,
+            start_ist=start,
+            end_ist=finish,
+        )
+
+    if promoted:
+        print(
+            "MANUAL_CHECKPOINT_BACKFILL "
+            f"promoted_rows={promoted}"
+        )
+    return promoted
+
+
 def _send_closing_email(live_payload):
     from email_alert_sender import send_research_alerts
 
@@ -876,15 +952,46 @@ def main():
         )
         return
 
-    if args.mode == "decision":
-        if args.wait_until_1430:
-            _wait_until_1430()
+    # Recover prior manual closing-day runs that genuinely sent closing email.
+    # This is idempotent and persists with the next stateful job.
+    _promote_emailed_manual_recoveries(db)
 
-        checkpoint_reason = (
-            "github_action_1430"
-            if os.environ.get("GITHUB_EVENT_NAME") == "schedule"
-            else "manual_1430"
-        )
+    if args.mode == "decision":
+        if (
+            args.wait_until_1430
+            and not _wait_until_1430()
+        ):
+            STALE_SCHEDULE_MARKER.write_text(
+                "decision stale schedule\n",
+                encoding="utf-8",
+            )
+            print(json.dumps({
+                "mode": "decision",
+                "status": "SKIPPED_STALE_SCHEDULE",
+                "completed_at_ist": datetime.now(IST).isoformat(),
+            }, indent=2))
+            return
+
+        event_name = str(
+            os.environ.get("GITHUB_EVENT_NAME") or ""
+        ).strip().lower()
+        schedule_recovery = str(
+            os.environ.get("CHECKPOINT_RECOVERY") or ""
+        ).strip() == "1"
+        manual_recovery = str(
+            os.environ.get("MANUAL_CHECKPOINT_RECOVERY") or ""
+        ).strip() == "1"
+
+        if event_name == "schedule":
+            checkpoint_reason = (
+                "github_action_1430_recovery"
+                if schedule_recovery
+                else "github_action_1430"
+            )
+        elif manual_recovery:
+            checkpoint_reason = "manual_1430_recovery"
+        else:
+            checkpoint_reason = "manual_1430"
         live, export = _capture_and_export(
             server, db, model_audit, shadow_v2,
             recommendation, prospective_tracker,
@@ -905,8 +1012,20 @@ def main():
         }
 
     elif args.mode == "day2":
-        if args.wait_until_2030:
-            _wait_until_2030()
+        if (
+            args.wait_until_2030
+            and not _wait_until_2030()
+        ):
+            STALE_SCHEDULE_MARKER.write_text(
+                "day2 stale schedule\n",
+                encoding="utf-8",
+            )
+            print(json.dumps({
+                "mode": "day2",
+                "status": "SKIPPED_STALE_SCHEDULE",
+                "completed_at_ist": datetime.now(IST).isoformat(),
+            }, indent=2))
+            return
 
         live, export = _capture_and_export(
             server, db, model_audit, shadow_v2,

@@ -2,16 +2,20 @@ name: 2:30 PM IPO Decision and Email
 
 on:
   schedule:
-    # 08:15 UTC = 1:45 PM IST.
-    # Start 45 minutes early to absorb GitHub scheduler delays.
-    # Python waits until 2:30 PM IST before the canonical capture.
-    - cron: "15 8 * * 1-5"
+    # Primary: 2:20 PM IST, then wait for the 2:30 PM checkpoint.
+    - cron: "50 8 * * 1-5"
+    # Fallback: retry at 3:05 PM IST if a checkpoint is still missing.
+    - cron: "35 9 * * 1-5"
   workflow_dispatch:
     inputs:
       wait_for_checkpoint:
         description: Wait until 2:30 PM IST before capturing
         required: false
         default: "false"
+      record_as_checkpoint:
+        description: Recovery run - record missing closing IPOs in Prospective
+        required: false
+        default: "true"
 
 permissions:
   contents: write
@@ -25,6 +29,7 @@ concurrency:
 jobs:
   decision:
     runs-on: ubuntu-latest
+    timeout-minutes: 45
     environment:
       name: github-pages
     steps:
@@ -42,6 +47,8 @@ jobs:
           EMAIL_ALERT_KEY: ${{ secrets.EMAIL_ALERT_KEY }}
           PUBLIC_DASHBOARD_URL: ${{ vars.PUBLIC_DASHBOARD_URL }}
           FORCE_CHECKPOINT_WAIT: ${{ inputs.wait_for_checkpoint }}
+          CHECKPOINT_RECOVERY: ${{ github.event_name == 'schedule' && github.event.schedule == '35 9 * * 1-5' && '1' || '0' }}
+          MANUAL_CHECKPOINT_RECOVERY: ${{ github.event_name == 'workflow_dispatch' && inputs.record_as_checkpoint == 'true' && '1' || '0' }}
         run: python scripts/cloud_job.py decision --wait-until-1430
 
       - name: Upload diagnostic log
@@ -56,6 +63,7 @@ jobs:
           retention-days: 7
 
       - name: Persist generated state
+        if: ${{ hashFiles('.stale_schedule_skip') == '' }}
         run: |
           git config user.name "ipo-advisor-bot"
           git config user.email "ipo-advisor-bot@users.noreply.github.com"
@@ -67,7 +75,10 @@ jobs:
           fi
 
       - uses: actions/configure-pages@v6
+        if: ${{ hashFiles('.stale_schedule_skip') == '' }}
       - uses: actions/upload-pages-artifact@v5
+        if: ${{ hashFiles('.stale_schedule_skip') == '' }}
         with:
           path: site
       - uses: actions/deploy-pages@v5
+        if: ${{ hashFiles('.stale_schedule_skip') == '' }}

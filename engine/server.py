@@ -169,19 +169,51 @@ def fetch_normalized(status="LIVE", ipo_type="ALL"):
         "errors": errors,
     }
 
+def _checkpoint_key(value):
+    segment = str(
+        value.get("ipo_type") or value.get("type") or ""
+    ).strip().upper()
+    name = "".join(
+        ch for ch in str(value.get("name") or "").lower()
+        if ch.isalnum()
+    )
+    end_date = str(value.get("end_date") or "").strip()
+    return (segment, name, end_date)
+
+
 def capture_live(reason="manual"):
     payload = fetch_normalized(status="LIVE", ipo_type="ALL")
     if payload["records"]:
         ist = datetime.fromisoformat(payload["fetched_at_ist"])
 
-        # The dedicated scheduled 2:30 workflow is the prospective checkpoint.
-        # GitHub/network delay is outside our control, so do not reject the
-        # observation just because processing completed after a wall-clock
-        # cutoff. Keep the actual capture timestamp for audit.
-        workflow_checkpoint = reason == "github_action_1430"
+        # The first successful closing-day checkpoint capture wins. Scheduled
+        # fallback and explicit manual recovery runs fill only missing IPOs and
+        # never overwrite a checkpoint already recorded earlier that day.
+        checkpoint_reasons = {
+            "github_action_1430",
+            "github_action_1430_recovery",
+            "manual_1430_recovery",
+        }
+        workflow_checkpoint = reason in checkpoint_reasons
+        existing_checkpoint_keys = {
+            _checkpoint_key(row)
+            for row in canonical_research_decisions()
+        } if workflow_checkpoint else set()
+
         if workflow_checkpoint:
             for n in payload["records"]:
                 if not n.get("is_closing_today"):
+                    continue
+
+                key = _checkpoint_key(n)
+                if key in existing_checkpoint_keys:
+                    n["would_be_1430_decision_snapshot"] = False
+                    logger.info(
+                        "CHECKPOINT_ALREADY_CAPTURED "
+                        "name=%r segment=%s end_date=%s reason=%s",
+                        n.get("name"), n.get("type"),
+                        n.get("end_date"), reason,
+                    )
                     continue
 
                 rec = n.get("recommendation") or {}
@@ -201,6 +233,7 @@ def capture_live(reason="manual"):
                     }
                     rec["display_decision_source"] = "CAPTURED_1430_WORKFLOW"
                     n["would_be_1430_decision_snapshot"] = True
+                    existing_checkpoint_keys.add(key)
                 else:
                     n["would_be_1430_decision_snapshot"] = False
 

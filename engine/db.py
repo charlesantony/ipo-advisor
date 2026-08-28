@@ -772,6 +772,44 @@ def year_model_tracker_summary(year=2026):
         ).fetchone()
     return dict(row) if row else {}
 
+def promote_manual_checkpoint_batch(
+    end_date,
+    start_ist,
+    end_ist,
+):
+    """Promote one manual recovery batch to prospective checkpoint rows."""
+    with connect() as conn:
+        cur = conn.execute(
+            """
+            UPDATE research_decisions
+            SET is_1430_decision_snapshot=1
+            WHERE
+                capture_reason='manual_1430'
+                AND is_closing_day=1
+                AND end_date=?
+                AND created_at_ist>=?
+                AND created_at_ist<=?
+                AND action IN (
+                    'STRONG SUBSCRIBE',
+                    'SUBSCRIBE',
+                    'BORDERLINE',
+                    'AVOID'
+                )
+                AND is_1430_decision_snapshot=0
+            """,
+            (str(end_date), str(start_ist), str(end_ist)),
+        )
+        conn.commit()
+        count = int(cur.rowcount or 0)
+    if count:
+        logger.info(
+            "MANUAL_CHECKPOINT_BATCH_PROMOTED "
+            "end_date=%s start=%s end=%s rows=%s",
+            end_date, start_ist, end_ist, count,
+        )
+    return count
+
+
 def canonical_research_decisions():
     with connect() as conn:
         rows = conn.execute(

@@ -2,10 +2,10 @@ name: Day-2 IPO Early Email
 
 on:
   schedule:
-    # 14:15 UTC = 7:45 PM IST.
-    # Start 45 minutes early to absorb GitHub scheduler delays.
-    # Python waits until 8:30 PM IST before evaluating the Day-2 signal.
-    - cron: "15 14 * * 1-5"
+    # Primary: 8:20 PM IST, then wait for the 8:30 PM checkpoint.
+    - cron: "50 14 * * 1-5"
+    # Fallback: retry at 9:05 PM IST; the email ledger prevents duplicates.
+    - cron: "35 15 * * 1-5"
   workflow_dispatch:
     inputs:
       wait_for_checkpoint:
@@ -25,6 +25,7 @@ concurrency:
 jobs:
   day2:
     runs-on: ubuntu-latest
+    timeout-minutes: 45
     environment:
       name: github-pages
     steps:
@@ -56,6 +57,7 @@ jobs:
           retention-days: 7
 
       - name: Persist generated state
+        if: ${{ hashFiles('.stale_schedule_skip') == '' }}
         run: |
           git config user.name "ipo-advisor-bot"
           git config user.email "ipo-advisor-bot@users.noreply.github.com"
@@ -67,7 +69,10 @@ jobs:
           fi
 
       - uses: actions/configure-pages@v6
+        if: ${{ hashFiles('.stale_schedule_skip') == '' }}
       - uses: actions/upload-pages-artifact@v5
+        if: ${{ hashFiles('.stale_schedule_skip') == '' }}
         with:
           path: site
       - uses: actions/deploy-pages@v5
+        if: ${{ hashFiles('.stale_schedule_skip') == '' }}
