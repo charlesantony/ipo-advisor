@@ -1150,7 +1150,7 @@
     }
   ],
   "errors": [],
-  "public_filtered_closed_count": 2,
+  "public_filtered_closed_count": 0,
   "public_filtered_closed_names": [
     "Annu Projects",
     "Sumax Engineering"
@@ -1158,5 +1158,18 @@
   "public_signal_policy": {
     "version": "public-signal-gate-v1",
     "locked_label": "Relevant data not available"
+  },
+  "refresh_warning": {
+    "at_ist": "2026-08-29T02:43:28.640359+05:30",
+    "errors": [
+      {
+        "type": "MAINBOARD",
+        "error": "FinAPI request failed: Remote end closed connection without response"
+      },
+      {
+        "type": "SME",
+        "error": "FinAPI request failed: Remote end closed connection without response"
+      }
+    ]
   }
 }
