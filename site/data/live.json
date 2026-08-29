@@ -1157,5 +1157,18 @@
   "public_signal_policy": {
     "version": "public-signal-gate-v1",
     "locked_label": "Relevant data not available"
+  },
+  "refresh_warning": {
+    "at_ist": "2026-08-30T02:45:37.754645+05:30",
+    "errors": [
+      {
+        "type": "MAINBOARD",
+        "error": "FinAPI request failed: The read operation timed out"
+      },
+      {
+        "type": "SME",
+        "error": "FinAPI request failed: The read operation timed out"
+      }
+    ]
   }
 }
