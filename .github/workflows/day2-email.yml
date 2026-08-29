@@ -1,11 +1,9 @@
 name: Day-2 IPO Early Email
 
 on:
-  schedule:
-    # Primary: 8:20 PM IST, then wait for the 8:30 PM checkpoint.
-    - cron: "50 14 * * 1-5"
-    # Fallback: retry at 9:05 PM IST; the email ledger prevents duplicates.
-    - cron: "35 15 * * 1-5"
+  # Time-critical execution is dispatched externally by the existing
+  # Google Apps Script project. GitHub `schedule:` is deliberately not used
+  # because GitHub documents that scheduled events can be delayed or dropped.
   workflow_dispatch:
     inputs:
       wait_for_checkpoint:

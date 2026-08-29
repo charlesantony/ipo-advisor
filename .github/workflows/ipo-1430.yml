@@ -1,11 +1,9 @@
 name: 2:30 PM IPO Decision and Email
 
 on:
-  schedule:
-    # Primary: 2:20 PM IST, then wait for the 2:30 PM checkpoint.
-    - cron: "50 8 * * 1-5"
-    # Fallback: retry at 3:05 PM IST if a checkpoint is still missing.
-    - cron: "35 9 * * 1-5"
+  # Time-critical execution is dispatched externally by the existing
+  # Google Apps Script project. GitHub `schedule:` is deliberately not used
+  # because GitHub documents that scheduled events can be delayed or dropped.
   workflow_dispatch:
     inputs:
       wait_for_checkpoint:
@@ -47,7 +45,6 @@ jobs:
           EMAIL_ALERT_KEY: ${{ secrets.EMAIL_ALERT_KEY }}
           PUBLIC_DASHBOARD_URL: ${{ vars.PUBLIC_DASHBOARD_URL }}
           FORCE_CHECKPOINT_WAIT: ${{ inputs.wait_for_checkpoint }}
-          CHECKPOINT_RECOVERY: ${{ github.event_name == 'schedule' && github.event.schedule == '35 9 * * 1-5' && '1' || '0' }}
           MANUAL_CHECKPOINT_RECOVERY: ${{ github.event_name == 'workflow_dispatch' && inputs.record_as_checkpoint == 'true' && '1' || '0' }}
         run: python scripts/cloud_job.py decision --wait-until-1430
 
