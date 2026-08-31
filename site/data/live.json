@@ -1915,5 +1915,18 @@
   "public_signal_policy": {
     "version": "public-signal-gate-v1",
     "locked_label": "Relevant data not available"
+  },
+  "refresh_warning": {
+    "at_ist": "2026-08-31T23:37:47.013597+05:30",
+    "errors": [
+      {
+        "type": "MAINBOARD",
+        "error": "FinAPI request failed: <urlopen error timed out>"
+      },
+      {
+        "type": "SME",
+        "error": "FinAPI request failed: <urlopen error timed out>"
+      }
+    ]
   }
 }
