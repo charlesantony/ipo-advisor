@@ -279,3 +279,134 @@ rerenderLiveView = function() {
   renderTracker(dashboardState.tracker);
   renderListed(dashboardState.listed);
 };
+
+/* -------------------------------------------------------------------------
+ * v0.5.22: show Live-only IPOs in IPO Tracker immediately.
+ * The annual tracker feed can lag the Live API. These rows are presentation
+ * overlays only; persisted/history rows remain unchanged.
+ * ---------------------------------------------------------------------- */
+
+function v0522TrackerSyntheticRow(n) {
+  const rec = n?.recommendation || {};
+  const preds = rec.predictions || {};
+  return {
+    tracker_key:
+      `LIVE|${String(n.type || "").toUpperCase()}|` +
+      trackerCanon(n.name || n.symbol),
+    year: Number(String(n.start_date || "").slice(0, 4)) || 2026,
+    ipo_type: String(n.type || "").toUpperCase(),
+    name: n.name || n.symbol || "IPO",
+    provider_status: n.status || "LIVE",
+    issue_open: n.start_date || null,
+    issue_close: n.end_date || null,
+    issue_price: n.price_high ?? n.price_low ?? null,
+    total_x: preds.total_subscription_x ?? n.total_x ?? null,
+    gmp_used_pct: preds.gmp_input_pct ?? n.gmp_gain_pct ?? null,
+    gmp_quality:
+      n.gmp_validation?.status ||
+      n.gmp_status ||
+      "",
+    decision_source: "LIVE_CURRENT",
+    model_action: rec.action || "NOT READY",
+    model_confidence: rec.research_confidence || null,
+    primary_prediction_pct: rec.primary_prediction_pct ?? null,
+    gmp_prediction_pct: preds.gmp_prediction_pct ?? null,
+    subscription_prediction_pct:
+      preds.subscription_prediction_pct ?? null,
+    signal_conflict: rec.signal_conflict ? 1 : 0,
+    listing_price: null,
+    actual_listing_gain_pct: null,
+    outcome_vs_call: null,
+    public_signal: rec.public_signal || null,
+  };
+}
+
+
+function v0522TrackerMergedRows(t, live) {
+  const base = [...(t?.rows || [])];
+  const known = new Set(
+    base.map(row => trackerCanon(row.name))
+  );
+  const extras = [];
+
+  for (const n of (live?.records || [])) {
+    if (!isPubliclyLiveRecord(n)) continue;
+    const key = trackerCanon(n.name || n.symbol);
+    if (!key || known.has(key)) continue;
+    extras.push(v0522TrackerSyntheticRow(n));
+    known.add(key);
+  }
+
+  extras.sort((a, b) =>
+    String(b.issue_close || "").localeCompare(
+      String(a.issue_close || "")
+    )
+  );
+  return [...extras, ...base];
+}
+
+
+renderTracker = function(t) {
+  const liveMap = trackerLiveMap(dashboardState.live);
+  const rows = v0522TrackerMergedRows(
+    t,
+    dashboardState.live
+  );
+
+  $("trackerBody").innerHTML = rows.map(row => {
+    const liveRecord = trackerLiveRecord(row, liveMap);
+    const d = trackerDisplayState(row, liveRecord);
+    const signal = d.signal;
+    const publicAction = signal.action;
+    const publicOutcome = signal.locked ? null : row.outcome_vs_call;
+    const status = trackerLifecycleStatus(row, liveRecord);
+
+    return `
+    <tr>
+      <td><strong>${esc(row.name)}</strong></td>
+      <td>${esc(row.ipo_type)}</td>
+      <td>${esc(status)}</td>
+      <td>
+        <span
+          class="action table-action ${actionClass(publicAction)}"
+          title="${signal.locked ? "Relevant data not available" : ""}"
+        >
+          ${esc(publicActionLabel(publicAction))}
+        </span>
+      </td>
+      <td>${fmt(d.pred,"%")}</td>
+      <td>${esc(gmpDisplayText(d.gmp, d.gmpQuality))}</td>
+      <td>${fmt(d.total,"x")}</td>
+      <td class="${trend(row.actual_listing_gain_pct)}">
+        ${fmt(row.actual_listing_gain_pct,"%")}
+      </td>
+      <td>${esc(publicOutcome || "—")}</td>
+    </tr>`;
+  }).join("") ||
+    `<tr><td colspan="9">No tracker rows yet.</td></tr>`;
+};
+
+
+rerenderLiveView = function() {
+  const publicLive = {
+    ...dashboardState.live,
+    records: (dashboardState.live?.records || [])
+      .filter(isPubliclyLiveRecord),
+  };
+  const mergedTrackerRows = v0522TrackerMergedRows(
+    dashboardState.tracker,
+    publicLive
+  );
+
+  renderHealth(
+    {
+      ...dashboardState.health,
+      year_tracker_rows: mergedTrackerRows.length,
+    },
+    dashboardState.prospective,
+    publicLive
+  );
+  renderLive(publicLive);
+  renderTracker(dashboardState.tracker);
+  renderListed(dashboardState.listed);
+};

@@ -885,3 +885,422 @@ def build_listed_payload(
         deep_refresh, persist,
     )
     return payload
+
+# ---------------------------------------------------------------------------
+# v0.5.22: improve listed-market coverage without changing frozen IPO model.
+# ---------------------------------------------------------------------------
+
+_V0522_BSE_SEARCH_URL = (
+    "https://api.bseindia.com/Msource/1D/getQouteSearch.aspx"
+)
+_V0522_BSE_HEADER_URL = (
+    "https://api.bseindia.com/BseIndiaAPI/api/getScripHeaderData/w"
+)
+_V0522_YAHOO_CHART_URL = (
+    "https://query1.finance.yahoo.com/v8/finance/chart"
+)
+
+
+def _v0522_strip_html(value):
+    import html
+    text = re.sub(r"<[^>]+>", " ", str(value or ""))
+    return " ".join(html.unescape(text).split())
+
+
+def _v0522_bse_text(url, timeout=8):
+    req = urllib.request.Request(
+        url,
+        headers={
+            "User-Agent": (
+                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                "AppleWebKit/537.36 Chrome/150 Safari/537.36"
+            ),
+            "Accept": "application/json,text/html,text/plain,*/*",
+            "Accept-Language": "en-IN,en;q=0.9",
+            "Origin": "https://www.bseindia.com",
+            "Referer": "https://www.bseindia.com/",
+        },
+    )
+    with urllib.request.urlopen(req, timeout=timeout) as resp:
+        return resp.read().decode("utf-8", errors="replace")
+
+
+def _v0522_resolve_bse(name):
+    params = urllib.parse.urlencode({
+        "Type": "EQ",
+        "text": name,
+        "flag": "site",
+    })
+    url = f"{_V0522_BSE_SEARCH_URL}?{params}"
+
+    try:
+        body = _v0522_bse_text(url)
+    except Exception as exc:
+        logger.warning(
+            "LISTED_BSE_SEARCH_FAILED name=%r error=%r",
+            name, str(exc),
+        )
+        return None
+
+    candidates = []
+    for match in re.finditer(
+        r"<a\b[^>]*href=[\"']([^\"']+)[\"'][^>]*>(.*?)</a>",
+        body,
+        flags=re.IGNORECASE | re.DOTALL,
+    ):
+        href = match.group(1)
+        label = _v0522_strip_html(match.group(2))
+        code_match = re.search(r"/(\d{6})(?:/|$|\?)", href)
+        if not code_match:
+            code_match = re.search(r"\b(\d{6})\b", href)
+        if not code_match:
+            continue
+        candidates.append((
+            _name_score(name, label),
+            code_match.group(1),
+            label,
+        ))
+
+    if not candidates:
+        for match in re.finditer(r"/(\d{6})(?:/|\?)", body):
+            start = max(0, match.start() - 220)
+            end = min(len(body), match.end() + 220)
+            label = _v0522_strip_html(body[start:end])
+            candidates.append((
+                _name_score(name, label),
+                match.group(1),
+                label,
+            ))
+
+    if not candidates:
+        return None
+
+    candidates.sort(reverse=True, key=lambda item: item[0])
+    score, code, label = candidates[0]
+    if score < 0.62:
+        return None
+
+    logger.info(
+        "LISTED_BSE_IDENTITY_SUCCESS name=%r code=%s score=%.3f",
+        name, code, score,
+    )
+    return {
+        "market": "BSE",
+        "symbol": code,
+        "market_symbol": f"{code}.BO",
+        "bse_code": code,
+        "series": None,
+        "isin": None,
+        "listing_date": None,
+        "identity_source": "BSE_QUOTE_SEARCH",
+        "identity_score": round(score, 3),
+    }
+
+
+def _v0522_bse_quote(code):
+    params = urllib.parse.urlencode({
+        "Debtflag": "",
+        "scripcode": str(code),
+        "seriesid": "",
+    })
+    url = f"{_V0522_BSE_HEADER_URL}?{params}"
+
+    try:
+        payload = json.loads(_v0522_bse_text(url))
+    except Exception as exc:
+        logger.warning(
+            "LISTED_BSE_QUOTE_FAILED code=%r error=%r",
+            code, str(exc),
+        )
+        return None
+
+    curr = payload.get("CurrRate") or {}
+    if isinstance(curr, list):
+        curr = curr[0] if curr else {}
+    if not isinstance(curr, dict):
+        curr = {}
+
+    price = _f(
+        curr.get("LTP")
+        or curr.get("ltp")
+        or payload.get("CurrVal")
+        or payload.get("LTP")
+    )
+    if price is None or price <= 0:
+        return None
+
+    return {
+        "price": round(price, 2),
+        "as_of_ist": _now().isoformat(),
+        "source": "BSE_DIRECT_QUOTE",
+    }
+
+
+def _v0522_nse_listing_open(symbol, listing_date):
+    try:
+        day = datetime.strptime(
+            str(listing_date), "%Y-%m-%d"
+        ).date()
+    except (TypeError, ValueError):
+        return None
+
+    stamp = day.strftime("%d%m%Y")
+    urls = [
+        (
+            "https://nsearchives.nseindia.com/products/content/"
+            f"sec_bhavdata_full_{stamp}.csv"
+        ),
+        (
+            "https://archives.nseindia.com/products/content/"
+            f"sec_bhavdata_full_{stamp}.csv"
+        ),
+        (
+            "https://nsearchives.nseindia.com/emerge/corporates/content/"
+            f"sme{stamp}.csv"
+        ),
+    ]
+
+    for url in urls:
+        try:
+            body = _http_text(url, timeout=8)
+            reader = csv.DictReader(io.StringIO(body))
+            for raw in reader:
+                row_symbol = _csv_value(raw, "SYMBOL", "SYMB")
+                if str(row_symbol or "").strip().upper() != str(symbol).upper():
+                    continue
+                open_price = _f(_csv_value(
+                    raw,
+                    "OPEN_PRICE", "OPEN", "OPENINGPRICE",
+                ))
+                if open_price is not None and open_price > 0:
+                    return {
+                        "price": round(open_price, 2),
+                        "source": "NSE_LISTING_DAY_OPEN",
+                    }
+        except Exception:
+            continue
+    return None
+
+
+def _v0522_yahoo_listing_open(market_symbol, listing_date):
+    if not market_symbol or not listing_date:
+        return None
+    try:
+        listing_day = datetime.strptime(
+            str(listing_date), "%Y-%m-%d"
+        ).date()
+    except ValueError:
+        return None
+
+    start = datetime(
+        listing_day.year,
+        listing_day.month,
+        listing_day.day,
+        tzinfo=IST,
+    ) - timedelta(days=1)
+    end = start + timedelta(days=5)
+
+    encoded = urllib.parse.quote(str(market_symbol), safe="")
+    params = urllib.parse.urlencode({
+        "period1": int(start.timestamp()),
+        "period2": int(end.timestamp()),
+        "interval": "1d",
+        "events": "history",
+    })
+    url = f"{_V0522_YAHOO_CHART_URL}/{encoded}?{params}"
+
+    try:
+        payload = json.loads(_http_text(url, timeout=8))
+        result = (
+            ((payload.get("chart") or {}).get("result") or [None])[0]
+        ) or {}
+        timestamps = result.get("timestamp") or []
+        quote = (
+            ((result.get("indicators") or {}).get("quote") or [{}])[0]
+        )
+        opens = quote.get("open") or []
+
+        for idx, timestamp in enumerate(timestamps):
+            if idx >= len(opens):
+                break
+            price = _f(opens[idx])
+            if price is None or price <= 0:
+                continue
+            observed_day = datetime.fromtimestamp(
+                int(timestamp), tz=IST
+            ).date()
+            if observed_day == listing_day:
+                return {
+                    "price": round(price, 2),
+                    "source": "YAHOO_LISTING_DAY_OPEN",
+                }
+    except Exception as exc:
+        logger.warning(
+            "LISTED_YAHOO_LISTING_OPEN_FAILED symbol=%r date=%r error=%r",
+            market_symbol, listing_date, str(exc),
+        )
+    return None
+
+
+_build_listed_payload_v0517 = build_listed_payload
+
+
+def build_listed_payload(*args, **kwargs):
+    """v0.5.22 wrapper adding BSE identities and market-price fallbacks."""
+    payload = _build_listed_payload_v0517(*args, **kwargs)
+    deep_refresh = bool(kwargs.get("deep_refresh", False))
+    persist = bool(kwargs.get("persist", False))
+
+    state = _load_state()
+    cache = state.setdefault("records", {})
+    bse_resolved = 0
+    bse_quotes = 0
+    listing_fallbacks = 0
+
+    for record in payload.get("records") or []:
+        key = str(record.get("tracker_key") or "")
+        item = cache.setdefault(key, {})
+        identity = item.get("identity") or {}
+
+        # The original implementation resolves NSE well but misses many BSE-SME
+        # securities. Discover BSE identity during the deeper daily sync.
+        if not identity and deep_refresh:
+            identity = _v0522_resolve_bse(record.get("name"))
+            if identity:
+                item["identity"] = identity
+                bse_resolved += 1
+
+        if identity:
+            record["market"] = identity.get("market")
+            record["symbol"] = (
+                identity.get("symbol")
+                or record.get("symbol")
+            )
+            record["market_symbol"] = (
+                identity.get("market_symbol")
+                or record.get("market_symbol")
+            )
+
+        # During deep refresh, prefer a direct BSE quote for BSE securities.
+        if (
+            deep_refresh
+            and identity.get("market") == "BSE"
+            and identity.get("bse_code")
+        ):
+            quote = _v0522_bse_quote(identity.get("bse_code"))
+            if quote:
+                item["current_price"] = quote["price"]
+                item["current_price_as_of_ist"] = quote["as_of_ist"]
+                item["current_price_source"] = quote["source"]
+                record["current_price"] = quote["price"]
+                record["current_price_as_of_ist"] = quote["as_of_ist"]
+                record["current_price_source"] = quote["source"]
+                record["current_return_pct"] = _return_pct(
+                    quote["price"],
+                    record.get("issue_price"),
+                )
+                bse_quotes += 1
+
+        # Reuse the cached BSE quote on lightweight refreshes if Yahoo does not
+        # expose the security yet.
+        if record.get("current_price") is None:
+            cached_price = _f(item.get("current_price"))
+            if cached_price is not None:
+                record["current_price"] = cached_price
+                record["current_price_as_of_ist"] = item.get(
+                    "current_price_as_of_ist"
+                )
+                record["current_price_source"] = item.get(
+                    "current_price_source"
+                )
+                record["current_return_pct"] = _return_pct(
+                    cached_price,
+                    record.get("issue_price"),
+                )
+
+        # If the IPO source has not populated listing price yet, take the
+        # actual first-day market open. For NSE use bhavcopy first.
+        if record.get("listing_price") is None:
+            cached_listing = _f(item.get("market_listing_price"))
+            listing = None
+            if cached_listing is not None:
+                listing = {
+                    "price": cached_listing,
+                    "source": item.get(
+                        "market_listing_price_source"
+                    ) or "MARKET_LISTING_FALLBACK",
+                }
+
+            market = identity.get("market") or record.get("market")
+            symbol = identity.get("symbol") or record.get("symbol")
+            market_symbol = (
+                identity.get("market_symbol")
+                or record.get("market_symbol")
+            )
+            listing_date = record.get("listing_date")
+
+            if listing is None and market == "NSE" and symbol:
+                listing = _v0522_nse_listing_open(
+                    symbol, listing_date
+                )
+            if listing is None and market_symbol:
+                listing = _v0522_yahoo_listing_open(
+                    market_symbol, listing_date
+                )
+
+            if listing:
+                price = _f(listing.get("price"))
+                if price is not None:
+                    record["listing_price"] = price
+                    record["listing_price_source"] = listing.get("source")
+                    record["listing_return_pct"] = _return_pct(
+                        price,
+                        record.get("issue_price"),
+                    )
+                    item["market_listing_price"] = price
+                    item["market_listing_price_source"] = listing.get(
+                        "source"
+                    )
+                    listing_fallbacks += 1
+
+    records = payload.get("records") or []
+    summary = payload.setdefault("summary", {})
+    summary["market_identity_resolved"] = sum(
+        1 for r in records
+        if r.get("market") and r.get("symbol")
+    )
+    summary["current_price_available"] = sum(
+        1 for r in records
+        if _f(r.get("current_price")) is not None
+    )
+    summary["bse_identities_added"] = bse_resolved
+    summary["bse_direct_quotes"] = bse_quotes
+    summary["listing_price_market_fallbacks"] = listing_fallbacks
+
+    payload["current_prices_as_of_ist"] = _latest_timestamp([
+        r.get("current_price_as_of_ist")
+        for r in records
+    ])
+
+    sources = payload.setdefault("sources", {})
+    sources["bse_identity"] = "BSE_QUOTE_SEARCH"
+    sources["bse_current_price"] = "BSE_DIRECT_QUOTE"
+    sources["listing_price_fallback"] = [
+        "NSE_LISTING_DAY_OPEN",
+        "YAHOO_LISTING_DAY_OPEN",
+    ]
+
+    state["records"] = cache
+    if persist:
+        _save_state(state)
+
+    logger.info(
+        "LISTED_V0522_ENRICH bse_resolved=%s bse_quotes=%s "
+        "listing_fallbacks=%s prices=%s/%s",
+        bse_resolved,
+        bse_quotes,
+        listing_fallbacks,
+        summary.get("current_price_available"),
+        summary.get("listed_records"),
+    )
+    return payload
