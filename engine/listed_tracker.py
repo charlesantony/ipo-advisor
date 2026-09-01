@@ -1165,10 +1165,19 @@ def build_listed_payload(*args, **kwargs):
         # The original implementation resolves NSE well but misses many BSE-SME
         # securities. Discover BSE identity during the deeper daily sync.
         if not identity and deep_refresh:
-            identity = _v0522_resolve_bse(record.get("name"))
-            if identity:
+            resolved_identity = _v0522_resolve_bse(
+                record.get("name")
+            )
+            if resolved_identity:
+                identity = resolved_identity
                 item["identity"] = identity
                 bse_resolved += 1
+
+        # Resolution failure is a normal data-availability condition.
+        # Never let an optional market-identity lookup turn the whole
+        # Daily Outcome Sync into a failure.
+        if not isinstance(identity, dict):
+            identity = {}
 
         if identity:
             record["market"] = identity.get("market")
