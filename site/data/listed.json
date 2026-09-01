@@ -1,14 +1,215 @@
 {
   "version": "listed-tracker-v1",
-  "generated_at_ist": "2026-09-01T04:31:33.444553+05:30",
+  "generated_at_ist": "2026-09-01T08:02:18.174965+05:30",
   "current_prices_as_of_ist": "2026-08-31T16:00:00+05:30",
   "summary": {
-    "listed_records": 179,
-    "market_identity_resolved": 111,
+    "listed_records": 184,
+    "market_identity_resolved": 116,
     "current_price_available": 110,
-    "unlock_schedule_available": 169
+    "unlock_schedule_available": 174,
+    "bse_identities_added": 0,
+    "bse_direct_quotes": 0,
+    "listing_price_market_fallbacks": 0
   },
   "records": [
+    {
+      "tracker_key": "2026|MAINBOARD|symbiotecpharmalab",
+      "name": "Symbiotec Pharmalab",
+      "symbol": "SYMBIOTEC",
+      "market": "NSE",
+      "market_symbol": "SYMBIOTEC.NS",
+      "ipo_type": "MAINBOARD",
+      "listing_date": "2026-09-01",
+      "issue_price": 988.0,
+      "listing_price": null,
+      "listing_return_pct": null,
+      "current_price": null,
+      "current_return_pct": null,
+      "current_price_as_of_ist": null,
+      "current_price_source": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-11-26",
+          "source_url": "https://ipomarkets.com/ipo/symbiotec-pharmalab-ipo-rte6179",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 86
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — holding above 20%",
+          "duration": "6 months",
+          "unlock_date": "2027-02-28",
+          "source_url": "https://ipomarkets.com/ipo/symbiotec-pharmalab-ipo-rte6179",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 180
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "6 months",
+          "unlock_date": "2027-02-28",
+          "source_url": "https://ipomarkets.com/ipo/symbiotec-pharmalab-ipo-rte6179",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 180
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — minimum contribution (20%)",
+          "duration": "18 months",
+          "unlock_date": "2028-02-28",
+          "source_url": "https://ipomarkets.com/ipo/symbiotec-pharmalab-ipo-rte6179",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 545
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — remaining 50%",
+        "duration": "90 days",
+        "unlock_date": "2026-11-26",
+        "source_url": "https://ipomarkets.com/ipo/symbiotec-pharmalab-ipo-rte6179",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 86
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-09-01T08:02:18.174965+05:30",
+      "detail_url": "https://ipomarkets.com/ipo/symbiotec-pharmalab-ipo-rte6179"
+    },
+    {
+      "tracker_key": "2026|MAINBOARD|skywaysairservices",
+      "name": "Skyways Air Services",
+      "symbol": "SKYWAYS",
+      "market": "NSE",
+      "market_symbol": "SKYWAYS.NS",
+      "ipo_type": "MAINBOARD",
+      "listing_date": "2026-09-01",
+      "issue_price": 138.0,
+      "listing_price": null,
+      "listing_return_pct": null,
+      "current_price": null,
+      "current_return_pct": null,
+      "current_price_as_of_ist": null,
+      "current_price_source": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-11-26",
+          "source_url": "https://ipomarkets.com/ipo/skyways-air-ipo-z27f07b",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 86
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — holding above 20%",
+          "duration": "6 months",
+          "unlock_date": "2027-02-28",
+          "source_url": "https://ipomarkets.com/ipo/skyways-air-ipo-z27f07b",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 180
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "6 months",
+          "unlock_date": "2027-02-28",
+          "source_url": "https://ipomarkets.com/ipo/skyways-air-ipo-z27f07b",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 180
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — minimum contribution (20%)",
+          "duration": "18 months",
+          "unlock_date": "2028-02-28",
+          "source_url": "https://ipomarkets.com/ipo/skyways-air-ipo-z27f07b",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 545
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — remaining 50%",
+        "duration": "90 days",
+        "unlock_date": "2026-11-26",
+        "source_url": "https://ipomarkets.com/ipo/skyways-air-ipo-z27f07b",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 86
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-09-01T08:02:18.174965+05:30",
+      "detail_url": "https://ipomarkets.com/ipo/skyways-air-ipo-z27f07b"
+    },
+    {
+      "tracker_key": "2026|MAINBOARD|hytechengineers",
+      "name": "Hy-Tech Engineers",
+      "symbol": "HTEL",
+      "market": "NSE",
+      "market_symbol": "HTEL.NS",
+      "ipo_type": "MAINBOARD",
+      "listing_date": "2026-09-01",
+      "issue_price": 53.0,
+      "listing_price": null,
+      "listing_return_pct": null,
+      "current_price": null,
+      "current_return_pct": null,
+      "current_price_as_of_ist": null,
+      "current_price_source": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-11-26",
+          "source_url": "https://ipomarkets.com/ipo/hy-tech-engineers-ipo-vw1ayhn",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 86
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — holding above 20%",
+          "duration": "6 months",
+          "unlock_date": "2027-02-28",
+          "source_url": "https://ipomarkets.com/ipo/hy-tech-engineers-ipo-vw1ayhn",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 180
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "6 months",
+          "unlock_date": "2027-02-28",
+          "source_url": "https://ipomarkets.com/ipo/hy-tech-engineers-ipo-vw1ayhn",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 180
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — minimum contribution (20%)",
+          "duration": "18 months",
+          "unlock_date": "2028-02-28",
+          "source_url": "https://ipomarkets.com/ipo/hy-tech-engineers-ipo-vw1ayhn",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 545
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — remaining 50%",
+        "duration": "90 days",
+        "unlock_date": "2026-11-26",
+        "source_url": "https://ipomarkets.com/ipo/hy-tech-engineers-ipo-vw1ayhn",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 86
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-09-01T08:02:18.174965+05:30",
+      "detail_url": "https://ipomarkets.com/ipo/hy-tech-engineers-ipo-vw1ayhn"
+    },
     {
       "tracker_key": "2026|MAINBOARD|augmontenterprises",
       "name": "Augmont Enterprises",
@@ -18,8 +219,8 @@
       "ipo_type": "MAINBOARD",
       "listing_date": "2026-08-31",
       "issue_price": 788.0,
-      "listing_price": null,
-      "listing_return_pct": null,
+      "listing_price": 961.0,
+      "listing_return_pct": 21.95,
       "current_price": 904.0,
       "current_return_pct": 14.72,
       "current_price_as_of_ist": "2026-08-31T16:00:00+05:30",
@@ -7916,6 +8117,93 @@
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-08-27T23:05:44.196312+05:30",
       "detail_url": "https://ipomarkets.com/ipo/gabion-technologies-india-ipo-f0020c4"
+    },
+    {
+      "tracker_key": "2026|SME|madhurknitcrafts",
+      "name": "Madhur Knit Crafts",
+      "symbol": "MADHURKNIT",
+      "market": "NSE",
+      "market_symbol": "MADHURKNIT.NS",
+      "ipo_type": "SME",
+      "listing_date": null,
+      "issue_price": 100.0,
+      "listing_price": null,
+      "listing_return_pct": null,
+      "current_price": null,
+      "current_return_pct": null,
+      "current_price_as_of_ist": null,
+      "current_price_source": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-11-26",
+          "source_url": "https://ipomarkets.com/ipo/madhur-knit-ipo-vrfpywg",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 86
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-08-28",
+          "source_url": "https://ipomarkets.com/ipo/madhur-knit-ipo-vrfpywg",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 361
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — remaining 50%",
+        "duration": "90 days",
+        "unlock_date": "2026-11-26",
+        "source_url": "https://ipomarkets.com/ipo/madhur-knit-ipo-vrfpywg",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 86
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-09-01T08:02:18.174965+05:30",
+      "detail_url": "https://ipomarkets.com/ipo/madhur-knit-ipo-vrfpywg"
+    },
+    {
+      "tracker_key": "2026|SME|abhhealthcare",
+      "name": "ABH Healthcare",
+      "symbol": "ABH",
+      "market": "NSE",
+      "market_symbol": "ABH.NS",
+      "ipo_type": "SME",
+      "listing_date": null,
+      "issue_price": null,
+      "listing_price": null,
+      "listing_return_pct": null,
+      "current_price": null,
+      "current_return_pct": null,
+      "current_price_as_of_ist": null,
+      "current_price_source": null,
+      "unlock_events": [
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-08-28",
+          "source_url": "https://ipomarkets.com/ipo/abh-healthcare-ipo-ax3xaph",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 361
+        }
+      ],
+      "next_unlock": {
+        "category": "PRE_IPO",
+        "label": "Non-promoter pre-issue shares",
+        "duration": "1 year",
+        "unlock_date": "2027-08-28",
+        "source_url": "https://ipomarkets.com/ipo/abh-healthcare-ipo-ax3xaph",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 361
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-09-01T08:02:18.174965+05:30",
+      "detail_url": "https://ipomarkets.com/ipo/abh-healthcare-ipo-ax3xaph"
     }
   ],
   "sources": {
@@ -7925,7 +8213,13 @@
     ],
     "current_price_primary": "YAHOO_FINANCE_MARKET",
     "current_price_fallback": "NSE_BHAVCOPY",
-    "unlock_events": "IPOMARKETS_LOCKIN_TABLE"
+    "unlock_events": "IPOMARKETS_LOCKIN_TABLE",
+    "bse_identity": "BSE_QUOTE_SEARCH",
+    "bse_current_price": "BSE_DIRECT_QUOTE",
+    "listing_price_fallback": [
+      "NSE_LISTING_DAY_OPEN",
+      "YAHOO_LISTING_DAY_OPEN"
+    ]
   },
   "errors": {
     "security_master": [],
