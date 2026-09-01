@@ -1,6 +1,7 @@
 import json
 import threading
 import time
+import urllib.error
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 
@@ -62,9 +63,30 @@ def _load_annual_rows(year):
             if page == 1
             else f"{BASE}/ipo-calendar/{year}/page/{page}"
         )
-        body, status, headers = _fetch(
-            url, f"YEAR_TRACKER_INDEX_{year}_PAGE_{page}", timeout=20
-        )
+        try:
+            body, status, headers = _fetch(
+                url, f"YEAR_TRACKER_INDEX_{year}_PAGE_{page}", timeout=20
+            )
+        except urllib.error.HTTPError as exc:
+            # A 404 on a later pagination URL means there are no more
+            # calendar pages. This is a normal end-of-pagination condition,
+            # not a Daily Outcome Sync failure.
+            if page > 1 and int(getattr(exc, "code", 0) or 0) == 404:
+                logger.info(
+                    "YEAR_TRACKER_PAGINATION_END "
+                    "year=%s page=%s http=404 url=%s rows_so_far=%s",
+                    year, page, url, len(all_rows),
+                )
+                page_meta.append({
+                    "page": page,
+                    "http_status": 404,
+                    "rows": 0,
+                    "url": url,
+                    "pagination_end": True,
+                })
+                break
+            raise
+
         parsed = parse_annual_page(
             body, archive_year=year, listed_only=False
         )
