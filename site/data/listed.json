@@ -1,17 +1,74 @@
 {
   "version": "listed-tracker-v1",
-  "generated_at_ist": "2026-09-02T02:49:33.901039+05:30",
+  "generated_at_ist": "2026-09-02T07:10:31.919197+05:30",
   "current_prices_as_of_ist": "2026-09-01T16:00:00+05:30",
   "summary": {
-    "listed_records": 184,
-    "market_identity_resolved": 116,
-    "current_price_available": 116,
-    "unlock_schedule_available": 174,
+    "listed_records": 187,
+    "market_identity_resolved": 118,
+    "current_price_available": 117,
+    "unlock_schedule_available": 176,
     "bse_identities_added": 0,
     "bse_direct_quotes": 0,
-    "listing_price_market_fallbacks": 3
+    "listing_price_market_fallbacks": 4
   },
   "records": [
+    {
+      "tracker_key": "2026|MAINBOARD|annuprojects",
+      "name": "Annu Projects",
+      "symbol": "ANNU",
+      "market": "NSE",
+      "market_symbol": "ANNU.NS",
+      "ipo_type": "MAINBOARD",
+      "listing_date": "2026-09-02",
+      "issue_price": 99.0,
+      "listing_price": null,
+      "listing_return_pct": null,
+      "current_price": null,
+      "current_return_pct": null,
+      "current_price_as_of_ist": null,
+      "current_price_source": null,
+      "unlock_events": [
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — holding above 20%",
+          "duration": "6 months",
+          "unlock_date": "2027-02-28",
+          "source_url": "https://ipomarkets.com/ipo/annu-projects-ipo-bfne5sd",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 179
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "6 months",
+          "unlock_date": "2027-02-28",
+          "source_url": "https://ipomarkets.com/ipo/annu-projects-ipo-bfne5sd",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 179
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — minimum contribution (20%)",
+          "duration": "18 months",
+          "unlock_date": "2028-02-29",
+          "source_url": "https://ipomarkets.com/ipo/annu-projects-ipo-bfne5sd",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 545
+        }
+      ],
+      "next_unlock": {
+        "category": "PROMOTER",
+        "label": "Promoter — holding above 20%",
+        "duration": "6 months",
+        "unlock_date": "2027-02-28",
+        "source_url": "https://ipomarkets.com/ipo/annu-projects-ipo-bfne5sd",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 179
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-09-02T07:10:31.919197+05:30",
+      "detail_url": "https://ipomarkets.com/ipo/annu-projects-ipo-bfne5sd"
+    },
     {
       "tracker_key": "2026|MAINBOARD|symbiotecpharmalab",
       "name": "Symbiotec Pharmalab",
@@ -344,6 +401,28 @@
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-08-28T04:02:45.657695+05:30",
       "detail_url": "https://ipomarkets.com/ipo/tempsens-instruments-india-ipo-f5hf0xv"
+    },
+    {
+      "tracker_key": "HANDOFF|2026|MAINBOARD|tempsensinstruments|2026-08-24",
+      "name": "Tempsens Instruments",
+      "symbol": "TEMPSENS",
+      "market": "NSE",
+      "market_symbol": "TEMPSENS.NS",
+      "ipo_type": "MAINBOARD",
+      "listing_date": "2026-08-28",
+      "issue_price": 300.0,
+      "listing_price": 634.0,
+      "listing_return_pct": 111.33,
+      "current_price": 540.0,
+      "current_return_pct": 80.0,
+      "current_price_as_of_ist": "2026-09-01T16:00:00+05:30",
+      "current_price_source": "NSE_BHAVCOPY",
+      "unlock_events": [],
+      "next_unlock": null,
+      "unlock_status": "NOT_AVAILABLE",
+      "unlock_checked_at_ist": null,
+      "detail_url": null,
+      "listing_price_source": "NSE_LISTING_DAY_OPEN"
     },
     {
       "tracker_key": "2026|SME|mopshopdistribution",
@@ -8120,6 +8199,54 @@
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-08-27T23:05:44.196312+05:30",
       "detail_url": "https://ipomarkets.com/ipo/gabion-technologies-india-ipo-f0020c4"
+    },
+    {
+      "tracker_key": "2026|SME|sumaxengineering",
+      "name": "Sumax Engineering",
+      "symbol": null,
+      "market": null,
+      "market_symbol": null,
+      "ipo_type": "SME",
+      "listing_date": null,
+      "issue_price": 101.0,
+      "listing_price": null,
+      "listing_return_pct": null,
+      "current_price": null,
+      "current_return_pct": null,
+      "current_price_as_of_ist": null,
+      "current_price_source": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-11-29",
+          "source_url": "https://ipomarkets.com/ipo/sumax-engineering-ipo-crc8w4r",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 88
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-08-31",
+          "source_url": "https://ipomarkets.com/ipo/sumax-engineering-ipo-crc8w4r",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 363
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — remaining 50%",
+        "duration": "90 days",
+        "unlock_date": "2026-11-29",
+        "source_url": "https://ipomarkets.com/ipo/sumax-engineering-ipo-crc8w4r",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 88
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-09-02T07:10:31.919197+05:30",
+      "detail_url": "https://ipomarkets.com/ipo/sumax-engineering-ipo-crc8w4r"
     },
     {
       "tracker_key": "2026|SME|madhurknitcrafts",
