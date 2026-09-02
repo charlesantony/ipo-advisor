@@ -412,6 +412,122 @@ def _public_tracker_rows(rows):
     return [_public_tracker_row(row) for row in rows or []]
 
 
+def _tracker_handoff_key(value):
+    segment = str(value.get("ipo_type") or value.get("type") or "").strip().upper()
+    name = "".join(
+        ch for ch in str(value.get("name") or "").lower()
+        if ch.isalnum()
+    )
+    end_date = str(value.get("issue_close") or value.get("end_date") or "").strip()
+    return (segment, name, end_date)
+
+
+def _tracker_date_label(value):
+    day = _parse_iso_date(value)
+    return day.strftime("%-d %b") if day else ""
+
+
+def _tracker_rows_with_continuity(db, base_rows=None, year=2026):
+    """Bridge Live -> Tracker -> Listed using persisted closing-day state."""
+    rows = list(
+        base_rows if base_rows is not None
+        else db.year_model_tracker_rows(year=year, limit=5000)
+    )
+    existing = {
+        _tracker_handoff_key(row)
+        for row in rows
+        if _tracker_handoff_key(row)[1]
+    }
+
+    snapshot_map = {}
+    for snap in db.recent_snapshots(limit=5000):
+        key = _tracker_handoff_key(snap)
+        if key[1] and key[2]:
+            snapshot_map.setdefault(key, snap)
+
+    seen = set()
+    today = datetime.now(IST).date()
+    added = []
+
+    for decision in db.recent_research_decisions(limit=5000):
+        if not bool(decision.get("is_closing_day")):
+            continue
+        end_date = str(decision.get("end_date") or "").strip()
+        if not end_date.startswith(f"{int(year)}-"):
+            continue
+
+        key = _tracker_handoff_key(decision)
+        if not key[1] or not key[2] or key in existing or key in seen:
+            continue
+        seen.add(key)
+        snap = snapshot_map.get(key) or {}
+        listing_date = decision.get("listing_date") or snap.get("listing_date")
+        listing_day = _parse_iso_date(listing_date)
+        close_day = _parse_iso_date(end_date)
+
+        if listing_day and today >= listing_day:
+            provider_status = f"Listed {_tracker_date_label(listing_date)}"
+        elif close_day and today > close_day:
+            provider_status = f"Bidding closed · Closed {_tracker_date_label(end_date)}"
+        else:
+            provider_status = "Closing today"
+
+        row = {
+            "tracker_key": f"HANDOFF|{int(year)}|{key[0]}|{key[1]}|{key[2]}",
+            "year": int(year),
+            "ipo_type": key[0],
+            "name": decision.get("name"),
+            "detail_url": None,
+            "provider_status": provider_status,
+            "issue_open": snap.get("start_date"),
+            "issue_close": end_date,
+            "issue_price": snap.get("price_high"),
+            "total_x": decision.get("total_subscription_x"),
+            "gmp_used_pct": decision.get("gmp_input_pct"),
+            "gmp_used_rupees": snap.get("gmp_value"),
+            "gmp_used_at_ist": decision.get("created_at_ist"),
+            "gmp_quality": "CHECKPOINT_CAPTURED" if decision.get("gmp_input_pct") is not None else "NOT_AVAILABLE",
+            "decision_source": "CAPTURED_1430_IST" if bool(decision.get("is_1430_decision_snapshot")) else "CLOSING_DAY_HANDOFF",
+            "model_policy_version": decision.get("policy_version"),
+            "model_action": str(decision.get("action") or "NOT READY").strip().upper(),
+            "model_confidence": decision.get("research_confidence"),
+            "primary_prediction_pct": decision.get("primary_prediction_pct"),
+            "gmp_prediction_pct": decision.get("gmp_prediction_pct"),
+            "subscription_prediction_pct": decision.get("subscription_prediction_pct"),
+            "signal_conflict": int(bool(decision.get("signal_conflict"))),
+            "listing_price": None,
+            "actual_listing_gain_pct": None,
+            "outcome_vs_call": None,
+            "shadow_v2_version": None,
+            "shadow_v2_triggered": 0,
+            "shadow_v2_action": None,
+            "shadow_v2_strength": None,
+            "shadow_v2_outcome": None,
+            "shadow_v2_reason": None,
+            "last_updated_ist": decision.get("created_at_ist"),
+            "raw_json": json.dumps({
+                "source": "closing_day_handoff",
+                "decision_id": decision.get("id"),
+                "symbol": decision.get("symbol"),
+                "listing_date": listing_date,
+            }, ensure_ascii=False),
+            "listing_date": listing_date,
+            "handoff_continuity": True,
+        }
+        rows.append(row)
+        existing.add(key)
+        added.append(row.get("name"))
+
+    if added:
+        print(f"TRACKER_CONTINUITY_HANDOFF added={len(added)} names={added}")
+
+    rows.sort(
+        key=lambda row: (str(row.get("issue_close") or ""), str(row.get("name") or "")),
+        reverse=True,
+    )
+    return rows
+
+
 def _prepare_light_live_payload(db, live_payload):
     """Prepare a public live snapshot without recording a research checkpoint."""
     if (
@@ -487,12 +603,18 @@ def _export_static(
     live_payload = _filter_closed_public_live(live_payload)
     live_payload = _apply_public_live_signal_gate(live_payload)
 
-    tracker_rows = db.year_model_tracker_rows(
-        year=2026, limit=5000
+    tracker_rows = _tracker_rows_with_continuity(
+        db,
+        db.year_model_tracker_rows(year=2026, limit=5000),
+        year=2026,
+    )
+    tracker_summary = dict(db.year_model_tracker_summary(2026) or {})
+    tracker_summary["rows"] = len(tracker_rows)
+    tracker_summary["continuity_rows"] = sum(
+        1 for row in tracker_rows if row.get("handoff_continuity")
     )
     tracker = {
-        "summary":
-            db.year_model_tracker_summary(2026),
+        "summary": tracker_summary,
         "rows": _public_tracker_rows(tracker_rows),
     }
 
@@ -922,8 +1044,10 @@ def main():
         _json_write(SITE_DATA / "live.json", live)
 
         listed = listed_tracker.build_listed_payload(
-            db.year_model_tracker_rows(
-                year=2026, limit=5000
+            _tracker_rows_with_continuity(
+                db,
+                db.year_model_tracker_rows(year=2026, limit=5000),
+                year=2026,
             ),
             deep_refresh=False,
             persist=False,
@@ -1076,8 +1200,10 @@ def main():
             ipo_type="ALL",
         )
         listed = listed_tracker.build_listed_payload(
-            db.year_model_tracker_rows(
-                year=2026, limit=5000
+            _tracker_rows_with_continuity(
+                db,
+                db.year_model_tracker_rows(year=2026, limit=5000),
+                year=2026,
             ),
             deep_refresh=True,
             persist=True,
@@ -1110,8 +1236,10 @@ def main():
             ipo_type="ALL",
         )
         listed = listed_tracker.build_listed_payload(
-            db.year_model_tracker_rows(
-                year=2026, limit=5000
+            _tracker_rows_with_continuity(
+                db,
+                db.year_model_tracker_rows(year=2026, limit=5000),
+                year=2026,
             ),
             deep_refresh=True,
             persist=True,

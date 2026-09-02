@@ -328,6 +328,17 @@ def _status_listing_date(row):
 
 
 def _is_listed(row):
+    direct_listing_date = row.get("listing_date")
+    if direct_listing_date:
+        try:
+            listing_day = datetime.strptime(
+                str(direct_listing_date), "%Y-%m-%d"
+            ).date()
+            if listing_day <= _now().date():
+                return True
+        except (TypeError, ValueError):
+            pass
+
     return (
         row.get("listing_price") is not None
         or row.get("actual_listing_gain_pct") is not None
@@ -805,7 +816,8 @@ def build_listed_payload(
             unlock_count += 1
 
         listing_date = (
-            identity.get("listing_date")
+            row.get("listing_date")
+            or identity.get("listing_date")
             or _status_listing_date(row)
         )
 

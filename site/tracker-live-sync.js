@@ -322,11 +322,40 @@ function v0522TrackerSyntheticRow(n) {
 }
 
 
-function v0522TrackerMergedRows(t, live) {
+function v0525TrackerProspectiveRow(sample) {
+  return {
+    tracker_key: `PROSPECTIVE|${String(sample.ipo_type || "").toUpperCase()}|${trackerCanon(sample.name)}`,
+    year: Number(String(sample.closing_date || "").slice(0, 4)) || 2026,
+    ipo_type: String(sample.ipo_type || "").toUpperCase(),
+    name: sample.name || "IPO",
+    provider_status: sample.tracker_status || "Bidding closed",
+    issue_open: null,
+    issue_close: sample.closing_date || null,
+    issue_price: null,
+    total_x: sample.total_subscription_x ?? null,
+    gmp_used_pct: sample.gmp_input_pct ?? null,
+    gmp_quality: sample.gmp_input_pct == null ? "NOT_AVAILABLE" : "CHECKPOINT_CAPTURED",
+    decision_source: "CAPTURED_1430_IST",
+    model_policy_version: sample.model_policy_version || null,
+    model_action: sample.v1_action || "NOT READY",
+    model_confidence: sample.v1_confidence || null,
+    primary_prediction_pct: sample.v1_primary_prediction_pct ?? null,
+    gmp_prediction_pct: sample.gmp_prediction_pct ?? null,
+    subscription_prediction_pct: sample.subscription_prediction_pct ?? null,
+    signal_conflict: 0,
+    listing_price: null,
+    actual_listing_gain_pct: sample.actual_listing_gain_pct ?? null,
+    outcome_vs_call: sample.v1_outcome || null,
+    public_signal: {
+      locked: !["STRONG SUBSCRIBE","SUBSCRIBE","BORDERLINE","AVOID"].includes(String(sample.v1_action || "").toUpperCase()),
+      action: String(sample.v1_action || "LOCKED").toUpperCase(),
+    },
+  };
+}
+
+function v0522TrackerMergedRows(t, live, prospective=dashboardState.prospective) {
   const base = [...(t?.rows || [])];
-  const known = new Set(
-    base.map(row => trackerCanon(row.name))
-  );
+  const known = new Set(base.map(row => trackerCanon(row.name)));
   const extras = [];
 
   for (const n of (live?.records || [])) {
@@ -337,10 +366,15 @@ function v0522TrackerMergedRows(t, live) {
     known.add(key);
   }
 
+  for (const sample of (prospective?.samples || [])) {
+    const key = trackerCanon(sample?.name);
+    if (!key || known.has(key)) continue;
+    extras.push(v0525TrackerProspectiveRow(sample));
+    known.add(key);
+  }
+
   extras.sort((a, b) =>
-    String(b.issue_close || "").localeCompare(
-      String(a.issue_close || "")
-    )
+    String(b.issue_close || "").localeCompare(String(a.issue_close || ""))
   );
   return [...extras, ...base];
 }
