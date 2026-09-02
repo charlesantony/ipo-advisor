@@ -1,10 +1,30 @@
 {
-  "completed_at_ist": "2026-09-02T20:09:47.635984+05:30",
+  "completed_at_ist": "2026-09-02T20:31:14.438835+05:30",
   "result": {
-    "mode": "refresh",
-    "phase": "sme_close",
-    "fetched_at_ist": "2026-09-02T20:09:32.350554+05:30",
+    "mode": "day2",
+    "fetched_at_ist": "2026-09-02T20:30:58.660320+05:30",
     "live_records": 8,
+    "email_alert": {
+      "eligible_alerts": 2,
+      "new_alerts": 2,
+      "email": {
+        "configured": true,
+        "alerts": 2,
+        "sent_alerts": 2,
+        "failed_alerts": 0,
+        "batch_sent": true,
+        "batch_kind": "DAY2",
+        "status": 200,
+        "response": {
+          "ok": true,
+          "sent": 3,
+          "subscribers": 3,
+          "alerts": 2,
+          "failed": 0,
+          "quota_remaining": 96
+        }
+      }
+    },
     "prospective_status": "COLLECTING_EXACT_1430_EVIDENCE"
   }
 }
