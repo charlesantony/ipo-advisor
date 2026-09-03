@@ -1,17 +1,92 @@
 {
   "version": "listed-tracker-v1",
-  "generated_at_ist": "2026-09-03T14:35:40.772304+05:30",
+  "generated_at_ist": "2026-09-03T16:36:57.937688+05:30",
   "current_prices_as_of_ist": "2026-09-02T16:00:00+05:30",
   "summary": {
-    "listed_records": 187,
-    "market_identity_resolved": 120,
+    "listed_records": 189,
+    "market_identity_resolved": 121,
     "current_price_available": 120,
-    "unlock_schedule_available": 176,
+    "unlock_schedule_available": 178,
     "bse_identities_added": 0,
     "bse_direct_quotes": 0,
-    "listing_price_market_fallbacks": 2
+    "listing_price_market_fallbacks": 1
   },
   "records": [
+    {
+      "tracker_key": "2026|MAINBOARD|luminoindustries",
+      "name": "Lumino Industries",
+      "symbol": "LUMINO",
+      "market": "NSE",
+      "market_symbol": "LUMINO.NS",
+      "ipo_type": "MAINBOARD",
+      "listing_date": "2026-09-03",
+      "issue_price": 82.0,
+      "listing_price": null,
+      "listing_return_pct": null,
+      "current_price": null,
+      "current_return_pct": null,
+      "current_price_as_of_ist": null,
+      "current_price_source": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — first 50%",
+          "duration": "30 days",
+          "unlock_date": "2026-10-01",
+          "source_url": "https://ipomarkets.com/ipo/lumino-industries-ipo-rw5te8g",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 28
+        },
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-11-30",
+          "source_url": "https://ipomarkets.com/ipo/lumino-industries-ipo-rw5te8g",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 88
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — holding above 20%",
+          "duration": "6 months",
+          "unlock_date": "2027-03-01",
+          "source_url": "https://ipomarkets.com/ipo/lumino-industries-ipo-rw5te8g",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 179
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "6 months",
+          "unlock_date": "2027-03-01",
+          "source_url": "https://ipomarkets.com/ipo/lumino-industries-ipo-rw5te8g",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 179
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — minimum contribution (20%)",
+          "duration": "18 months",
+          "unlock_date": "2028-03-01",
+          "source_url": "https://ipomarkets.com/ipo/lumino-industries-ipo-rw5te8g",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 545
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — first 50%",
+        "duration": "30 days",
+        "unlock_date": "2026-10-01",
+        "source_url": "https://ipomarkets.com/ipo/lumino-industries-ipo-rw5te8g",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 28
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-09-03T16:36:57.937688+05:30",
+      "detail_url": "https://ipomarkets.com/ipo/lumino-industries-ipo-rw5te8g"
+    },
     {
       "tracker_key": "2026|MAINBOARD|annuprojects",
       "name": "Annu Projects",
@@ -67,8 +142,7 @@
       },
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-09-02T07:10:31.919197+05:30",
-      "detail_url": "https://ipomarkets.com/ipo/annu-projects-ipo-bfne5sd",
-      "listing_price_source": "NSE_LISTING_DAY_OPEN"
+      "detail_url": "https://ipomarkets.com/ipo/annu-projects-ipo-bfne5sd"
     },
     {
       "tracker_key": "2026|MAINBOARD|symbiotecpharmalab",
@@ -8207,8 +8281,8 @@
       "ipo_type": "SME",
       "listing_date": null,
       "issue_price": 101.0,
-      "listing_price": null,
-      "listing_return_pct": null,
+      "listing_price": 111.0,
+      "listing_return_pct": 9.9,
       "current_price": 108.1,
       "current_return_pct": 7.03,
       "current_price_as_of_ist": "2026-09-02T16:00:00+05:30",
@@ -8293,6 +8367,54 @@
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-09-01T08:02:18.174965+05:30",
       "detail_url": "https://ipomarkets.com/ipo/madhur-knit-ipo-vrfpywg"
+    },
+    {
+      "tracker_key": "2026|SME|kwickforensicsolutions",
+      "name": "Kwick Forensic Solutions",
+      "symbol": null,
+      "market": null,
+      "market_symbol": null,
+      "ipo_type": "SME",
+      "listing_date": null,
+      "issue_price": 90.0,
+      "listing_price": null,
+      "listing_return_pct": null,
+      "current_price": null,
+      "current_return_pct": null,
+      "current_price_as_of_ist": null,
+      "current_price_source": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — first 50%",
+          "duration": "30 days",
+          "unlock_date": "2026-10-01",
+          "source_url": "https://ipomarkets.com/ipo/kwick-forensic-solutions-ipo-r6j9hk0",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 28
+        },
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-11-30",
+          "source_url": "https://ipomarkets.com/ipo/kwick-forensic-solutions-ipo-r6j9hk0",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 88
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — first 50%",
+        "duration": "30 days",
+        "unlock_date": "2026-10-01",
+        "source_url": "https://ipomarkets.com/ipo/kwick-forensic-solutions-ipo-r6j9hk0",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 28
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-09-03T16:36:57.937688+05:30",
+      "detail_url": "https://ipomarkets.com/ipo/kwick-forensic-solutions-ipo-r6j9hk0"
     },
     {
       "tracker_key": "2026|SME|abhhealthcare",

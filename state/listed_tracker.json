@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_ist": "2026-09-02T22:19:45.048921+05:30",
+  "updated_at_ist": "2026-09-03T16:37:35.820235+05:30",
   "records": {
     "2026|MAINBOARD|sunshinepictures": {
       "name": "Sunshine Pictures",
@@ -7024,6 +7024,90 @@
       "current_price_source": "NSE_BHAVCOPY",
       "market_listing_price": 634.0,
       "market_listing_price_source": "NSE_LISTING_DAY_OPEN"
+    },
+    "2026|MAINBOARD|luminoindustries": {
+      "name": "Lumino Industries",
+      "ipo_type": "MAINBOARD",
+      "detail_url": "https://ipomarkets.com/ipo/lumino-industries-ipo-rw5te8g",
+      "identity": {
+        "market": "NSE",
+        "symbol": "LUMINO",
+        "market_symbol": "LUMINO.NS",
+        "series": "EQ",
+        "isin": "INE185Q01025",
+        "listing_date": "2026-09-03",
+        "identity_source": "NSE_EQUITY_MASTER",
+        "identity_score": 1.0
+      },
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — first 50%",
+          "duration": "30 days",
+          "unlock_date": "2026-10-01",
+          "source_url": "https://ipomarkets.com/ipo/lumino-industries-ipo-rw5te8g",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE"
+        },
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-11-30",
+          "source_url": "https://ipomarkets.com/ipo/lumino-industries-ipo-rw5te8g",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE"
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — holding above 20%",
+          "duration": "6 months",
+          "unlock_date": "2027-03-01",
+          "source_url": "https://ipomarkets.com/ipo/lumino-industries-ipo-rw5te8g",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE"
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "6 months",
+          "unlock_date": "2027-03-01",
+          "source_url": "https://ipomarkets.com/ipo/lumino-industries-ipo-rw5te8g",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE"
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — minimum contribution (20%)",
+          "duration": "18 months",
+          "unlock_date": "2028-03-01",
+          "source_url": "https://ipomarkets.com/ipo/lumino-industries-ipo-rw5te8g",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE"
+        }
+      ],
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-09-03T16:36:57.937688+05:30"
+    },
+    "2026|SME|kwickforensicsolutions": {
+      "name": "Kwick Forensic Solutions",
+      "ipo_type": "SME",
+      "detail_url": "https://ipomarkets.com/ipo/kwick-forensic-solutions-ipo-r6j9hk0",
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — first 50%",
+          "duration": "30 days",
+          "unlock_date": "2026-10-01",
+          "source_url": "https://ipomarkets.com/ipo/kwick-forensic-solutions-ipo-r6j9hk0",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE"
+        },
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-11-30",
+          "source_url": "https://ipomarkets.com/ipo/kwick-forensic-solutions-ipo-r6j9hk0",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE"
+        }
+      ],
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-09-03T16:36:57.937688+05:30"
     }
   }
 }
