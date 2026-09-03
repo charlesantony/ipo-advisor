@@ -1,6 +1,6 @@
 {
-  "fetched_at_utc": "2026-09-03T15:07:41.834160+00:00",
-  "fetched_at_ist": "2026-09-03T20:37:41.834160+05:30",
+  "fetched_at_utc": "2026-09-03T16:38:27.114025+00:00",
+  "fetched_at_ist": "2026-09-03T22:08:27.114025+05:30",
   "status_filter": "LIVE",
   "type_filter": "ALL",
   "records": [
@@ -77,14 +77,14 @@
         "gmp_gain_pct": 6.28
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-09-03T20:37:41.834160+05:30",
+      "subscription_observed_at_ist": "2026-09-03T22:08:27.114025+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-09-03T20:37:41.834160+05:30",
+        "observed_at_ist": "2026-09-03T22:08:27.114025+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -124,7 +124,7 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 6.7,
+        "minutes_since_previous": 90.8,
         "qib_x_per_hour": 0.0,
         "nii_x_per_hour": 0.0,
         "retail_x_per_hour": 0.0,
@@ -268,14 +268,14 @@
         "gmp_gain_pct": 10.17
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-09-03T20:37:41.834160+05:30",
+      "subscription_observed_at_ist": "2026-09-03T22:08:27.114025+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-09-03T20:37:41.834160+05:30",
+        "observed_at_ist": "2026-09-03T22:08:27.114025+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -315,7 +315,7 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 6.7,
+        "minutes_since_previous": 90.8,
         "qib_x_per_hour": 0.0,
         "nii_x_per_hour": 0.0,
         "retail_x_per_hour": 0.0,
@@ -493,7 +493,7 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 6.7,
+        "minutes_since_previous": 90.8,
         "qib_x_per_hour": null,
         "nii_x_per_hour": null,
         "retail_x_per_hour": null,
@@ -673,7 +673,7 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 6.7,
+        "minutes_since_previous": 90.8,
         "qib_x_per_hour": null,
         "nii_x_per_hour": null,
         "retail_x_per_hour": null,
@@ -768,9 +768,6 @@
     }
   ],
   "errors": [],
-  "decision_saved_count": 4,
-  "saved_count": 4,
-  "capture_reason": "github_action_refresh_mainboard_close",
   "public_filtered_closed_count": 0,
   "public_signal_policy": {
     "version": "public-signal-gate-v1",
