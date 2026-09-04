@@ -440,7 +440,12 @@ def _tracker_date_label(value):
 
 
 def _tracker_rows_with_continuity(db, base_rows=None, year=2026):
-    """Bridge Live -> Tracker -> Listed using persisted closing-day state."""
+    """Bridge Live -> Tracker -> Listed using persisted closing-day state.
+
+    If the annual calendar already has a row but its lifecycle fields are
+    incomplete/stale, enrich that permanent row from the persisted closing-day
+    decision instead of suppressing the handoff entirely.
+    """
     rows = list(
         base_rows if base_rows is not None
         else db.year_model_tracker_rows(year=year, limit=5000)
@@ -450,11 +455,12 @@ def _tracker_rows_with_continuity(db, base_rows=None, year=2026):
         for row in rows
         if _tracker_handoff_key(row)[1]
     }
-    existing_identities = {
-        _tracker_identity_key(row)
+    rows_by_identity = {
+        _tracker_identity_key(row): row
         for row in rows
         if _tracker_identity_key(row)[1]
     }
+    existing_identities = set(rows_by_identity)
 
     snapshot_map = {}
     for snap in db.recent_snapshots(limit=5000):
@@ -462,47 +468,159 @@ def _tracker_rows_with_continuity(db, base_rows=None, year=2026):
         if key[1] and key[2]:
             snapshot_map.setdefault(key, snap)
 
-    seen = set()
+    # Prefer exact/canonical closing-day decisions whenever one exists.
+    canonical_by_identity = {}
+    for decision in db.canonical_research_decisions():
+        end_date = str(decision.get("end_date") or "").strip()
+        identity_key = _tracker_identity_key(decision)
+        if (
+            identity_key[1]
+            and end_date.startswith(f"{int(year)}-")
+        ):
+            canonical_by_identity.setdefault(
+                identity_key, decision
+            )
+
+    seen_identities = set()
     today = datetime.now(IST).date()
     added = []
+    enriched = []
 
-    for decision in db.recent_research_decisions(limit=5000):
-        if not bool(decision.get("is_closing_day")):
+    for raw_decision in db.recent_research_decisions(limit=5000):
+        if not bool(raw_decision.get("is_closing_day")):
             continue
+
+        raw_identity = _tracker_identity_key(raw_decision)
+        decision = canonical_by_identity.get(
+            raw_identity, raw_decision
+        )
+
+        identity_key = _tracker_identity_key(decision)
+        if (
+            not identity_key[1]
+            or identity_key in seen_identities
+        ):
+            continue
+
         end_date = str(decision.get("end_date") or "").strip()
         if not end_date.startswith(f"{int(year)}-"):
             continue
 
         key = _tracker_handoff_key(decision)
-        identity_key = _tracker_identity_key(decision)
-        if (
-            not key[1]
-            or not key[2]
-            or key in existing
-            or identity_key in existing_identities
-            or key in seen
-        ):
+        if not key[1] or not key[2]:
             continue
-        seen.add(key)
+
+        seen_identities.add(identity_key)
         snap = snapshot_map.get(key) or {}
-        listing_date = decision.get("listing_date") or snap.get("listing_date")
+        listing_date = (
+            decision.get("listing_date")
+            or snap.get("listing_date")
+        )
         listing_day = _parse_iso_date(listing_date)
         close_day = _parse_iso_date(end_date)
 
         if listing_day and today >= listing_day:
-            provider_status = f"Listed {_tracker_date_label(listing_date)}"
+            lifecycle_status = (
+                f"Listed {_tracker_date_label(listing_date)}"
+            )
         elif close_day and today > close_day:
-            provider_status = f"Bidding closed · Closed {_tracker_date_label(end_date)}"
+            lifecycle_status = (
+                "Bidding closed · Closed "
+                f"{_tracker_date_label(end_date)}"
+            )
         else:
-            provider_status = "Closing today"
+            lifecycle_status = "Closing today"
+
+        permanent = rows_by_identity.get(identity_key)
+        if permanent is not None:
+            # Keep the permanent annual row, but fill/refresh the lifecycle
+            # handoff fields from the stateful closing-day capture.
+            permanent["issue_close"] = end_date
+            if not permanent.get("issue_open"):
+                permanent["issue_open"] = snap.get("start_date")
+            if permanent.get("issue_price") is None:
+                permanent["issue_price"] = snap.get("price_high")
+            if listing_date:
+                permanent["listing_date"] = listing_date
+
+            # Do not replace a confirmed listed outcome/status with a pending
+            # lifecycle label. Until an actual listing outcome exists, however,
+            # the closing-day state is the authoritative lifecycle status.
+            if permanent.get("actual_listing_gain_pct") is None:
+                permanent["provider_status"] = lifecycle_status
+
+            # Exact closing-day research inputs are the durable research record.
+            permanent["total_x"] = (
+                decision.get("total_subscription_x")
+                if decision.get("total_subscription_x") is not None
+                else permanent.get("total_x")
+            )
+            permanent["gmp_used_pct"] = (
+                decision.get("gmp_input_pct")
+                if decision.get("gmp_input_pct") is not None
+                else permanent.get("gmp_used_pct")
+            )
+            if snap.get("gmp_value") is not None:
+                permanent["gmp_used_rupees"] = snap.get("gmp_value")
+            permanent["gmp_used_at_ist"] = (
+                decision.get("created_at_ist")
+                or permanent.get("gmp_used_at_ist")
+            )
+
+            is_canonical = bool(
+                decision.get("is_1430_decision_snapshot")
+            )
+            if (
+                is_canonical
+                or permanent.get("decision_source")
+                not in {"CAPTURED_1430_IST"}
+            ):
+                permanent["decision_source"] = (
+                    "CAPTURED_1430_IST"
+                    if is_canonical
+                    else "CLOSING_DAY_HANDOFF"
+                )
+                permanent["model_policy_version"] = (
+                    decision.get("policy_version")
+                )
+                permanent["model_action"] = str(
+                    decision.get("action") or "NOT READY"
+                ).strip().upper()
+                permanent["model_confidence"] = (
+                    decision.get("research_confidence")
+                )
+                permanent["primary_prediction_pct"] = (
+                    decision.get("primary_prediction_pct")
+                )
+                permanent["gmp_prediction_pct"] = (
+                    decision.get("gmp_prediction_pct")
+                )
+                permanent["subscription_prediction_pct"] = (
+                    decision.get("subscription_prediction_pct")
+                )
+                permanent["signal_conflict"] = int(
+                    bool(decision.get("signal_conflict"))
+                )
+
+            permanent["continuity_enriched"] = True
+            permanent["handoff_continuity"] = False
+            permanent["last_updated_ist"] = (
+                permanent.get("last_updated_ist")
+                or decision.get("created_at_ist")
+            )
+            existing.add(key)
+            enriched.append(permanent.get("name"))
+            continue
 
         row = {
-            "tracker_key": f"HANDOFF|{int(year)}|{key[0]}|{key[1]}|{key[2]}",
+            "tracker_key": (
+                f"HANDOFF|{int(year)}|{key[0]}|{key[1]}|{key[2]}"
+            ),
             "year": int(year),
             "ipo_type": key[0],
             "name": decision.get("name"),
             "detail_url": None,
-            "provider_status": provider_status,
+            "provider_status": lifecycle_status,
             "issue_open": snap.get("start_date"),
             "issue_close": end_date,
             "issue_price": snap.get("price_high"),
@@ -510,15 +628,30 @@ def _tracker_rows_with_continuity(db, base_rows=None, year=2026):
             "gmp_used_pct": decision.get("gmp_input_pct"),
             "gmp_used_rupees": snap.get("gmp_value"),
             "gmp_used_at_ist": decision.get("created_at_ist"),
-            "gmp_quality": "CHECKPOINT_CAPTURED" if decision.get("gmp_input_pct") is not None else "NOT_AVAILABLE",
-            "decision_source": "CAPTURED_1430_IST" if bool(decision.get("is_1430_decision_snapshot")) else "CLOSING_DAY_HANDOFF",
+            "gmp_quality": (
+                "CHECKPOINT_CAPTURED"
+                if decision.get("gmp_input_pct") is not None
+                else "NOT_AVAILABLE"
+            ),
+            "decision_source": (
+                "CAPTURED_1430_IST"
+                if bool(decision.get("is_1430_decision_snapshot"))
+                else "CLOSING_DAY_HANDOFF"
+            ),
             "model_policy_version": decision.get("policy_version"),
-            "model_action": str(decision.get("action") or "NOT READY").strip().upper(),
+            "model_action": str(
+                decision.get("action") or "NOT READY"
+            ).strip().upper(),
             "model_confidence": decision.get("research_confidence"),
-            "primary_prediction_pct": decision.get("primary_prediction_pct"),
-            "gmp_prediction_pct": decision.get("gmp_prediction_pct"),
-            "subscription_prediction_pct": decision.get("subscription_prediction_pct"),
-            "signal_conflict": int(bool(decision.get("signal_conflict"))),
+            "primary_prediction_pct":
+                decision.get("primary_prediction_pct"),
+            "gmp_prediction_pct":
+                decision.get("gmp_prediction_pct"),
+            "subscription_prediction_pct":
+                decision.get("subscription_prediction_pct"),
+            "signal_conflict": int(
+                bool(decision.get("signal_conflict"))
+            ),
             "listing_price": None,
             "actual_listing_gain_pct": None,
             "outcome_vs_call": None,
@@ -537,17 +670,30 @@ def _tracker_rows_with_continuity(db, base_rows=None, year=2026):
             }, ensure_ascii=False),
             "listing_date": listing_date,
             "handoff_continuity": True,
+            "continuity_enriched": False,
         }
         rows.append(row)
+        rows_by_identity[identity_key] = row
         existing.add(key)
         existing_identities.add(identity_key)
         added.append(row.get("name"))
 
     if added:
-        print(f"TRACKER_CONTINUITY_HANDOFF added={len(added)} names={added}")
+        print(
+            "TRACKER_CONTINUITY_HANDOFF "
+            f"added={len(added)} names={added}"
+        )
+    if enriched:
+        print(
+            "TRACKER_CONTINUITY_ENRICH "
+            f"enriched={len(enriched)} names={enriched}"
+        )
 
     rows.sort(
-        key=lambda row: (str(row.get("issue_close") or ""), str(row.get("name") or "")),
+        key=lambda row: (
+            str(row.get("issue_close") or ""),
+            str(row.get("name") or ""),
+        ),
         reverse=True,
     )
     return rows
@@ -637,6 +783,9 @@ def _export_static(
     tracker_summary["rows"] = len(tracker_rows)
     tracker_summary["continuity_rows"] = sum(
         1 for row in tracker_rows if row.get("handoff_continuity")
+    )
+    tracker_summary["continuity_enriched_rows"] = sum(
+        1 for row in tracker_rows if row.get("continuity_enriched")
     )
     tracker = {
         "summary": tracker_summary,
