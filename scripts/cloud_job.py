@@ -422,6 +422,18 @@ def _tracker_handoff_key(value):
     return (segment, name, end_date)
 
 
+def _tracker_identity_key(value):
+    """Stable IPO identity for replacing temporary lifecycle handoff rows."""
+    segment = str(
+        value.get("ipo_type") or value.get("type") or ""
+    ).strip().upper()
+    name = "".join(
+        ch for ch in str(value.get("name") or "").lower()
+        if ch.isalnum()
+    )
+    return (segment, name)
+
+
 def _tracker_date_label(value):
     day = _parse_iso_date(value)
     return day.strftime("%-d %b") if day else ""
@@ -437,6 +449,11 @@ def _tracker_rows_with_continuity(db, base_rows=None, year=2026):
         _tracker_handoff_key(row)
         for row in rows
         if _tracker_handoff_key(row)[1]
+    }
+    existing_identities = {
+        _tracker_identity_key(row)
+        for row in rows
+        if _tracker_identity_key(row)[1]
     }
 
     snapshot_map = {}
@@ -457,7 +474,14 @@ def _tracker_rows_with_continuity(db, base_rows=None, year=2026):
             continue
 
         key = _tracker_handoff_key(decision)
-        if not key[1] or not key[2] or key in existing or key in seen:
+        identity_key = _tracker_identity_key(decision)
+        if (
+            not key[1]
+            or not key[2]
+            or key in existing
+            or identity_key in existing_identities
+            or key in seen
+        ):
             continue
         seen.add(key)
         snap = snapshot_map.get(key) or {}
@@ -516,6 +540,7 @@ def _tracker_rows_with_continuity(db, base_rows=None, year=2026):
         }
         rows.append(row)
         existing.add(key)
+        existing_identities.add(identity_key)
         added.append(row.get("name"))
 
     if added:

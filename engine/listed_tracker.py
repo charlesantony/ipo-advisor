@@ -1154,6 +1154,143 @@ def _v0522_yahoo_listing_open(market_symbol, listing_date):
     return None
 
 
+def _v0526_listed_identity(record):
+    return (
+        str(record.get("ipo_type") or "").strip().upper(),
+        _name_key(record.get("name")),
+    )
+
+
+def _v0526_record_score(record):
+    """Prefer the permanent annual tracker row over a temporary HANDOFF row."""
+    score = 0
+    tracker_key = str(record.get("tracker_key") or "")
+    if not tracker_key.startswith("HANDOFF|"):
+        score += 100
+    if record.get("detail_url"):
+        score += 20
+    if record.get("symbol"):
+        score += 8
+    if record.get("market_symbol"):
+        score += 8
+    if _f(record.get("listing_price")) is not None:
+        score += 10
+    if _f(record.get("current_price")) is not None:
+        score += 10
+    score += min(len(record.get("unlock_events") or []), 10)
+    return score
+
+
+def _v0526_merge_listed_record(primary, other):
+    """Merge useful data from a duplicate without changing IPO identity."""
+    merged = dict(primary)
+
+    scalar_fields = (
+        "symbol",
+        "market",
+        "market_symbol",
+        "listing_date",
+        "issue_price",
+        "listing_price",
+        "listing_price_source",
+        "listing_return_pct",
+        "current_price",
+        "current_return_pct",
+        "current_price_as_of_ist",
+        "current_price_source",
+        "detail_url",
+        "unlock_checked_at_ist",
+    )
+    for field in scalar_fields:
+        if merged.get(field) in (None, "") and other.get(field) not in (None, ""):
+            merged[field] = other.get(field)
+
+    # Prefer the richer static unlock schedule.
+    current_events = merged.get("unlock_events") or []
+    other_events = other.get("unlock_events") or []
+    if len(other_events) > len(current_events):
+        merged["unlock_events"] = other_events
+        merged["next_unlock"] = (
+            other.get("next_unlock")
+            or (other_events[0] if other_events else None)
+        )
+        merged["unlock_status"] = other.get("unlock_status") or "AVAILABLE"
+        if other.get("unlock_checked_at_ist"):
+            merged["unlock_checked_at_ist"] = other.get(
+                "unlock_checked_at_ist"
+            )
+
+    # If both rows have current prices, keep the one with the newer timestamp.
+    left_ts = str(merged.get("current_price_as_of_ist") or "")
+    right_ts = str(other.get("current_price_as_of_ist") or "")
+    if (
+        _f(other.get("current_price")) is not None
+        and right_ts
+        and (not left_ts or right_ts > left_ts)
+    ):
+        merged["current_price"] = other.get("current_price")
+        merged["current_return_pct"] = other.get("current_return_pct")
+        merged["current_price_as_of_ist"] = other.get(
+            "current_price_as_of_ist"
+        )
+        merged["current_price_source"] = other.get(
+            "current_price_source"
+        )
+
+    return merged
+
+
+def _v0526_dedupe_listed_records(records):
+    groups = {}
+    order = []
+
+    for record in records or []:
+        key = _v0526_listed_identity(record)
+        if not key[1]:
+            key = (
+                str(record.get("ipo_type") or "").upper(),
+                str(record.get("tracker_key") or ""),
+            )
+        if key not in groups:
+            groups[key] = []
+            order.append(key)
+        groups[key].append(record)
+
+    result = []
+    removed = 0
+    duplicate_names = []
+
+    for key in order:
+        group = groups[key]
+        if len(group) == 1:
+            result.append(group[0])
+            continue
+
+        group = sorted(
+            group,
+            key=_v0526_record_score,
+            reverse=True,
+        )
+        merged = dict(group[0])
+        for duplicate in group[1:]:
+            merged = _v0526_merge_listed_record(
+                merged, duplicate
+            )
+
+        result.append(merged)
+        removed += len(group) - 1
+        duplicate_names.append(merged.get("name"))
+
+    if removed:
+        logger.warning(
+            "LISTED_DUPLICATES_MERGED removed=%s names=%s",
+            removed,
+            duplicate_names,
+        )
+
+    return result, removed
+
+
 _build_listed_payload_v0517 = build_listed_payload
 
 
@@ -1284,8 +1421,13 @@ def build_listed_payload(*args, **kwargs):
                     )
                     listing_fallbacks += 1
 
-    records = payload.get("records") or []
+    records, duplicate_rows_removed = _v0526_dedupe_listed_records(
+        payload.get("records") or []
+    )
+    payload["records"] = records
     summary = payload.setdefault("summary", {})
+    summary["listed_records"] = len(records)
+    summary["duplicate_rows_removed"] = duplicate_rows_removed
     summary["market_identity_resolved"] = sum(
         1 for r in records
         if r.get("market") and r.get("symbol")
