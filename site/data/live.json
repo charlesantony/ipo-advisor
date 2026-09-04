@@ -1,6 +1,6 @@
 {
-  "fetched_at_utc": "2026-09-04T16:33:39.523221+00:00",
-  "fetched_at_ist": "2026-09-04T22:03:39.523221+05:30",
+  "fetched_at_utc": "2026-09-04T21:02:09.101675+00:00",
+  "fetched_at_ist": "2026-09-05T02:32:09.101675+05:30",
   "status_filter": "LIVE",
   "type_filter": "ALL",
   "records": [
@@ -24,11 +24,11 @@
       "ofs_cr": null,
       "gmp_value": 55.0,
       "gmp_gain_pct": 43.31,
-      "gmp_date": "04 September",
+      "gmp_date": "05 September",
       "gmp_source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/",
       "gmp_trends": [
         {
-          "date": "04 September",
+          "date": "05 September",
           "gmp": "₹55",
           "gain": "43.31%",
           "source": "IPOWATCH_LATEST_DASHBOARD"
@@ -77,14 +77,14 @@
         "gmp_gain_pct": 43.31
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-09-04T22:03:39.523221+05:30",
+      "subscription_observed_at_ist": "2026-09-05T02:32:09.101675+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-09-04T22:03:39.523221+05:30",
+        "observed_at_ist": "2026-09-05T02:32:09.101675+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -124,7 +124,7 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 90.4,
+        "minutes_since_previous": 358.9,
         "qib_x_per_hour": 0.0,
         "nii_x_per_hour": 0.0,
         "retail_x_per_hour": 0.0,
@@ -220,6 +220,9 @@
     }
   ],
   "errors": [],
+  "decision_saved_count": 1,
+  "saved_count": 1,
+  "capture_reason": "github_action_refresh_rollover",
   "public_filtered_closed_count": 0,
   "public_signal_policy": {
     "version": "public-signal-gate-v1",
