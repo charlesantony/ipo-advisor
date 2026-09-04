@@ -1,6 +1,6 @@
 {
-  "fetched_at_utc": "2026-09-04T11:09:09.077389+00:00",
-  "fetched_at_ist": "2026-09-04T16:39:09.077389+05:30",
+  "fetched_at_utc": "2026-09-04T15:03:12.993682+00:00",
+  "fetched_at_ist": "2026-09-04T20:33:12.993682+05:30",
   "status_filter": "LIVE",
   "type_filter": "ALL",
   "records": [
@@ -34,10 +34,10 @@
           "source": "IPOWATCH_LATEST_DASHBOARD"
         }
       ],
-      "qib_x": 0.0,
-      "nii_x": 7.42,
-      "retail_x": 15.45,
-      "total_x": 9.19,
+      "qib_x": 4.11,
+      "nii_x": 10.12,
+      "retail_x": 18.68,
+      "total_x": 12.51,
       "strengths": [],
       "risks": [],
       "about_company": null,
@@ -77,14 +77,14 @@
         "gmp_gain_pct": 43.31
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-09-04T16:39:09.077389+05:30",
+      "subscription_observed_at_ist": "2026-09-04T20:33:12.993682+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-09-04T16:39:09.077389+05:30",
+        "observed_at_ist": "2026-09-04T20:33:12.993682+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -116,28 +116,28 @@
         "gmp_latest_pct": 43.31,
         "gmp_change_1obs": null,
         "gmp_change_3obs": null,
-        "log_qib": 0.0,
-        "log_nii": 2.130609828254235,
-        "log_retail": 2.800325477211381,
-        "log_total": 2.321406847234633,
+        "log_qib": 1.631199404215613,
+        "log_nii": 2.4087452888224363,
+        "log_retail": 2.9796028916241073,
+        "log_total": 2.6034301519721073,
         "log_issue_size": null,
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 128.2,
+        "minutes_since_previous": 2.2,
         "qib_x_per_hour": 0.0,
-        "nii_x_per_hour": 1.75,
-        "retail_x_per_hour": 3.495,
-        "total_x_per_hour": 2.096
+        "nii_x_per_hour": 0.0,
+        "retail_x_per_hour": 0.0,
+        "total_x_per_hour": 0.0
       },
       "is_closing_today": false,
       "would_be_1430_decision_snapshot": false,
       "recommendation": {
         "policy_version": "research-v1",
         "segment": "SME",
-        "action": "BORDERLINE",
-        "action_priority": 3,
-        "research_confidence": "LOW",
+        "action": "SUBSCRIBE",
+        "action_priority": 4,
+        "research_confidence": "MEDIUM",
         "finality": {
           "code": "EARLY",
           "label": "EARLY SIGNAL — NOT FINAL; use closing-day 2:30 PM IST decision",
@@ -145,17 +145,17 @@
         },
         "predictions": {
           "gmp_input_pct": 43.31,
-          "total_subscription_x": 9.19,
-          "log_total": 2.321406847234633,
+          "total_subscription_x": 12.51,
+          "log_total": 2.6034301519721073,
           "gmp_prediction_pct": 37.08,
-          "subscription_prediction_pct": -0.28,
+          "subscription_prediction_pct": 4.53,
           "prediction_cap_pct": 90.0
         },
         "primary_prediction_pct": 37.08,
         "ranking_score": 37.08,
         "signal_conflict": true,
         "reason": [
-          "Strong GMP conflicts with a negative demand model.",
+          "GMP is strong, but demand confirmation is weak.",
           "EARLY SIGNAL — NOT FINAL; use closing-day 2:30 PM IST decision"
         ],
         "training": {
@@ -187,7 +187,7 @@
         "disclaimer": "Research model only. It estimates listing-gain potential from historical GMP and subscription patterns; it does not consider your financial situation or guarantee profit.",
         "public_signal": {
           "locked": false,
-          "action": "BORDERLINE",
+          "action": "SUBSCRIBE",
           "reason": null
         }
       }
@@ -220,6 +220,9 @@
     }
   ],
   "errors": [],
+  "decision_saved_count": 1,
+  "saved_count": 1,
+  "capture_reason": "github_action_refresh_mainboard_close",
   "public_filtered_closed_count": 0,
   "public_signal_policy": {
     "version": "public-signal-gate-v1",
