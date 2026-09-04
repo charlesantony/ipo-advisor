@@ -1,6 +1,6 @@
 {
-  "fetched_at_utc": "2026-09-04T14:29:24.354324+00:00",
-  "fetched_at_ist": "2026-09-04T19:59:24.354324+05:30",
+  "fetched_at_utc": "2026-09-04T14:30:45.389220+00:00",
+  "fetched_at_ist": "2026-09-04T20:00:45.389220+05:30",
   "status_filter": "LIVE",
   "type_filter": "ALL",
   "records": [
@@ -77,14 +77,14 @@
         "gmp_gain_pct": 43.31
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-09-04T19:59:24.354324+05:30",
+      "subscription_observed_at_ist": "2026-09-04T20:00:45.389220+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-09-04T19:59:24.354324+05:30",
+        "observed_at_ist": "2026-09-04T20:00:45.389220+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -124,11 +124,11 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 328.5,
-        "qib_x_per_hour": 0.751,
-        "nii_x_per_hour": 1.176,
-        "retail_x_per_hour": 1.954,
-        "total_x_per_hour": 1.425
+        "minutes_since_previous": 329.8,
+        "qib_x_per_hour": 0.748,
+        "nii_x_per_hour": 1.172,
+        "retail_x_per_hour": 1.946,
+        "total_x_per_hour": 1.419
       },
       "is_closing_today": false,
       "would_be_1430_decision_snapshot": false,
@@ -220,6 +220,9 @@
     }
   ],
   "errors": [],
+  "decision_saved_count": 1,
+  "saved_count": 1,
+  "capture_reason": "github_action_refresh_sme_close",
   "public_filtered_closed_count": 0,
   "public_signal_policy": {
     "version": "public-signal-gate-v1",
