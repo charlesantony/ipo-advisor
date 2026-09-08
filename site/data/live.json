@@ -1,6 +1,6 @@
 {
-  "fetched_at_utc": "2026-09-08T09:00:56.517497+00:00",
-  "fetched_at_ist": "2026-09-08T14:30:56.517497+05:30",
+  "fetched_at_utc": "2026-09-08T11:09:20.751938+00:00",
+  "fetched_at_ist": "2026-09-08T16:39:20.751938+05:30",
   "status_filter": "LIVE",
   "type_filter": "ALL",
   "records": [
@@ -34,10 +34,10 @@
           "source": "IPOWATCH_LATEST_DASHBOARD"
         }
       ],
-      "qib_x": 0.88,
-      "nii_x": 21.82,
-      "retail_x": 10.18,
-      "total_x": 10.53,
+      "qib_x": 0.97,
+      "nii_x": 37.43,
+      "retail_x": 14.82,
+      "total_x": 16.39,
       "strengths": [],
       "risks": [],
       "about_company": null,
@@ -77,14 +77,14 @@
         "gmp_gain_pct": 35.48
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-09-08T14:30:56.517497+05:30",
+      "subscription_observed_at_ist": "2026-09-08T16:39:20.751938+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-09-08T14:30:56.517497+05:30",
+        "observed_at_ist": "2026-09-08T16:39:20.751938+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -116,19 +116,19 @@
         "gmp_latest_pct": 35.48,
         "gmp_change_1obs": null,
         "gmp_change_3obs": null,
-        "log_qib": 0.6312717768418579,
-        "log_nii": 3.1276373444339294,
-        "log_retail": 2.414126467726953,
-        "log_total": 2.4449523342809676,
+        "log_qib": 0.6780335427498971,
+        "log_nii": 3.6488384045767526,
+        "log_retail": 2.761274962339508,
+        "log_total": 2.855895328366192,
         "log_issue_size": null,
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 1.4,
-        "qib_x_per_hour": -1.28,
-        "nii_x_per_hour": -292.293,
-        "retail_x_per_hour": -76.38,
-        "total_x_per_hour": -103.689
+        "minutes_since_previous": 128.4,
+        "qib_x_per_hour": 0.042,
+        "nii_x_per_hour": 7.294,
+        "retail_x_per_hour": 2.168,
+        "total_x_per_hour": 2.738
       },
       "is_closing_today": false,
       "would_be_1430_decision_snapshot": false,
@@ -145,10 +145,10 @@
         },
         "predictions": {
           "gmp_input_pct": 35.48,
-          "total_subscription_x": 10.53,
-          "log_total": 2.4449523342809676,
+          "total_subscription_x": 16.39,
+          "log_total": 2.855895328366192,
           "gmp_prediction_pct": 34.15,
-          "subscription_prediction_pct": 19.81,
+          "subscription_prediction_pct": 26.56,
           "prediction_cap_pct": null
         },
         "primary_prediction_pct": 34.15,
@@ -156,7 +156,7 @@
         "signal_conflict": false,
         "reason": [
           "GMP model is at or above the +20% research threshold.",
-          "Total-subscription model is supportive.",
+          "Total-subscription model is strongly supportive.",
           "EARLY SIGNAL — NOT FINAL; use closing-day 2:30 PM IST decision"
         ],
         "training": {
@@ -223,10 +223,10 @@
           "source": "IPOWATCH_LATEST_DASHBOARD"
         }
       ],
-      "qib_x": 0.01,
-      "nii_x": 1.61,
-      "retail_x": 1.49,
-      "total_x": 1.09,
+      "qib_x": 0.02,
+      "nii_x": 4.43,
+      "retail_x": 3.1,
+      "total_x": 2.51,
       "strengths": [],
       "risks": [],
       "about_company": null,
@@ -266,14 +266,14 @@
         "gmp_gain_pct": 31.33
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-09-08T14:30:56.517497+05:30",
+      "subscription_observed_at_ist": "2026-09-08T16:39:20.751938+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-09-08T14:30:56.517497+05:30",
+        "observed_at_ist": "2026-09-08T16:39:20.751938+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -305,19 +305,19 @@
         "gmp_latest_pct": 31.33,
         "gmp_change_1obs": null,
         "gmp_change_3obs": null,
-        "log_qib": 0.009950330853168083,
-        "log_nii": 0.9593502213346021,
-        "log_retail": 0.9122827104766162,
-        "log_total": 0.7371640659767197,
+        "log_qib": 0.019802627296179712,
+        "log_nii": 1.691939133945844,
+        "log_retail": 1.410986973710262,
+        "log_total": 1.2556160374777745,
         "log_issue_size": null,
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 1.4,
-        "qib_x_per_hour": 0.0,
-        "nii_x_per_hour": -30.723,
-        "retail_x_per_hour": -23.042,
-        "total_x_per_hour": -18.348
+        "minutes_since_previous": 128.4,
+        "qib_x_per_hour": 0.005,
+        "nii_x_per_hour": 1.318,
+        "retail_x_per_hour": 0.752,
+        "total_x_per_hour": 0.664
       },
       "is_closing_today": false,
       "would_be_1430_decision_snapshot": false,
@@ -326,7 +326,7 @@
         "segment": "MAINBOARD",
         "action": "STRONG SUBSCRIBE",
         "action_priority": 5,
-        "research_confidence": "MEDIUM",
+        "research_confidence": "HIGHER",
         "finality": {
           "code": "EARLY",
           "label": "EARLY SIGNAL — NOT FINAL; use closing-day 2:30 PM IST decision",
@@ -334,18 +334,18 @@
         },
         "predictions": {
           "gmp_input_pct": 31.33,
-          "total_subscription_x": 1.09,
-          "log_total": 0.7371640659767197,
+          "total_subscription_x": 2.51,
+          "log_total": 1.2556160374777745,
           "gmp_prediction_pct": 29.73,
-          "subscription_prediction_pct": -8.25,
+          "subscription_prediction_pct": 0.27,
           "prediction_cap_pct": null
         },
         "primary_prediction_pct": 29.73,
         "ranking_score": 29.73,
-        "signal_conflict": true,
+        "signal_conflict": false,
         "reason": [
           "GMP model is at or above the +20% research threshold.",
-          "Demand model conflicts with GMP; action is retained but confidence is reduced.",
+          "Total-subscription model is neutral/weak.",
           "EARLY SIGNAL — NOT FINAL; use closing-day 2:30 PM IST decision"
         ],
         "training": {
@@ -413,9 +413,9 @@
         }
       ],
       "qib_x": 0.0,
-      "nii_x": 0.15,
-      "retail_x": 0.39,
-      "total_x": 0.23,
+      "nii_x": 0.26,
+      "retail_x": 0.64,
+      "total_x": 0.38,
       "strengths": [],
       "risks": [],
       "about_company": null,
@@ -455,14 +455,14 @@
         "gmp_gain_pct": 12.57
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-09-08T14:30:56.517497+05:30",
+      "subscription_observed_at_ist": "2026-09-08T16:39:20.751938+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-09-08T14:30:56.517497+05:30",
+        "observed_at_ist": "2026-09-08T16:39:20.751938+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -495,18 +495,18 @@
         "gmp_change_1obs": null,
         "gmp_change_3obs": null,
         "log_qib": 0.0,
-        "log_nii": 0.13976194237515868,
-        "log_retail": 0.3293037471426004,
-        "log_total": 0.20701416938432615,
+        "log_nii": 0.23111172096338664,
+        "log_retail": 0.49469624183610705,
+        "log_total": 0.32208349916911333,
         "log_issue_size": null,
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 1.4,
+        "minutes_since_previous": 128.4,
         "qib_x_per_hour": 0.0,
-        "nii_x_per_hour": -2.134,
-        "retail_x_per_hour": -3.84,
-        "total_x_per_hour": -2.134
+        "nii_x_per_hour": 0.051,
+        "retail_x_per_hour": 0.117,
+        "total_x_per_hour": 0.07
       },
       "is_closing_today": false,
       "would_be_1430_decision_snapshot": false,
@@ -523,10 +523,10 @@
         },
         "predictions": {
           "gmp_input_pct": 12.57,
-          "total_subscription_x": 0.23,
-          "log_total": 0.20701416938432615,
+          "total_subscription_x": 0.38,
+          "log_total": 0.32208349916911333,
           "gmp_prediction_pct": 9.74,
-          "subscription_prediction_pct": -16.96,
+          "subscription_prediction_pct": -15.07,
           "prediction_cap_pct": null
         },
         "primary_prediction_pct": 9.74,
@@ -601,10 +601,10 @@
           "source": "IPOWATCH_LATEST_DASHBOARD"
         }
       ],
-      "qib_x": 0.0,
-      "nii_x": 0.99,
-      "retail_x": 1.62,
-      "total_x": 1.02,
+      "qib_x": 0.01,
+      "nii_x": 2.74,
+      "retail_x": 3.51,
+      "total_x": 2.35,
       "strengths": [],
       "risks": [],
       "about_company": null,
@@ -644,14 +644,14 @@
         "gmp_gain_pct": 27.47
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-09-08T14:30:56.517497+05:30",
+      "subscription_observed_at_ist": "2026-09-08T16:39:20.751938+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-09-08T14:30:56.517497+05:30",
+        "observed_at_ist": "2026-09-08T16:39:20.751938+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -683,19 +683,19 @@
         "gmp_latest_pct": 27.47,
         "gmp_change_1obs": null,
         "gmp_change_3obs": null,
-        "log_qib": 0.0,
-        "log_nii": 0.688134638736401,
-        "log_retail": 0.9631743177730056,
-        "log_total": 0.7030975114131134,
+        "log_qib": 0.009950330853168083,
+        "log_nii": 1.3190856114264407,
+        "log_retail": 1.5062971535145868,
+        "log_total": 1.208960345836975,
         "log_issue_size": null,
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 1.4,
-        "qib_x_per_hour": 0.0,
-        "nii_x_per_hour": -17.495,
-        "retail_x_per_hour": -25.176,
-        "total_x_per_hour": -16.642
+        "minutes_since_previous": 128.4,
+        "qib_x_per_hour": 0.005,
+        "nii_x_per_hour": 0.818,
+        "retail_x_per_hour": 0.883,
+        "total_x_per_hour": 0.621
       },
       "is_closing_today": false,
       "would_be_1430_decision_snapshot": false,
@@ -712,10 +712,10 @@
         },
         "predictions": {
           "gmp_input_pct": 27.47,
-          "total_subscription_x": 1.02,
-          "log_total": 0.7030975114131134,
+          "total_subscription_x": 2.35,
+          "log_total": 1.208960345836975,
           "gmp_prediction_pct": 25.62,
-          "subscription_prediction_pct": -8.81,
+          "subscription_prediction_pct": -0.5,
           "prediction_cap_pct": null
         },
         "primary_prediction_pct": 25.62,
@@ -790,10 +790,10 @@
           "source": "IPOWATCH_LATEST_DASHBOARD"
         }
       ],
-      "qib_x": 9.45,
-      "nii_x": 254.87,
-      "retail_x": 250.22,
-      "total_x": 187.66,
+      "qib_x": 299.95,
+      "nii_x": 515.84,
+      "retail_x": 441.76,
+      "total_x": 424.09,
       "strengths": [],
       "risks": [],
       "about_company": null,
@@ -833,14 +833,14 @@
         "gmp_gain_pct": 46.46
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-09-08T14:30:56.517497+05:30",
+      "subscription_observed_at_ist": "2026-09-08T16:39:20.751938+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-09-08T14:30:56.517497+05:30",
+        "observed_at_ist": "2026-09-08T16:39:20.751938+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -872,19 +872,19 @@
         "gmp_latest_pct": 46.46,
         "gmp_change_1obs": null,
         "gmp_change_3obs": null,
-        "log_qib": 2.34660197841082,
-        "log_nii": 5.5446695029991275,
-        "log_retail": 5.526329049259107,
-        "log_total": 5.239946453221707,
+        "log_qib": 5.70694413799378,
+        "log_nii": 6.24773334885402,
+        "log_retail": 6.093027862517423,
+        "log_total": 6.052300911211319,
         "log_issue_size": null,
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 1.4,
-        "qib_x_per_hour": -1768.695,
-        "nii_x_per_hour": -3083.802,
-        "retail_x_per_hour": -2297.81,
-        "total_x_per_hour": -2369.497
+        "minutes_since_previous": 128.4,
+        "qib_x_per_hour": 135.744,
+        "nii_x_per_hour": 121.945,
+        "retail_x_per_hour": 89.502,
+        "total_x_per_hour": 110.478
       },
       "is_closing_today": true,
       "would_be_1430_decision_snapshot": false,
@@ -902,10 +902,10 @@
         },
         "predictions": {
           "gmp_input_pct": 46.46,
-          "total_subscription_x": 187.66,
-          "log_total": 5.239946453221707,
+          "total_subscription_x": 424.09,
+          "log_total": 6.052300911211319,
           "gmp_prediction_pct": 40.78,
-          "subscription_prediction_pct": 49.44,
+          "subscription_prediction_pct": 63.28,
           "prediction_cap_pct": 90.0
         },
         "primary_prediction_pct": 40.78,
@@ -913,7 +913,8 @@
         "signal_conflict": false,
         "reason": [
           "SME GMP model is at or above +20%.",
-          "Demand confirmation is positive."
+          "Demand confirmation is positive.",
+          "POST-2:30 PM — latest research signal; canonical snapshot should be retained"
         ],
         "training": {
           "source_year": 2024,
@@ -942,12 +943,6 @@
           }
         },
         "disclaimer": "Research model only. It estimates listing-gain potential from historical GMP and subscription patterns; it does not consider your financial situation or guarantee profit.",
-        "data_quality": {
-          "subscription_fresh_for_canonical": true,
-          "subscription_age_minutes": 0.0,
-          "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-          "canonical_max_age_minutes": 45
-        },
         "display_decision_source": "CAPTURED_1430_IST",
         "public_signal": {
           "locked": false,
@@ -1069,7 +1064,7 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 1.4,
+        "minutes_since_previous": 128.4,
         "qib_x_per_hour": null,
         "nii_x_per_hour": null,
         "retail_x_per_hour": null,
@@ -1164,9 +1159,6 @@
     }
   ],
   "errors": [],
-  "decision_saved_count": 6,
-  "saved_count": 6,
-  "capture_reason": "manual_1430_recovery",
   "public_filtered_closed_count": 0,
   "public_signal_policy": {
     "version": "public-signal-gate-v1",
