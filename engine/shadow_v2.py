@@ -1,12 +1,19 @@
 
 from statistics import mean, median
 
-SHADOW_V2_VERSION = "sme-demand-override-shadow-v2.1"
+SHADOW_V2_VERSION = "sme-demand-disagreement-shadow-v2.2"
+SHADOW_V2_VALIDATION_START_DATE = "2026-09-11"
 
 DEMAND_TOTAL_X_THRESHOLD = 40.0
 DEMAND_SUB_PRED_THRESHOLD = 25.0
 STRONG_TOTAL_X_THRESHOLD = 60.0
 STRONG_SUB_PRED_THRESHOLD = 30.0
+
+# Post-review exploratory path. This is deliberately shadow-only and starts a
+# new validation cohort on 11 Sep 2026; pre-review cases are discovery only.
+DISAGREE_GMP_INPUT_THRESHOLD = 10.0
+DISAGREE_TOTAL_X_THRESHOLD = 20.0
+DISAGREE_SUB_PRED_THRESHOLD = 10.0
 
 ELIGIBLE_V1_ACTIONS = {"AVOID", "BORDERLINE"}
 
@@ -25,6 +32,7 @@ def shadow_signal_from_v1(v1_recommendation):
     total_x = _f(preds.get("total_subscription_x"))
     sub_pred = _f(preds.get("subscription_prediction_pct"))
     gmp_pred = _f(preds.get("gmp_prediction_pct"))
+    gmp_input = _f(preds.get("gmp_input_pct"))
 
     base = {
         "version": SHADOW_V2_VERSION,
@@ -41,6 +49,10 @@ def shadow_signal_from_v1(v1_recommendation):
             "candidate_subscription_prediction_pct": DEMAND_SUB_PRED_THRESHOLD,
             "strong_total_x": STRONG_TOTAL_X_THRESHOLD,
             "strong_subscription_prediction_pct": STRONG_SUB_PRED_THRESHOLD,
+            "disagreement_gmp_input_pct": DISAGREE_GMP_INPUT_THRESHOLD,
+            "disagreement_total_x": DISAGREE_TOTAL_X_THRESHOLD,
+            "disagreement_subscription_prediction_pct":
+                DISAGREE_SUB_PRED_THRESHOLD,
         },
         "reason": [],
         "disclaimer": "Shadow V2 only. It does not replace or alter Research Model V1.",
@@ -85,7 +97,28 @@ def shadow_signal_from_v1(v1_recommendation):
         ]
         return base
 
-    base["reason"] = ["Strong-demand override thresholds are not both satisfied."]
+    if (
+        gmp_input is not None
+        and gmp_input >= DISAGREE_GMP_INPUT_THRESHOLD
+        and total_x >= DISAGREE_TOTAL_X_THRESHOLD
+        and sub_pred >= DISAGREE_SUB_PRED_THRESHOLD
+    ):
+        base["triggered"] = True
+        base["shadow_action"] = "SME DISAGREEMENT REVIEW CANDIDATE"
+        base["strength"] = "EXPLORATORY"
+        base["reason"] = [
+            f"V1={action}, but observed GMP is {gmp_input:.2f}%.",
+            f"Total subscription is {total_x:.2f}x and the subscription model "
+            f"predicts {sub_pred:.2f}%.",
+            "This post-review disagreement rule is shadow-only and must earn "
+            "new prospective evidence before any public promotion.",
+        ]
+        return base
+
+    base["reason"] = [
+        "Neither the strong-demand override nor the post-review disagreement "
+        "thresholds are satisfied."
+    ]
     return base
 
 def shadow_outcome(signal, actual_gain):
@@ -153,6 +186,10 @@ def audit_tracker_shadow(rows):
             "candidate_subscription_prediction_pct": DEMAND_SUB_PRED_THRESHOLD,
             "strong_total_x": STRONG_TOTAL_X_THRESHOLD,
             "strong_subscription_prediction_pct": STRONG_SUB_PRED_THRESHOLD,
+            "disagreement_gmp_input_pct": DISAGREE_GMP_INPUT_THRESHOLD,
+            "disagreement_total_x": DISAGREE_TOTAL_X_THRESHOLD,
+            "disagreement_subscription_prediction_pct":
+                DISAGREE_SUB_PRED_THRESHOLD,
         },
         "listed_sme_rows": len(listed),
         "triggered_performance": _metric(triggered),

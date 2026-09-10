@@ -4,7 +4,7 @@ from datetime import datetime
 from model import ridge_fit, ridge_predict
 from shadow_v2 import shadow_signal_from_v1
 
-POLICY_VERSION = "research-v1"
+POLICY_VERSION = "research-v1.1"
 
 POLICY_EVIDENCE = {
     "validation": "2024_to_2025_chronological_holdout",
@@ -165,14 +165,20 @@ class ResearchDecisionEngine:
         conflict = False
 
         if gp is not None:
-            if gp >= 20:
+            if gp >= 30:
                 action = "STRONG SUBSCRIBE"
                 confidence = "HIGHER"
-                reasons.append("GMP model is at or above the +20% research threshold.")
+                reasons.append(
+                    "GMP model is at or above the +30% Strong Subscribe threshold "
+                    "set at the first prospective manual review."
+                )
             elif gp >= 10:
                 action = "SUBSCRIBE"
                 confidence = "MEDIUM"
-                reasons.append("GMP model is between +10% and +20%.")
+                reasons.append(
+                    "GMP model is between +10% and +30%; the IPO remains selected, "
+                    "but below the revised Strong Subscribe tier."
+                )
             elif gp >= 5:
                 action = "BORDERLINE"
                 confidence = "LOW"

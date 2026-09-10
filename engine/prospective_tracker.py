@@ -2,12 +2,20 @@ import json
 import re
 from statistics import mean, median
 
-from shadow_v2 import shadow_signal_from_v1, shadow_outcome
+from shadow_v2 import (
+    SHADOW_V2_VALIDATION_START_DATE,
+    SHADOW_V2_VERSION,
+    shadow_signal_from_v1,
+    shadow_outcome,
+)
 
-PROSPECTIVE_VERSION = "prospective-experiment-v1"
+PROSPECTIVE_VERSION = "prospective-experiment-v1.1"
 EXACT_LISTED_TARGET = 20
 SME_SHADOW_TRIGGER_TARGET = 5
 SELECTED_ACTIONS = {"STRONG SUBSCRIBE", "SUBSCRIBE"}
+
+MODEL_REVIEW_DATE = "2026-09-10"
+POST_REVIEW_V1_POLICY = "research-v1.1"
 
 def _canon(value):
     return re.sub(r"[^a-z0-9]", "", str(value or "").lower())
@@ -158,8 +166,29 @@ def build_prospective_experiment(decisions, tracker_rows, year=2026):
                 },
             }
 
-        shadow = rec.get("shadow_v2") or shadow_signal_from_v1(rec)
+        shadow = rec.get("shadow_v2") or {}
+        if shadow.get("version") != SHADOW_V2_VERSION:
+            # Re-evaluate older captures under the newly specified shadow
+            # hypothesis for discovery, but do not count them as prospective
+            # validation for V2.2.
+            shadow = shadow_signal_from_v1(rec)
+
         actual = _f(t.get("actual_listing_gain_pct"))
+        closing_date = str(d.get("end_date") or "")
+        v2_validation_eligible = (
+            closing_date >= SHADOW_V2_VALIDATION_START_DATE
+        )
+        shadow_action = shadow.get("shadow_action")
+        shadow_result = shadow_outcome(shadow, actual)
+        if shadow.get("triggered") and not v2_validation_eligible:
+            shadow_action = (
+                "DISCOVERY ONLY — "
+                + str(shadow_action or "SHADOW TRIGGER")
+            )
+            shadow_result = (
+                "DISCOVERY ONLY — " + str(shadow_result)
+            )
+
         samples.append({
             "name": d.get("name"),
             "ipo_type": d.get("ipo_type"),
@@ -176,12 +205,14 @@ def build_prospective_experiment(decisions, tracker_rows, year=2026):
                 "subscription_prediction_pct"
             ),
             "v2_shadow_triggered": bool(shadow.get("triggered")),
-            "v2_shadow_action": shadow.get("shadow_action"),
+            "v2_shadow_action": shadow_action,
             "v2_shadow_strength": shadow.get("strength"),
+            "v2_validation_eligible": v2_validation_eligible,
+            "v2_shadow_version": SHADOW_V2_VERSION,
             "actual_listing_gain_pct": actual,
             "actual_quality": _quality(actual),
             "v1_outcome": _v1_outcome(d.get("action"), actual),
-            "v2_outcome": shadow_outcome(shadow, actual),
+            "v2_outcome": shadow_result,
             "listed": actual is not None,
             "model_policy_version": d.get("policy_version"),
             "capture_reason": d.get("capture_reason"),
@@ -194,24 +225,52 @@ def build_prospective_experiment(decisions, tracker_rows, year=2026):
 
     listed = [r for r in samples if r["listed"]]
     pending = [r for r in samples if not r["listed"]]
-    v1_selected = [r for r in listed if r.get("v1_action") in SELECTED_ACTIONS]
-    v2_triggered = [r for r in listed if r.get("v2_shadow_triggered")]
+    v1_selected = [
+        r for r in listed
+        if r.get("v1_action") in SELECTED_ACTIONS
+    ]
+    v2_triggered_all = [
+        r for r in listed
+        if r.get("v2_shadow_triggered")
+    ]
+    v2_triggered = [
+        r for r in v2_triggered_all
+        if r.get("v2_validation_eligible")
+    ]
+    v2_discovery = [
+        r for r in v2_triggered_all
+        if not r.get("v2_validation_eligible")
+    ]
     combined = [
         r for r in listed
-        if r.get("v1_action") in SELECTED_ACTIONS or r.get("v2_shadow_triggered")
+        if (
+            r.get("v1_action") in SELECTED_ACTIONS
+            or (
+                r.get("v2_shadow_triggered")
+                and r.get("v2_validation_eligible")
+            )
+        )
     ]
-    mb = [r for r in listed if r.get("ipo_type") == "MAINBOARD"]
-    sme = [r for r in listed if r.get("ipo_type") == "SME"]
+    mb = [
+        r for r in listed
+        if str(r.get("ipo_type") or "").upper() == "MAINBOARD"
+    ]
+    sme = [
+        r for r in listed
+        if str(r.get("ipo_type") or "").upper() == "SME"
+    ]
 
     exact_listed = len(listed)
     progress_pct = round(
         min(100.0, exact_listed / EXACT_LISTED_TARGET * 100.0), 1
     )
     if exact_listed >= EXACT_LISTED_TARGET:
-        status = "READY_FOR_MODEL_REVIEW"
+        status = "MODEL_REVIEW_COMPLETED"
         message = (
-            "The first clean prospective checkpoint has been reached. "
-            "Review V1 vs V2 manually before changing any model; do not auto-retune."
+            "Manual model review completed 10 Sep 2026. "
+            "Research V1.1 is now the public policy: the selected universe is "
+            "unchanged, while Mainboard Strong Subscribe is more conservative. "
+            "SME V2.2 remains shadow-only and starts a new prospective cohort."
         )
     else:
         status = "COLLECTING_EXACT_1430_EVIDENCE"
@@ -248,10 +307,18 @@ def build_prospective_experiment(decisions, tracker_rows, year=2026):
         },
         "v2_exact_performance": {
             "status": v2_status,
+            "version": SHADOW_V2_VERSION,
+            "validation_start_date": SHADOW_V2_VALIDATION_START_DATE,
             "minimum_shadow_trigger_target": SME_SHADOW_TRIGGER_TARGET,
             "triggered": _metric(v2_triggered),
             **_capture_rate(v2_triggered, listed),
             "triggered_rows": len(v2_triggered),
+            "pre_revision_discovery": _metric(v2_discovery),
+            "pre_revision_triggered_rows": len(v2_discovery),
+            "pre_revision_note": (
+                "Pre-11-Sep triggers are discovery only because V2.2 was "
+                "specified after observing the first prospective cohort."
+            ),
         },
         "combined_exact_performance": {
             "selected": _metric(combined),
@@ -276,15 +343,67 @@ def build_prospective_experiment(decisions, tracker_rows, year=2026):
             },
         },
         "samples": samples,
+        "model_review": {
+            "reviewed_on": MODEL_REVIEW_DATE,
+            "first_checkpoint_listed_rows": 22,
+            "decision": "KEEP_V1_SELECTIONS_RECALIBRATE_STRONG_TIER",
+            "public_policy_after_review": POST_REVIEW_V1_POLICY,
+            "v1_checkpoint": {
+                "selected_rows": 13,
+                "selected_positive_rate_pct": 69.2,
+                "selected_ge_20_rate_pct": 53.8,
+                "major_winner_capture_rate_pct": 87.5,
+                "selected_losses": 2,
+            },
+            "mainboard_review": {
+                "listed_rows": 13,
+                "selected_rows": 10,
+                "selected_positive_rate_pct": 70.0,
+                "selected_ge_20_rate_pct": 50.0,
+                "old_strong_threshold_pct": 20.0,
+                "new_strong_threshold_pct": 30.0,
+                "new_strong_cohort_rows": 5,
+                "new_strong_positive_rate_pct": 80.0,
+                "new_strong_ge_20_rate_pct": 80.0,
+                "note": (
+                    "Selection threshold remains +10%; only the Strong tier "
+                    "is recalibrated."
+                ),
+            },
+            "sme_review": {
+                "listed_rows": 9,
+                "selected_rows": 3,
+                "selected_ge_20_rate_pct": 66.7,
+                "major_winner_missed": "Ashutosh Fibre (+52.17%)",
+                "decision": (
+                    "Do not loosen the public SME rule from one miss. "
+                    "Test a new disagreement hypothesis in shadow only."
+                ),
+            },
+            "v2_review": {
+                "old_version": "sme-demand-override-shadow-v2.1",
+                "old_exact_triggers": 0,
+                "decision": "DO_NOT_PROMOTE",
+                "new_version": SHADOW_V2_VERSION,
+                "new_validation_start_date":
+                    SHADOW_V2_VALIDATION_START_DATE,
+            },
+            "prediction_note": (
+                "The first cohort shows useful ranking/selection but material "
+                "point-estimate error. Do not fit a new gain regression on only "
+                "22 observations; continue collecting prospective outcomes."
+            ),
+        },
         "guardrails": {
             "v1_frozen": True,
+            "current_public_policy": POST_REVIEW_V1_POLICY,
             "v2_shadow_only": True,
+            "current_shadow_version": SHADOW_V2_VERSION,
             "auto_retune": False,
             "checkpoint_rule": (
-                "At 20 listed closing-day checkpoint observations, review results manually. "
-                "The dedicated scheduled 2:30 PM workflow defines the checkpoint and the "
-                "actual capture timestamp is retained for audit. "
-                "Do not automatically change V1 or promote V2."
+                "The first 20-row manual review is complete. Freeze V1.1 and "
+                "V2.2 specification prospectively. Review again only after "
+                "meaningful new post-review evidence; never auto-retune."
             ),
         },
     }
