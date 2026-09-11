@@ -1,12 +1,12 @@
 {
   "version": "listed-tracker-v1",
-  "generated_at_ist": "2026-09-11T14:32:02.566290+05:30",
+  "generated_at_ist": "2026-09-11T16:39:58.855877+05:30",
   "current_prices_as_of_ist": "2026-09-10T16:00:00+05:30",
   "summary": {
     "listed_records": 201,
     "market_identity_resolved": 130,
     "current_price_available": 129,
-    "unlock_schedule_available": 187,
+    "unlock_schedule_available": 188,
     "duplicate_rows_removed": 1,
     "bse_identities_added": 0,
     "bse_direct_quotes": 0,
@@ -28,10 +28,37 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — first 50%",
+          "duration": "30 days",
+          "unlock_date": "2026-10-09",
+          "source_url": "https://ipomarkets.com/ipo/qualiance-international-ipo-qbb5atq",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 28
+        },
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-12-08",
+          "source_url": "https://ipomarkets.com/ipo/qualiance-international-ipo-qbb5atq",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 88
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — first 50%",
+        "duration": "30 days",
+        "unlock_date": "2026-10-09",
+        "source_url": "https://ipomarkets.com/ipo/qualiance-international-ipo-qbb5atq",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 28
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-09-11T16:39:58.855877+05:30",
       "detail_url": "https://ipomarkets.com/ipo/qualiance-international-ipo-qbb5atq"
     },
     {

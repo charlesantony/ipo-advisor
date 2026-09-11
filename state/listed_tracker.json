@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_ist": "2026-09-10T22:08:30.813606+05:30",
+  "updated_at_ist": "2026-09-11T16:40:33.855885+05:30",
   "records": {
     "2026|MAINBOARD|sunshinepictures": {
       "name": "Sunshine Pictures",
@@ -7655,6 +7655,41 @@
       "current_price_source": "NSE_BHAVCOPY",
       "market_listing_price": 221.0,
       "market_listing_price_source": "NSE_LISTING_DAY_OPEN"
+    },
+    "2026|SME|qualianceinternational": {
+      "name": "Qualiance International",
+      "ipo_type": "SME",
+      "detail_url": "https://ipomarkets.com/ipo/qualiance-international-ipo-qbb5atq",
+      "identity": {
+        "market": "NSE",
+        "symbol": "QUALIANCE",
+        "market_symbol": "QUALIANCE.NS",
+        "series": "ST",
+        "isin": "INE1XJ401012",
+        "listing_date": null,
+        "identity_source": "NSE_SME_MASTER",
+        "identity_score": 1.0
+      },
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — first 50%",
+          "duration": "30 days",
+          "unlock_date": "2026-10-09",
+          "source_url": "https://ipomarkets.com/ipo/qualiance-international-ipo-qbb5atq",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE"
+        },
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-12-08",
+          "source_url": "https://ipomarkets.com/ipo/qualiance-international-ipo-qbb5atq",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE"
+        }
+      ],
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-09-11T16:39:58.855877+05:30"
     }
   }
 }
