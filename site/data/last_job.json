@@ -1,25 +1,10 @@
 {
-  "completed_at_ist": "2026-09-11T20:32:12.301240+05:30",
+  "completed_at_ist": "2026-09-11T20:39:05.668017+05:30",
   "result": {
-    "mode": "day2",
-    "fetched_at_ist": "2026-09-11T20:30:57.977405+05:30",
+    "mode": "refresh",
+    "phase": "mainboard_close",
+    "fetched_at_ist": "2026-09-11T20:38:25.475939+05:30",
     "live_records": 17,
-    "email_alert": {
-      "eligible_alerts": 1,
-      "new_alerts": 1,
-      "email": {
-        "configured": true,
-        "alerts": 1,
-        "sent_alerts": 1,
-        "failed_alerts": 0,
-        "batch_sent": true,
-        "batch_kind": "DAY2",
-        "status": 200,
-        "response": {
-          "raw": "<!doctype html>\n<html>\n<head>\n<script nonce=\"0QaCWCUzDgKUaaJHBLlNpA\">window['ppConfig'] = {productName: '26981ed0d57bbad37e728ff58134270c', deleteIsEnforced:  false , sealIsEnforced:  false , heartbeatRate:  0.5 , periodicReportingRateMillis:  60000.0 , disableAllReporting:  false };(function(){'use strict';function k(a){var b=0;return function(){return b<a.length?{done:!1,value:a[b++]}:{done:!0}}}function l(a){var b=typeof Symbol!=\"undefined\"&&Symbol.iterator&&a[Symbol.iterator];if(b)return b.call(a);if(typeof a.length==\"number\")return{next:k(a)};throw Error(String(a)+\" is not an iterable or ArrayLike\");}var m=typeof Object.defineProperties==\"function\"?Object.defineProperty:function(a,b,c){if(a==Array.prototype||a==Object.prototype)return a;a[b]=c.value;return a};\nfunction n(a){a=[\"object\"==typeof globalThis&&globalThis,a,\"object\"==typeof window&&window,\"object\"==typeof self&&self,\"object\"==typeof global&&global];for(var b=0;b<a.length;++b){var c=a[b];if(c&&c.Math==Math)return c}throw"
-        }
-      }
-    },
     "prospective_status": "MODEL_REVIEW_COMPLETED"
   }
 }
