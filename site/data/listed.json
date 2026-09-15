@@ -1,12 +1,12 @@
 {
   "version": "listed-tracker-v1",
-  "generated_at_ist": "2026-09-15T15:02:49.625120+05:30",
+  "generated_at_ist": "2026-09-15T17:07:11.185801+05:30",
   "current_prices_as_of_ist": "2026-09-14T16:00:00+05:30",
   "summary": {
     "listed_records": 203,
     "market_identity_resolved": 132,
     "current_price_available": 131,
-    "unlock_schedule_available": 189,
+    "unlock_schedule_available": 190,
     "duplicate_rows_removed": 1,
     "bse_identities_added": 0,
     "bse_direct_quotes": 0,
@@ -28,10 +28,64 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — first 50%",
+          "duration": "30 days",
+          "unlock_date": "2026-10-10",
+          "source_url": "https://ipomarkets.com/ipo/pranav-constructions-ipo-vxyj9bb",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 25
+        },
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-12-09",
+          "source_url": "https://ipomarkets.com/ipo/pranav-constructions-ipo-vxyj9bb",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 85
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — holding above 20%",
+          "duration": "6 months",
+          "unlock_date": "2027-03-10",
+          "source_url": "https://ipomarkets.com/ipo/pranav-constructions-ipo-vxyj9bb",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 176
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "6 months",
+          "unlock_date": "2027-03-10",
+          "source_url": "https://ipomarkets.com/ipo/pranav-constructions-ipo-vxyj9bb",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 176
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — minimum contribution (20%)",
+          "duration": "18 months",
+          "unlock_date": "2028-03-10",
+          "source_url": "https://ipomarkets.com/ipo/pranav-constructions-ipo-vxyj9bb",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 542
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — first 50%",
+        "duration": "30 days",
+        "unlock_date": "2026-10-10",
+        "source_url": "https://ipomarkets.com/ipo/pranav-constructions-ipo-vxyj9bb",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 25
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-09-15T17:07:11.185801+05:30",
       "detail_url": "https://ipomarkets.com/ipo/pranav-constructions-ipo-vxyj9bb"
     },
     {
@@ -51,8 +105,8 @@
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [],
       "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_status": "NOT_AVAILABLE",
+      "unlock_checked_at_ist": "2026-09-15T17:07:11.185801+05:30",
       "detail_url": "https://ipomarkets.com/ipo/apana-logistics-ipo-ey11027"
     },
     {
@@ -196,7 +250,7 @@
       "unlock_events": [],
       "next_unlock": null,
       "unlock_status": "NOT_AVAILABLE",
-      "unlock_checked_at_ist": "2026-09-08T16:39:27.268415+05:30",
+      "unlock_checked_at_ist": "2026-09-15T17:07:11.185801+05:30",
       "detail_url": "https://ipomarkets.com/ipo/fly-hi-maritime-ipo-e232ag7"
     },
     {
@@ -217,7 +271,7 @@
       "unlock_events": [],
       "next_unlock": null,
       "unlock_status": "NOT_AVAILABLE",
-      "unlock_checked_at_ist": "2026-09-08T16:39:27.268415+05:30",
+      "unlock_checked_at_ist": "2026-09-15T17:07:11.185801+05:30",
       "detail_url": "https://ipomarkets.com/ipo/farm-peace-ipo-khk5gdw"
     },
     {
