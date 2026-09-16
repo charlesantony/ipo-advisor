@@ -1,16 +1,16 @@
 {
   "version": "listed-tracker-v1",
-  "generated_at_ist": "2026-09-16T14:56:02.306131+05:30",
+  "generated_at_ist": "2026-09-16T16:54:25.328042+05:30",
   "current_prices_as_of_ist": "2026-09-15T16:00:00+05:30",
   "summary": {
     "listed_records": 206,
     "market_identity_resolved": 135,
     "current_price_available": 132,
-    "unlock_schedule_available": 190,
+    "unlock_schedule_available": 193,
     "duplicate_rows_removed": 1,
     "bse_identities_added": 0,
     "bse_direct_quotes": 0,
-    "listing_price_market_fallbacks": 2
+    "listing_price_market_fallbacks": 1
   },
   "records": [
     {
@@ -28,10 +28,64 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — first 50%",
+          "duration": "30 days",
+          "unlock_date": "2026-10-11",
+          "source_url": "https://ipomarkets.com/ipo/prasol-chemicals-ipo-e4htvbx",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 25
+        },
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-12-10",
+          "source_url": "https://ipomarkets.com/ipo/prasol-chemicals-ipo-e4htvbx",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 85
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — holding above 20%",
+          "duration": "6 months",
+          "unlock_date": "2027-03-11",
+          "source_url": "https://ipomarkets.com/ipo/prasol-chemicals-ipo-e4htvbx",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 176
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "6 months",
+          "unlock_date": "2027-03-11",
+          "source_url": "https://ipomarkets.com/ipo/prasol-chemicals-ipo-e4htvbx",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 176
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — minimum contribution (20%)",
+          "duration": "18 months",
+          "unlock_date": "2028-03-11",
+          "source_url": "https://ipomarkets.com/ipo/prasol-chemicals-ipo-e4htvbx",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 542
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — first 50%",
+        "duration": "30 days",
+        "unlock_date": "2026-10-11",
+        "source_url": "https://ipomarkets.com/ipo/prasol-chemicals-ipo-e4htvbx",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 25
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-09-16T16:54:25.328042+05:30",
       "detail_url": "https://ipomarkets.com/ipo/prasol-chemicals-ipo-e4htvbx"
     },
     {
@@ -49,10 +103,64 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — first 50%",
+          "duration": "30 days",
+          "unlock_date": "2026-10-11",
+          "source_url": "https://ipomarkets.com/ipo/kanohar-electricals-ipo-wwsrac2",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 25
+        },
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-12-10",
+          "source_url": "https://ipomarkets.com/ipo/kanohar-electricals-ipo-wwsrac2",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 85
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — holding above 20%",
+          "duration": "6 months",
+          "unlock_date": "2027-03-11",
+          "source_url": "https://ipomarkets.com/ipo/kanohar-electricals-ipo-wwsrac2",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 176
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "6 months",
+          "unlock_date": "2027-03-11",
+          "source_url": "https://ipomarkets.com/ipo/kanohar-electricals-ipo-wwsrac2",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 176
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — minimum contribution (20%)",
+          "duration": "18 months",
+          "unlock_date": "2028-03-11",
+          "source_url": "https://ipomarkets.com/ipo/kanohar-electricals-ipo-wwsrac2",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 542
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — first 50%",
+        "duration": "30 days",
+        "unlock_date": "2026-10-11",
+        "source_url": "https://ipomarkets.com/ipo/kanohar-electricals-ipo-wwsrac2",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 25
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-09-16T16:54:25.328042+05:30",
       "detail_url": "https://ipomarkets.com/ipo/kanohar-electricals-ipo-wwsrac2"
     },
     {
@@ -70,10 +178,46 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — first 50%",
+          "duration": "30 days",
+          "unlock_date": "2026-10-11",
+          "source_url": "https://ipomarkets.com/ipo/glass-wall-systems-ipo-bdc63ny",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 25
+        },
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-12-10",
+          "source_url": "https://ipomarkets.com/ipo/glass-wall-systems-ipo-bdc63ny",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 85
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "6 months",
+          "unlock_date": "2027-03-11",
+          "source_url": "https://ipomarkets.com/ipo/glass-wall-systems-ipo-bdc63ny",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 176
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — first 50%",
+        "duration": "30 days",
+        "unlock_date": "2026-10-11",
+        "source_url": "https://ipomarkets.com/ipo/glass-wall-systems-ipo-bdc63ny",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 25
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-09-16T16:54:25.328042+05:30",
       "detail_url": "https://ipomarkets.com/ipo/glass-wall-systems-ipo-bdc63ny"
     },
     {
@@ -149,8 +293,7 @@
       },
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-09-15T17:07:11.185801+05:30",
-      "detail_url": "https://ipomarkets.com/ipo/pranav-constructions-ipo-vxyj9bb",
-      "listing_price_source": "NSE_LISTING_DAY_OPEN"
+      "detail_url": "https://ipomarkets.com/ipo/pranav-constructions-ipo-vxyj9bb"
     },
     {
       "tracker_key": "2026|SME|apanalogistics",
@@ -161,8 +304,8 @@
       "ipo_type": "SME",
       "listing_date": "2026-09-15",
       "issue_price": 60.0,
-      "listing_price": null,
-      "listing_return_pct": null,
+      "listing_price": 60.0,
+      "listing_return_pct": 0.0,
       "current_price": 42.15,
       "current_return_pct": -29.75,
       "current_price_as_of_ist": "2026-09-14T16:00:00+05:30",
