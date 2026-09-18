@@ -1,16 +1,16 @@
 {
   "version": "listed-tracker-v1",
-  "generated_at_ist": "2026-09-18T14:37:50.993114+05:30",
+  "generated_at_ist": "2026-09-18T16:35:22.594562+05:30",
   "current_prices_as_of_ist": "2026-09-17T16:00:00+05:30",
   "summary": {
     "listed_records": 221,
     "market_identity_resolved": 144,
     "current_price_available": 143,
-    "unlock_schedule_available": 200,
+    "unlock_schedule_available": 204,
     "duplicate_rows_removed": 1,
     "bse_identities_added": 0,
     "bse_direct_quotes": 0,
-    "listing_price_market_fallbacks": 9
+    "listing_price_market_fallbacks": 2
   },
   "records": [
     {
@@ -28,10 +28,64 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — first 50%",
+          "duration": "30 days",
+          "unlock_date": "2026-10-16",
+          "source_url": "https://ipomarkets.com/ipo/veegaland-developers-ipo-gz0t1ty",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 28
+        },
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-12-15",
+          "source_url": "https://ipomarkets.com/ipo/veegaland-developers-ipo-gz0t1ty",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 88
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — holding above 20%",
+          "duration": "6 months",
+          "unlock_date": "2027-03-16",
+          "source_url": "https://ipomarkets.com/ipo/veegaland-developers-ipo-gz0t1ty",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 179
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "6 months",
+          "unlock_date": "2027-03-16",
+          "source_url": "https://ipomarkets.com/ipo/veegaland-developers-ipo-gz0t1ty",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 179
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — minimum contribution (20%)",
+          "duration": "18 months",
+          "unlock_date": "2028-03-16",
+          "source_url": "https://ipomarkets.com/ipo/veegaland-developers-ipo-gz0t1ty",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 545
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — first 50%",
+        "duration": "30 days",
+        "unlock_date": "2026-10-16",
+        "source_url": "https://ipomarkets.com/ipo/veegaland-developers-ipo-gz0t1ty",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 28
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-09-18T16:35:22.594562+05:30",
       "detail_url": "https://ipomarkets.com/ipo/veegaland-developers-ipo-gz0t1ty"
     },
     {
@@ -49,10 +103,37 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — first 50%",
+          "duration": "30 days",
+          "unlock_date": "2026-10-16",
+          "source_url": "https://ipomarkets.com/ipo/raksan-transformers-ipo-sq25h9z",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 28
+        },
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-12-15",
+          "source_url": "https://ipomarkets.com/ipo/raksan-transformers-ipo-sq25h9z",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 88
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — first 50%",
+        "duration": "30 days",
+        "unlock_date": "2026-10-16",
+        "source_url": "https://ipomarkets.com/ipo/raksan-transformers-ipo-sq25h9z",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 28
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-09-18T16:35:22.594562+05:30",
       "detail_url": "https://ipomarkets.com/ipo/raksan-transformers-ipo-sq25h9z"
     },
     {
@@ -72,8 +153,8 @@
       "current_price_source": null,
       "unlock_events": [],
       "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_status": "NOT_AVAILABLE",
+      "unlock_checked_at_ist": "2026-09-18T16:35:22.594562+05:30",
       "detail_url": "https://ipomarkets.com/ipo/panchatv-bharat-ipo-sax0d62"
     },
     {
@@ -91,10 +172,37 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — first 50%",
+          "duration": "30 days",
+          "unlock_date": "2026-10-16",
+          "source_url": "https://ipomarkets.com/ipo/om-galaxy-ipo-sfkjw42",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 28
+        },
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-12-15",
+          "source_url": "https://ipomarkets.com/ipo/om-galaxy-ipo-sfkjw42",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 88
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — first 50%",
+        "duration": "30 days",
+        "unlock_date": "2026-10-16",
+        "source_url": "https://ipomarkets.com/ipo/om-galaxy-ipo-sfkjw42",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 28
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-09-18T16:35:22.594562+05:30",
       "detail_url": "https://ipomarkets.com/ipo/om-galaxy-ipo-sfkjw42"
     },
     {
@@ -112,10 +220,37 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — first 50%",
+          "duration": "30 days",
+          "unlock_date": "2026-10-17",
+          "source_url": "https://ipomarkets.com/ipo/maharaja-speedex-india-ipo-tz37j4q",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 29
+        },
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-12-15",
+          "source_url": "https://ipomarkets.com/ipo/maharaja-speedex-india-ipo-tz37j4q",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 88
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — first 50%",
+        "duration": "30 days",
+        "unlock_date": "2026-10-17",
+        "source_url": "https://ipomarkets.com/ipo/maharaja-speedex-india-ipo-tz37j4q",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 29
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-09-18T16:35:22.594562+05:30",
       "detail_url": "https://ipomarkets.com/ipo/maharaja-speedex-india-ipo-tz37j4q"
     },
     {
@@ -137,8 +272,7 @@
       "next_unlock": null,
       "unlock_status": "NOT_AVAILABLE",
       "unlock_checked_at_ist": "2026-09-17T17:03:05.883476+05:30",
-      "detail_url": "https://ipomarkets.com/ipo/vinod-texworld-ipo-bwkx560",
-      "listing_price_source": "NSE_LISTING_DAY_OPEN"
+      "detail_url": "https://ipomarkets.com/ipo/vinod-texworld-ipo-bwkx560"
     },
     {
       "tracker_key": "2026|MAINBOARD|steamhouseindia",
@@ -213,8 +347,7 @@
       },
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-09-17T17:03:05.883476+05:30",
-      "detail_url": "https://ipomarkets.com/ipo/steamhouse-india-ipo-bv58rzr",
-      "listing_price_source": "NSE_LISTING_DAY_OPEN"
+      "detail_url": "https://ipomarkets.com/ipo/steamhouse-india-ipo-bv58rzr"
     },
     {
       "tracker_key": "2026|MAINBOARD|rentomojo",
@@ -289,8 +422,7 @@
       },
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-09-17T17:03:05.883476+05:30",
-      "detail_url": "https://ipomarkets.com/ipo/rentomojo-ipo-b5fekxa",
-      "listing_price_source": "NSE_LISTING_DAY_OPEN"
+      "detail_url": "https://ipomarkets.com/ipo/rentomojo-ipo-b5fekxa"
     },
     {
       "tracker_key": "HANDOFF|2026|MAINBOARD|manipalpaymentandidentitysolutions|2026-09-11",
@@ -369,8 +501,7 @@
       },
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-09-17T17:03:05.883476+05:30",
-      "detail_url": "https://ipomarkets.com/ipo/manipal-payment-and-identity-solutions-ipo-xsxhrkj",
-      "listing_price_source": "NSE_LISTING_DAY_OPEN"
+      "detail_url": "https://ipomarkets.com/ipo/manipal-payment-and-identity-solutions-ipo-xsxhrkj"
     },
     {
       "tracker_key": "2026|MAINBOARD|lccprojects",
@@ -445,8 +576,7 @@
       },
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-09-17T17:03:05.883476+05:30",
-      "detail_url": "https://ipomarkets.com/ipo/lcc-projects-ipo-vrqfxpd",
-      "listing_price_source": "NSE_LISTING_DAY_OPEN"
+      "detail_url": "https://ipomarkets.com/ipo/lcc-projects-ipo-vrqfxpd"
     },
     {
       "tracker_key": "2026|MAINBOARD|karamtaraengineering",
@@ -521,8 +651,7 @@
       },
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-09-17T17:03:05.883476+05:30",
-      "detail_url": "https://ipomarkets.com/ipo/karamtara-engineering-ipo-rmtxvfn",
-      "listing_price_source": "NSE_LISTING_DAY_OPEN"
+      "detail_url": "https://ipomarkets.com/ipo/karamtara-engineering-ipo-rmtxvfn"
     },
     {
       "tracker_key": "2026|SME|infraxrenewable",
@@ -533,8 +662,8 @@
       "ipo_type": "SME",
       "listing_date": "2026-09-17",
       "issue_price": 104.0,
-      "listing_price": null,
-      "listing_return_pct": null,
+      "listing_price": 104.0,
+      "listing_return_pct": 0.0,
       "current_price": null,
       "current_return_pct": null,
       "current_price_as_of_ist": null,
@@ -600,8 +729,7 @@
       },
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-09-17T17:03:05.883476+05:30",
-      "detail_url": "https://ipomarkets.com/ipo/asset-reconstruction-ipo-b1zpjqr",
-      "listing_price_source": "NSE_LISTING_DAY_OPEN"
+      "detail_url": "https://ipomarkets.com/ipo/asset-reconstruction-ipo-b1zpjqr"
     },
     {
       "tracker_key": "2026|SME|amtechesters",
@@ -612,8 +740,8 @@
       "ipo_type": "SME",
       "listing_date": "2026-09-17",
       "issue_price": 75.0,
-      "listing_price": null,
-      "listing_return_pct": null,
+      "listing_price": 100.0,
+      "listing_return_pct": 33.33,
       "current_price": null,
       "current_return_pct": null,
       "current_price_as_of_ist": null,
