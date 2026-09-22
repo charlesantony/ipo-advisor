@@ -1,6 +1,6 @@
 {
   "version": "listed-tracker-v1",
-  "generated_at_ist": "2026-09-22T21:06:24.858783+05:30",
+  "generated_at_ist": "2026-09-22T22:42:04.470808+05:30",
   "current_prices_as_of_ist": "2026-09-22T16:00:00+05:30",
   "summary": {
     "listed_records": 227,
@@ -1322,7 +1322,7 @@
       "unlock_events": [],
       "next_unlock": null,
       "unlock_status": "NOT_AVAILABLE",
-      "unlock_checked_at_ist": "2026-09-15T17:07:11.185801+05:30",
+      "unlock_checked_at_ist": "2026-09-22T22:42:04.470808+05:30",
       "detail_url": "https://ipomarkets.com/ipo/apana-logistics-ipo-ey11027"
     },
     {
@@ -1466,7 +1466,7 @@
       "unlock_events": [],
       "next_unlock": null,
       "unlock_status": "NOT_AVAILABLE",
-      "unlock_checked_at_ist": "2026-09-15T17:07:11.185801+05:30",
+      "unlock_checked_at_ist": "2026-09-22T22:42:04.470808+05:30",
       "detail_url": "https://ipomarkets.com/ipo/fly-hi-maritime-ipo-e232ag7"
     },
     {
@@ -1487,7 +1487,7 @@
       "unlock_events": [],
       "next_unlock": null,
       "unlock_status": "NOT_AVAILABLE",
-      "unlock_checked_at_ist": "2026-09-15T17:07:11.185801+05:30",
+      "unlock_checked_at_ist": "2026-09-22T22:42:04.470808+05:30",
       "detail_url": "https://ipomarkets.com/ipo/farm-peace-ipo-khk5gdw"
     },
     {
@@ -10451,10 +10451,7 @@
     ]
   },
   "errors": {
-    "security_master": [
-      "NSE_EQUITY_MASTER: TimeoutError: The read operation timed out",
-      "NSE_SME_MASTER: TimeoutError: The read operation timed out"
-    ],
+    "security_master": [],
     "current_price": [
       "HTTPError: HTTP Error 429: Too Many Requests",
       "HTTPError: HTTP Error 429: Too Many Requests",
@@ -10462,7 +10459,7 @@
       "HTTPError: HTTP Error 429: Too Many Requests"
     ],
     "nse_bhav": [
-      "https://nsearchives.nseindia.com/emerge/corporates/content/sme22092026.csv: TimeoutError: The read operation timed out",
+      "https://nsearchives.nseindia.com/emerge/corporates/content/sme22092026.csv: HTTPError: HTTP Error 404: Not Found",
       "https://archives.nseindia.com/emerge/corporates/content/sme22092026.csv: HTTPError: HTTP Error 404: Not Found"
     ]
   }
