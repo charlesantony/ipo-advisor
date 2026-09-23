@@ -1,12 +1,12 @@
 {
   "version": "listed-tracker-v1",
-  "generated_at_ist": "2026-09-23T14:56:40.597904+05:30",
+  "generated_at_ist": "2026-09-23T16:55:42.840815+05:30",
   "current_prices_as_of_ist": "2026-09-22T16:00:00+05:30",
   "summary": {
     "listed_records": 230,
     "market_identity_resolved": 148,
     "current_price_available": 145,
-    "unlock_schedule_available": 208,
+    "unlock_schedule_available": 211,
     "duplicate_rows_removed": 1,
     "bse_identities_added": 0,
     "bse_direct_quotes": 0,
@@ -28,10 +28,64 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — first 50%",
+          "duration": "30 days",
+          "unlock_date": "2026-10-21",
+          "source_url": "https://ipomarkets.com/ipo/ss-retail-ipo-wcgm68v",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 28
+        },
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-12-20",
+          "source_url": "https://ipomarkets.com/ipo/ss-retail-ipo-wcgm68v",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 88
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — holding above 20%",
+          "duration": "6 months",
+          "unlock_date": "2027-03-21",
+          "source_url": "https://ipomarkets.com/ipo/ss-retail-ipo-wcgm68v",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 179
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "6 months",
+          "unlock_date": "2027-03-21",
+          "source_url": "https://ipomarkets.com/ipo/ss-retail-ipo-wcgm68v",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 179
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — minimum contribution (20%)",
+          "duration": "18 months",
+          "unlock_date": "2028-03-21",
+          "source_url": "https://ipomarkets.com/ipo/ss-retail-ipo-wcgm68v",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 545
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — first 50%",
+        "duration": "30 days",
+        "unlock_date": "2026-10-21",
+        "source_url": "https://ipomarkets.com/ipo/ss-retail-ipo-wcgm68v",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 28
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-09-23T16:55:42.840815+05:30",
       "detail_url": "https://ipomarkets.com/ipo/ss-retail-ipo-wcgm68v"
     },
     {
@@ -49,10 +103,64 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — first 50%",
+          "duration": "30 days",
+          "unlock_date": "2026-10-21",
+          "source_url": "https://ipomarkets.com/ipo/jindal-supreme-ipo-q9aamy3",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 28
+        },
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-12-20",
+          "source_url": "https://ipomarkets.com/ipo/jindal-supreme-ipo-q9aamy3",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 88
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — holding above 20%",
+          "duration": "6 months",
+          "unlock_date": "2027-03-21",
+          "source_url": "https://ipomarkets.com/ipo/jindal-supreme-ipo-q9aamy3",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 179
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "6 months",
+          "unlock_date": "2027-03-21",
+          "source_url": "https://ipomarkets.com/ipo/jindal-supreme-ipo-q9aamy3",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 179
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — minimum contribution (20%)",
+          "duration": "18 months",
+          "unlock_date": "2028-03-21",
+          "source_url": "https://ipomarkets.com/ipo/jindal-supreme-ipo-q9aamy3",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 545
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — first 50%",
+        "duration": "30 days",
+        "unlock_date": "2026-10-21",
+        "source_url": "https://ipomarkets.com/ipo/jindal-supreme-ipo-q9aamy3",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 28
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-09-23T16:55:42.840815+05:30",
       "detail_url": "https://ipomarkets.com/ipo/jindal-supreme-ipo-q9aamy3"
     },
     {
@@ -70,10 +178,64 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — first 50%",
+          "duration": "30 days",
+          "unlock_date": "2026-10-21",
+          "source_url": "https://ipomarkets.com/ipo/hero-motors-ipo-htvrhs6",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 28
+        },
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-12-20",
+          "source_url": "https://ipomarkets.com/ipo/hero-motors-ipo-htvrhs6",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 88
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — holding above 20%",
+          "duration": "6 months",
+          "unlock_date": "2027-03-21",
+          "source_url": "https://ipomarkets.com/ipo/hero-motors-ipo-htvrhs6",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 179
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "6 months",
+          "unlock_date": "2027-03-21",
+          "source_url": "https://ipomarkets.com/ipo/hero-motors-ipo-htvrhs6",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 179
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — minimum contribution (20%)",
+          "duration": "18 months",
+          "unlock_date": "2028-03-21",
+          "source_url": "https://ipomarkets.com/ipo/hero-motors-ipo-htvrhs6",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 545
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — first 50%",
+        "duration": "30 days",
+        "unlock_date": "2026-10-21",
+        "source_url": "https://ipomarkets.com/ipo/hero-motors-ipo-htvrhs6",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 28
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-09-23T16:55:42.840815+05:30",
       "detail_url": "https://ipomarkets.com/ipo/hero-motors-ipo-htvrhs6"
     },
     {
@@ -85,8 +247,8 @@
       "ipo_type": "SME",
       "listing_date": "2026-09-22",
       "issue_price": 341.0,
-      "listing_price": null,
-      "listing_return_pct": null,
+      "listing_price": 341.0,
+      "listing_return_pct": 0.0,
       "current_price": null,
       "current_return_pct": null,
       "current_price_as_of_ist": null,
@@ -106,8 +268,8 @@
       "ipo_type": "SME",
       "listing_date": "2026-09-22",
       "issue_price": 59.0,
-      "listing_price": null,
-      "listing_return_pct": null,
+      "listing_price": 58.9,
+      "listing_return_pct": -0.17,
       "current_price": null,
       "current_return_pct": null,
       "current_price_as_of_ist": null,
@@ -154,8 +316,8 @@
       "ipo_type": "SME",
       "listing_date": "2026-09-22",
       "issue_price": 67.0,
-      "listing_price": null,
-      "listing_return_pct": null,
+      "listing_price": 66.99,
+      "listing_return_pct": -0.01,
       "current_price": null,
       "current_return_pct": null,
       "current_price_as_of_ist": null,
