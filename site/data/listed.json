@@ -1,16 +1,16 @@
 {
   "version": "listed-tracker-v1",
-  "generated_at_ist": "2026-09-25T15:14:38.581086+05:30",
-  "current_prices_as_of_ist": "2026-09-24T16:00:00+05:30",
+  "generated_at_ist": "2026-09-25T17:13:31.422018+05:30",
+  "current_prices_as_of_ist": "2026-09-25T16:00:00+05:30",
   "summary": {
     "listed_records": 236,
     "market_identity_resolved": 152,
-    "current_price_available": 151,
-    "unlock_schedule_available": 215,
+    "current_price_available": 152,
+    "unlock_schedule_available": 216,
     "duplicate_rows_removed": 2,
     "bse_identities_added": 0,
     "bse_direct_quotes": 0,
-    "listing_price_market_fallbacks": 6
+    "listing_price_market_fallbacks": 4
   },
   "records": [
     {
@@ -22,17 +22,45 @@
       "ipo_type": "SME",
       "listing_date": "2026-09-25",
       "issue_price": 54.0,
-      "listing_price": null,
-      "listing_return_pct": null,
-      "current_price": null,
-      "current_return_pct": null,
-      "current_price_as_of_ist": null,
-      "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
-      "detail_url": "https://ipomarkets.com/ipo/axiom-gas-engineering-ipo-vwbcwmt"
+      "listing_price": 54.75,
+      "listing_return_pct": 1.39,
+      "current_price": 54.1,
+      "current_return_pct": 0.19,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
+      "current_price_source": "NSE_BHAVCOPY",
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — first 50%",
+          "duration": "30 days",
+          "unlock_date": "2026-10-23",
+          "source_url": "https://ipomarkets.com/ipo/axiom-gas-engineering-ipo-vwbcwmt",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 28
+        },
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-12-22",
+          "source_url": "https://ipomarkets.com/ipo/axiom-gas-engineering-ipo-vwbcwmt",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 88
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — first 50%",
+        "duration": "30 days",
+        "unlock_date": "2026-10-23",
+        "source_url": "https://ipomarkets.com/ipo/axiom-gas-engineering-ipo-vwbcwmt",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 28
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-09-25T17:13:31.422018+05:30",
+      "detail_url": "https://ipomarkets.com/ipo/axiom-gas-engineering-ipo-vwbcwmt",
+      "listing_price_source": "NSE_LISTING_DAY_OPEN"
     },
     {
       "tracker_key": "2026|SME|spectraatechnologysolutions",
@@ -45,9 +73,9 @@
       "issue_price": 118.0,
       "listing_price": 224.2,
       "listing_return_pct": 90.0,
-      "current_price": 235.4,
-      "current_return_pct": 99.49,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 247.15,
+      "current_return_pct": 109.45,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -80,8 +108,7 @@
       },
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-09-24T17:07:32.538679+05:30",
-      "detail_url": "https://ipomarkets.com/ipo/spectraa-technology-solutions-ipo-wwhqav9",
-      "listing_price_source": "NSE_LISTING_DAY_OPEN"
+      "detail_url": "https://ipomarkets.com/ipo/spectraa-technology-solutions-ipo-wwhqav9"
     },
     {
       "tracker_key": "2026|MAINBOARD|sonaselectionindia",
@@ -94,9 +121,9 @@
       "issue_price": 99.0,
       "listing_price": 102.31,
       "listing_return_pct": 3.34,
-      "current_price": 107.42,
-      "current_return_pct": 8.51,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 102.05,
+      "current_return_pct": 3.08,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -191,9 +218,9 @@
       "issue_price": 101.0,
       "listing_price": 104.9,
       "listing_return_pct": 3.86,
-      "current_price": 102.45,
-      "current_return_pct": 1.44,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 99.05,
+      "current_return_pct": -1.93,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -226,8 +253,7 @@
       },
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-09-24T17:07:32.538679+05:30",
-      "detail_url": "https://ipomarkets.com/ipo/kheria-autocomp-ipo-c2zbgzp",
-      "listing_price_source": "NSE_LISTING_DAY_OPEN"
+      "detail_url": "https://ipomarkets.com/ipo/kheria-autocomp-ipo-c2zbgzp"
     },
     {
       "tracker_key": "2026|MAINBOARD|ssretail",
@@ -240,9 +266,9 @@
       "issue_price": 424.0,
       "listing_price": 624.0,
       "listing_return_pct": 47.17,
-      "current_price": 797.0,
-      "current_return_pct": 87.97,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 725.0,
+      "current_return_pct": 70.99,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -315,9 +341,9 @@
       "issue_price": 93.0,
       "listing_price": 120.0,
       "listing_return_pct": 29.03,
-      "current_price": 132.3,
-      "current_return_pct": 42.26,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 138.91,
+      "current_return_pct": 49.37,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -390,9 +416,9 @@
       "issue_price": 84.0,
       "listing_price": 82.0,
       "listing_return_pct": -2.38,
-      "current_price": 118.08,
-      "current_return_pct": 40.57,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 141.69,
+      "current_return_pct": 68.68,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -555,9 +581,9 @@
       "issue_price": 43.0,
       "listing_price": 43.0,
       "listing_return_pct": 0.0,
-      "current_price": 41.14,
-      "current_return_pct": -4.33,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 42.5,
+      "current_return_pct": -1.16,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -708,9 +734,9 @@
       "issue_price": 140.0,
       "listing_price": 154.0,
       "listing_return_pct": 10.0,
-      "current_price": 142.04,
-      "current_return_pct": 1.46,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 141.5,
+      "current_return_pct": 1.07,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -838,7 +864,7 @@
       "unlock_events": [],
       "next_unlock": null,
       "unlock_status": "NOT_AVAILABLE",
-      "unlock_checked_at_ist": "2026-09-18T16:35:22.594562+05:30",
+      "unlock_checked_at_ist": "2026-09-25T17:13:31.422018+05:30",
       "detail_url": "https://ipomarkets.com/ipo/panchatv-bharat-ipo-sax0d62"
     },
     {
@@ -948,9 +974,9 @@
       "issue_price": 94.0,
       "listing_price": 94.0,
       "listing_return_pct": 0.0,
-      "current_price": 69.25,
-      "current_return_pct": -26.33,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 65.8,
+      "current_return_pct": -30.0,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [],
       "next_unlock": null,
@@ -969,9 +995,9 @@
       "issue_price": 81.0,
       "listing_price": 94.5,
       "listing_return_pct": 16.67,
-      "current_price": 114.66,
-      "current_return_pct": 41.56,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 110.07,
+      "current_return_pct": 35.89,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -1044,9 +1070,9 @@
       "issue_price": 404.0,
       "listing_price": 482.45,
       "listing_return_pct": 19.42,
-      "current_price": 502.0,
-      "current_return_pct": 24.26,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 507.7,
+      "current_return_pct": 25.67,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -1119,9 +1145,9 @@
       "issue_price": 339.0,
       "listing_price": 330.0,
       "listing_return_pct": -2.65,
-      "current_price": 359.4,
-      "current_return_pct": 6.02,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 355.5,
+      "current_return_pct": 4.87,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [],
       "next_unlock": null,
@@ -1141,9 +1167,9 @@
       "issue_price": 339.0,
       "listing_price": 330.0,
       "listing_return_pct": -2.65,
-      "current_price": 359.4,
-      "current_return_pct": 6.02,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 355.5,
+      "current_return_pct": 4.87,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -1198,9 +1224,9 @@
       "issue_price": 146.0,
       "listing_price": 189.0,
       "listing_return_pct": 29.45,
-      "current_price": 143.8,
-      "current_return_pct": -1.51,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 148.8,
+      "current_return_pct": 1.92,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -1273,9 +1299,9 @@
       "issue_price": 254.0,
       "listing_price": 320.0,
       "listing_return_pct": 25.98,
-      "current_price": 368.9,
-      "current_return_pct": 45.24,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 358.3,
+      "current_return_pct": 41.06,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -1369,9 +1395,9 @@
       "issue_price": 139.0,
       "listing_price": 139.0,
       "listing_return_pct": 0.0,
-      "current_price": 148.5,
-      "current_return_pct": 6.83,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 143.34,
+      "current_return_pct": 3.12,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -1474,9 +1500,9 @@
       "issue_price": 676.0,
       "listing_price": 610.0,
       "listing_return_pct": -9.76,
-      "current_price": 724.0,
-      "current_return_pct": 7.1,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 755.1,
+      "current_return_pct": 11.7,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -1549,9 +1575,9 @@
       "issue_price": 632.0,
       "listing_price": 685.5,
       "listing_return_pct": 8.47,
-      "current_price": 863.0,
-      "current_return_pct": 36.55,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 865.4,
+      "current_return_pct": 36.93,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -1624,9 +1650,9 @@
       "issue_price": 182.0,
       "listing_price": 194.0,
       "listing_return_pct": 6.59,
-      "current_price": 274.5,
-      "current_return_pct": 50.82,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 275.2,
+      "current_return_pct": 51.21,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -1681,9 +1707,9 @@
       "issue_price": 124.0,
       "listing_price": 165.0,
       "listing_return_pct": 33.06,
-      "current_price": 100.17,
-      "current_return_pct": -19.22,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 102.0,
+      "current_return_pct": -17.74,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -1777,9 +1803,9 @@
       "issue_price": 127.0,
       "listing_price": 224.9,
       "listing_return_pct": 77.09,
-      "current_price": 191.6,
-      "current_return_pct": 50.87,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 187.8,
+      "current_return_pct": 47.87,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -1825,9 +1851,9 @@
       "issue_price": 239.0,
       "listing_price": 239.0,
       "listing_return_pct": 0.0,
-      "current_price": 223.75,
-      "current_return_pct": -6.38,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 232.05,
+      "current_return_pct": -2.91,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -1942,9 +1968,9 @@
       "issue_price": 177.0,
       "listing_price": 221.0,
       "listing_return_pct": 24.86,
-      "current_price": 193.35,
-      "current_return_pct": 9.24,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 212.65,
+      "current_return_pct": 20.14,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -2017,9 +2043,9 @@
       "issue_price": 83.0,
       "listing_price": 157.7,
       "listing_return_pct": 90.0,
-      "current_price": 175.1,
-      "current_return_pct": 110.96,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 184.35,
+      "current_return_pct": 122.11,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -2065,9 +2091,9 @@
       "issue_price": 575.0,
       "listing_price": 535.0,
       "listing_return_pct": -6.96,
-      "current_price": 527.25,
-      "current_return_pct": -8.3,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 542.25,
+      "current_return_pct": -5.7,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -2140,9 +2166,9 @@
       "issue_price": 54.0,
       "listing_price": 56.0,
       "listing_return_pct": 3.7,
-      "current_price": 213.8,
-      "current_return_pct": 295.93,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 211.1,
+      "current_return_pct": 290.93,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -2188,9 +2214,9 @@
       "issue_price": 92.0,
       "listing_price": 140.0,
       "listing_return_pct": 52.17,
-      "current_price": 161.85,
-      "current_return_pct": 75.92,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 160.0,
+      "current_return_pct": 73.91,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -2236,9 +2262,9 @@
       "issue_price": 200.0,
       "listing_price": 230.0,
       "listing_return_pct": 15.0,
-      "current_price": 298.6,
-      "current_return_pct": 49.3,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 311.0,
+      "current_return_pct": 55.5,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -2311,9 +2337,9 @@
       "issue_price": 48.0,
       "listing_price": 46.8,
       "listing_return_pct": -2.5,
-      "current_price": 129.0,
-      "current_return_pct": 168.75,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 130.0,
+      "current_return_pct": 170.83,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -2359,9 +2385,9 @@
       "issue_price": 429.0,
       "listing_price": 757.0,
       "listing_return_pct": 76.46,
-      "current_price": 1858.0,
-      "current_return_pct": 333.1,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 1760.5,
+      "current_return_pct": 310.37,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -2464,9 +2490,9 @@
       "issue_price": 82.0,
       "listing_price": 110.0,
       "listing_return_pct": 34.15,
-      "current_price": 107.5,
-      "current_return_pct": 31.1,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 105.35,
+      "current_return_pct": 28.48,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -2587,9 +2613,9 @@
       "issue_price": 101.0,
       "listing_price": 111.0,
       "listing_return_pct": 9.9,
-      "current_price": 109.1,
-      "current_return_pct": 8.02,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 110.0,
+      "current_return_pct": 8.91,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -2635,9 +2661,9 @@
       "issue_price": 99.0,
       "listing_price": 72.0,
       "listing_return_pct": -27.27,
-      "current_price": 49.85,
-      "current_return_pct": -49.65,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 49.44,
+      "current_return_pct": -50.06,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -2692,9 +2718,9 @@
       "issue_price": 988.0,
       "listing_price": 988.0,
       "listing_return_pct": 0.0,
-      "current_price": 1020.1,
-      "current_return_pct": 3.25,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 1005.0,
+      "current_return_pct": 1.72,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -2758,9 +2784,9 @@
       "issue_price": 138.0,
       "listing_price": 124.0,
       "listing_return_pct": -10.14,
-      "current_price": 131.35,
-      "current_return_pct": -4.82,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 126.6,
+      "current_return_pct": -8.26,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -2824,9 +2850,9 @@
       "issue_price": 100.0,
       "listing_price": 100.0,
       "listing_return_pct": 0.0,
-      "current_price": 45.15,
-      "current_return_pct": -54.85,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 47.4,
+      "current_return_pct": -52.6,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -2872,9 +2898,9 @@
       "issue_price": 53.0,
       "listing_price": 75.0,
       "listing_return_pct": 41.51,
-      "current_price": 69.25,
-      "current_return_pct": 30.66,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 67.13,
+      "current_return_pct": 26.66,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -2938,9 +2964,9 @@
       "issue_price": 102.0,
       "listing_price": 99.0,
       "listing_return_pct": -2.94,
-      "current_price": 47.75,
-      "current_return_pct": -53.19,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 45.4,
+      "current_return_pct": -55.49,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -2977,9 +3003,9 @@
       "issue_price": 788.0,
       "listing_price": 961.0,
       "listing_return_pct": 21.95,
-      "current_price": 860.35,
-      "current_return_pct": 9.18,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 875.0,
+      "current_return_pct": 11.04,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -3043,9 +3069,9 @@
       "issue_price": 300.0,
       "listing_price": 634.0,
       "listing_return_pct": 111.33,
-      "current_price": 545.4,
-      "current_return_pct": 81.8,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 529.8,
+      "current_return_pct": 76.6,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -3149,9 +3175,9 @@
       "issue_price": 160.0,
       "listing_price": 185.0,
       "listing_return_pct": 15.63,
-      "current_price": 146.0,
-      "current_return_pct": -8.75,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 142.25,
+      "current_return_pct": -11.09,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -3254,9 +3280,9 @@
       "issue_price": 360.0,
       "listing_price": 395.9,
       "listing_return_pct": 9.97,
-      "current_price": 435.15,
-      "current_return_pct": 20.87,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 437.6,
+      "current_return_pct": 21.56,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -3320,9 +3346,9 @@
       "issue_price": 93.0,
       "listing_price": 103.3,
       "listing_return_pct": 11.08,
-      "current_price": 91.5,
-      "current_return_pct": -1.61,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 91.35,
+      "current_return_pct": -1.77,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -3386,9 +3412,9 @@
       "issue_price": 201.0,
       "listing_price": 265.0,
       "listing_return_pct": 31.84,
-      "current_price": 370.5,
-      "current_return_pct": 84.33,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 366.5,
+      "current_return_pct": 82.34,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -3452,9 +3478,9 @@
       "issue_price": 60.0,
       "listing_price": 60.25,
       "listing_return_pct": 0.42,
-      "current_price": 51.56,
-      "current_return_pct": -14.07,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 50.45,
+      "current_return_pct": -15.92,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -3518,9 +3544,9 @@
       "issue_price": 151.0,
       "listing_price": 120.8,
       "listing_return_pct": -20.0,
-      "current_price": 58.05,
-      "current_return_pct": -61.56,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 60.95,
+      "current_return_pct": -59.64,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -3605,9 +3631,9 @@
       "issue_price": 77.0,
       "listing_price": 74.0,
       "listing_return_pct": -3.9,
-      "current_price": 30.55,
-      "current_return_pct": -60.32,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 32.05,
+      "current_return_pct": -58.38,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -3644,9 +3670,9 @@
       "issue_price": 92.0,
       "listing_price": 96.0,
       "listing_return_pct": 4.35,
-      "current_price": 43.75,
-      "current_return_pct": -52.45,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 42.75,
+      "current_return_pct": -53.53,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -3692,9 +3718,9 @@
       "issue_price": 189.0,
       "listing_price": 359.1,
       "listing_return_pct": 90.0,
-      "current_price": 388.0,
-      "current_return_pct": 105.29,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 401.0,
+      "current_return_pct": 112.17,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -3740,9 +3766,9 @@
       "issue_price": 97.0,
       "listing_price": 131.0,
       "listing_return_pct": 35.05,
-      "current_price": 120.5,
-      "current_return_pct": 24.23,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 121.01,
+      "current_return_pct": 24.75,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -3845,9 +3871,9 @@
       "issue_price": 118.0,
       "listing_price": 120.0,
       "listing_return_pct": 1.69,
-      "current_price": 114.2,
-      "current_return_pct": -3.22,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 115.0,
+      "current_return_pct": -2.54,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -3893,9 +3919,9 @@
       "issue_price": 285.0,
       "listing_price": 465.0,
       "listing_return_pct": 63.16,
-      "current_price": 448.0,
-      "current_return_pct": 57.19,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 453.7,
+      "current_return_pct": 59.19,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -3998,9 +4024,9 @@
       "issue_price": 140.0,
       "listing_price": 165.0,
       "listing_return_pct": 17.86,
-      "current_price": 310.9,
-      "current_return_pct": 122.07,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 319.97,
+      "current_return_pct": 128.55,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -4064,9 +4090,9 @@
       "issue_price": 807.0,
       "listing_price": 980.0,
       "listing_return_pct": 21.44,
-      "current_price": 1244.9,
-      "current_return_pct": 54.26,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 1250.0,
+      "current_return_pct": 54.89,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -4130,9 +4156,9 @@
       "issue_price": 871.0,
       "listing_price": 1200.0,
       "listing_return_pct": 37.77,
-      "current_price": 1589.0,
-      "current_return_pct": 82.43,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 1564.0,
+      "current_return_pct": 79.56,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -4196,9 +4222,9 @@
       "issue_price": 212.0,
       "listing_price": 284.0,
       "listing_return_pct": 33.96,
-      "current_price": 474.05,
-      "current_return_pct": 123.61,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 491.0,
+      "current_return_pct": 131.6,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -4262,9 +4288,9 @@
       "issue_price": 175.0,
       "listing_price": 180.0,
       "listing_return_pct": 2.86,
-      "current_price": 132.9,
-      "current_return_pct": -24.06,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 132.75,
+      "current_return_pct": -24.14,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -4310,9 +4336,9 @@
       "issue_price": 159.0,
       "listing_price": 165.9,
       "listing_return_pct": 4.34,
-      "current_price": 142.7,
-      "current_return_pct": -10.25,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 140.0,
+      "current_return_pct": -11.95,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -4472,9 +4498,9 @@
       "issue_price": 53.0,
       "listing_price": 72.0,
       "listing_return_pct": 35.85,
-      "current_price": 49.9,
-      "current_return_pct": -5.85,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 51.55,
+      "current_return_pct": -2.74,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -4538,9 +4564,9 @@
       "issue_price": 105.0,
       "listing_price": 124.5,
       "listing_return_pct": 18.57,
-      "current_price": 129.0,
-      "current_return_pct": 22.86,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 130.0,
+      "current_return_pct": 23.81,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -4586,9 +4612,9 @@
       "issue_price": 270.0,
       "listing_price": 329.65,
       "listing_return_pct": 22.09,
-      "current_price": 428.65,
-      "current_return_pct": 58.76,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 485.5,
+      "current_return_pct": 79.81,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -4682,9 +4708,9 @@
       "issue_price": 96.0,
       "listing_price": 120.0,
       "listing_return_pct": 25.0,
-      "current_price": 211.95,
-      "current_return_pct": 120.78,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 215.7,
+      "current_return_pct": 124.69,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -4730,9 +4756,9 @@
       "issue_price": 425.0,
       "listing_price": 520.0,
       "listing_return_pct": 22.35,
-      "current_price": 819.0,
-      "current_return_pct": 92.71,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 811.0,
+      "current_return_pct": 90.82,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -4796,9 +4822,9 @@
       "issue_price": 225.0,
       "listing_price": 245.0,
       "listing_return_pct": 8.89,
-      "current_price": 257.4,
-      "current_return_pct": 14.4,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 264.15,
+      "current_return_pct": 17.4,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -4910,9 +4936,9 @@
       "issue_price": 590.0,
       "listing_price": 652.0,
       "listing_return_pct": 10.51,
-      "current_price": 740.0,
-      "current_return_pct": 25.42,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 730.0,
+      "current_return_pct": 23.73,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -5072,9 +5098,9 @@
       "issue_price": 69.0,
       "listing_price": 55.2,
       "listing_return_pct": -20.0,
-      "current_price": 71.65,
-      "current_return_pct": 3.84,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 70.0,
+      "current_return_pct": 1.45,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -5246,9 +5272,9 @@
       "issue_price": 127.0,
       "listing_price": 136.0,
       "listing_return_pct": 7.09,
-      "current_price": 315.0,
-      "current_return_pct": 148.03,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 299.65,
+      "current_return_pct": 135.94,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -5312,9 +5338,9 @@
       "issue_price": 425.0,
       "listing_price": 461.0,
       "listing_return_pct": 8.47,
-      "current_price": 573.7,
-      "current_return_pct": 34.99,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 590.5,
+      "current_return_pct": 38.94,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -5360,9 +5386,9 @@
       "issue_price": 485.0,
       "listing_price": 700.0,
       "listing_return_pct": 44.33,
-      "current_price": 1314.45,
-      "current_return_pct": 171.02,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 1271.0,
+      "current_return_pct": 162.06,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -5474,9 +5500,9 @@
       "issue_price": 77.0,
       "listing_price": 87.0,
       "listing_return_pct": 12.99,
-      "current_price": 171.7,
-      "current_return_pct": 122.99,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 180.25,
+      "current_return_pct": 134.09,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -5561,9 +5587,9 @@
       "issue_price": 424.0,
       "listing_price": 500.25,
       "listing_return_pct": 17.98,
-      "current_price": 506.2,
-      "current_return_pct": 19.39,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 517.55,
+      "current_return_pct": 22.06,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -5675,9 +5701,9 @@
       "issue_price": 574.0,
       "listing_price": 613.3,
       "listing_return_pct": 6.85,
-      "current_price": 536.55,
-      "current_return_pct": -6.52,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 532.8,
+      "current_return_pct": -7.18,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -5771,9 +5797,9 @@
       "issue_price": 105.0,
       "listing_price": 105.0,
       "listing_return_pct": 0.0,
-      "current_price": 50.51,
-      "current_return_pct": -51.9,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 48.9,
+      "current_return_pct": -53.43,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -5828,9 +5854,9 @@
       "issue_price": 214.0,
       "listing_price": 250.0,
       "listing_return_pct": 16.82,
-      "current_price": 273.6,
-      "current_return_pct": 27.85,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 272.5,
+      "current_return_pct": 27.34,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -5894,9 +5920,9 @@
       "issue_price": 66.0,
       "listing_price": 68.0,
       "listing_return_pct": 3.03,
-      "current_price": 79.0,
-      "current_return_pct": 19.7,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 81.45,
+      "current_return_pct": 23.41,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -5990,9 +6016,9 @@
       "issue_price": 419.0,
       "listing_price": 569.0,
       "listing_return_pct": 35.8,
-      "current_price": 620.0,
-      "current_return_pct": 47.97,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 627.0,
+      "current_return_pct": 49.64,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -6038,9 +6064,9 @@
       "issue_price": 99.0,
       "listing_price": 166.0,
       "listing_return_pct": 67.68,
-      "current_price": 128.7,
-      "current_return_pct": 30.0,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 133.0,
+      "current_return_pct": 34.34,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -6086,9 +6112,9 @@
       "issue_price": 170.0,
       "listing_price": 188.0,
       "listing_return_pct": 10.59,
-      "current_price": 181.42,
-      "current_return_pct": 6.72,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 182.0,
+      "current_return_pct": 7.06,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -6152,9 +6178,9 @@
       "issue_price": 158.0,
       "listing_price": 155.0,
       "listing_return_pct": -1.9,
-      "current_price": 57.2,
-      "current_return_pct": -63.8,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 56.75,
+      "current_return_pct": -64.08,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -6191,9 +6217,9 @@
       "issue_price": 220.0,
       "listing_price": 418.0,
       "listing_return_pct": 90.0,
-      "current_price": 217.5,
-      "current_return_pct": -1.14,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 222.0,
+      "current_return_pct": 0.91,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -6491,9 +6517,9 @@
       "issue_price": 136.0,
       "listing_price": 130.0,
       "listing_return_pct": -4.41,
-      "current_price": 80.8,
-      "current_return_pct": -40.59,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 72.72,
+      "current_return_pct": -46.53,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -6626,9 +6652,9 @@
       "issue_price": 113.0,
       "listing_price": 113.0,
       "listing_return_pct": 0.0,
-      "current_price": 101.5,
-      "current_return_pct": -10.18,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 102.77,
+      "current_return_pct": -9.05,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -6683,9 +6709,9 @@
       "issue_price": 808.0,
       "listing_price": 681.0,
       "listing_return_pct": -15.72,
-      "current_price": 108.2,
-      "current_return_pct": -86.61,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 105.77,
+      "current_return_pct": -86.91,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -6857,9 +6883,9 @@
       "issue_price": 138.0,
       "listing_price": 188.9,
       "listing_return_pct": 36.88,
-      "current_price": 276.0,
-      "current_return_pct": 100.0,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 285.25,
+      "current_return_pct": 106.7,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -6914,9 +6940,9 @@
       "issue_price": 152.0,
       "listing_price": 134.9,
       "listing_return_pct": -11.25,
-      "current_price": 109.04,
-      "current_return_pct": -28.26,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 87.24,
+      "current_return_pct": -42.61,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -7010,9 +7036,9 @@
       "issue_price": 208.0,
       "listing_price": 395.2,
       "listing_return_pct": 90.0,
-      "current_price": 340.0,
-      "current_return_pct": 63.46,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 345.0,
+      "current_return_pct": 65.87,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -7051,7 +7077,7 @@
       "listing_return_pct": -19.94,
       "current_price": 80.0,
       "current_return_pct": -75.08,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -7166,9 +7192,9 @@
       "issue_price": 203.0,
       "listing_price": 211.0,
       "listing_return_pct": 3.94,
-      "current_price": 159.15,
-      "current_return_pct": -21.6,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 172.0,
+      "current_return_pct": -15.27,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -7244,9 +7270,9 @@
       "issue_price": 127.0,
       "listing_price": 186.0,
       "listing_return_pct": 46.46,
-      "current_price": 106.95,
-      "current_return_pct": -15.79,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 102.0,
+      "current_return_pct": -19.69,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -7283,9 +7309,9 @@
       "issue_price": 66.0,
       "listing_price": 66.0,
       "listing_return_pct": 0.0,
-      "current_price": 50.8,
-      "current_return_pct": -23.03,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 49.0,
+      "current_return_pct": -25.76,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -7322,9 +7348,9 @@
       "issue_price": 45.0,
       "listing_price": 53.19,
       "listing_return_pct": 18.2,
-      "current_price": 65.0,
-      "current_return_pct": 44.44,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 64.91,
+      "current_return_pct": 44.24,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -7361,9 +7387,9 @@
       "issue_price": 116.0,
       "listing_price": 92.8,
       "listing_return_pct": -20.0,
-      "current_price": 72.15,
-      "current_return_pct": -37.8,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 71.0,
+      "current_return_pct": -38.79,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -7478,9 +7504,9 @@
       "issue_price": 192.0,
       "listing_price": 268.0,
       "listing_return_pct": 39.58,
-      "current_price": 221.0,
-      "current_return_pct": 15.1,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 224.0,
+      "current_return_pct": 16.67,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -7790,9 +7816,9 @@
       "issue_price": 343.0,
       "listing_price": 452.0,
       "listing_return_pct": 31.78,
-      "current_price": 670.0,
-      "current_return_pct": 95.34,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 668.75,
+      "current_return_pct": 94.97,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -7829,9 +7855,9 @@
       "issue_price": 139.0,
       "listing_price": 111.2,
       "listing_return_pct": -20.0,
-      "current_price": 168.5,
-      "current_return_pct": 21.22,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 163.0,
+      "current_return_pct": 17.27,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -7946,9 +7972,9 @@
       "issue_price": 63.0,
       "listing_price": 75.0,
       "listing_return_pct": 19.05,
-      "current_price": 138.35,
-      "current_return_pct": 119.6,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 135.0,
+      "current_return_pct": 114.29,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -8024,9 +8050,9 @@
       "issue_price": 50.0,
       "listing_price": 52.5,
       "listing_return_pct": 5.0,
-      "current_price": 101.0,
-      "current_return_pct": 102.0,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 102.0,
+      "current_return_pct": 104.0,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -8102,9 +8128,9 @@
       "issue_price": 183.0,
       "listing_price": 156.0,
       "listing_return_pct": -14.75,
-      "current_price": 287.95,
-      "current_return_pct": 57.35,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 281.85,
+      "current_return_pct": 54.02,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -8237,9 +8263,9 @@
       "issue_price": 98.0,
       "listing_price": 78.4,
       "listing_return_pct": -20.0,
-      "current_price": 56.05,
-      "current_return_pct": -42.81,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 59.95,
+      "current_return_pct": -38.83,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -8276,9 +8302,9 @@
       "issue_price": 171.0,
       "listing_price": 190.0,
       "listing_return_pct": 11.11,
-      "current_price": 337.75,
-      "current_return_pct": 97.51,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 348.35,
+      "current_return_pct": 103.71,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -8333,9 +8359,9 @@
       "issue_price": 135.0,
       "listing_price": 134.5,
       "listing_return_pct": -0.37,
-      "current_price": 98.0,
-      "current_return_pct": -27.41,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 96.55,
+      "current_return_pct": -28.48,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -8372,9 +8398,9 @@
       "issue_price": 172.0,
       "listing_price": 205.0,
       "listing_return_pct": 19.19,
-      "current_price": 253.95,
-      "current_return_pct": 47.65,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 261.1,
+      "current_return_pct": 51.8,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -8525,9 +8551,9 @@
       "issue_price": 98.0,
       "listing_price": 108.0,
       "listing_return_pct": 10.2,
-      "current_price": 456.0,
-      "current_return_pct": 365.31,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 454.0,
+      "current_return_pct": 363.27,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -8564,9 +8590,9 @@
       "issue_price": 175.0,
       "listing_price": 186.0,
       "listing_return_pct": 6.29,
-      "current_price": 165.5,
-      "current_return_pct": -5.43,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 167.62,
+      "current_return_pct": -4.22,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -8699,9 +8725,9 @@
       "issue_price": 555.0,
       "listing_price": 565.0,
       "listing_return_pct": 1.8,
-      "current_price": 1799.8,
-      "current_return_pct": 224.29,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 1790.0,
+      "current_return_pct": 222.52,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -8738,9 +8764,9 @@
       "issue_price": 392.0,
       "listing_price": 400.0,
       "listing_return_pct": 2.04,
-      "current_price": 507.9,
-      "current_return_pct": 29.57,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 502.1,
+      "current_return_pct": 28.09,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [],
       "next_unlock": null,
@@ -8759,9 +8785,9 @@
       "issue_price": 395.0,
       "listing_price": 366.0,
       "listing_return_pct": -7.34,
-      "current_price": 566.9,
-      "current_return_pct": 43.52,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 584.9,
+      "current_return_pct": 48.08,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [],
       "next_unlock": null,
@@ -8819,9 +8845,9 @@
       "issue_price": 212.0,
       "listing_price": 200.0,
       "listing_return_pct": -5.66,
-      "current_price": 201.55,
-      "current_return_pct": -4.93,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 211.0,
+      "current_return_pct": -0.47,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [],
       "next_unlock": null,
@@ -8840,9 +8866,9 @@
       "issue_price": 89.0,
       "listing_price": 89.25,
       "listing_return_pct": 0.28,
-      "current_price": 152.25,
-      "current_return_pct": 71.07,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 151.15,
+      "current_return_pct": 69.83,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -8918,9 +8944,9 @@
       "issue_price": 172.0,
       "listing_price": 160.0,
       "listing_return_pct": -6.98,
-      "current_price": 206.98,
-      "current_return_pct": 20.34,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 210.5,
+      "current_return_pct": 22.38,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [],
       "next_unlock": null,
@@ -8999,9 +9025,9 @@
       "issue_price": 320.0,
       "listing_price": 328.0,
       "listing_return_pct": 2.5,
-      "current_price": 490.2,
-      "current_return_pct": 53.19,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 497.2,
+      "current_return_pct": 55.38,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [],
       "next_unlock": null,
@@ -9020,9 +9046,9 @@
       "issue_price": 519.0,
       "listing_price": 467.7,
       "listing_return_pct": -9.88,
-      "current_price": 254.0,
-      "current_return_pct": -51.06,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 253.3,
+      "current_return_pct": -51.19,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [],
       "next_unlock": null,
@@ -9041,9 +9067,9 @@
       "issue_price": 122.0,
       "listing_price": 122.0,
       "listing_return_pct": 0.0,
-      "current_price": 183.0,
-      "current_return_pct": 50.0,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 184.0,
+      "current_return_pct": 50.82,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [],
       "next_unlock": null,
@@ -9062,9 +9088,9 @@
       "issue_price": 110.0,
       "listing_price": 153.0,
       "listing_return_pct": 39.09,
-      "current_price": 599.75,
-      "current_return_pct": 445.23,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 611.7,
+      "current_return_pct": 456.09,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -9101,9 +9127,9 @@
       "issue_price": 98.0,
       "listing_price": 100.05,
       "listing_return_pct": 2.09,
-      "current_price": 165.0,
-      "current_return_pct": 68.37,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 166.15,
+      "current_return_pct": 69.54,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -9179,9 +9205,9 @@
       "issue_price": 1352.0,
       "listing_price": 1535.0,
       "listing_return_pct": 13.54,
-      "current_price": 3328.0,
-      "current_return_pct": 146.15,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 3450.0,
+      "current_return_pct": 155.18,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [],
       "next_unlock": null,
@@ -9200,9 +9226,9 @@
       "issue_price": 112.0,
       "listing_price": 112.0,
       "listing_return_pct": 0.0,
-      "current_price": 148.0,
-      "current_return_pct": 32.14,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 145.0,
+      "current_return_pct": 29.46,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -9239,9 +9265,9 @@
       "issue_price": 72.0,
       "listing_price": 70.0,
       "listing_return_pct": -2.78,
-      "current_price": 51.2,
-      "current_return_pct": -28.89,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 50.3,
+      "current_return_pct": -30.14,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -9278,9 +9304,9 @@
       "issue_price": 145.0,
       "listing_price": 127.0,
       "listing_return_pct": -12.41,
-      "current_price": 122.5,
-      "current_return_pct": -15.52,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 126.4,
+      "current_return_pct": -12.83,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -9317,9 +9343,9 @@
       "issue_price": 227.0,
       "listing_price": 202.0,
       "listing_return_pct": -11.01,
-      "current_price": 547.5,
-      "current_return_pct": 141.19,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 531.0,
+      "current_return_pct": 133.92,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -9365,9 +9391,9 @@
       "issue_price": 386.0,
       "listing_price": 375.0,
       "listing_return_pct": -2.85,
-      "current_price": 524.0,
-      "current_return_pct": 35.75,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 526.5,
+      "current_return_pct": 36.4,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -9413,9 +9439,9 @@
       "issue_price": 104.0,
       "listing_price": 68.0,
       "listing_return_pct": -34.62,
-      "current_price": 38.65,
-      "current_return_pct": -62.84,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 38.1,
+      "current_return_pct": -63.37,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -9454,7 +9480,7 @@
       "listing_return_pct": -19.88,
       "current_price": 103.45,
       "current_return_pct": 29.31,
-      "current_price_as_of_ist": "2026-09-22T16:00:00+05:30",
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -9530,9 +9556,9 @@
       "issue_price": 1053.0,
       "listing_price": 960.0,
       "listing_return_pct": -8.83,
-      "current_price": 1384.1,
-      "current_return_pct": 31.44,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 1394.0,
+      "current_return_pct": 32.38,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -9608,9 +9634,9 @@
       "issue_price": 69.0,
       "listing_price": 55.2,
       "listing_return_pct": -20.0,
-      "current_price": 39.0,
-      "current_return_pct": -43.48,
-      "current_price_as_of_ist": "2026-09-23T16:00:00+05:30",
+      "current_price": 38.0,
+      "current_return_pct": -44.93,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -9647,9 +9673,9 @@
       "issue_price": 79.0,
       "listing_price": 83.0,
       "listing_return_pct": 5.06,
-      "current_price": 115.8,
-      "current_return_pct": 46.58,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 115.3,
+      "current_return_pct": 45.95,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -9734,9 +9760,9 @@
       "issue_price": 216.0,
       "listing_price": 229.0,
       "listing_return_pct": 6.02,
-      "current_price": 178.55,
-      "current_return_pct": -17.34,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 187.45,
+      "current_return_pct": -13.22,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -9775,7 +9801,7 @@
       "listing_return_pct": 2.56,
       "current_price": 117.0,
       "current_return_pct": 0.0,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -9812,9 +9838,9 @@
       "issue_price": 900.0,
       "listing_price": 876.0,
       "listing_return_pct": -2.67,
-      "current_price": 746.4,
-      "current_return_pct": -17.07,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 751.0,
+      "current_return_pct": -16.56,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -9851,9 +9877,9 @@
       "issue_price": 129.0,
       "listing_price": 129.0,
       "listing_return_pct": 0.0,
-      "current_price": 172.5,
-      "current_return_pct": 33.72,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 168.9,
+      "current_return_pct": 30.93,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -9929,9 +9955,9 @@
       "issue_price": 108.0,
       "listing_price": 111.0,
       "listing_return_pct": 2.78,
-      "current_price": 47.6,
-      "current_return_pct": -55.93,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 46.7,
+      "current_return_pct": -56.76,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -9968,9 +9994,9 @@
       "issue_price": 88.0,
       "listing_price": 96.0,
       "listing_return_pct": 9.09,
-      "current_price": 368.55,
-      "current_return_pct": 318.81,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 386.95,
+      "current_return_pct": 339.72,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -10007,9 +10033,9 @@
       "issue_price": 176.0,
       "listing_price": 183.0,
       "listing_return_pct": 3.98,
-      "current_price": 160.6,
-      "current_return_pct": -8.75,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 168.0,
+      "current_return_pct": -4.55,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -10046,9 +10072,9 @@
       "issue_price": 163.0,
       "listing_price": 163.0,
       "listing_return_pct": 0.0,
-      "current_price": 178.8,
-      "current_return_pct": 9.69,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 175.1,
+      "current_return_pct": 7.42,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -10280,9 +10306,9 @@
       "issue_price": 144.0,
       "listing_price": 144.0,
       "listing_return_pct": 0.0,
-      "current_price": 109.1,
-      "current_return_pct": -24.24,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 110.0,
+      "current_return_pct": -23.61,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -10321,7 +10347,7 @@
       "listing_return_pct": 27.48,
       "current_price": 300.0,
       "current_return_pct": 122.22,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -10358,9 +10384,9 @@
       "issue_price": 124.0,
       "listing_price": 112.6,
       "listing_return_pct": -9.19,
-      "current_price": 285.55,
-      "current_return_pct": 130.28,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 282.3,
+      "current_return_pct": 127.66,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -10475,9 +10501,9 @@
       "issue_price": 57.0,
       "listing_price": 45.6,
       "listing_return_pct": -20.0,
-      "current_price": 19.15,
-      "current_return_pct": -66.4,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 20.1,
+      "current_return_pct": -64.74,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -10631,9 +10657,9 @@
       "issue_price": 361.0,
       "listing_price": 318.0,
       "listing_return_pct": -11.91,
-      "current_price": 562.4,
-      "current_return_pct": 55.79,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 572.65,
+      "current_return_pct": 58.63,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -10670,9 +10696,9 @@
       "issue_price": 59.0,
       "listing_price": 77.5,
       "listing_return_pct": 31.36,
-      "current_price": 138.55,
-      "current_return_pct": 134.83,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 135.0,
+      "current_return_pct": 128.81,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -10709,9 +10735,9 @@
       "issue_price": 74.0,
       "listing_price": 95.0,
       "listing_return_pct": 28.38,
-      "current_price": 213.8,
-      "current_return_pct": 188.92,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 211.1,
+      "current_return_pct": 185.27,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -10748,9 +10774,9 @@
       "issue_price": 23.0,
       "listing_price": 45.0,
       "listing_return_pct": 95.65,
-      "current_price": 32.12,
-      "current_return_pct": 39.65,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 32.0,
+      "current_return_pct": 39.13,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [],
       "next_unlock": null,
@@ -10847,9 +10873,9 @@
       "issue_price": 81.0,
       "listing_price": 89.0,
       "listing_return_pct": 9.88,
-      "current_price": 253.95,
-      "current_return_pct": 213.52,
-      "current_price_as_of_ist": "2026-09-24T16:00:00+05:30",
+      "current_price": 261.1,
+      "current_return_pct": 222.35,
+      "current_price_as_of_ist": "2026-09-25T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -10884,8 +10910,8 @@
       "ipo_type": "MAINBOARD",
       "listing_date": null,
       "issue_price": 1785.0,
-      "listing_price": null,
-      "listing_return_pct": null,
+      "listing_price": 1800.0,
+      "listing_return_pct": 0.84,
       "current_price": null,
       "current_return_pct": null,
       "current_price_as_of_ist": null,
@@ -10958,12 +10984,8 @@
       "HTTPError: HTTP Error 429: Too Many Requests"
     ],
     "nse_bhav": [
-      "https://nsearchives.nseindia.com/products/content/sec_bhavdata_full_25092026.csv: HTTPError: HTTP Error 404: Not Found",
-      "https://archives.nseindia.com/products/content/sec_bhavdata_full_25092026.csv: HTTPError: HTTP Error 404: Not Found",
       "https://nsearchives.nseindia.com/emerge/corporates/content/sme25092026.csv: HTTPError: HTTP Error 404: Not Found",
-      "https://archives.nseindia.com/emerge/corporates/content/sme25092026.csv: HTTPError: HTTP Error 404: Not Found",
-      "https://nsearchives.nseindia.com/emerge/corporates/content/sme24092026.csv: HTTPError: HTTP Error 404: Not Found",
-      "https://archives.nseindia.com/emerge/corporates/content/sme24092026.csv: HTTPError: HTTP Error 404: Not Found"
+      "https://archives.nseindia.com/emerge/corporates/content/sme25092026.csv: HTTPError: HTTP Error 404: Not Found"
     ]
   }
 }
