@@ -6,12 +6,12 @@
   "message": "Manual model review completed 10 Sep 2026. Research V1.1 is now the public policy: the selected universe is unchanged, while Mainboard Strong Subscribe is more conservative. SME V2.2 remains shadow-only and starts a new prospective cohort.",
   "progress": {
     "exact_captured_unique_ipos": 80,
-    "exact_listed_rows": 49,
-    "pending_listing_rows": 31,
+    "exact_listed_rows": 51,
+    "pending_listing_rows": 29,
     "remaining_to_checkpoint": 0,
     "progress_pct": 100.0,
     "mainboard_listed_rows": 27,
-    "sme_listed_rows": 22
+    "sme_listed_rows": 24
   },
   "v1_exact_performance": {
     "selected": {
@@ -97,7 +97,7 @@
       }
     },
     "SME": {
-      "listed_rows": 22,
+      "listed_rows": 24,
       "v1_selected": {
         "count": 5,
         "positive_rate_pct": 80.0,
@@ -206,7 +206,7 @@
       "ipo_type": "Mainboard",
       "captured_at_ist": "2026-09-29T14:30:57.939584+05:30",
       "closing_date": "2026-09-29",
-      "tracker_status": "Closes today",
+      "tracker_status": "Allots 30 Sept",
       "v1_action": "AVOID",
       "v1_confidence": "MEDIUM",
       "v1_primary_prediction_pct": 1.24,
@@ -232,7 +232,7 @@
       "ipo_type": "SME",
       "captured_at_ist": "2026-09-29T14:30:57.939584+05:30",
       "closing_date": "2026-09-29",
-      "tracker_status": "Closes today",
+      "tracker_status": "Allots 30 Sept",
       "v1_action": "AVOID",
       "v1_confidence": "LOW",
       "v1_primary_prediction_pct": -30.0,
@@ -284,7 +284,7 @@
       "ipo_type": "SME",
       "captured_at_ist": "2026-09-29T14:30:57.939584+05:30",
       "closing_date": "2026-09-29",
-      "tracker_status": "Closes today",
+      "tracker_status": "Allots 30 Sept",
       "v1_action": "AVOID",
       "v1_confidence": "LOW",
       "v1_primary_prediction_pct": -31.71,
@@ -765,11 +765,11 @@
       "v2_shadow_strength": "NONE",
       "v2_validation_eligible": true,
       "v2_shadow_version": "sme-demand-disagreement-shadow-v2.2",
-      "actual_listing_gain_pct": null,
-      "actual_quality": "PENDING",
-      "v1_outcome": "PENDING",
+      "actual_listing_gain_pct": 6.08,
+      "actual_quality": "MARGINAL",
+      "v1_outcome": "V1 NOT SELECTED — MARGINAL",
       "v2_outcome": "NO SHADOW TRIGGER",
-      "listed": false,
+      "listed": true,
       "model_policy_version": "research-v1.1",
       "capture_reason": "manual_1430_recovery"
     },
@@ -791,11 +791,11 @@
       "v2_shadow_strength": "NONE",
       "v2_validation_eligible": true,
       "v2_shadow_version": "sme-demand-disagreement-shadow-v2.2",
-      "actual_listing_gain_pct": null,
-      "actual_quality": "PENDING",
-      "v1_outcome": "PENDING",
+      "actual_listing_gain_pct": 2.7,
+      "actual_quality": "WEAK",
+      "v1_outcome": "V1 NOT SELECTED — WEAK",
       "v2_outcome": "NO SHADOW TRIGGER",
-      "listed": false,
+      "listed": true,
       "model_policy_version": "research-v1.1",
       "capture_reason": "manual_1430_recovery"
     },
