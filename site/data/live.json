@@ -1,6 +1,6 @@
 {
-  "fetched_at_utc": "2026-10-01T17:27:18.353571+00:00",
-  "fetched_at_ist": "2026-10-01T22:57:18.353571+05:30",
+  "fetched_at_utc": "2026-10-01T18:33:02.451715+00:00",
+  "fetched_at_ist": "2026-10-02T00:03:02.451715+05:30",
   "status_filter": "LIVE",
   "type_filter": "ALL",
   "records": [
@@ -24,11 +24,11 @@
       "ofs_cr": null,
       "gmp_value": 35.0,
       "gmp_gain_pct": 15.91,
-      "gmp_date": "01 October",
+      "gmp_date": "02 October",
       "gmp_source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/",
       "gmp_trends": [
         {
-          "date": "01 October",
+          "date": "02 October",
           "gmp": "₹35",
           "gain": "15.91%",
           "source": "IPOWATCH_LATEST_DASHBOARD"
@@ -77,14 +77,14 @@
         "gmp_gain_pct": 15.91
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-10-01T22:57:18.353571+05:30",
+      "subscription_observed_at_ist": "2026-10-02T00:03:02.451715+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-10-01T22:57:18.353571+05:30",
+        "observed_at_ist": "2026-10-02T00:03:02.451715+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -124,7 +124,7 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 19.8,
+        "minutes_since_previous": 65.7,
         "qib_x_per_hour": 0.0,
         "nii_x_per_hour": 0.0,
         "retail_x_per_hour": 0.0,
@@ -213,11 +213,11 @@
       "ofs_cr": null,
       "gmp_value": 5.0,
       "gmp_gain_pct": 6.67,
-      "gmp_date": "01 October",
+      "gmp_date": "02 October",
       "gmp_source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/",
       "gmp_trends": [
         {
-          "date": "01 October",
+          "date": "02 October",
           "gmp": "₹5",
           "gain": "6.67%",
           "source": "IPOWATCH_LATEST_DASHBOARD"
@@ -266,14 +266,14 @@
         "gmp_gain_pct": 6.67
       },
       "subscription_source": "NSE_CURRENT_ISSUE_TOTAL",
-      "subscription_observed_at_ist": "2026-10-01T22:57:18.353571+05:30",
+      "subscription_observed_at_ist": "2026-10-02T00:03:02.451715+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://www.nseindia.com/api/ipo-current-issue",
         "source_kind": "NSE_CURRENT_ISSUE_TOTAL",
-        "observed_at_ist": "2026-10-01T22:57:18.353571+05:30",
+        "observed_at_ist": "2026-10-02T00:03:02.451715+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -311,7 +311,7 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 19.8,
+        "minutes_since_previous": 65.7,
         "qib_x_per_hour": null,
         "nii_x_per_hour": null,
         "retail_x_per_hour": null,
@@ -376,381 +376,6 @@
         "public_signal": {
           "locked": false,
           "action": "AVOID",
-          "reason": null
-        }
-      }
-    },
-    {
-      "symbol": "PAPADMALJI",
-      "type": "SME",
-      "name": "Papadmalji Agro Foods",
-      "status": "LIVE",
-      "exchanges": null,
-      "details_url": null,
-      "drhp_url": null,
-      "rhp_url": null,
-      "start_date": "2026-09-29",
-      "end_date": "2026-10-01",
-      "listing_date": "2026-10-07",
-      "price_low": 69.0,
-      "price_high": 72.0,
-      "lot_size": 1600.0,
-      "issue_size_cr": null,
-      "fresh_issue_cr": null,
-      "ofs_cr": null,
-      "gmp_value": null,
-      "gmp_gain_pct": null,
-      "gmp_date": null,
-      "gmp_source": null,
-      "gmp_trends": [],
-      "qib_x": 86.85,
-      "nii_x": 1.14,
-      "retail_x": 1.21,
-      "total_x": 2.16,
-      "strengths": [],
-      "risks": [],
-      "about_company": null,
-      "raw": {
-        "symbol": "PAPADMALJI",
-        "type": "SME",
-        "name": "Papadmalji Agro Foods",
-        "priceRange": "₹69 – ₹72",
-        "lotSize": "1600",
-        "status": "LIVE",
-        "schedule": {
-          "startDate": "2026-09-29",
-          "endDate": "2026-10-01",
-          "listingDate": "2026-10-07",
-          "upiMandateDeadline": "2026-10-01",
-          "allotmentFinalization": "2026-10-05",
-          "refundInitiation": "2026-10-06",
-          "shareCredit": "2026-10-06",
-          "mandateEndDate": "2026-10-16",
-          "lockInEndDateAnchor50": "2026-11-03",
-          "lockInEndDateAnchorRemaining": "2027-01-02"
-        }
-      },
-      "gmp_raw_value": 0.0,
-      "gmp_raw_gain_pct": 0.0,
-      "gmp_status": "NOT_AVAILABLE",
-      "gmp_validation": {
-        "complete": true,
-        "status": "ZERO_UNVERIFIED",
-        "provider_gmp_missing": true,
-        "attempted_sources": [
-          "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
-        ],
-        "errors": [],
-        "source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/",
-        "source_kind": "IPOWATCH_LATEST_DASHBOARD",
-        "raw_gmp_value": 0.0,
-        "raw_gmp_gain_pct": 0.0
-      },
-      "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-10-01T22:57:18.353571+05:30",
-      "subscription_age_minutes": 0.0,
-      "subscription_validation": {
-        "complete": true,
-        "status": "FALLBACK",
-        "source": "https://groww.in/ipo/subscription",
-        "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-10-01T22:57:18.353571+05:30",
-        "age_minutes": 0.0,
-        "provider_subscription_missing": true,
-        "attempted_sources": [
-          "https://groww.in/ipo/subscription"
-        ],
-        "errors": [],
-        "field_sources": {
-          "qib_x": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-          "nii_x": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-          "retail_x": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-          "total_x": "GROWW_CONSOLIDATED_SUBSCRIPTION"
-        }
-      },
-      "readiness": {
-        "identity": true,
-        "schedule": true,
-        "price": true,
-        "issue_size": false,
-        "gmp": false,
-        "gmp_history": false,
-        "qib": true,
-        "nii": true,
-        "retail": true,
-        "total_subscription": true,
-        "prospectus": false,
-        "risks": false
-      },
-      "features": {
-        "gmp_latest_pct": null,
-        "gmp_change_1obs": null,
-        "gmp_change_3obs": null,
-        "log_qib": 4.4756308146331065,
-        "log_nii": 0.76080582903376,
-        "log_retail": 0.7929925155296614,
-        "log_total": 1.1505720275988207,
-        "log_issue_size": null,
-        "ofs_ratio": null
-      },
-      "velocity": {
-        "minutes_since_previous": 19.8,
-        "qib_x_per_hour": 0.0,
-        "nii_x_per_hour": 0.0,
-        "retail_x_per_hour": 0.0,
-        "total_x_per_hour": 0.0
-      },
-      "is_closing_today": true,
-      "would_be_1430_decision_snapshot": false,
-      "recommendation": {
-        "policy_version": "research-v1.1",
-        "segment": "SME",
-        "action": "AVOID",
-        "action_priority": 2,
-        "research_confidence": "LOW",
-        "finality": {
-          "canonical": true,
-          "code": "CAPTURED_1430_IST",
-          "label": "CANONICAL_1430_RETAINED",
-          "captured_at_ist": "2026-10-01T14:31:01.606617+05:30"
-        },
-        "predictions": {
-          "gmp_input_pct": null,
-          "total_subscription_x": 2.16,
-          "log_total": 1.1505720275988207,
-          "gmp_prediction_pct": null,
-          "subscription_prediction_pct": -20.22,
-          "prediction_cap_pct": 90.0
-        },
-        "primary_prediction_pct": -20.93,
-        "ranking_score": -20.22,
-        "signal_conflict": false,
-        "reason": [
-          "GMP is unavailable and subscription model is below +10%.",
-          "POST-2:30 PM — latest research signal; canonical snapshot should be retained"
-        ],
-        "training": {
-          "source_year": 2024,
-          "source_rows": 97,
-          "gmp_complete_rows": 25,
-          "subscription_complete_rows": 97
-        },
-        "evidence": {
-          "gmp_ge_10": {
-            "cases": 7,
-            "win_rate_pct": 85.7,
-            "avg_gain_pct": 55.18,
-            "worst_gain_pct": -20.0
-          },
-          "gmp_ge_20": {
-            "cases": 4,
-            "win_rate_pct": 100.0,
-            "avg_gain_pct": 90.0,
-            "worst_gain_pct": 90.0
-          },
-          "subscription_ge_20": {
-            "cases": 86,
-            "win_rate_pct": 88.4,
-            "avg_gain_pct": 37.22,
-            "worst_gain_pct": -20.0
-          }
-        },
-        "disclaimer": "Research model only. It estimates listing-gain potential from historical GMP and subscription patterns; it does not consider your financial situation or guarantee profit.",
-        "display_decision_source": "CAPTURED_1430_IST",
-        "public_signal": {
-          "locked": false,
-          "action": "AVOID",
-          "reason": null
-        }
-      }
-    },
-    {
-      "symbol": "VANS",
-      "type": "SME",
-      "name": "Vans Electroengineerings",
-      "status": "LIVE",
-      "exchanges": null,
-      "details_url": null,
-      "drhp_url": null,
-      "rhp_url": null,
-      "start_date": "2026-09-29",
-      "end_date": "2026-10-01",
-      "listing_date": "2026-10-07",
-      "price_low": 112.0,
-      "price_high": 118.0,
-      "lot_size": 1200.0,
-      "issue_size_cr": null,
-      "fresh_issue_cr": null,
-      "ofs_cr": null,
-      "gmp_value": 90.0,
-      "gmp_gain_pct": 76.27,
-      "gmp_date": "01 October",
-      "gmp_source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/",
-      "gmp_trends": [
-        {
-          "date": "01 October",
-          "gmp": "₹90",
-          "gain": "76.27%",
-          "source": "IPOWATCH_LATEST_DASHBOARD"
-        }
-      ],
-      "qib_x": 73.3,
-      "nii_x": 450.33,
-      "retail_x": 461.25,
-      "total_x": 347.25,
-      "strengths": [],
-      "risks": [],
-      "about_company": null,
-      "raw": {
-        "symbol": "VANS",
-        "type": "SME",
-        "name": "Vans Electroengineerings",
-        "priceRange": "₹112 – ₹118",
-        "lotSize": "1200",
-        "status": "LIVE",
-        "schedule": {
-          "startDate": "2026-09-29",
-          "endDate": "2026-10-01",
-          "listingDate": "2026-10-07",
-          "upiMandateDeadline": "2026-10-01",
-          "allotmentFinalization": "2026-10-05",
-          "refundInitiation": "2026-10-06",
-          "shareCredit": "2026-10-06",
-          "mandateEndDate": "2026-10-16",
-          "lockInEndDateAnchor50": "2026-11-03",
-          "lockInEndDateAnchorRemaining": "2027-01-02"
-        }
-      },
-      "gmp_fallback_source": "IPOWATCH_LATEST_DASHBOARD",
-      "gmp_status": "VERIFIED",
-      "gmp_validation": {
-        "complete": true,
-        "status": "FALLBACK",
-        "provider_gmp_missing": true,
-        "attempted_sources": [
-          "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
-        ],
-        "errors": [],
-        "source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/",
-        "source_kind": "IPOWATCH_LATEST_DASHBOARD",
-        "gmp_value": 90.0,
-        "gmp_gain_pct": 76.27
-      },
-      "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-10-01T22:57:18.353571+05:30",
-      "subscription_age_minutes": 0.0,
-      "subscription_validation": {
-        "complete": true,
-        "status": "FALLBACK",
-        "source": "https://groww.in/ipo/subscription",
-        "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-10-01T22:57:18.353571+05:30",
-        "age_minutes": 0.0,
-        "provider_subscription_missing": true,
-        "attempted_sources": [
-          "https://groww.in/ipo/subscription"
-        ],
-        "errors": [],
-        "field_sources": {
-          "qib_x": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-          "nii_x": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-          "retail_x": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-          "total_x": "GROWW_CONSOLIDATED_SUBSCRIPTION"
-        }
-      },
-      "readiness": {
-        "identity": true,
-        "schedule": true,
-        "price": true,
-        "issue_size": false,
-        "gmp": true,
-        "gmp_history": false,
-        "qib": true,
-        "nii": true,
-        "retail": true,
-        "total_subscription": true,
-        "prospectus": false,
-        "risks": false
-      },
-      "features": {
-        "gmp_latest_pct": 76.27,
-        "gmp_change_1obs": null,
-        "gmp_change_3obs": null,
-        "log_qib": 4.308110951723713,
-        "log_nii": 6.1121987792524655,
-        "log_retail": 6.136105870267234,
-        "log_total": 5.852920612659915,
-        "log_issue_size": null,
-        "ofs_ratio": null
-      },
-      "velocity": {
-        "minutes_since_previous": 19.8,
-        "qib_x_per_hour": 0.0,
-        "nii_x_per_hour": 0.0,
-        "retail_x_per_hour": 0.0,
-        "total_x_per_hour": 0.0
-      },
-      "is_closing_today": true,
-      "would_be_1430_decision_snapshot": false,
-      "recommendation": {
-        "policy_version": "research-v1.1",
-        "segment": "SME",
-        "action": "STRONG SUBSCRIBE",
-        "action_priority": 5,
-        "research_confidence": "HIGHER",
-        "finality": {
-          "canonical": true,
-          "code": "CAPTURED_1430_IST",
-          "label": "CANONICAL_1430_RETAINED",
-          "captured_at_ist": "2026-10-01T14:31:01.606617+05:30"
-        },
-        "predictions": {
-          "gmp_input_pct": 76.27,
-          "total_subscription_x": 347.25,
-          "log_total": 5.852920612659915,
-          "gmp_prediction_pct": 75.84,
-          "subscription_prediction_pct": 59.88,
-          "prediction_cap_pct": 90.0
-        },
-        "primary_prediction_pct": 75.84,
-        "ranking_score": 75.84,
-        "signal_conflict": false,
-        "reason": [
-          "SME GMP model is at or above +20%.",
-          "Demand confirmation is positive.",
-          "POST-2:30 PM — latest research signal; canonical snapshot should be retained"
-        ],
-        "training": {
-          "source_year": 2024,
-          "source_rows": 97,
-          "gmp_complete_rows": 25,
-          "subscription_complete_rows": 97
-        },
-        "evidence": {
-          "gmp_ge_10": {
-            "cases": 7,
-            "win_rate_pct": 85.7,
-            "avg_gain_pct": 55.18,
-            "worst_gain_pct": -20.0
-          },
-          "gmp_ge_20": {
-            "cases": 4,
-            "win_rate_pct": 100.0,
-            "avg_gain_pct": 90.0,
-            "worst_gain_pct": 90.0
-          },
-          "subscription_ge_20": {
-            "cases": 86,
-            "win_rate_pct": 88.4,
-            "avg_gain_pct": 37.22,
-            "worst_gain_pct": -20.0
-          }
-        },
-        "disclaimer": "Research model only. It estimates listing-gain potential from historical GMP and subscription patterns; it does not consider your financial situation or guarantee profit.",
-        "display_decision_source": "CAPTURED_1430_IST",
-        "public_signal": {
-          "locked": false,
-          "action": "STRONG SUBSCRIBE",
           "reason": null
         }
       }
@@ -822,14 +447,14 @@
         "raw_gmp_gain_pct": 0.0
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-10-01T22:57:18.353571+05:30",
+      "subscription_observed_at_ist": "2026-10-02T00:03:02.451715+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-10-01T22:57:18.353571+05:30",
+        "observed_at_ist": "2026-10-02T00:03:02.451715+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -869,7 +494,7 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 19.8,
+        "minutes_since_previous": 65.7,
         "qib_x_per_hour": 0.0,
         "nii_x_per_hour": 0.0,
         "retail_x_per_hour": 0.0,
@@ -1044,7 +669,7 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 19.8,
+        "minutes_since_previous": 65.7,
         "qib_x_per_hour": null,
         "nii_x_per_hour": null,
         "retail_x_per_hour": null,
@@ -1108,188 +733,6 @@
           "locked": true,
           "action": "LOCKED",
           "reason": "RELEVANT_DATA_NOT_AVAILABLE"
-        }
-      }
-    },
-    {
-      "symbol": "GREENASIA",
-      "type": "SME",
-      "name": "Green Asia Impex",
-      "status": "LIVE",
-      "exchanges": null,
-      "details_url": null,
-      "drhp_url": null,
-      "rhp_url": null,
-      "start_date": "2026-09-24",
-      "end_date": "2026-10-01",
-      "listing_date": "2026-10-07",
-      "price_low": 84.0,
-      "price_high": 89.0,
-      "lot_size": 1600.0,
-      "issue_size_cr": null,
-      "fresh_issue_cr": null,
-      "ofs_cr": null,
-      "gmp_value": null,
-      "gmp_gain_pct": null,
-      "gmp_date": null,
-      "gmp_source": null,
-      "gmp_trends": [],
-      "qib_x": null,
-      "nii_x": null,
-      "retail_x": null,
-      "total_x": 0.98,
-      "strengths": [],
-      "risks": [],
-      "about_company": null,
-      "raw": {
-        "symbol": "GREENASIA",
-        "type": "SME",
-        "name": "Green Asia Impex",
-        "priceRange": "₹84 – ₹89",
-        "lotSize": "1600",
-        "status": "LIVE",
-        "schedule": {
-          "startDate": "2026-09-24",
-          "endDate": "2026-10-01",
-          "listingDate": "2026-10-07",
-          "upiMandateDeadline": "2026-10-01",
-          "allotmentFinalization": "2026-10-05",
-          "refundInitiation": "2026-10-06",
-          "shareCredit": "2026-10-06",
-          "mandateEndDate": "2026-10-16",
-          "lockInEndDateAnchor50": "2026-11-03",
-          "lockInEndDateAnchorRemaining": "2027-01-02"
-        }
-      },
-      "gmp_raw_value": 0.0,
-      "gmp_raw_gain_pct": 0.0,
-      "gmp_status": "NOT_AVAILABLE",
-      "gmp_validation": {
-        "complete": true,
-        "status": "ZERO_UNVERIFIED",
-        "provider_gmp_missing": true,
-        "attempted_sources": [
-          "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
-        ],
-        "errors": [],
-        "source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/",
-        "source_kind": "IPOWATCH_LATEST_DASHBOARD",
-        "raw_gmp_value": 0.0,
-        "raw_gmp_gain_pct": 0.0
-      },
-      "subscription_source": "NSE_CURRENT_ISSUE_TOTAL",
-      "subscription_observed_at_ist": "2026-10-01T22:57:18.353571+05:30",
-      "subscription_age_minutes": 0.0,
-      "subscription_validation": {
-        "complete": true,
-        "status": "FALLBACK",
-        "source": "https://www.nseindia.com/api/ipo-current-issue",
-        "source_kind": "NSE_CURRENT_ISSUE_TOTAL",
-        "observed_at_ist": "2026-10-01T22:57:18.353571+05:30",
-        "age_minutes": 0.0,
-        "provider_subscription_missing": true,
-        "attempted_sources": [
-          "https://groww.in/ipo/subscription",
-          "https://www.nseindia.com/api/ipo-current-issue"
-        ],
-        "errors": [],
-        "field_sources": {
-          "total_x": "NSE_CURRENT_ISSUE_TOTAL"
-        }
-      },
-      "readiness": {
-        "identity": true,
-        "schedule": true,
-        "price": true,
-        "issue_size": false,
-        "gmp": false,
-        "gmp_history": false,
-        "qib": false,
-        "nii": false,
-        "retail": false,
-        "total_subscription": true,
-        "prospectus": false,
-        "risks": false
-      },
-      "features": {
-        "gmp_latest_pct": null,
-        "gmp_change_1obs": null,
-        "gmp_change_3obs": null,
-        "log_qib": null,
-        "log_nii": null,
-        "log_retail": null,
-        "log_total": 0.6830968447064438,
-        "log_issue_size": null,
-        "ofs_ratio": null
-      },
-      "velocity": {
-        "minutes_since_previous": 19.8,
-        "qib_x_per_hour": null,
-        "nii_x_per_hour": null,
-        "retail_x_per_hour": null,
-        "total_x_per_hour": 0.0
-      },
-      "is_closing_today": true,
-      "would_be_1430_decision_snapshot": false,
-      "recommendation": {
-        "policy_version": "research-v1.1",
-        "segment": "SME",
-        "action": "AVOID",
-        "action_priority": 2,
-        "research_confidence": "LOW",
-        "finality": {
-          "canonical": true,
-          "code": "CAPTURED_1430_IST",
-          "label": "CANONICAL_1430_RETAINED",
-          "captured_at_ist": "2026-10-01T14:31:01.606617+05:30"
-        },
-        "predictions": {
-          "gmp_input_pct": null,
-          "total_subscription_x": 0.98,
-          "log_total": 0.6830968447064438,
-          "gmp_prediction_pct": null,
-          "subscription_prediction_pct": -28.18,
-          "prediction_cap_pct": 90.0
-        },
-        "primary_prediction_pct": -28.71,
-        "ranking_score": -28.18,
-        "signal_conflict": false,
-        "reason": [
-          "GMP is unavailable and subscription model is below +10%.",
-          "POST-2:30 PM — latest research signal; canonical snapshot should be retained"
-        ],
-        "training": {
-          "source_year": 2024,
-          "source_rows": 97,
-          "gmp_complete_rows": 25,
-          "subscription_complete_rows": 97
-        },
-        "evidence": {
-          "gmp_ge_10": {
-            "cases": 7,
-            "win_rate_pct": 85.7,
-            "avg_gain_pct": 55.18,
-            "worst_gain_pct": -20.0
-          },
-          "gmp_ge_20": {
-            "cases": 4,
-            "win_rate_pct": 100.0,
-            "avg_gain_pct": 90.0,
-            "worst_gain_pct": 90.0
-          },
-          "subscription_ge_20": {
-            "cases": 86,
-            "win_rate_pct": 88.4,
-            "avg_gain_pct": 37.22,
-            "worst_gain_pct": -20.0
-          }
-        },
-        "disclaimer": "Research model only. It estimates listing-gain potential from historical GMP and subscription patterns; it does not consider your financial situation or guarantee profit.",
-        "display_decision_source": "CAPTURED_1430_IST",
-        "public_signal": {
-          "locked": false,
-          "action": "AVOID",
-          "reason": null
         }
       }
     },
@@ -1360,14 +803,14 @@
         "raw_gmp_gain_pct": 0.0
       },
       "subscription_source": "NSE_CURRENT_ISSUE_TOTAL",
-      "subscription_observed_at_ist": "2026-10-01T22:57:18.353571+05:30",
+      "subscription_observed_at_ist": "2026-10-02T00:03:02.451715+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://www.nseindia.com/api/ipo-current-issue",
         "source_kind": "NSE_CURRENT_ISSUE_TOTAL",
-        "observed_at_ist": "2026-10-01T22:57:18.353571+05:30",
+        "observed_at_ist": "2026-10-02T00:03:02.451715+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -1405,7 +848,7 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 19.8,
+        "minutes_since_previous": 65.7,
         "qib_x_per_hour": null,
         "nii_x_per_hour": null,
         "retail_x_per_hour": null,
@@ -1580,7 +1023,7 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 19.8,
+        "minutes_since_previous": 65.7,
         "qib_x_per_hour": null,
         "nii_x_per_hour": null,
         "retail_x_per_hour": null,
@@ -1714,14 +1157,14 @@
         "raw_gmp_gain_pct": 0.0
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-10-01T22:57:18.353571+05:30",
+      "subscription_observed_at_ist": "2026-10-02T00:03:02.451715+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-10-01T22:57:18.353571+05:30",
+        "observed_at_ist": "2026-10-02T00:03:02.451715+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -1761,7 +1204,7 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 19.8,
+        "minutes_since_previous": 65.7,
         "qib_x_per_hour": 0.0,
         "nii_x_per_hour": 0.0,
         "retail_x_per_hour": 0.0,
@@ -1849,11 +1292,11 @@
       "ofs_cr": null,
       "gmp_value": 20.0,
       "gmp_gain_pct": 23.53,
-      "gmp_date": "01 October",
+      "gmp_date": "02 October",
       "gmp_source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/",
       "gmp_trends": [
         {
-          "date": "01 October",
+          "date": "02 October",
           "gmp": "₹20",
           "gain": "23.53%",
           "source": "IPOWATCH_LATEST_DASHBOARD"
@@ -1902,14 +1345,14 @@
         "gmp_gain_pct": 23.53
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-10-01T22:57:18.353571+05:30",
+      "subscription_observed_at_ist": "2026-10-02T00:03:02.451715+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-10-01T22:57:18.353571+05:30",
+        "observed_at_ist": "2026-10-02T00:03:02.451715+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -1949,7 +1392,7 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 19.8,
+        "minutes_since_previous": 65.7,
         "qib_x_per_hour": 0.0,
         "nii_x_per_hour": 0.0,
         "retail_x_per_hour": 0.0,
@@ -2085,14 +1528,14 @@
         "raw_gmp_gain_pct": 0.0
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-10-01T22:57:18.353571+05:30",
+      "subscription_observed_at_ist": "2026-10-02T00:03:02.451715+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-10-01T22:57:18.353571+05:30",
+        "observed_at_ist": "2026-10-02T00:03:02.451715+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -2132,7 +1575,7 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 19.8,
+        "minutes_since_previous": 65.7,
         "qib_x_per_hour": 0.0,
         "nii_x_per_hour": 0.0,
         "retail_x_per_hour": 0.0,
@@ -2220,11 +1663,11 @@
       "ofs_cr": null,
       "gmp_value": 30.0,
       "gmp_gain_pct": 15.31,
-      "gmp_date": "01 October",
+      "gmp_date": "02 October",
       "gmp_source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/",
       "gmp_trends": [
         {
-          "date": "01 October",
+          "date": "02 October",
           "gmp": "₹30",
           "gain": "15.31%",
           "source": "IPOWATCH_LATEST_DASHBOARD"
@@ -2273,14 +1716,14 @@
         "gmp_gain_pct": 15.31
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-10-01T22:57:18.353571+05:30",
+      "subscription_observed_at_ist": "2026-10-02T00:03:02.451715+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-10-01T22:57:18.353571+05:30",
+        "observed_at_ist": "2026-10-02T00:03:02.451715+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -2320,7 +1763,7 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 19.8,
+        "minutes_since_previous": 65.7,
         "qib_x_per_hour": 0.0,
         "nii_x_per_hour": 0.0,
         "retail_x_per_hour": 0.0,
@@ -2455,14 +1898,14 @@
         "raw_gmp_gain_pct": 0.0
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-10-01T22:57:18.353571+05:30",
+      "subscription_observed_at_ist": "2026-10-02T00:03:02.451715+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-10-01T22:57:18.353571+05:30",
+        "observed_at_ist": "2026-10-02T00:03:02.451715+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -2502,7 +1945,7 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 19.8,
+        "minutes_since_previous": 65.7,
         "qib_x_per_hour": 0.0,
         "nii_x_per_hour": 0.0,
         "retail_x_per_hour": 0.0,
@@ -2571,196 +2014,6 @@
       }
     },
     {
-      "symbol": "BLACKOPAL",
-      "type": "SME",
-      "name": "Black Opal Consultants",
-      "status": "LIVE",
-      "exchanges": null,
-      "details_url": null,
-      "drhp_url": null,
-      "rhp_url": null,
-      "start_date": "2026-09-29",
-      "end_date": "2026-10-01",
-      "listing_date": "2026-10-07",
-      "price_low": 185.0,
-      "price_high": 197.0,
-      "lot_size": 600.0,
-      "issue_size_cr": null,
-      "fresh_issue_cr": null,
-      "ofs_cr": null,
-      "gmp_value": 48.0,
-      "gmp_gain_pct": 24.37,
-      "gmp_date": "01 October",
-      "gmp_source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/",
-      "gmp_trends": [
-        {
-          "date": "01 October",
-          "gmp": "₹48",
-          "gain": "24.37%",
-          "source": "IPOWATCH_LATEST_DASHBOARD"
-        }
-      ],
-      "qib_x": 4.38,
-      "nii_x": 43.0,
-      "retail_x": 27.2,
-      "total_x": 25.4,
-      "strengths": [],
-      "risks": [],
-      "about_company": null,
-      "raw": {
-        "symbol": "BLACKOPAL",
-        "type": "SME",
-        "name": "Black Opal Consultants",
-        "priceRange": "₹185 – ₹197",
-        "lotSize": "600",
-        "status": "LIVE",
-        "schedule": {
-          "startDate": "2026-09-29",
-          "endDate": "2026-10-01",
-          "listingDate": "2026-10-07",
-          "upiMandateDeadline": "2026-10-01",
-          "allotmentFinalization": "2026-10-05",
-          "refundInitiation": "2026-10-06",
-          "shareCredit": "2026-10-06",
-          "mandateEndDate": "2026-10-16",
-          "lockInEndDateAnchor50": "2026-11-03",
-          "lockInEndDateAnchorRemaining": "2027-01-02"
-        }
-      },
-      "gmp_fallback_source": "IPOWATCH_LATEST_DASHBOARD",
-      "gmp_status": "VERIFIED",
-      "gmp_validation": {
-        "complete": true,
-        "status": "FALLBACK",
-        "provider_gmp_missing": true,
-        "attempted_sources": [
-          "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
-        ],
-        "errors": [],
-        "source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/",
-        "source_kind": "IPOWATCH_LATEST_DASHBOARD",
-        "gmp_value": 48.0,
-        "gmp_gain_pct": 24.37
-      },
-      "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-10-01T22:57:18.353571+05:30",
-      "subscription_age_minutes": 0.0,
-      "subscription_validation": {
-        "complete": true,
-        "status": "FALLBACK",
-        "source": "https://groww.in/ipo/subscription",
-        "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-10-01T22:57:18.353571+05:30",
-        "age_minutes": 0.0,
-        "provider_subscription_missing": true,
-        "attempted_sources": [
-          "https://groww.in/ipo/subscription"
-        ],
-        "errors": [],
-        "field_sources": {
-          "qib_x": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-          "nii_x": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-          "retail_x": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-          "total_x": "GROWW_CONSOLIDATED_SUBSCRIPTION"
-        }
-      },
-      "readiness": {
-        "identity": true,
-        "schedule": true,
-        "price": true,
-        "issue_size": false,
-        "gmp": true,
-        "gmp_history": false,
-        "qib": true,
-        "nii": true,
-        "retail": true,
-        "total_subscription": true,
-        "prospectus": false,
-        "risks": false
-      },
-      "features": {
-        "gmp_latest_pct": 24.37,
-        "gmp_change_1obs": null,
-        "gmp_change_3obs": null,
-        "log_qib": 1.682688374173693,
-        "log_nii": 3.784189633918261,
-        "log_retail": 3.339321977944068,
-        "log_total": 3.2733640101522705,
-        "log_issue_size": null,
-        "ofs_ratio": null
-      },
-      "velocity": {
-        "minutes_since_previous": 19.8,
-        "qib_x_per_hour": 0.0,
-        "nii_x_per_hour": 0.0,
-        "retail_x_per_hour": 0.0,
-        "total_x_per_hour": 0.0
-      },
-      "is_closing_today": true,
-      "would_be_1430_decision_snapshot": false,
-      "recommendation": {
-        "policy_version": "research-v1.1",
-        "segment": "SME",
-        "action": "BORDERLINE",
-        "action_priority": 3,
-        "research_confidence": "LOW",
-        "finality": {
-          "canonical": true,
-          "code": "CAPTURED_1430_IST",
-          "label": "CANONICAL_1430_RETAINED",
-          "captured_at_ist": "2026-10-01T14:31:01.606617+05:30"
-        },
-        "predictions": {
-          "gmp_input_pct": 24.37,
-          "total_subscription_x": 25.4,
-          "log_total": 3.2733640101522705,
-          "gmp_prediction_pct": 14.8,
-          "subscription_prediction_pct": 15.94,
-          "prediction_cap_pct": 90.0
-        },
-        "primary_prediction_pct": 14.8,
-        "ranking_score": 14.8,
-        "signal_conflict": false,
-        "reason": [
-          "SME GMP is +10% to +20%; the holdout contained a -20% false positive in this zone.",
-          "POST-2:30 PM — latest research signal; canonical snapshot should be retained"
-        ],
-        "training": {
-          "source_year": 2024,
-          "source_rows": 97,
-          "gmp_complete_rows": 25,
-          "subscription_complete_rows": 97
-        },
-        "evidence": {
-          "gmp_ge_10": {
-            "cases": 7,
-            "win_rate_pct": 85.7,
-            "avg_gain_pct": 55.18,
-            "worst_gain_pct": -20.0
-          },
-          "gmp_ge_20": {
-            "cases": 4,
-            "win_rate_pct": 100.0,
-            "avg_gain_pct": 90.0,
-            "worst_gain_pct": 90.0
-          },
-          "subscription_ge_20": {
-            "cases": 86,
-            "win_rate_pct": 88.4,
-            "avg_gain_pct": 37.22,
-            "worst_gain_pct": -20.0
-          }
-        },
-        "disclaimer": "Research model only. It estimates listing-gain potential from historical GMP and subscription patterns; it does not consider your financial situation or guarantee profit.",
-        "display_decision_source": "CAPTURED_1430_IST",
-        "public_signal": {
-          "locked": false,
-          "action": "BORDERLINE",
-          "reason": null
-        }
-      }
-    },
-    {
       "symbol": "TNA",
       "type": "SME",
       "name": "TNA Solutions",
@@ -2780,11 +2033,11 @@
       "ofs_cr": null,
       "gmp_value": 7.0,
       "gmp_gain_pct": 10.0,
-      "gmp_date": "01 October",
+      "gmp_date": "02 October",
       "gmp_source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/",
       "gmp_trends": [
         {
-          "date": "01 October",
+          "date": "02 October",
           "gmp": "₹7",
           "gain": "10.00%",
           "source": "IPOWATCH_LATEST_DASHBOARD"
@@ -2833,14 +2086,14 @@
         "gmp_gain_pct": 10.0
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-10-01T22:57:18.353571+05:30",
+      "subscription_observed_at_ist": "2026-10-02T00:03:02.451715+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-10-01T22:57:18.353571+05:30",
+        "observed_at_ist": "2026-10-02T00:03:02.451715+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -2880,7 +2133,7 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 19.8,
+        "minutes_since_previous": 65.7,
         "qib_x_per_hour": 0.0,
         "nii_x_per_hour": 0.0,
         "retail_x_per_hour": 0.0,
@@ -2976,10 +2229,13 @@
     }
   ],
   "errors": [],
-  "decision_saved_count": 16,
-  "saved_count": 16,
-  "capture_reason": "github_action_refresh_mainboard_close",
-  "public_filtered_closed_count": 0,
+  "public_filtered_closed_count": 4,
+  "public_filtered_closed_names": [
+    "Papadmalji Agro Foods",
+    "Vans Electroengineerings",
+    "Green Asia Impex",
+    "Black Opal Consultants"
+  ],
   "public_signal_policy": {
     "version": "public-signal-gate-v1",
     "locked_label": "Relevant data not available"
