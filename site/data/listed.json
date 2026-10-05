@@ -1,16 +1,16 @@
 {
   "version": "listed-tracker-v1",
-  "generated_at_ist": "2026-10-06T00:53:17.232633+05:30",
+  "generated_at_ist": "2026-10-06T02:16:22.951015+05:30",
   "current_prices_as_of_ist": "2026-10-05T16:00:00+05:30",
   "summary": {
-    "listed_records": 272,
+    "listed_records": 273,
     "market_identity_resolved": 179,
     "current_price_available": 179,
-    "unlock_schedule_available": 238,
+    "unlock_schedule_available": 243,
     "duplicate_rows_removed": 4,
     "bse_identities_added": 0,
     "bse_direct_quotes": 0,
-    "listing_price_market_fallbacks": 11
+    "listing_price_market_fallbacks": 12
   },
   "records": [
     {
@@ -28,10 +28,28 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-10-01",
+          "source_url": "https://ipomarkets.com/ipo/shivchem-agro-ipo-z3pxpcz",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 360
+        }
+      ],
+      "next_unlock": {
+        "category": "PRE_IPO",
+        "label": "Non-promoter pre-issue shares",
+        "duration": "1 year",
+        "unlock_date": "2027-10-01",
+        "source_url": "https://ipomarkets.com/ipo/shivchem-agro-ipo-z3pxpcz",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 360
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-10-06T02:16:22.951015+05:30",
       "detail_url": "https://ipomarkets.com/ipo/shivchem-agro-ipo-z3pxpcz"
     },
     {
@@ -49,10 +67,64 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — first 50%",
+          "duration": "30 days",
+          "unlock_date": "2026-10-31",
+          "source_url": "https://ipomarkets.com/ipo/shah-investors-home-ipo-ez867vq",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 25
+        },
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-12-30",
+          "source_url": "https://ipomarkets.com/ipo/shah-investors-home-ipo-ez867vq",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 85
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — holding above 20%",
+          "duration": "6 months",
+          "unlock_date": "2027-04-01",
+          "source_url": "https://ipomarkets.com/ipo/shah-investors-home-ipo-ez867vq",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 177
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "6 months",
+          "unlock_date": "2027-04-01",
+          "source_url": "https://ipomarkets.com/ipo/shah-investors-home-ipo-ez867vq",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 177
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — minimum contribution (20%)",
+          "duration": "18 months",
+          "unlock_date": "2028-04-01",
+          "source_url": "https://ipomarkets.com/ipo/shah-investors-home-ipo-ez867vq",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 543
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — first 50%",
+        "duration": "30 days",
+        "unlock_date": "2026-10-31",
+        "source_url": "https://ipomarkets.com/ipo/shah-investors-home-ipo-ez867vq",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 25
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-10-06T02:16:22.951015+05:30",
       "detail_url": "https://ipomarkets.com/ipo/shah-investors-home-ipo-ez867vq"
     },
     {
@@ -70,10 +142,64 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — first 50%",
+          "duration": "30 days",
+          "unlock_date": "2026-10-31",
+          "source_url": "https://ipomarkets.com/ipo/srit-india-ipo-h2wvveq",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 25
+        },
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-12-30",
+          "source_url": "https://ipomarkets.com/ipo/srit-india-ipo-h2wvveq",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 85
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — holding above 20%",
+          "duration": "6 months",
+          "unlock_date": "2027-04-01",
+          "source_url": "https://ipomarkets.com/ipo/srit-india-ipo-h2wvveq",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 177
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "6 months",
+          "unlock_date": "2027-04-01",
+          "source_url": "https://ipomarkets.com/ipo/srit-india-ipo-h2wvveq",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 177
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — minimum contribution (20%)",
+          "duration": "18 months",
+          "unlock_date": "2028-04-01",
+          "source_url": "https://ipomarkets.com/ipo/srit-india-ipo-h2wvveq",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 543
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — first 50%",
+        "duration": "30 days",
+        "unlock_date": "2026-10-31",
+        "source_url": "https://ipomarkets.com/ipo/srit-india-ipo-h2wvveq",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 25
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-10-06T02:16:22.951015+05:30",
       "detail_url": "https://ipomarkets.com/ipo/srit-india-ipo-h2wvveq"
     },
     {
@@ -91,10 +217,28 @@
       "current_return_pct": null,
       "current_price_as_of_ist": null,
       "current_price_source": null,
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-10-01",
+          "source_url": "https://ipomarkets.com/ipo/pind-hospitality-ipo-nfdgss8",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 360
+        }
+      ],
+      "next_unlock": {
+        "category": "PRE_IPO",
+        "label": "Non-promoter pre-issue shares",
+        "duration": "1 year",
+        "unlock_date": "2027-10-01",
+        "source_url": "https://ipomarkets.com/ipo/pind-hospitality-ipo-nfdgss8",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 360
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-10-06T02:16:22.951015+05:30",
       "detail_url": "https://ipomarkets.com/ipo/pind-hospitality-ipo-nfdgss8"
     },
     {
@@ -500,6 +644,55 @@
       "unlock_status": "NOT_AVAILABLE",
       "unlock_checked_at_ist": null,
       "detail_url": null,
+      "listing_price_source": "NSE_LISTING_DAY_OPEN"
+    },
+    {
+      "tracker_key": "2026|SME|bmbenchmarkinfotechservices",
+      "name": "BM Bench Mark Infotech Services",
+      "symbol": "BMISL",
+      "market": "NSE",
+      "market_symbol": "BMISL.NS",
+      "ipo_type": "SME",
+      "listing_date": "2026-10-05",
+      "issue_price": 110.0,
+      "listing_price": 110.0,
+      "listing_return_pct": 0.0,
+      "current_price": 115.5,
+      "current_return_pct": 5.0,
+      "current_price_as_of_ist": "2026-10-05T16:00:00+05:30",
+      "current_price_source": "NSE_BHAVCOPY",
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — first 50%",
+          "duration": "30 days",
+          "unlock_date": "2026-10-30",
+          "source_url": "https://ipomarkets.com/ipo/bench-mark-infotech-services-ipo-vq4rhke",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 24
+        },
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2026-12-29",
+          "source_url": "https://ipomarkets.com/ipo/bench-mark-infotech-services-ipo-vq4rhke",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 84
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — first 50%",
+        "duration": "30 days",
+        "unlock_date": "2026-10-30",
+        "source_url": "https://ipomarkets.com/ipo/bench-mark-infotech-services-ipo-vq4rhke",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 24
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-10-05T19:56:03.716993+05:30",
+      "detail_url": "https://ipomarkets.com/ipo/bench-mark-infotech-services-ipo-vq4rhke",
       "listing_price_source": "NSE_LISTING_DAY_OPEN"
     },
     {
@@ -1388,7 +1581,7 @@
       "unlock_events": [],
       "next_unlock": null,
       "unlock_status": "NOT_AVAILABLE",
-      "unlock_checked_at_ist": "2026-09-29T01:20:32.784083+05:30",
+      "unlock_checked_at_ist": "2026-10-06T02:16:22.951015+05:30",
       "detail_url": "https://ipomarkets.com/ipo/anand-seamless-ipo-jb0vdeg"
     },
     {
@@ -12357,52 +12550,61 @@
       "detail_url": "https://ipomarkets.com/ipo/national-stock-exchange-of-india-ipo-q89rmfh"
     },
     {
-      "tracker_key": "2026|SME|bmbenchmarkinfotechservices",
-      "name": "BM Bench Mark Infotech Services",
-      "symbol": "BMISL",
-      "market": "NSE",
-      "market_symbol": "BMISL.NS",
+      "tracker_key": "2026|SME|auacmeuniversalsafezone9",
+      "name": "AU Acme Universal Safezone 9",
+      "symbol": null,
+      "market": null,
+      "market_symbol": null,
       "ipo_type": "SME",
       "listing_date": null,
-      "issue_price": 110.0,
+      "issue_price": 71.0,
       "listing_price": null,
       "listing_return_pct": null,
-      "current_price": 115.5,
-      "current_return_pct": 5.0,
-      "current_price_as_of_ist": "2026-10-05T16:00:00+05:30",
-      "current_price_source": "NSE_BHAVCOPY",
+      "current_price": null,
+      "current_return_pct": null,
+      "current_price_as_of_ist": null,
+      "current_price_source": null,
       "unlock_events": [
         {
           "category": "ANCHOR",
           "label": "Anchor investors — first 50%",
           "duration": "30 days",
-          "unlock_date": "2026-10-30",
-          "source_url": "https://ipomarkets.com/ipo/bench-mark-infotech-services-ipo-vq4rhke",
+          "unlock_date": "2026-10-31",
+          "source_url": "https://ipomarkets.com/ipo/acme-universal-safezone-9-ipo-c4pmnqf",
           "source_kind": "IPOMARKETS_LOCKIN_TABLE",
-          "days_remaining": 24
+          "days_remaining": 25
         },
         {
           "category": "ANCHOR",
           "label": "Anchor investors — remaining 50%",
           "duration": "90 days",
-          "unlock_date": "2026-12-29",
-          "source_url": "https://ipomarkets.com/ipo/bench-mark-infotech-services-ipo-vq4rhke",
+          "unlock_date": "2026-12-30",
+          "source_url": "https://ipomarkets.com/ipo/acme-universal-safezone-9-ipo-c4pmnqf",
           "source_kind": "IPOMARKETS_LOCKIN_TABLE",
-          "days_remaining": 84
+          "days_remaining": 85
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-10-01",
+          "source_url": "https://ipomarkets.com/ipo/acme-universal-safezone-9-ipo-c4pmnqf",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 360
         }
       ],
       "next_unlock": {
         "category": "ANCHOR",
         "label": "Anchor investors — first 50%",
         "duration": "30 days",
-        "unlock_date": "2026-10-30",
-        "source_url": "https://ipomarkets.com/ipo/bench-mark-infotech-services-ipo-vq4rhke",
+        "unlock_date": "2026-10-31",
+        "source_url": "https://ipomarkets.com/ipo/acme-universal-safezone-9-ipo-c4pmnqf",
         "source_kind": "IPOMARKETS_LOCKIN_TABLE",
-        "days_remaining": 24
+        "days_remaining": 25
       },
       "unlock_status": "AVAILABLE",
-      "unlock_checked_at_ist": "2026-10-05T19:56:03.716993+05:30",
-      "detail_url": "https://ipomarkets.com/ipo/bench-mark-infotech-services-ipo-vq4rhke"
+      "unlock_checked_at_ist": "2026-10-06T02:16:22.951015+05:30",
+      "detail_url": "https://ipomarkets.com/ipo/acme-universal-safezone-9-ipo-c4pmnqf"
     }
   ],
   "sources": {
