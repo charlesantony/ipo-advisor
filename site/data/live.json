@@ -1,6 +1,6 @@
 {
-  "fetched_at_utc": "2026-10-07T11:16:23.442481+00:00",
-  "fetched_at_ist": "2026-10-07T16:46:23.442481+05:30",
+  "fetched_at_utc": "2026-10-07T13:13:30.089756+00:00",
+  "fetched_at_ist": "2026-10-07T18:43:30.089756+05:30",
   "status_filter": "LIVE",
   "type_filter": "ALL",
   "records": [
@@ -28,9 +28,9 @@
       "gmp_source": null,
       "gmp_trends": [],
       "qib_x": 14.11,
-      "nii_x": 1.65,
-      "retail_x": 2.95,
-      "total_x": 2.51,
+      "nii_x": 1.68,
+      "retail_x": 3.08,
+      "total_x": 2.59,
       "strengths": [],
       "risks": [],
       "about_company": null,
@@ -66,14 +66,14 @@
         "source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-10-07T16:46:23.442481+05:30",
+      "subscription_observed_at_ist": "2026-10-07T18:43:30.089756+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-10-07T16:46:23.442481+05:30",
+        "observed_at_ist": "2026-10-07T18:43:30.089756+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -106,18 +106,18 @@
         "gmp_change_1obs": null,
         "gmp_change_3obs": null,
         "log_qib": 2.715356776284648,
-        "log_nii": 0.9745596399981308,
-        "log_retail": 1.3737155789130306,
-        "log_total": 1.2556160374777745,
+        "log_nii": 0.9858167945227653,
+        "log_retail": 1.4060969884160703,
+        "log_total": 1.2781522025001875,
         "log_issue_size": null,
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 134.8,
+        "minutes_since_previous": 117.1,
         "qib_x_per_hour": 0.0,
-        "nii_x_per_hour": 0.338,
-        "retail_x_per_hour": 0.833,
-        "total_x_per_hour": 0.614
+        "nii_x_per_hour": 0.015,
+        "retail_x_per_hour": 0.067,
+        "total_x_per_hour": 0.041
       },
       "is_closing_today": true,
       "would_be_1430_decision_snapshot": false,
@@ -135,14 +135,14 @@
         },
         "predictions": {
           "gmp_input_pct": null,
-          "total_subscription_x": 2.51,
-          "log_total": 1.2556160374777745,
+          "total_subscription_x": 2.59,
+          "log_total": 1.2781522025001875,
           "gmp_prediction_pct": null,
-          "subscription_prediction_pct": -18.43,
+          "subscription_prediction_pct": -18.05,
           "prediction_cap_pct": 90.0
         },
         "primary_prediction_pct": -26.94,
-        "ranking_score": -18.43,
+        "ranking_score": -18.05,
         "signal_conflict": false,
         "reason": [
           "GMP is unavailable and subscription model is below +10%.",
@@ -211,9 +211,6 @@
     }
   ],
   "errors": [],
-  "decision_saved_count": 1,
-  "saved_count": 1,
-  "capture_reason": "github_action_refresh_morning",
   "public_filtered_closed_count": 0,
   "public_signal_policy": {
     "version": "public-signal-gate-v1",
