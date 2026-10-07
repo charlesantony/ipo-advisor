@@ -1,6 +1,6 @@
 {
-  "fetched_at_utc": "2026-10-07T09:01:37.530998+00:00",
-  "fetched_at_ist": "2026-10-07T14:31:37.530998+05:30",
+  "fetched_at_utc": "2026-10-07T11:16:23.442481+00:00",
+  "fetched_at_ist": "2026-10-07T16:46:23.442481+05:30",
   "status_filter": "LIVE",
   "type_filter": "ALL",
   "records": [
@@ -28,9 +28,9 @@
       "gmp_source": null,
       "gmp_trends": [],
       "qib_x": 14.11,
-      "nii_x": 0.89,
-      "retail_x": 1.08,
-      "total_x": 1.13,
+      "nii_x": 1.65,
+      "retail_x": 2.95,
+      "total_x": 2.51,
       "strengths": [],
       "risks": [],
       "about_company": null,
@@ -66,14 +66,14 @@
         "source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-10-07T14:31:37.530998+05:30",
+      "subscription_observed_at_ist": "2026-10-07T16:46:23.442481+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-10-07T14:31:37.530998+05:30",
+        "observed_at_ist": "2026-10-07T16:46:23.442481+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -106,21 +106,21 @@
         "gmp_change_1obs": null,
         "gmp_change_3obs": null,
         "log_qib": 2.715356776284648,
-        "log_nii": 0.636576829071551,
-        "log_retail": 0.7323678937132266,
-        "log_total": 0.7561219797213337,
+        "log_nii": 0.9745596399981308,
+        "log_retail": 1.3737155789130306,
+        "log_total": 1.2556160374777745,
         "log_issue_size": null,
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 614.0,
+        "minutes_since_previous": 134.8,
         "qib_x_per_hour": 0.0,
-        "nii_x_per_hour": 0.032,
-        "retail_x_per_hour": 0.091,
-        "total_x_per_hour": 0.064
+        "nii_x_per_hour": 0.338,
+        "retail_x_per_hour": 0.833,
+        "total_x_per_hour": 0.614
       },
       "is_closing_today": true,
-      "would_be_1430_decision_snapshot": true,
+      "would_be_1430_decision_snapshot": false,
       "recommendation": {
         "policy_version": "research-v1.1",
         "segment": "SME",
@@ -135,17 +135,18 @@
         },
         "predictions": {
           "gmp_input_pct": null,
-          "total_subscription_x": 1.13,
-          "log_total": 0.7561219797213337,
+          "total_subscription_x": 2.51,
+          "log_total": 1.2556160374777745,
           "gmp_prediction_pct": null,
-          "subscription_prediction_pct": -26.94,
+          "subscription_prediction_pct": -18.43,
           "prediction_cap_pct": 90.0
         },
         "primary_prediction_pct": -26.94,
-        "ranking_score": -26.94,
+        "ranking_score": -18.43,
         "signal_conflict": false,
         "reason": [
-          "GMP is unavailable and subscription model is below +10%."
+          "GMP is unavailable and subscription model is below +10%.",
+          "POST-2:30 PM — latest research signal; canonical snapshot should be retained"
         ],
         "training": {
           "source_year": 2024,
@@ -174,12 +175,6 @@
           }
         },
         "disclaimer": "Research model only. It estimates listing-gain potential from historical GMP and subscription patterns; it does not consider your financial situation or guarantee profit.",
-        "data_quality": {
-          "subscription_fresh_for_canonical": true,
-          "subscription_age_minutes": 0.0,
-          "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-          "canonical_max_age_minutes": 45
-        },
         "display_decision_source": "CAPTURED_1430_IST",
         "public_signal": {
           "locked": false,
@@ -218,7 +213,7 @@
   "errors": [],
   "decision_saved_count": 1,
   "saved_count": 1,
-  "capture_reason": "manual_1430_recovery",
+  "capture_reason": "github_action_refresh_morning",
   "public_filtered_closed_count": 0,
   "public_signal_policy": {
     "version": "public-signal-gate-v1",
