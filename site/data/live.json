@@ -1,6 +1,6 @@
 {
-  "fetched_at_utc": "2026-10-06T22:47:39.459712+00:00",
-  "fetched_at_ist": "2026-10-07T04:17:39.459712+05:30",
+  "fetched_at_utc": "2026-10-07T09:01:37.530998+00:00",
+  "fetched_at_ist": "2026-10-07T14:31:37.530998+05:30",
   "status_filter": "LIVE",
   "type_filter": "ALL",
   "records": [
@@ -28,9 +28,9 @@
       "gmp_source": null,
       "gmp_trends": [],
       "qib_x": 14.11,
-      "nii_x": 0.56,
-      "retail_x": 0.15,
-      "total_x": 0.47,
+      "nii_x": 0.89,
+      "retail_x": 1.08,
+      "total_x": 1.13,
       "strengths": [],
       "risks": [],
       "about_company": null,
@@ -66,14 +66,14 @@
         "source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-10-07T04:17:39.459712+05:30",
+      "subscription_observed_at_ist": "2026-10-07T14:31:37.530998+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-10-07T04:17:39.459712+05:30",
+        "observed_at_ist": "2026-10-07T14:31:37.530998+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -106,21 +106,21 @@
         "gmp_change_1obs": null,
         "gmp_change_3obs": null,
         "log_qib": 2.715356776284648,
-        "log_nii": 0.44468582126144574,
-        "log_retail": 0.13976194237515868,
-        "log_total": 0.3852624007906449,
+        "log_nii": 0.636576829071551,
+        "log_retail": 0.7323678937132266,
+        "log_total": 0.7561219797213337,
         "log_issue_size": null,
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 326.5,
+        "minutes_since_previous": 614.0,
         "qib_x_per_hour": 0.0,
-        "nii_x_per_hour": 0.0,
-        "retail_x_per_hour": 0.0,
-        "total_x_per_hour": 0.0
+        "nii_x_per_hour": 0.032,
+        "retail_x_per_hour": 0.091,
+        "total_x_per_hour": 0.064
       },
       "is_closing_today": true,
-      "would_be_1430_decision_snapshot": false,
+      "would_be_1430_decision_snapshot": true,
       "recommendation": {
         "policy_version": "research-v1.1",
         "segment": "SME",
@@ -128,24 +128,24 @@
         "action_priority": 2,
         "research_confidence": "LOW",
         "finality": {
-          "code": "CLOSING_DAY_PRE_1430",
-          "label": "PRELIMINARY — closes today; wait for 2:30 PM IST snapshot",
-          "canonical": false
+          "canonical": true,
+          "code": "CAPTURED_1430_IST",
+          "label": "CANONICAL_1430_RETAINED",
+          "captured_at_ist": "2026-10-07T14:31:37.530998+05:30"
         },
         "predictions": {
           "gmp_input_pct": null,
-          "total_subscription_x": 0.47,
-          "log_total": 0.3852624007906449,
+          "total_subscription_x": 1.13,
+          "log_total": 0.7561219797213337,
           "gmp_prediction_pct": null,
-          "subscription_prediction_pct": -33.26,
+          "subscription_prediction_pct": -26.94,
           "prediction_cap_pct": 90.0
         },
-        "primary_prediction_pct": -33.26,
-        "ranking_score": -33.26,
+        "primary_prediction_pct": -26.94,
+        "ranking_score": -26.94,
         "signal_conflict": false,
         "reason": [
-          "GMP is unavailable and subscription model is below +10%.",
-          "PRELIMINARY — closes today; wait for 2:30 PM IST snapshot"
+          "GMP is unavailable and subscription model is below +10%."
         ],
         "training": {
           "source_year": 2024,
@@ -174,6 +174,13 @@
           }
         },
         "disclaimer": "Research model only. It estimates listing-gain potential from historical GMP and subscription patterns; it does not consider your financial situation or guarantee profit.",
+        "data_quality": {
+          "subscription_fresh_for_canonical": true,
+          "subscription_age_minutes": 0.0,
+          "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
+          "canonical_max_age_minutes": 45
+        },
+        "display_decision_source": "CAPTURED_1430_IST",
         "public_signal": {
           "locked": false,
           "action": "AVOID",
@@ -202,22 +209,17 @@
       "api_status": "success",
       "api_status_code": 200,
       "message": "IPO details fetched successfully",
-      "response_bytes": 1913,
+      "response_bytes": 549,
       "rate_remaining_endpoint": "119",
       "rate_remaining_global": "239",
-      "count": 4
+      "count": 1
     }
   ],
   "errors": [],
-  "decision_saved_count": 4,
-  "saved_count": 4,
-  "capture_reason": "github_action_refresh_rollover",
-  "public_filtered_closed_count": 3,
-  "public_filtered_closed_names": [
-    "TNA Solutions",
-    "Acme India Industries",
-    "Paramount Syntex"
-  ],
+  "decision_saved_count": 1,
+  "saved_count": 1,
+  "capture_reason": "manual_1430_recovery",
+  "public_filtered_closed_count": 0,
   "public_signal_policy": {
     "version": "public-signal-gate-v1",
     "locked_label": "Relevant data not available"
