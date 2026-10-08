@@ -1,16 +1,16 @@
 {
   "version": "listed-tracker-v1",
-  "generated_at_ist": "2026-10-08T17:02:49.425399+05:30",
+  "generated_at_ist": "2026-10-08T18:48:54.654695+05:30",
   "current_prices_as_of_ist": "2026-10-08T16:00:00+05:30",
   "summary": {
-    "listed_records": 286,
-    "market_identity_resolved": 187,
-    "current_price_available": 187,
-    "unlock_schedule_available": 254,
+    "listed_records": 287,
+    "market_identity_resolved": 188,
+    "current_price_available": 188,
+    "unlock_schedule_available": 255,
     "duplicate_rows_removed": 4,
     "bse_identities_added": 0,
     "bse_direct_quotes": 0,
-    "listing_price_market_fallbacks": 11
+    "listing_price_market_fallbacks": 10
   },
   "records": [
     {
@@ -241,6 +241,64 @@
       "listing_price_source": "NSE_LISTING_DAY_OPEN"
     },
     {
+      "tracker_key": "2026|MAINBOARD|nityasgemsjewellery",
+      "name": "Nityas Gems & Jewellery",
+      "symbol": "NITYAS",
+      "market": "NSE",
+      "market_symbol": "NITYAS.NS",
+      "ipo_type": "MAINBOARD",
+      "listing_date": "2026-10-08",
+      "issue_price": 75.0,
+      "listing_price": 80.0,
+      "listing_return_pct": 6.67,
+      "current_price": 84.0,
+      "current_return_pct": 12.0,
+      "current_price_as_of_ist": "2026-10-08T16:00:00+05:30",
+      "current_price_source": "NSE_BHAVCOPY",
+      "unlock_events": [
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — holding above 20%",
+          "duration": "6 months",
+          "unlock_date": "2027-04-06",
+          "source_url": "https://ipomarkets.com/ipo/nityas-gems-jewellery-ipo-v59vgyy",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 180
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "6 months",
+          "unlock_date": "2027-04-06",
+          "source_url": "https://ipomarkets.com/ipo/nityas-gems-jewellery-ipo-v59vgyy",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 180
+        },
+        {
+          "category": "PROMOTER",
+          "label": "Promoter — minimum contribution (20%)",
+          "duration": "18 months",
+          "unlock_date": "2028-04-06",
+          "source_url": "https://ipomarkets.com/ipo/nityas-gems-jewellery-ipo-v59vgyy",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 546
+        }
+      ],
+      "next_unlock": {
+        "category": "PROMOTER",
+        "label": "Promoter — holding above 20%",
+        "duration": "6 months",
+        "unlock_date": "2027-04-06",
+        "source_url": "https://ipomarkets.com/ipo/nityas-gems-jewellery-ipo-v59vgyy",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 180
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-10-08T18:48:54.654695+05:30",
+      "detail_url": "https://ipomarkets.com/ipo/nityas-gems-jewellery-ipo-v59vgyy",
+      "listing_price_source": "NSE_LISTING_DAY_OPEN"
+    },
+    {
       "tracker_key": "2026|SME|everestimstechnologies",
       "name": "EverestIMS Technologies",
       "symbol": "VERTEXPLUS",
@@ -385,8 +443,8 @@
       "ipo_type": "SME",
       "listing_date": "2026-10-07",
       "issue_price": 118.0,
-      "listing_price": null,
-      "listing_return_pct": null,
+      "listing_price": 224.2,
+      "listing_return_pct": 90.0,
       "current_price": null,
       "current_return_pct": null,
       "current_price_as_of_ist": null,
@@ -470,8 +528,7 @@
       },
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-10-07T00:04:05.021696+05:30",
-      "detail_url": "https://ipomarkets.com/ipo/papadmalji-agro-foods-ipo-vsetr21",
-      "listing_price_source": "NSE_LISTING_DAY_OPEN"
+      "detail_url": "https://ipomarkets.com/ipo/papadmalji-agro-foods-ipo-vsetr21"
     },
     {
       "tracker_key": "2026|SME|greenasiaimpex",
@@ -510,8 +567,7 @@
       },
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-10-07T00:04:05.021696+05:30",
-      "detail_url": "https://ipomarkets.com/ipo/green-asia-impex-ipo-km58dmq",
-      "listing_price_source": "NSE_LISTING_DAY_OPEN"
+      "detail_url": "https://ipomarkets.com/ipo/green-asia-impex-ipo-km58dmq"
     },
     {
       "tracker_key": "2026|SME|blackopalconsultants",
@@ -522,8 +578,8 @@
       "ipo_type": "SME",
       "listing_date": "2026-10-07",
       "issue_price": 197.0,
-      "listing_price": null,
-      "listing_return_pct": null,
+      "listing_price": 200.0,
+      "listing_return_pct": 1.52,
       "current_price": null,
       "current_return_pct": null,
       "current_price_as_of_ist": null,
@@ -1446,7 +1502,7 @@
       "unlock_events": [],
       "next_unlock": null,
       "unlock_status": "NOT_AVAILABLE",
-      "unlock_checked_at_ist": "2026-10-01T18:33:08.764674+05:30",
+      "unlock_checked_at_ist": "2026-10-08T18:48:54.654695+05:30",
       "detail_url": "https://ipomarkets.com/ipo/peshwa-wheat-ipo-fwdct78"
     },
     {
@@ -3277,7 +3333,7 @@
       "unlock_events": [],
       "next_unlock": null,
       "unlock_status": "NOT_AVAILABLE",
-      "unlock_checked_at_ist": "2026-10-01T18:33:08.764674+05:30",
+      "unlock_checked_at_ist": "2026-10-08T18:48:54.654695+05:30",
       "detail_url": "https://ipomarkets.com/ipo/vinod-texworld-ipo-bwkx560"
     },
     {
@@ -3677,7 +3733,7 @@
       "unlock_events": [],
       "next_unlock": null,
       "unlock_status": "NOT_AVAILABLE",
-      "unlock_checked_at_ist": "2026-10-01T18:33:08.764674+05:30",
+      "unlock_checked_at_ist": "2026-10-08T18:48:54.654695+05:30",
       "detail_url": "https://ipomarkets.com/ipo/infrax-renewable-ipo-pxxax3m"
     },
     {
