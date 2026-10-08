@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at_ist": "2026-10-08T18:49:12.338356+05:30",
+  "updated_at_ist": "2026-10-09T00:29:32.164618+05:30",
   "records": {
     "2026|MAINBOARD|sunshinepictures": {
       "name": "Sunshine Pictures",
@@ -10955,6 +10955,120 @@
       "current_price_source": "NSE_BHAVCOPY",
       "market_listing_price": 80.0,
       "market_listing_price_source": "NSE_LISTING_DAY_OPEN"
+    },
+    "2026|SME|tstnasolutions": {
+      "name": "TS TNA Solutions",
+      "ipo_type": "SME",
+      "detail_url": "https://ipomarkets.com/ipo/tna-solutions-ipo-g6nd1ry",
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — first 50%",
+          "duration": "30 days",
+          "unlock_date": "2026-11-06",
+          "source_url": "https://ipomarkets.com/ipo/tna-solutions-ipo-g6nd1ry",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE"
+        },
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2027-01-05",
+          "source_url": "https://ipomarkets.com/ipo/tna-solutions-ipo-g6nd1ry",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE"
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-10-07",
+          "source_url": "https://ipomarkets.com/ipo/tna-solutions-ipo-g6nd1ry",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE"
+        }
+      ],
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-10-09T00:29:06.079335+05:30"
+    },
+    "HANDOFF|2026|SME|tnasolutions|2026-10-06": {
+      "name": "TNA Solutions",
+      "ipo_type": "SME",
+      "detail_url": null
+    },
+    "2026|SME|paramountsyntex": {
+      "name": "Paramount Syntex",
+      "ipo_type": "SME",
+      "detail_url": "https://ipomarkets.com/ipo/paramount-syntex-ipo-pxpmz7g",
+      "identity": {
+        "market": "NSE",
+        "symbol": "PARAMOUNT",
+        "market_symbol": "PARAMOUNT.NS",
+        "series": "SM",
+        "isin": "INE0TG801013",
+        "listing_date": null,
+        "identity_source": "NSE_SME_MASTER",
+        "identity_score": 0.8
+      },
+      "unlock_events": [
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-10-07",
+          "source_url": "https://ipomarkets.com/ipo/paramount-syntex-ipo-pxpmz7g",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE"
+        }
+      ],
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-10-09T00:29:06.079335+05:30",
+      "current_price": 38.1,
+      "current_price_as_of_ist": "2026-10-08T16:00:00+05:30",
+      "current_price_source": "NSE_BHAVCOPY"
+    },
+    "2026|SME|acmeindiaindustries": {
+      "name": "Acme India Industries",
+      "ipo_type": "SME",
+      "detail_url": "https://ipomarkets.com/ipo/acme-india-industries-ipo-gfy3rsw",
+      "identity": {
+        "market": "NSE",
+        "symbol": "KCK",
+        "market_symbol": "KCK.NS",
+        "series": "ST",
+        "isin": "INE0J1E01027",
+        "listing_date": null,
+        "identity_source": "NSE_SME_MASTER",
+        "identity_score": 0.815
+      },
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — first 50%",
+          "duration": "30 days",
+          "unlock_date": "2026-11-06",
+          "source_url": "https://ipomarkets.com/ipo/acme-india-industries-ipo-gfy3rsw",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE"
+        },
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2027-01-05",
+          "source_url": "https://ipomarkets.com/ipo/acme-india-industries-ipo-gfy3rsw",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE"
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-10-07",
+          "source_url": "https://ipomarkets.com/ipo/acme-india-industries-ipo-gfy3rsw",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE"
+        }
+      ],
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-10-09T00:29:06.079335+05:30",
+      "current_price": 15.95,
+      "current_price_as_of_ist": "2026-10-08T16:00:00+05:30",
+      "current_price_source": "NSE_BHAVCOPY"
     }
   }
 }
