@@ -324,43 +324,67 @@ function _batchText(batch) {
 }
 
 function _batchHtml(batch) {
-  const rows = batch.alerts.map(function(a) {
-    const symbol = a.symbol
-      ? '<div style="font-size:11px;color:#667085">' + _html(a.symbol) + '</div>'
-      : "";
+  const cards = batch.alerts.map(function(a) {
+    const symbol = a.symbol ? " · " + _html(a.symbol) : "";
     const previous = _signalChanged(a)
-      ? '<div style="font-size:11px;color:#667085">Day-2: ' + _html(a.previousSignal) + '</div>'
+      ? '<div style="margin-top:4px;font-size:12px;color:#667085">' +
+        'Day-2 signal: <strong>' + _html(a.previousSignal) + '</strong></div>'
       : "";
-    const cell = 'padding:8px;border-bottom:1px solid #e5e7eb;';
-    return '<tr>' +
-      '<td style="' + cell + '"><strong>' + _html(a.ipoName) + '</strong>' + symbol + '</td>' +
-      '<td style="' + cell + '">' + _html(a.segment) + '</td>' +
-      '<td style="' + cell + '"><strong>' + _html(a.signal || "NOT READY") + '</strong>' + previous + '</td>' +
-      '<td style="' + cell + 'white-space:nowrap">' + _html(a.predictedGain) + '</td>' +
-      '<td style="' + cell + 'white-space:nowrap">' + _html(a.gmp) + '</td>' +
-      '<td style="' + cell + 'white-space:nowrap">' + _html(a.totalSubscription) + '</td>' +
-      '<td style="' + cell + 'white-space:nowrap">' + _html(_displayDate(a.closingDate)) + '</td>' +
+
+    function metricRow(label, value) {
+      return '<tr>' +
+        '<td style="width:44%;padding:7px 10px;color:#667085;border-top:1px solid #edf0f3;font-size:12px;vertical-align:top">' +
+          _html(label) +
+        '</td>' +
+        '<td style="padding:7px 10px;border-top:1px solid #edf0f3;font-size:13px;vertical-align:top;overflow-wrap:anywhere">' +
+          '<strong>' + _html(value || "N/A") + '</strong>' +
+        '</td>' +
       '</tr>';
+    }
+
+    return '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" ' +
+      'style="width:100%;border-collapse:separate;border-spacing:0;border:1px solid #dce3ea;border-radius:10px;margin:0 0 14px 0;background:#ffffff">' +
+      '<tr><td colspan="2" style="padding:12px 10px 8px 10px">' +
+        '<div style="font-size:16px;font-weight:700;color:#182230;overflow-wrap:anywhere">' +
+          _html(a.ipoName) + symbol +
+        '</div>' +
+        '<div style="margin-top:3px;font-size:12px;color:#667085">' +
+          _html(a.segment) +
+        '</div>' +
+      '</td></tr>' +
+      '<tr><td colspan="2" style="padding:8px 10px 11px 10px">' +
+        '<div style="display:inline-block;padding:6px 9px;border-radius:16px;background:#eef5ff;color:#174ea6;font-size:12px;font-weight:700;overflow-wrap:anywhere">' +
+          _html(a.signal || "NOT READY") +
+        '</div>' +
+        previous +
+      '</td></tr>' +
+      metricRow("Estimated gain", a.predictedGain) +
+      metricRow("GMP", a.gmp) +
+      metricRow("Subscription", a.totalSubscription) +
+      metricRow("Closing date", _displayDate(a.closingDate)) +
+    '</table>';
   }).join("");
 
   const note = batch.kind === "DAY2"
     ? "These are Day-2 research signals. The closing-day decision will be refreshed at the scheduled 2:30 PM IST checkpoint."
     : "These are the closing-day checkpoint recommendations. If a Day-2 signal changed, the earlier signal is shown below the current recommendation.";
+
   const dashboard = batch.dashboardUrl
-    ? '<p><a href="' + _html(batch.dashboardUrl) + '">Open IPO Advisor</a></p>'
+    ? '<p style="margin:16px 0"><a href="' + _html(batch.dashboardUrl) +
+      '" style="display:inline-block;padding:10px 14px;background:#174ea6;color:#ffffff;text-decoration:none;border-radius:7px;font-weight:700">Open IPO Advisor</a></p>'
     : "";
 
-  return '<div style="font-family:Arial,sans-serif;line-height:1.45;color:#182230">' +
-    '<h2 style="margin-bottom:4px">' + _html(_batchTitle(batch)) + '</h2>' +
-    '<p style="margin-top:0;color:#667085">' + _html(_displayDate(batch.date)) + '</p>' +
-    '<div style="overflow-x:auto"><table style="border-collapse:collapse;width:100%;font-size:12px">' +
-    '<thead><tr style="background:#f7f9fb;text-align:left">' +
-    '<th style="padding:8px">IPO / Symbol</th><th style="padding:8px">Type</th>' +
-    '<th style="padding:8px">Recommendation</th><th style="padding:8px">Est. Gain</th>' +
-    '<th style="padding:8px">GMP</th><th style="padding:8px">Subscription</th>' +
-    '<th style="padding:8px">Closing Date</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
-    '<p style="margin-top:14px">' + _html(note) + '</p>' + dashboard +
-    '<hr><p style="font-size:12px;color:#666">Research signal only. This is an experimental tool, not investment advice. Verify all IPO information independently before applying.</p></div>';
+  return '<div style="margin:0 auto;max-width:640px;width:100%;font-family:Arial,sans-serif;line-height:1.45;color:#182230">' +
+    '<h2 style="margin:0 0 4px 0;font-size:21px">' + _html(_batchTitle(batch)) + '</h2>' +
+    '<p style="margin:0 0 16px 0;color:#667085;font-size:13px">' +
+      _html(_displayDate(batch.date)) +
+    '</p>' +
+    cards +
+    '<p style="margin-top:14px;font-size:13px">' + _html(note) + '</p>' +
+    dashboard +
+    '<hr style="border:0;border-top:1px solid #e5e7eb">' +
+    '<p style="font-size:11px;color:#666">Research signal only. This is an experimental tool, not investment advice. Verify all IPO information independently before applying.</p>' +
+    '</div>';
 }
 
 function _notify(e) {
@@ -490,33 +514,43 @@ function _alertText(f) {
 
 function _alertHtml(f) {
   const dashboard = f.dashboardUrl
-    ? '<p><a href="' +
-      _html(f.dashboardUrl) +
-      '">Open IPO Advisor</a></p>'
+    ? '<p style="margin:16px 0"><a href="' + _html(f.dashboardUrl) +
+      '" style="display:inline-block;padding:10px 14px;background:#174ea6;color:#ffffff;text-decoration:none;border-radius:7px;font-weight:700">Open IPO Advisor</a></p>'
     : "";
 
   const signalHtml = _signalLines(f).map(function(line) {
-    return '<div><strong>' + _html(line) + '</strong></div>';
+    return '<div style="margin:3px 0"><strong>' + _html(line) + '</strong></div>';
   }).join("");
 
-  return (
-    '<div style="font-family:Arial,sans-serif;line-height:1.5">' +
-    '<h2 style="margin-bottom:6px">' + _html(_alertTitle(f)) + '</h2>' +
-    '<h3>' + _html(f.ipoName) + '</h3>' +
-    '<p><strong>' + _html(f.segment) + '</strong></p>' +
-    '<div style="font-size:17px;margin:12px 0">' + signalHtml + '</div>' +
-    '<p>Estimated listing gain: <strong>' +
-      _html(f.predictedGain) + '</strong><br>' +
-    'GMP: <strong>' + _html(f.gmp) + '</strong><br>' +
-    'Total subscription: <strong>' +
-      _html(f.totalSubscription) + '</strong></p>' +
+  function metricRow(label, value) {
+    return '<tr>' +
+      '<td style="width:44%;padding:7px 10px;color:#667085;border-top:1px solid #edf0f3;font-size:12px">' +
+        _html(label) +
+      '</td>' +
+      '<td style="padding:7px 10px;border-top:1px solid #edf0f3;font-size:13px"><strong>' +
+        _html(value || "N/A") +
+      '</strong></td>' +
+    '</tr>';
+  }
+
+  return '<div style="margin:0 auto;max-width:640px;width:100%;font-family:Arial,sans-serif;line-height:1.45;color:#182230">' +
+    '<h2 style="margin:0 0 12px 0;font-size:21px">' + _html(_alertTitle(f)) + '</h2>' +
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="width:100%;border-collapse:separate;border-spacing:0;border:1px solid #dce3ea;border-radius:10px;background:#fff">' +
+      '<tr><td colspan="2" style="padding:12px 10px">' +
+        '<div style="font-size:16px;font-weight:700">' + _html(f.ipoName) + '</div>' +
+        '<div style="font-size:12px;color:#667085;margin-top:3px">' + _html(f.segment) + '</div>' +
+      '</td></tr>' +
+      '<tr><td colspan="2" style="padding:8px 10px 11px 10px">' +
+        '<div style="font-size:14px">' + signalHtml + '</div>' +
+      '</td></tr>' +
+      metricRow("Estimated gain", f.predictedGain) +
+      metricRow("GMP", f.gmp) +
+      metricRow("Subscription", f.totalSubscription) +
+    '</table>' +
     dashboard +
-    '<hr>' +
-    '<p style="font-size:12px;color:#666">' +
-    'Research signal only. This is an experimental tool, not investment advice. ' +
-    'Verify all IPO information independently before applying.' +
-    '</p></div>'
-  );
+    '<hr style="border:0;border-top:1px solid #e5e7eb">' +
+    '<p style="font-size:11px;color:#666">Research signal only. This is an experimental tool, not investment advice. Verify all IPO information independently before applying.</p>' +
+    '</div>';
 }
 
 function _unsubscribe(rawEmail, token) {

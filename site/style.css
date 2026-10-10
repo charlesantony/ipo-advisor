@@ -516,3 +516,165 @@ footer {
   margin-top:3px;
   font-size:12px;
 }
+
+/* v0.5.29 Mobile responsive dashboard */
+@media (max-width: 700px) {
+  body { overflow-x:hidden; }
+  main { width:100%; max-width:100%; padding:12px; }
+
+  .topbar { padding:15px 14px; gap:10px; }
+  .topbar h1 { font-size:27px; }
+  .topbar p { font-size:13px; }
+
+  .subscribe-panel { padding:13px; }
+
+  .stats, .stats.small {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:8px;
+  }
+
+  .tabs {
+    position:sticky;
+    top:0;
+    z-index:20;
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:7px;
+    margin:14px -2px 22px;
+    padding:8px 2px;
+    background:var(--bg);
+  }
+
+  .tab {
+    width:100%;
+    min-width:0;
+    padding:10px 5px;
+    font-size:13px;
+    text-align:center;
+    white-space:nowrap;
+  }
+
+  .section-head { display:block; }
+  .section-head h2, .tabpane > h2 { font-size:23px; }
+  .cards { grid-template-columns:1fr; }
+
+  #tab-tracker .table-wrap,
+  #tab-listed .table-wrap,
+  #tab-prospective .table-wrap {
+    overflow:visible;
+    border:0;
+    background:transparent;
+  }
+
+  #tab-tracker table,
+  #tab-listed table,
+  #tab-prospective table {
+    display:block;
+    width:100%;
+    min-width:0;
+  }
+
+  #tab-tracker thead,
+  #tab-listed thead,
+  #tab-prospective thead { display:none; }
+
+  #tab-tracker tbody,
+  #tab-listed tbody,
+  #tab-prospective tbody {
+    display:grid;
+    width:100%;
+    gap:10px;
+  }
+
+  #tab-tracker tr,
+  #tab-listed tr,
+  #tab-prospective tr {
+    display:block;
+    width:100%;
+    overflow:hidden;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:11px;
+  }
+
+  #tab-tracker td,
+  #tab-listed td,
+  #tab-prospective td {
+    display:grid;
+    grid-template-columns:minmax(105px,38%) minmax(0,1fr);
+    gap:10px;
+    width:100%;
+    padding:8px 10px;
+    border-bottom:1px solid #edf0f3;
+    overflow-wrap:anywhere;
+    font-size:12px;
+  }
+
+  #tab-tracker td::before,
+  #tab-listed td::before,
+  #tab-prospective td::before {
+    color:var(--muted);
+    font-weight:700;
+  }
+
+  #tab-tracker td:first-child,
+  #tab-listed td:first-child,
+  #tab-prospective td:first-child {
+    display:block;
+    padding:11px 10px;
+    background:#f7f9fb;
+    font-size:14px;
+  }
+
+  #tab-tracker td:first-child::before,
+  #tab-listed td:first-child::before,
+  #tab-prospective td:first-child::before { content:none; }
+
+  #tab-tracker td:last-child,
+  #tab-listed td:last-child,
+  #tab-prospective td:last-child { border-bottom:0; }
+
+  #tab-tracker td:nth-child(2)::before { content:"Type"; }
+  #tab-tracker td:nth-child(3)::before { content:"Status"; }
+  #tab-tracker td:nth-child(4)::before { content:"Research signal"; }
+  #tab-tracker td:nth-child(5)::before { content:"Pred gain"; }
+  #tab-tracker td:nth-child(6)::before { content:"GMP"; }
+  #tab-tracker td:nth-child(7)::before { content:"Total sub"; }
+  #tab-tracker td:nth-child(8)::before { content:"Actual"; }
+  #tab-tracker td:nth-child(9)::before { content:"Outcome"; }
+
+  #tab-listed td:nth-child(2)::before { content:"Type"; }
+  #tab-listed td:nth-child(3)::before { content:"Issue Price"; }
+  #tab-listed td:nth-child(4)::before { content:"Listing Price"; }
+  #tab-listed td:nth-child(5)::before { content:"Current Price"; }
+  #tab-listed td:nth-child(6)::before { content:"Unlock Events"; }
+
+  #tab-listed .unlock-cell { min-width:0; }
+  #tab-listed .price-cell { white-space:normal; }
+
+  #tab-prospective td:nth-child(2)::before { content:"Type"; }
+  #tab-prospective td:nth-child(3)::before { content:"Captured"; }
+  #tab-prospective td:nth-child(4)::before { content:"Call"; }
+  #tab-prospective td:nth-child(5)::before { content:"Pred gain"; }
+  #tab-prospective td:nth-child(6)::before { content:"V2 shadow"; }
+  #tab-prospective td:nth-child(7)::before { content:"Actual"; }
+  #tab-prospective td:nth-child(8)::before { content:"V1 outcome"; }
+  #tab-prospective td:nth-child(9)::before { content:"V2 outcome"; }
+
+  .action, .table-action {
+    min-width:0;
+    max-width:100%;
+    white-space:normal;
+    line-height:1.2;
+  }
+}
+
+@media (max-width: 390px) {
+  .stats, .stats.small { grid-template-columns:1fr; }
+
+  #tab-tracker td,
+  #tab-listed td,
+  #tab-prospective td {
+    grid-template-columns:96px minmax(0,1fr);
+  }
+}
