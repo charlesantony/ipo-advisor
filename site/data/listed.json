@@ -1,16 +1,16 @@
 {
   "version": "listed-tracker-v1",
-  "generated_at_ist": "2026-10-12T17:49:28.080508+05:30",
+  "generated_at_ist": "2026-10-12T20:45:08.973033+05:30",
   "current_prices_as_of_ist": "2026-10-12T16:00:00+05:30",
   "summary": {
     "listed_records": 292,
     "market_identity_resolved": 192,
     "current_price_available": 192,
-    "unlock_schedule_available": 258,
+    "unlock_schedule_available": 259,
     "duplicate_rows_removed": 4,
     "bse_identities_added": 0,
     "bse_direct_quotes": 0,
-    "listing_price_market_fallbacks": 10
+    "listing_price_market_fallbacks": 8
   },
   "records": [
     {
@@ -28,12 +28,87 @@
       "current_return_pct": -7.32,
       "current_price_as_of_ist": "2026-10-12T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
-      "unlock_events": [],
-      "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_events": [
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-10-08",
+          "source_url": "https://ipomarkets.com/ipo/rkfashion-accessories-ipo-jrj8wtg",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 361
+        }
+      ],
+      "next_unlock": {
+        "category": "PRE_IPO",
+        "label": "Non-promoter pre-issue shares",
+        "duration": "1 year",
+        "unlock_date": "2027-10-08",
+        "source_url": "https://ipomarkets.com/ipo/rkfashion-accessories-ipo-jrj8wtg",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 361
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-10-12T20:45:08.973033+05:30",
       "detail_url": "https://ipomarkets.com/ipo/rkfashion-accessories-ipo-jrj8wtg",
       "listing_price_source": "NSE_LISTING_DAY_OPEN"
+    },
+    {
+      "tracker_key": "2026|SME|tstnasolutions",
+      "name": "TS TNA Solutions",
+      "symbol": null,
+      "market": null,
+      "market_symbol": null,
+      "ipo_type": "SME",
+      "listing_date": "2026-10-09",
+      "issue_price": 70.0,
+      "listing_price": 56.0,
+      "listing_return_pct": -20.0,
+      "current_price": null,
+      "current_return_pct": null,
+      "current_price_as_of_ist": null,
+      "current_price_source": null,
+      "unlock_events": [
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — first 50%",
+          "duration": "30 days",
+          "unlock_date": "2026-11-06",
+          "source_url": "https://ipomarkets.com/ipo/tna-solutions-ipo-g6nd1ry",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 25
+        },
+        {
+          "category": "ANCHOR",
+          "label": "Anchor investors — remaining 50%",
+          "duration": "90 days",
+          "unlock_date": "2027-01-05",
+          "source_url": "https://ipomarkets.com/ipo/tna-solutions-ipo-g6nd1ry",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 85
+        },
+        {
+          "category": "PRE_IPO",
+          "label": "Non-promoter pre-issue shares",
+          "duration": "1 year",
+          "unlock_date": "2027-10-07",
+          "source_url": "https://ipomarkets.com/ipo/tna-solutions-ipo-g6nd1ry",
+          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+          "days_remaining": 360
+        }
+      ],
+      "next_unlock": {
+        "category": "ANCHOR",
+        "label": "Anchor investors — first 50%",
+        "duration": "30 days",
+        "unlock_date": "2026-11-06",
+        "source_url": "https://ipomarkets.com/ipo/tna-solutions-ipo-g6nd1ry",
+        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
+        "days_remaining": 25
+      },
+      "unlock_status": "AVAILABLE",
+      "unlock_checked_at_ist": "2026-10-09T00:29:06.079335+05:30",
+      "detail_url": "https://ipomarkets.com/ipo/tna-solutions-ipo-g6nd1ry"
     },
     {
       "tracker_key": "HANDOFF|2026|SME|tnasolutions|2026-10-06",
@@ -65,8 +140,8 @@
       "ipo_type": "SME",
       "listing_date": "2026-10-09",
       "issue_price": 127.0,
-      "listing_price": 37.2,
-      "listing_return_pct": -70.71,
+      "listing_price": 115.0,
+      "listing_return_pct": -9.45,
       "current_price": 34.45,
       "current_return_pct": -72.87,
       "current_price_as_of_ist": "2026-10-12T16:00:00+05:30",
@@ -93,8 +168,7 @@
       },
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-10-09T00:29:06.079335+05:30",
-      "detail_url": "https://ipomarkets.com/ipo/paramount-syntex-ipo-pxpmz7g",
-      "listing_price_source": "NSE_LISTING_DAY_OPEN"
+      "detail_url": "https://ipomarkets.com/ipo/paramount-syntex-ipo-pxpmz7g"
     },
     {
       "tracker_key": "2026|SME|acmeindiaindustries",
@@ -105,8 +179,8 @@
       "ipo_type": "SME",
       "listing_date": "2026-10-09",
       "issue_price": 196.0,
-      "listing_price": 15.55,
-      "listing_return_pct": -92.07,
+      "listing_price": 221.0,
+      "listing_return_pct": 12.76,
       "current_price": 15.55,
       "current_return_pct": -92.07,
       "current_price_as_of_ist": "2026-10-12T16:00:00+05:30",
@@ -151,8 +225,7 @@
       },
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-10-09T00:29:06.079335+05:30",
-      "detail_url": "https://ipomarkets.com/ipo/acme-india-industries-ipo-gfy3rsw",
-      "listing_price_source": "NSE_LISTING_DAY_OPEN"
+      "detail_url": "https://ipomarkets.com/ipo/acme-india-industries-ipo-gfy3rsw"
     },
     {
       "tracker_key": "2026|MAINBOARD|vishalnirmiti",
@@ -1426,7 +1499,7 @@
       "unlock_events": [],
       "next_unlock": null,
       "unlock_status": "NOT_AVAILABLE",
-      "unlock_checked_at_ist": "2026-10-05T19:56:03.716993+05:30",
+      "unlock_checked_at_ist": "2026-10-12T20:45:08.973033+05:30",
       "detail_url": "https://ipomarkets.com/ipo/dudani-retail-ipo-yp5frjv"
     },
     {
@@ -13183,63 +13256,6 @@
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-08-27T23:05:44.196312+05:30",
       "detail_url": "https://ipomarkets.com/ipo/pan-hr-solutions-ipo-bx5pbzm"
-    },
-    {
-      "tracker_key": "2026|SME|tstnasolutions",
-      "name": "TS TNA Solutions",
-      "symbol": null,
-      "market": null,
-      "market_symbol": null,
-      "ipo_type": "SME",
-      "listing_date": null,
-      "issue_price": 70.0,
-      "listing_price": null,
-      "listing_return_pct": null,
-      "current_price": null,
-      "current_return_pct": null,
-      "current_price_as_of_ist": null,
-      "current_price_source": null,
-      "unlock_events": [
-        {
-          "category": "ANCHOR",
-          "label": "Anchor investors — first 50%",
-          "duration": "30 days",
-          "unlock_date": "2026-11-06",
-          "source_url": "https://ipomarkets.com/ipo/tna-solutions-ipo-g6nd1ry",
-          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
-          "days_remaining": 25
-        },
-        {
-          "category": "ANCHOR",
-          "label": "Anchor investors — remaining 50%",
-          "duration": "90 days",
-          "unlock_date": "2027-01-05",
-          "source_url": "https://ipomarkets.com/ipo/tna-solutions-ipo-g6nd1ry",
-          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
-          "days_remaining": 85
-        },
-        {
-          "category": "PRE_IPO",
-          "label": "Non-promoter pre-issue shares",
-          "duration": "1 year",
-          "unlock_date": "2027-10-07",
-          "source_url": "https://ipomarkets.com/ipo/tna-solutions-ipo-g6nd1ry",
-          "source_kind": "IPOMARKETS_LOCKIN_TABLE",
-          "days_remaining": 360
-        }
-      ],
-      "next_unlock": {
-        "category": "ANCHOR",
-        "label": "Anchor investors — first 50%",
-        "duration": "30 days",
-        "unlock_date": "2026-11-06",
-        "source_url": "https://ipomarkets.com/ipo/tna-solutions-ipo-g6nd1ry",
-        "source_kind": "IPOMARKETS_LOCKIN_TABLE",
-        "days_remaining": 25
-      },
-      "unlock_status": "AVAILABLE",
-      "unlock_checked_at_ist": "2026-10-09T00:29:06.079335+05:30",
-      "detail_url": "https://ipomarkets.com/ipo/tna-solutions-ipo-g6nd1ry"
     },
     {
       "tracker_key": "2026|SME|rerobokidzeduventures",
