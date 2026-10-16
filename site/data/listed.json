@@ -1,6 +1,6 @@
 {
   "version": "listed-tracker-v1",
-  "generated_at_ist": "2026-10-16T20:57:04.974311+05:30",
+  "generated_at_ist": "2026-10-16T22:23:05.401659+05:30",
   "current_prices_as_of_ist": "2026-10-16T16:00:00+05:30",
   "summary": {
     "listed_records": 292,
@@ -3426,7 +3426,7 @@
       "unlock_events": [],
       "next_unlock": null,
       "unlock_status": "NOT_AVAILABLE",
-      "unlock_checked_at_ist": "2026-10-09T18:37:14.058543+05:30",
+      "unlock_checked_at_ist": "2026-10-16T22:23:05.401659+05:30",
       "detail_url": "https://ipomarkets.com/ipo/panchatv-bharat-ipo-sax0d62"
     },
     {
@@ -13252,9 +13252,7 @@
     ]
   },
   "errors": {
-    "security_master": [
-      "NSE_SME_MASTER: TimeoutError: The read operation timed out"
-    ],
+    "security_master": [],
     "current_price": [
       "HTTPError: HTTP Error 429: Too Many Requests",
       "HTTPError: HTTP Error 429: Too Many Requests",
@@ -13264,7 +13262,7 @@
       "HTTPError: HTTP Error 429: Too Many Requests"
     ],
     "nse_bhav": [
-      "https://nsearchives.nseindia.com/emerge/corporates/content/sme16102026.csv: TimeoutError: The read operation timed out",
+      "https://nsearchives.nseindia.com/emerge/corporates/content/sme16102026.csv: HTTPError: HTTP Error 404: Not Found",
       "https://archives.nseindia.com/emerge/corporates/content/sme16102026.csv: HTTPError: HTTP Error 404: Not Found"
     ]
   }
