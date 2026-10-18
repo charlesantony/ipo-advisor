@@ -1,6 +1,6 @@
 {
-  "fetched_at_utc": "2026-10-17T20:57:36.265667+00:00",
-  "fetched_at_ist": "2026-10-18T02:27:36.265667+05:30",
+  "fetched_at_utc": "2026-10-18T21:02:10.755053+00:00",
+  "fetched_at_ist": "2026-10-19T02:32:10.755053+05:30",
   "status_filter": "LIVE",
   "type_filter": "ALL",
   "records": [
@@ -22,11 +22,18 @@
       "issue_size_cr": null,
       "fresh_issue_cr": null,
       "ofs_cr": null,
-      "gmp_value": null,
-      "gmp_gain_pct": null,
-      "gmp_date": null,
-      "gmp_source": null,
-      "gmp_trends": [],
+      "gmp_value": 525.0,
+      "gmp_gain_pct": 75.0,
+      "gmp_date": "19 October",
+      "gmp_source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/",
+      "gmp_trends": [
+        {
+          "date": "19 October",
+          "gmp": "₹525",
+          "gain": "75.00%",
+          "source": "IPOWATCH_LATEST_DASHBOARD"
+        }
+      ],
       "qib_x": 3.95,
       "nii_x": 14.35,
       "retail_x": 7.13,
@@ -54,27 +61,30 @@
           "lockInEndDateAnchorRemaining": "2027-01-18"
         }
       },
-      "gmp_status": "FETCH_INCOMPLETE",
+      "gmp_fallback_source": "IPOWATCH_LATEST_DASHBOARD",
+      "gmp_status": "VERIFIED",
       "gmp_validation": {
-        "complete": false,
-        "status": "INCOMPLETE",
+        "complete": true,
+        "status": "FALLBACK",
         "provider_gmp_missing": true,
         "attempted_sources": [
           "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
         ],
-        "errors": [
-          "dashboard: TimeoutError: The read operation timed out"
-        ]
+        "errors": [],
+        "source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/",
+        "source_kind": "IPOWATCH_LATEST_DASHBOARD",
+        "gmp_value": 525.0,
+        "gmp_gain_pct": 75.0
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-10-18T02:27:36.265667+05:30",
+      "subscription_observed_at_ist": "2026-10-19T02:32:10.755053+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-10-18T02:27:36.265667+05:30",
+        "observed_at_ist": "2026-10-19T02:32:10.755053+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -93,7 +103,7 @@
         "schedule": true,
         "price": true,
         "issue_size": false,
-        "gmp": false,
+        "gmp": true,
         "gmp_history": false,
         "qib": true,
         "nii": true,
@@ -103,7 +113,7 @@
         "risks": false
       },
       "features": {
-        "gmp_latest_pct": null,
+        "gmp_latest_pct": 75.0,
         "gmp_change_1obs": null,
         "gmp_change_3obs": null,
         "log_qib": 1.599387576580599,
@@ -114,38 +124,40 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 1395.0,
+        "minutes_since_previous": 1444.6,
         "qib_x_per_hour": 0.0,
         "nii_x_per_hour": 0.0,
         "retail_x_per_hour": 0.0,
         "total_x_per_hour": 0.0
       },
-      "is_closing_today": false,
+      "is_closing_today": true,
       "would_be_1430_decision_snapshot": false,
       "recommendation": {
         "policy_version": "research-v1.1",
         "segment": "MAINBOARD",
-        "action": "LOCKED",
-        "action_priority": 0,
-        "research_confidence": null,
+        "action": "STRONG SUBSCRIBE",
+        "action_priority": 5,
+        "research_confidence": "HIGHER",
         "finality": {
-          "code": "EARLY",
-          "label": "EARLY SIGNAL — NOT FINAL; use closing-day 2:30 PM IST decision",
+          "code": "CLOSING_DAY_PRE_1430",
+          "label": "PRELIMINARY — closes today; wait for 2:30 PM IST snapshot",
           "canonical": false
         },
         "predictions": {
-          "gmp_input_pct": null,
+          "gmp_input_pct": 75.0,
           "total_subscription_x": 7.78,
-          "log_total": null,
-          "gmp_prediction_pct": null,
-          "subscription_prediction_pct": null,
+          "log_total": 2.172476407647025,
+          "gmp_prediction_pct": 76.26,
+          "subscription_prediction_pct": 15.33,
           "prediction_cap_pct": null
         },
-        "primary_prediction_pct": null,
-        "ranking_score": -999.0,
+        "primary_prediction_pct": 76.26,
+        "ranking_score": 76.26,
         "signal_conflict": false,
         "reason": [
-          "Relevant data not available."
+          "GMP model is at or above the +30% Strong Subscribe threshold set at the first prospective manual review.",
+          "Total-subscription model is supportive.",
+          "PRELIMINARY — closes today; wait for 2:30 PM IST snapshot"
         ],
         "training": {
           "source_year": 2024,
@@ -175,9 +187,9 @@
         },
         "disclaimer": "Research model only. It estimates listing-gain potential from historical GMP and subscription patterns; it does not consider your financial situation or guarantee profit.",
         "public_signal": {
-          "locked": true,
-          "action": "LOCKED",
-          "reason": "RELEVANT_DATA_NOT_AVAILABLE"
+          "locked": false,
+          "action": "STRONG SUBSCRIBE",
+          "reason": null
         }
       }
     },
@@ -231,27 +243,26 @@
           "lockInEndDateAnchorRemaining": "2027-01-18"
         }
       },
-      "gmp_status": "FETCH_INCOMPLETE",
+      "gmp_status": "NOT_AVAILABLE",
       "gmp_validation": {
-        "complete": false,
-        "status": "INCOMPLETE",
+        "complete": true,
+        "status": "VERIFIED_ABSENT",
         "provider_gmp_missing": true,
         "attempted_sources": [
           "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
         ],
-        "errors": [
-          "dashboard: RuntimeError: The read operation timed out"
-        ]
+        "errors": [],
+        "source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-10-18T02:27:36.265667+05:30",
+      "subscription_observed_at_ist": "2026-10-19T02:32:10.755053+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-10-18T02:27:36.265667+05:30",
+        "observed_at_ist": "2026-10-19T02:32:10.755053+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -291,38 +302,39 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 1395.0,
+        "minutes_since_previous": 1444.6,
         "qib_x_per_hour": 0.0,
         "nii_x_per_hour": 0.0,
         "retail_x_per_hour": 0.0,
         "total_x_per_hour": 0.0
       },
-      "is_closing_today": false,
+      "is_closing_today": true,
       "would_be_1430_decision_snapshot": false,
       "recommendation": {
         "policy_version": "research-v1.1",
         "segment": "MAINBOARD",
-        "action": "LOCKED",
-        "action_priority": 0,
-        "research_confidence": null,
+        "action": "AVOID",
+        "action_priority": 2,
+        "research_confidence": "LOW",
         "finality": {
-          "code": "EARLY",
-          "label": "EARLY SIGNAL — NOT FINAL; use closing-day 2:30 PM IST decision",
+          "code": "CLOSING_DAY_PRE_1430",
+          "label": "PRELIMINARY — closes today; wait for 2:30 PM IST snapshot",
           "canonical": false
         },
         "predictions": {
           "gmp_input_pct": null,
           "total_subscription_x": 0.82,
-          "log_total": null,
+          "log_total": 0.598836501088704,
           "gmp_prediction_pct": null,
-          "subscription_prediction_pct": null,
+          "subscription_prediction_pct": -10.52,
           "prediction_cap_pct": null
         },
-        "primary_prediction_pct": null,
-        "ranking_score": -999.0,
+        "primary_prediction_pct": -10.52,
+        "ranking_score": -10.52,
         "signal_conflict": false,
         "reason": [
-          "Relevant data not available."
+          "GMP is unavailable and subscription model is below +10%.",
+          "PRELIMINARY — closes today; wait for 2:30 PM IST snapshot"
         ],
         "training": {
           "source_year": 2024,
@@ -352,9 +364,9 @@
         },
         "disclaimer": "Research model only. It estimates listing-gain potential from historical GMP and subscription patterns; it does not consider your financial situation or guarantee profit.",
         "public_signal": {
-          "locked": true,
-          "action": "LOCKED",
-          "reason": "RELEVANT_DATA_NOT_AVAILABLE"
+          "locked": false,
+          "action": "AVOID",
+          "reason": null
         }
       }
     },
@@ -376,11 +388,18 @@
       "issue_size_cr": null,
       "fresh_issue_cr": null,
       "ofs_cr": null,
-      "gmp_value": null,
-      "gmp_gain_pct": null,
-      "gmp_date": null,
-      "gmp_source": null,
-      "gmp_trends": [],
+      "gmp_value": 130.0,
+      "gmp_gain_pct": 22.18,
+      "gmp_date": "19 October",
+      "gmp_source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/",
+      "gmp_trends": [
+        {
+          "date": "19 October",
+          "gmp": "₹130",
+          "gain": "22.18%",
+          "source": "IPOWATCH_LATEST_DASHBOARD"
+        }
+      ],
       "qib_x": 0.16,
       "nii_x": 1.71,
       "retail_x": 1.16,
@@ -408,27 +427,30 @@
           "lockInEndDateAnchorRemaining": "2027-01-18"
         }
       },
-      "gmp_status": "FETCH_INCOMPLETE",
+      "gmp_fallback_source": "IPOWATCH_LATEST_DASHBOARD",
+      "gmp_status": "VERIFIED",
       "gmp_validation": {
-        "complete": false,
-        "status": "INCOMPLETE",
+        "complete": true,
+        "status": "FALLBACK",
         "provider_gmp_missing": true,
         "attempted_sources": [
           "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
         ],
-        "errors": [
-          "dashboard: RuntimeError: The read operation timed out"
-        ]
+        "errors": [],
+        "source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/",
+        "source_kind": "IPOWATCH_LATEST_DASHBOARD",
+        "gmp_value": 130.0,
+        "gmp_gain_pct": 22.18
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-10-18T02:27:36.265667+05:30",
+      "subscription_observed_at_ist": "2026-10-19T02:32:10.755053+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-10-18T02:27:36.265667+05:30",
+        "observed_at_ist": "2026-10-19T02:32:10.755053+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -447,7 +469,7 @@
         "schedule": true,
         "price": true,
         "issue_size": false,
-        "gmp": false,
+        "gmp": true,
         "gmp_history": false,
         "qib": true,
         "nii": true,
@@ -457,7 +479,7 @@
         "risks": false
       },
       "features": {
-        "gmp_latest_pct": null,
+        "gmp_latest_pct": 22.18,
         "gmp_change_1obs": null,
         "gmp_change_3obs": null,
         "log_qib": 0.14842000511827327,
@@ -468,38 +490,40 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 1395.0,
+        "minutes_since_previous": 1444.6,
         "qib_x_per_hour": 0.0,
         "nii_x_per_hour": 0.0,
         "retail_x_per_hour": 0.0,
         "total_x_per_hour": 0.0
       },
-      "is_closing_today": false,
+      "is_closing_today": true,
       "would_be_1430_decision_snapshot": false,
       "recommendation": {
         "policy_version": "research-v1.1",
         "segment": "MAINBOARD",
-        "action": "LOCKED",
-        "action_priority": 0,
-        "research_confidence": null,
+        "action": "SUBSCRIBE",
+        "action_priority": 4,
+        "research_confidence": "MEDIUM",
         "finality": {
-          "code": "EARLY",
-          "label": "EARLY SIGNAL — NOT FINAL; use closing-day 2:30 PM IST decision",
+          "code": "CLOSING_DAY_PRE_1430",
+          "label": "PRELIMINARY — closes today; wait for 2:30 PM IST snapshot",
           "canonical": false
         },
         "predictions": {
-          "gmp_input_pct": null,
+          "gmp_input_pct": 22.18,
           "total_subscription_x": 0.99,
-          "log_total": null,
-          "gmp_prediction_pct": null,
-          "subscription_prediction_pct": null,
+          "log_total": 0.688134638736401,
+          "gmp_prediction_pct": 19.98,
+          "subscription_prediction_pct": -9.06,
           "prediction_cap_pct": null
         },
-        "primary_prediction_pct": null,
-        "ranking_score": -999.0,
-        "signal_conflict": false,
+        "primary_prediction_pct": 19.98,
+        "ranking_score": 19.98,
+        "signal_conflict": true,
         "reason": [
-          "Relevant data not available."
+          "GMP model is between +10% and +30%; the IPO remains selected, but below the revised Strong Subscribe tier.",
+          "Demand model conflicts with GMP; action is retained but confidence is reduced.",
+          "PRELIMINARY — closes today; wait for 2:30 PM IST snapshot"
         ],
         "training": {
           "source_year": 2024,
@@ -529,9 +553,9 @@
         },
         "disclaimer": "Research model only. It estimates listing-gain potential from historical GMP and subscription patterns; it does not consider your financial situation or guarantee profit.",
         "public_signal": {
-          "locked": true,
-          "action": "LOCKED",
-          "reason": "RELEVANT_DATA_NOT_AVAILABLE"
+          "locked": false,
+          "action": "SUBSCRIBE",
+          "reason": null
         }
       }
     },
@@ -585,27 +609,26 @@
           "lockInEndDateAnchorRemaining": "2027-01-18"
         }
       },
-      "gmp_status": "FETCH_INCOMPLETE",
+      "gmp_status": "NOT_AVAILABLE",
       "gmp_validation": {
-        "complete": false,
-        "status": "INCOMPLETE",
+        "complete": true,
+        "status": "VERIFIED_ABSENT",
         "provider_gmp_missing": true,
         "attempted_sources": [
           "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
         ],
-        "errors": [
-          "dashboard: RuntimeError: The read operation timed out"
-        ]
+        "errors": [],
+        "source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-10-18T02:27:36.265667+05:30",
+      "subscription_observed_at_ist": "2026-10-19T02:32:10.755053+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-10-18T02:27:36.265667+05:30",
+        "observed_at_ist": "2026-10-19T02:32:10.755053+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -645,38 +668,39 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 1395.0,
+        "minutes_since_previous": 1444.6,
         "qib_x_per_hour": 0.0,
         "nii_x_per_hour": 0.0,
         "retail_x_per_hour": 0.0,
         "total_x_per_hour": 0.0
       },
-      "is_closing_today": false,
+      "is_closing_today": true,
       "would_be_1430_decision_snapshot": false,
       "recommendation": {
         "policy_version": "research-v1.1",
         "segment": "MAINBOARD",
-        "action": "LOCKED",
-        "action_priority": 0,
-        "research_confidence": null,
+        "action": "AVOID",
+        "action_priority": 2,
+        "research_confidence": "LOW",
         "finality": {
-          "code": "EARLY",
-          "label": "EARLY SIGNAL — NOT FINAL; use closing-day 2:30 PM IST decision",
+          "code": "CLOSING_DAY_PRE_1430",
+          "label": "PRELIMINARY — closes today; wait for 2:30 PM IST snapshot",
           "canonical": false
         },
         "predictions": {
           "gmp_input_pct": null,
           "total_subscription_x": 0.31,
-          "log_total": null,
+          "log_total": 0.27002713721306015,
           "gmp_prediction_pct": null,
-          "subscription_prediction_pct": null,
+          "subscription_prediction_pct": -15.92,
           "prediction_cap_pct": null
         },
-        "primary_prediction_pct": null,
-        "ranking_score": -999.0,
+        "primary_prediction_pct": -15.92,
+        "ranking_score": -15.92,
         "signal_conflict": false,
         "reason": [
-          "Relevant data not available."
+          "GMP is unavailable and subscription model is below +10%.",
+          "PRELIMINARY — closes today; wait for 2:30 PM IST snapshot"
         ],
         "training": {
           "source_year": 2024,
@@ -706,9 +730,9 @@
         },
         "disclaimer": "Research model only. It estimates listing-gain potential from historical GMP and subscription patterns; it does not consider your financial situation or guarantee profit.",
         "public_signal": {
-          "locked": true,
-          "action": "LOCKED",
-          "reason": "RELEVANT_DATA_NOT_AVAILABLE"
+          "locked": false,
+          "action": "AVOID",
+          "reason": null
         }
       }
     },
@@ -762,27 +786,26 @@
           "lockInEndDateAnchorRemaining": "2027-01-18"
         }
       },
-      "gmp_status": "FETCH_INCOMPLETE",
+      "gmp_status": "NOT_AVAILABLE",
       "gmp_validation": {
-        "complete": false,
-        "status": "INCOMPLETE",
+        "complete": true,
+        "status": "VERIFIED_ABSENT",
         "provider_gmp_missing": true,
         "attempted_sources": [
           "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
         ],
-        "errors": [
-          "dashboard: RuntimeError: The read operation timed out"
-        ]
+        "errors": [],
+        "source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-10-18T02:27:36.265667+05:30",
+      "subscription_observed_at_ist": "2026-10-19T02:32:10.755053+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-10-18T02:27:36.265667+05:30",
+        "observed_at_ist": "2026-10-19T02:32:10.755053+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -822,38 +845,39 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 1395.0,
+        "minutes_since_previous": 1444.6,
         "qib_x_per_hour": 0.0,
         "nii_x_per_hour": 0.0,
         "retail_x_per_hour": 0.0,
         "total_x_per_hour": 0.0
       },
-      "is_closing_today": false,
+      "is_closing_today": true,
       "would_be_1430_decision_snapshot": false,
       "recommendation": {
         "policy_version": "research-v1.1",
         "segment": "SME",
-        "action": "LOCKED",
-        "action_priority": 0,
-        "research_confidence": null,
+        "action": "AVOID",
+        "action_priority": 2,
+        "research_confidence": "LOW",
         "finality": {
-          "code": "EARLY",
-          "label": "EARLY SIGNAL — NOT FINAL; use closing-day 2:30 PM IST decision",
+          "code": "CLOSING_DAY_PRE_1430",
+          "label": "PRELIMINARY — closes today; wait for 2:30 PM IST snapshot",
           "canonical": false
         },
         "predictions": {
           "gmp_input_pct": null,
           "total_subscription_x": 0.91,
-          "log_total": null,
+          "log_total": 0.6471032420585385,
           "gmp_prediction_pct": null,
-          "subscription_prediction_pct": null,
+          "subscription_prediction_pct": -28.8,
           "prediction_cap_pct": 90.0
         },
-        "primary_prediction_pct": null,
-        "ranking_score": -999.0,
+        "primary_prediction_pct": -28.8,
+        "ranking_score": -28.8,
         "signal_conflict": false,
         "reason": [
-          "Relevant data not available."
+          "GMP is unavailable and subscription model is below +10%.",
+          "PRELIMINARY — closes today; wait for 2:30 PM IST snapshot"
         ],
         "training": {
           "source_year": 2024,
@@ -883,9 +907,9 @@
         },
         "disclaimer": "Research model only. It estimates listing-gain potential from historical GMP and subscription patterns; it does not consider your financial situation or guarantee profit.",
         "public_signal": {
-          "locked": true,
-          "action": "LOCKED",
-          "reason": "RELEVANT_DATA_NOT_AVAILABLE"
+          "locked": false,
+          "action": "AVOID",
+          "reason": null
         }
       }
     }
