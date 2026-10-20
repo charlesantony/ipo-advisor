@@ -2186,19 +2186,30 @@ def build_listed_payload(*args, **kwargs):
 _build_listed_payload_v0531 = build_listed_payload
 
 
-def _v0532_parse_lot_size(detail_url):
+def _v0532_parse_application(detail_url, issue_price=None):
+    """Return the minimum retail/individual IPO application.
+
+    Mainboard pages normally label this row "Retail · min".
+    SME pages normally label it "Individual · min".
+
+    `application_shares` is therefore the actual minimum application quantity,
+    not the exchange lot size. For example, if an SME minimum is 2 lots of
+    1,600 shares, application_shares is 3,200.
+    """
     body, _, _ = _fetch(
         detail_url,
-        "LISTED_LOT_SIZE_DETAIL",
+        "LISTED_APPLICATION_DETAIL",
         timeout=15,
     )
     parser = RichTableParser()
     parser.feed(body)
 
     candidates = []
+
     for table in parser.tables:
         if not table:
             continue
+
         headers = [
             re.sub(
                 r"[^a-z0-9]",
@@ -2212,11 +2223,40 @@ def _v0532_parse_lot_size(detail_url):
 
         lots_i = headers.index("lots")
         shares_i = headers.index("shares")
+        amount_i = headers.index("amount") if "amount" in headers else None
+
+        # Usually "Who" or "Application"; if not, use the first non-numeric
+        # descriptive column.
+        label_i = None
+        for candidate_header in ("who", "application", "applicant"):
+            if candidate_header in headers:
+                label_i = headers.index(candidate_header)
+                break
+        if label_i is None:
+            for idx in range(len(headers)):
+                if idx not in {lots_i, shares_i, amount_i}:
+                    label_i = idx
+                    break
+
         for row in table[1:]:
             if max(lots_i, shares_i) >= len(row):
                 continue
+
+            label = (
+                " ".join(str(row[label_i].get("text") or "").split())
+                if label_i is not None and label_i < len(row)
+                else ""
+            )
+            label_key = re.sub(r"[^a-z0-9]", "", label.lower())
+
             lots = _f(row[lots_i].get("text"))
             shares = _f(row[shares_i].get("text"))
+            amount = (
+                _f(row[amount_i].get("text"))
+                if amount_i is not None and amount_i < len(row)
+                else None
+            )
+
             if (
                 lots is None
                 or shares is None
@@ -2225,22 +2265,54 @@ def _v0532_parse_lot_size(detail_url):
             ):
                 continue
 
-            per_lot = shares / lots
-            rounded = round(per_lot)
-            if rounded > 0 and abs(per_lot - rounded) < 0.01:
-                candidates.append(int(rounded))
+            is_min = "min" in label_key
+            is_retail = "retail" in label_key
+            is_individual = "individual" in label_key
+
+            candidates.append({
+                "label": label or None,
+                "lots": int(round(lots)),
+                "shares": int(round(shares)),
+                "amount": amount,
+                "preferred": bool(
+                    is_min and (is_retail or is_individual)
+                ),
+            })
+
+        if candidates:
+            break
 
     if not candidates:
         return None
 
-    counts = {}
-    for value in candidates:
-        counts[value] = counts.get(value, 0) + 1
+    preferred = [c for c in candidates if c["preferred"]]
+    pool = preferred or candidates
 
-    return max(
-        counts,
-        key=lambda value: (counts[value], -value),
+    # The minimum public application has the smallest positive share count.
+    chosen = min(
+        pool,
+        key=lambda c: (
+            c.get("shares") or 10**18,
+            c.get("amount") or 10**18,
+        ),
     )
+
+    shares = int(chosen["shares"])
+    amount = _f(chosen.get("amount"))
+    price = _f(issue_price)
+
+    # For listed IPOs issue_price is final. Prefer a deterministic recompute
+    # so the displayed application amount exactly matches issue price × shares.
+    if price is not None and price > 0:
+        amount = round(price * shares, 2)
+
+    return {
+        "application_shares": shares,
+        "application_amount": amount,
+        "application_lots": chosen.get("lots"),
+        "application_tier": chosen.get("label"),
+        "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
+    }
 
 
 def build_listed_payload(*args, **kwargs):
@@ -2253,17 +2325,17 @@ def build_listed_payload(*args, **kwargs):
     records = payload.get("records") or []
 
     fetched = 0
-    max_lot_fetches = 40
+    max_application_fetches = 40
 
     # Newest listings are already sorted first by the base builder.
     if deep_refresh:
         for record in records:
-            if fetched >= max_lot_fetches:
+            if fetched >= max_application_fetches:
                 break
 
             key = str(record.get("tracker_key") or "")
             item = cache.setdefault(key, {})
-            if item.get("lot_size") is not None:
+            if item.get("application_shares") is not None:
                 continue
 
             detail_url = record.get("detail_url")
@@ -2271,24 +2343,30 @@ def build_listed_payload(*args, **kwargs):
                 continue
 
             try:
-                lot_size = _v0532_parse_lot_size(detail_url)
-                if lot_size is not None:
-                    item["lot_size"] = int(lot_size)
-                    item["lot_size_source"] = "IPOMARKETS_LOT_SIZE_TABLE"
+                application = _v0532_parse_application(
+                    detail_url,
+                    issue_price=record.get("issue_price"),
+                )
+                if application:
+                    item.update(application)
                     logger.info(
-                        "LISTED_LOT_SIZE_REFRESH name=%r lot_size=%s",
+                        "LISTED_APPLICATION_REFRESH "
+                        "name=%r shares=%s amount=%s lots=%s tier=%r",
                         record.get("name"),
-                        lot_size,
+                        application.get("application_shares"),
+                        application.get("application_amount"),
+                        application.get("application_lots"),
+                        application.get("application_tier"),
                     )
                 else:
                     logger.warning(
-                        "LISTED_LOT_SIZE_NOT_FOUND name=%r url=%r",
+                        "LISTED_APPLICATION_NOT_FOUND name=%r url=%r",
                         record.get("name"),
                         detail_url,
                     )
             except Exception as exc:
                 logger.warning(
-                    "LISTED_LOT_SIZE_FAILED name=%r url=%r error=%r",
+                    "LISTED_APPLICATION_FAILED name=%r url=%r error=%r",
                     record.get("name"),
                     detail_url,
                     str(exc),
@@ -2297,53 +2375,82 @@ def build_listed_payload(*args, **kwargs):
             fetched += 1
             time.sleep(0.05)
 
-    lot_available = 0
+    application_available = 0
     for record in records:
         key = str(record.get("tracker_key") or "")
         item = cache.get(key) or {}
 
-        lot_size = _f(item.get("lot_size"))
-        if lot_size is not None and lot_size > 0:
-            lot_size = int(round(lot_size))
-            lot_available += 1
+        application_shares = _f(item.get("application_shares"))
+        if application_shares is not None and application_shares > 0:
+            application_shares = int(round(application_shares))
+            application_available += 1
         else:
-            lot_size = None
+            application_shares = None
 
         issue = _f(record.get("issue_price"))
         listing = _f(record.get("listing_price"))
         current = _f(record.get("current_price"))
 
-        record["lot_size"] = lot_size
-        record["lot_size_source"] = item.get("lot_size_source")
-        record["listing_gain_per_lot"] = (
-            round((listing - issue) * lot_size, 2)
+        application_amount = _f(item.get("application_amount"))
+        if application_shares is not None and issue is not None:
+            application_amount = round(
+                application_shares * issue,
+                2,
+            )
+
+        record["application_shares"] = application_shares
+        record["application_amount"] = application_amount
+        record["application_lots"] = item.get("application_lots")
+        record["application_tier"] = item.get("application_tier")
+        record["application_source"] = item.get("application_source")
+
+        record["listing_gain_loss"] = (
+            round(
+                (listing - issue) * application_shares,
+                2,
+            )
             if (
-                lot_size is not None
+                application_shares is not None
                 and issue is not None
                 and listing is not None
             )
             else None
         )
-        record["current_gain_per_lot"] = (
-            round((current - issue) * lot_size, 2)
+        record["current_gain_loss"] = (
+            round(
+                (current - issue) * application_shares,
+                2,
+            )
             if (
-                lot_size is not None
+                application_shares is not None
                 and issue is not None
                 and current is not None
             )
             else None
         )
 
-    payload.setdefault("summary", {})["lot_size_available"] = lot_available
-    payload.setdefault("sources", {})["lot_size"] = "IPOMARKETS_LOT_SIZE_TABLE"
+        # Remove obsolete public per-lot fields from the output. Existing
+        # cached lot_size may remain internally but is no longer user-facing.
+        record.pop("lot_size", None)
+        record.pop("lot_size_source", None)
+        record.pop("listing_gain_per_lot", None)
+        record.pop("current_gain_per_lot", None)
+
+    summary = payload.setdefault("summary", {})
+    summary.pop("lot_size_available", None)
+    summary["application_size_available"] = application_available
+
+    sources = payload.setdefault("sources", {})
+    sources.pop("lot_size", None)
+    sources["application_size"] = "IPOMARKETS_MIN_APPLICATION_TABLE"
 
     if persist:
         state["records"] = cache
         _save_state(state)
 
     logger.info(
-        "LISTED_LOT_SIZE_ENRICH available=%s/%s fetched=%s",
-        lot_available,
+        "LISTED_APPLICATION_ENRICH available=%s/%s fetched=%s",
+        application_available,
         len(records),
         fetched,
     )

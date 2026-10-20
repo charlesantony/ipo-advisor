@@ -572,7 +572,7 @@ rerenderLiveView = function() {
 };
 
 /* -------------------------------------------------------------------------
- * v0.5.32 global All / Mainline / SME filter + Listed per-lot gains.
+ * v0.5.32a global All / Mainboard / SME filter + Listed application gains.
  * ---------------------------------------------------------------------- */
 let dashboardSegmentFilter = "ALL";
 
@@ -641,6 +641,17 @@ renderProspective = function(p) {
   });
 };
 
+function v0532aApplicationHtml(row) {
+  if (!hasObservedValue(row.application_shares)) return "—";
+
+  const shares = `${fmt(row.application_shares)} shares`;
+  const amount = hasObservedValue(row.application_amount)
+    ? `<div class="muted application-amount">${esc(money(row.application_amount))} application</div>`
+    : "";
+
+  return `${esc(shares)}${amount}`;
+}
+
 renderListed = function(data) {
   const records = v0532Filter(data?.records || []);
   const asOf = data?.current_prices_as_of_ist || data?.generated_at_ist;
@@ -663,23 +674,21 @@ renderListed = function(data) {
         </div>
       </td>
       <td>${esc(row.ipo_type || "—")}</td>
-      <td class="price-cell">
-        ${hasObservedValue(row.lot_size)
-          ? `${fmt(row.lot_size)} shares`
-          : "—"}
+      <td class="price-cell application-cell">
+        ${v0532aApplicationHtml(row)}
       </td>
       <td class="price-cell">${esc(money(row.issue_price))}</td>
       <td class="price-cell">
         ${priceWithReturn(row.listing_price, row.listing_return_pct)}
       </td>
-      <td class="price-cell ${trend(row.listing_gain_per_lot)}">
-        ${esc(v0532SignedMoney(row.listing_gain_per_lot))}
+      <td class="price-cell ${trend(row.listing_gain_loss)}">
+        ${esc(v0532SignedMoney(row.listing_gain_loss))}
       </td>
       <td class="price-cell">
         ${priceWithReturn(row.current_price, row.current_return_pct)}
       </td>
-      <td class="price-cell ${trend(row.current_gain_per_lot)}">
-        ${esc(v0532SignedMoney(row.current_gain_per_lot))}
+      <td class="price-cell ${trend(row.current_gain_loss)}">
+        ${esc(v0532SignedMoney(row.current_gain_loss))}
       </td>
     </tr>
   `).join("") || `

@@ -679,7 +679,7 @@ footer {
   }
 }
 
-/* v0.5.32 IPO type filter + Listed per-lot gains */
+/* v0.5.32a IPO type filter + Listed application gain/loss */
 .segment-filter {
   display:flex;
   align-items:center;
@@ -725,10 +725,18 @@ footer {
   }
 
   #tab-listed td:nth-child(2)::before { content:"Type"; }
-  #tab-listed td:nth-child(3)::before { content:"Lot Size"; }
+  #tab-listed td:nth-child(3)::before { content:"Application Size"; }
   #tab-listed td:nth-child(4)::before { content:"Issue Price"; }
   #tab-listed td:nth-child(5)::before { content:"Listing Price"; }
-  #tab-listed td:nth-child(6)::before { content:"Listing Gain / Lot"; }
+  #tab-listed td:nth-child(6)::before { content:"List Gain/Loss"; }
   #tab-listed td:nth-child(7)::before { content:"Current Price"; }
-  #tab-listed td:nth-child(8)::before { content:"Current Gain / Lot"; }
+  #tab-listed td:nth-child(8)::before { content:"Current Gain/Loss"; }
+}
+.application-cell {
+  line-height:1.3;
+}
+.application-amount {
+  margin-top:3px;
+  font-size:11px;
+  font-weight:400;
 }
