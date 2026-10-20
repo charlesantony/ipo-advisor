@@ -35,6 +35,10 @@ YAHOO_SPARK_URL = "https://query1.finance.yahoo.com/v7/finance/spark"
 BSE_SCRIP_MASTER_URL = (
     "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w"
 )
+BSE_BHAVCOPY_URL_TEMPLATE = (
+    "https://www.bseindia.com/download/BhavCopy/Equity/"
+    "BhavCopy_BSE_CM_0_0_0_{date}_F_0000.CSV"
+)
 
 _STOPWORDS = {
     "limited", "ltd", "private", "pvt", "india", "the",
@@ -336,116 +340,304 @@ def _bse_api_json(url, params=None, timeout=15):
         )
 
 
+def _bse_bhavcopy_text(day, timeout=18):
+    url = BSE_BHAVCOPY_URL_TEMPLATE.format(
+        date=day.strftime("%Y%m%d")
+    )
+    req = urllib.request.Request(
+        url,
+        headers={
+            "User-Agent": (
+                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                "AppleWebKit/537.36 Chrome/150 Safari/537.36"
+            ),
+            "Accept": "text/csv,text/plain,*/*",
+            "Accept-Language": "en-IN,en;q=0.9",
+            "Referer": "https://www.bseindia.com/markets/marketinfo/bhavcopy",
+            "Cache-Control": "no-cache",
+        },
+    )
+    with urllib.request.urlopen(req, timeout=timeout) as resp:
+        return (
+            resp.read().decode("utf-8-sig", errors="replace"),
+            url,
+        )
+
+
+def _parse_bse_bhavcopy(body, fallback_day):
+    rows = []
+    reader = csv.DictReader(io.StringIO(body))
+
+    for raw in reader:
+        code = _csv_value(
+            raw,
+            "FinInstrmId",
+            "FININSTRMID",
+        )
+        symbol = _csv_value(
+            raw,
+            "TckrSymb",
+            "TICKER SYMBOL",
+        )
+        name = _csv_value(
+            raw,
+            "FinInstrmNm",
+            "INSTRUMENT NAME",
+            "SECURITY NAME",
+        )
+        isin = _csv_value(raw, "ISIN")
+        series = _csv_value(raw, "SctySrs", "SERIES")
+        trade_date = _csv_value(raw, "TradDt", "BizDt")
+
+        if not code or not name:
+            continue
+
+        price = _f(_csv_value(
+            raw,
+            "LastPric",
+            "ClsPric",
+            "PrvsClsgPric",
+        ))
+        volume = _f(_csv_value(raw, "TtlTradgVol"))
+
+        as_of_day = fallback_day
+        if trade_date:
+            try:
+                as_of_day = datetime.strptime(
+                    trade_date[:10], "%Y-%m-%d"
+                ).date()
+            except ValueError:
+                pass
+
+        rows.append({
+            "bse_code": str(code).strip(),
+            "symbol": (
+                str(symbol).strip().upper()
+                if symbol not in (None, "")
+                else str(code).strip()
+            ),
+            "name": str(name).strip(),
+            "isin": (
+                str(isin).strip()
+                if isin not in (None, "")
+                else None
+            ),
+            "group": (
+                str(series).strip()
+                if series not in (None, "")
+                else None
+            ),
+            "price": (
+                round(price, 2)
+                if price is not None and price > 0
+                else None
+            ),
+            "volume": volume,
+            "as_of_ist": (
+                f"{as_of_day.isoformat()}T16:00:00+05:30"
+            ),
+            "source_kind": "BSE_UDIFF_BHAVCOPY",
+        })
+
+    return rows
+
+
 def _load_bse_master():
-    """Load BSE's active equity security list once per process."""
+    """Build BSE identity + EOD price universe from public UDiFF bhavcopy.
+
+    The BSE ListofScripData API returns HTTP 403 from GitHub-hosted runners.
+    The public BSE UDiFF bhavcopy is a static exchange report and carries the
+    fields needed here: BSE code, ISIN, ticker, security name and EOD price.
+    """
     global _BSE_MASTER_CACHE
     if _BSE_MASTER_CACHE is not None:
         return _BSE_MASTER_CACHE
 
-    rows = []
     errors = []
-    try:
-        payload = _bse_api_json(
-            BSE_SCRIP_MASTER_URL,
-            {
-                "scripcode": "",
-                "Group": "",
-                "industry": "",
-                "segment": "Equity",
-                "status": "Active",
-            },
-            timeout=18,
-        )
+    by_code = {}
+    successful_days = []
+    latest_as_of = None
+    source_urls = []
 
-        if isinstance(payload, dict):
+    # Collect several recent sessions. This helps with very illiquid SME
+    # securities while keeping the total download volume modest.
+    day = _now().date()
+    attempts = 0
+    while attempts < 14 and len(successful_days) < 5:
+        candidate = day - timedelta(days=attempts)
+        attempts += 1
+
+        if candidate.weekday() >= 5:
+            continue
+
+        try:
+            body, url = _bse_bhavcopy_text(candidate)
+            parsed = _parse_bse_bhavcopy(body, candidate)
+            if not parsed:
+                errors.append(
+                    f"{candidate.isoformat()}: empty BSE bhavcopy"
+                )
+                continue
+
+            successful_days.append(candidate.isoformat())
+            source_urls.append(url)
+
+            # Latest session wins for price; older sessions only fill
+            # identities/prices absent in the newer report.
+            for row in parsed:
+                code = str(row.get("bse_code") or "")
+                if not code:
+                    continue
+                current = by_code.get(code)
+                if current is None:
+                    by_code[code] = row
+                elif (
+                    current.get("price") is None
+                    and row.get("price") is not None
+                ):
+                    current["price"] = row.get("price")
+                    current["as_of_ist"] = row.get("as_of_ist")
+                    current["volume"] = row.get("volume")
+
+            if latest_as_of is None and parsed:
+                latest_as_of = parsed[0].get("as_of_ist")
+
+            logger.info(
+                "LISTED_BSE_BHAVCOPY_SUCCESS day=%s rows=%s",
+                candidate.isoformat(),
+                len(parsed),
+            )
+        except urllib.error.HTTPError as exc:
+            if int(getattr(exc, "code", 0) or 0) == 404:
+                continue
+            errors.append(
+                f"{candidate.isoformat()}: HTTPError {exc.code}"
+            )
+            logger.warning(
+                "LISTED_BSE_BHAVCOPY_FAILED day=%s error=%r",
+                candidate.isoformat(),
+                str(exc),
+            )
+        except Exception as exc:
+            errors.append(
+                f"{candidate.isoformat()}: "
+                f"{type(exc).__name__}: {exc}"
+            )
+            logger.warning(
+                "LISTED_BSE_BHAVCOPY_FAILED day=%s error=%r",
+                candidate.isoformat(),
+                str(exc),
+            )
+
+    rows = list(by_code.values())
+
+    # Last-resort compatibility fallback only if the public static report could
+    # not be downloaded at all. Do not call the API when bhavcopy succeeded,
+    # avoiding the GitHub-runner 403 seen in production.
+    if not rows:
+        try:
+            payload = _bse_api_json(
+                BSE_SCRIP_MASTER_URL,
+                {
+                    "scripcode": "",
+                    "Group": "",
+                    "industry": "",
+                    "segment": "Equity",
+                    "status": "Active",
+                },
+                timeout=18,
+            )
             candidates = (
                 payload.get("Table")
                 or payload.get("data")
                 or payload.get("Data")
                 or []
-            )
-        elif isinstance(payload, list):
-            candidates = payload
-        else:
-            candidates = []
-
-        for raw in candidates:
-            if not isinstance(raw, dict):
-                continue
-
-            code = (
-                raw.get("SCRIP_CD")
-                or raw.get("Scrip_Code")
-                or raw.get("scripcode")
-                or raw.get("scrip_code")
-            )
-            symbol = (
-                raw.get("scrip_id")
-                or raw.get("SCRIP_ID")
-                or raw.get("Scrip_Id")
-                or raw.get("SYMBOL")
-            )
-            name = (
-                raw.get("Scrip_Name")
-                or raw.get("SCRIP_NAME")
-                or raw.get("Long_Name")
-                or raw.get("LONG_NAME")
-                or raw.get("Security_Name")
-            )
-            isin = (
-                raw.get("ISIN_NUMBER")
-                or raw.get("ISIN")
-                or raw.get("ISIN_CODE")
-            )
-            group = (
-                raw.get("GROUP")
-                or raw.get("Group")
-                or raw.get("Group_Name")
+            ) if isinstance(payload, dict) else (
+                payload if isinstance(payload, list) else []
             )
 
-            if code in (None, "") or not name:
-                continue
-
-            rows.append({
-                "bse_code": str(code).strip(),
-                "symbol": (
-                    str(symbol).strip().upper()
-                    if symbol not in (None, "")
-                    else str(code).strip()
-                ),
-                "name": str(name).strip(),
-                "isin": (
-                    str(isin).strip()
-                    if isin not in (None, "")
-                    else None
-                ),
-                "group": (
-                    str(group).strip()
-                    if group not in (None, "")
-                    else None
-                ),
-            })
-
-        logger.info(
-            "LISTED_BSE_MASTER_SUCCESS rows=%s",
-            len(rows),
-        )
-    except Exception as exc:
-        errors.append(f"{type(exc).__name__}: {exc}")
-        logger.warning(
-            "LISTED_BSE_MASTER_FAILED error=%r",
-            str(exc),
-        )
+            for raw in candidates:
+                if not isinstance(raw, dict):
+                    continue
+                code = (
+                    raw.get("SCRIP_CD")
+                    or raw.get("Scrip_Code")
+                    or raw.get("scripcode")
+                    or raw.get("scrip_code")
+                )
+                name = (
+                    raw.get("Scrip_Name")
+                    or raw.get("SCRIP_NAME")
+                    or raw.get("Long_Name")
+                    or raw.get("LONG_NAME")
+                    or raw.get("Security_Name")
+                )
+                if code in (None, "") or not name:
+                    continue
+                symbol = (
+                    raw.get("scrip_id")
+                    or raw.get("SCRIP_ID")
+                    or raw.get("Scrip_Id")
+                    or raw.get("SYMBOL")
+                )
+                isin = (
+                    raw.get("ISIN_NUMBER")
+                    or raw.get("ISIN")
+                    or raw.get("ISIN_CODE")
+                )
+                rows.append({
+                    "bse_code": str(code).strip(),
+                    "symbol": (
+                        str(symbol).strip().upper()
+                        if symbol not in (None, "")
+                        else str(code).strip()
+                    ),
+                    "name": str(name).strip(),
+                    "isin": (
+                        str(isin).strip()
+                        if isin not in (None, "")
+                        else None
+                    ),
+                    "group": (
+                        raw.get("GROUP")
+                        or raw.get("Group")
+                        or raw.get("Group_Name")
+                    ),
+                    "price": None,
+                    "as_of_ist": None,
+                    "source_kind": "BSE_ACTIVE_SECURITY_MASTER",
+                })
+            logger.info(
+                "LISTED_BSE_MASTER_API_FALLBACK rows=%s",
+                len(rows),
+            )
+        except Exception as exc:
+            errors.append(
+                f"BSE master API fallback: "
+                f"{type(exc).__name__}: {exc}"
+            )
+            logger.warning(
+                "LISTED_BSE_MASTER_API_FALLBACK_FAILED error=%r",
+                str(exc),
+            )
 
     _BSE_MASTER_CACHE = {
         "rows": rows,
         "errors": errors,
+        "successful_days": successful_days,
+        "latest_as_of_ist": latest_as_of,
+        "source_urls": source_urls,
     }
+
+    logger.info(
+        "LISTED_BSE_UNIVERSE rows=%s sessions=%s",
+        len(rows),
+        successful_days,
+    )
     return _BSE_MASTER_CACHE
 
-
 def _resolve_from_bse_master(name, segment, bse_master):
-    """Resolve a BSE security using the same strict name-identity rule."""
+    """Resolve a BSE security using strict company-name identity."""
     best = None
     best_score = 0.0
 
@@ -474,11 +666,18 @@ def _resolve_from_bse_master(name, segment, bse_master):
         "series": best.get("group"),
         "isin": best.get("isin"),
         "listing_date": None,
-        "identity_source": "BSE_ACTIVE_SECURITY_MASTER",
+        "identity_source": best.get("source_kind")
+            or "BSE_UDIFF_BHAVCOPY",
         "identity_score": round(best_score, 3),
         "identity_name": best.get("name"),
+        "current_price": best.get("price"),
+        "current_price_as_of_ist": best.get("as_of_ist"),
+        "current_price_source": (
+            "BSE_UDIFF_BHAVCOPY"
+            if best.get("price") is not None
+            else None
+        ),
     }
-
 
 def _parse_master_listing_date(value):
     if not value:
@@ -1111,7 +1310,26 @@ def build_listed_payload(
             or (market_symbol.rsplit(".", 1)[0] if market_symbol else None)
         )
 
-        quote = yahoo_prices.get(market_symbol)
+        quote = None
+
+        # BSE's own UDiFF bhavcopy is the authoritative EOD source for BSE
+        # securities and avoids Yahoo throttling.
+        if (
+            identity.get("market") == "BSE"
+            and _f(identity.get("current_price")) is not None
+        ):
+            quote = {
+                "price": _f(identity.get("current_price")),
+                "as_of_ist": identity.get(
+                    "current_price_as_of_ist"
+                ),
+                "source": identity.get(
+                    "current_price_source"
+                ) or "BSE_UDIFF_BHAVCOPY",
+            }
+        else:
+            quote = yahoo_prices.get(market_symbol)
+
         if quote is None and symbol and identity.get("market") == "NSE":
             quote = bhav_prices.get(str(symbol).upper())
 
@@ -1203,7 +1421,7 @@ def build_listed_payload(
             "security_master": [
                 NSE_EQUITY_MASTER_URL,
                 NSE_SME_MASTER_URL,
-                BSE_SCRIP_MASTER_URL,
+                BSE_BHAVCOPY_URL_TEMPLATE,
             ],
             "current_price_primary": "YAHOO_FINANCE_MARKET",
             "current_price_fallback": "NSE_BHAVCOPY",
@@ -1593,7 +1811,10 @@ def _v0530_alias_words(value):
     text = str(value or "").replace("&", " and ")
     words = [
         w for w in re.findall(r"[a-z0-9]+", text.lower())
-        if w not in _STOPWORDS and w != "and"
+        if (
+            w not in _STOPWORDS
+            and w not in {"and", "of"}
+        )
     ]
     return words
 
@@ -1611,6 +1832,14 @@ def _v0530_names_alias(left, right):
         return True
     if len(b) > 1 and len(b[0]) <= 2 and b[1:] == a:
         return True
+
+    # General acronym alias: NSE <-> National Stock Exchange, etc.
+    if len(a) == 1 and 2 <= len(a[0]) <= 8 and len(b) >= 2:
+        if a[0] == "".join(word[0] for word in b):
+            return True
+    if len(b) == 1 and 2 <= len(b[0]) <= 8 and len(a) >= 2:
+        if b[0] == "".join(word[0] for word in a):
+            return True
 
     ka = "".join(a)
     kb = "".join(b)
@@ -1634,9 +1863,12 @@ def _v0530_same_listed_ipo(left, right):
     if ls and rs and ls == rs:
         return True
 
+    left_listing = str(left.get("listing_date") or "")
+    right_listing = str(right.get("listing_date") or "")
     if (
-        str(left.get("listing_date") or "")
-        != str(right.get("listing_date") or "")
+        left_listing
+        and right_listing
+        and left_listing != right_listing
     ):
         return False
 
@@ -1798,6 +2030,7 @@ def build_listed_payload(*args, **kwargs):
         # During deep refresh, prefer a direct BSE quote for BSE securities.
         if (
             deep_refresh
+            and record.get("current_price") is None
             and identity.get("market") == "BSE"
             and identity.get("bse_code")
         ):
@@ -1893,6 +2126,10 @@ def build_listed_payload(*args, **kwargs):
         if _f(r.get("current_price")) is not None
     )
     summary["bse_identities_added"] = bse_resolved
+    summary["bse_identity_resolved_total"] = sum(
+        1 for r in records
+        if r.get("market") == "BSE"
+    )
     summary["bse_direct_quotes"] = bse_quotes
     summary["listing_price_market_fallbacks"] = listing_fallbacks
     summary["current_price_missing"] = sum(

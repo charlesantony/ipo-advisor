@@ -705,7 +705,8 @@ def _tracker_rows_with_continuity(db, base_rows=None, year=2026):
 def _v0530_tracker_words(value):
     text = str(value or "").replace("&", " and ")
     drop = {
-        "limited", "ltd", "private", "pvt", "india", "the", "and",
+        "limited", "ltd", "private", "pvt", "india",
+        "the", "and", "of",
     }
     return [
         w for w in re.findall(r"[a-z0-9]+", text.lower())
@@ -724,6 +725,16 @@ def _v0530_tracker_names_alias(left, right):
         return True
     if len(b) > 1 and len(b[0]) <= 2 and b[1:] == a:
         return True
+
+    # Acronyms are common in IPO feeds: e.g. NSE versus
+    # National Stock Exchange of India.
+    if len(a) == 1 and 2 <= len(a[0]) <= 8 and len(b) >= 2:
+        if a[0] == "".join(word[0] for word in b):
+            return True
+    if len(b) == 1 and 2 <= len(b[0]) <= 8 and len(a) >= 2:
+        if b[0] == "".join(word[0] for word in a):
+            return True
+
     return SequenceMatcher(
         None, "".join(a), "".join(b)
     ).ratio() >= 0.84
@@ -739,9 +750,16 @@ def _v0530_same_tracker_ipo(permanent, handoff):
         != str(handoff.get("ipo_type") or "").upper()
     ):
         return False
+    permanent_close = str(
+        permanent.get("issue_close") or ""
+    )
+    handoff_close = str(
+        handoff.get("issue_close") or ""
+    )
     if (
-        str(permanent.get("issue_close") or "")
-        != str(handoff.get("issue_close") or "")
+        permanent_close
+        and handoff_close
+        and permanent_close != handoff_close
     ):
         return False
 

@@ -358,7 +358,7 @@ function v0531TrackerWords(value) {
     .toLowerCase()
     .replace(/&/g, " and ")
     .replace(/\(india\)/g, " ")
-    .replace(/\b(limited|ltd|private|pvt|india|the|and)\b/g, " ")
+    .replace(/\b(limited|ltd|private|pvt|india|the|and|of)\b/g, " ")
     .replace(/[^a-z0-9]+/g, " ")
     .trim()
     .split(/\s+/)
@@ -378,6 +378,17 @@ function v0531TrackerNamesAlias(left, right) {
     return true;
   }
   if (b.length > 1 && b[0].length <= 2 && b.slice(1).join("") === ka) {
+    return true;
+  }
+
+  const acronymA = a.map(word => word[0]).join("");
+  const acronymB = b.map(word => word[0]).join("");
+  if (a.length === 1 && a[0].length >= 2 && a[0].length <= 8 &&
+      b.length >= 2 && a[0] === acronymB) {
+    return true;
+  }
+  if (b.length === 1 && b[0].length >= 2 && b[0].length <= 8 &&
+      a.length >= 2 && b[0] === acronymA) {
     return true;
   }
 
