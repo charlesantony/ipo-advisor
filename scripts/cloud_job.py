@@ -2,9 +2,11 @@
 import argparse
 import json
 import os
+import re
 import shutil
 import sys
 import time
+from difflib import SequenceMatcher
 from datetime import datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -687,6 +689,171 @@ def _tracker_rows_with_continuity(db, base_rows=None, year=2026):
         print(
             "TRACKER_CONTINUITY_ENRICH "
             f"enriched={len(enriched)} names={enriched}"
+        )
+
+    rows.sort(
+        key=lambda row: (
+            str(row.get("issue_close") or ""),
+            str(row.get("name") or ""),
+        ),
+        reverse=True,
+    )
+    return rows
+
+
+# v0.5.30: merge lifecycle aliases that refer to the same IPO.
+def _v0530_tracker_words(value):
+    text = str(value or "").replace("&", " and ")
+    drop = {
+        "limited", "ltd", "private", "pvt", "india", "the", "and",
+    }
+    return [
+        w for w in re.findall(r"[a-z0-9]+", text.lower())
+        if w not in drop
+    ]
+
+
+def _v0530_tracker_names_alias(left, right):
+    a = _v0530_tracker_words(left)
+    b = _v0530_tracker_words(right)
+    if not a or not b:
+        return False
+    if a == b:
+        return True
+    if len(a) > 1 and len(a[0]) <= 2 and a[1:] == b:
+        return True
+    if len(b) > 1 and len(b[0]) <= 2 and b[1:] == a:
+        return True
+    return SequenceMatcher(
+        None, "".join(a), "".join(b)
+    ).ratio() >= 0.84
+
+
+def _v0530_same_tracker_ipo(permanent, handoff):
+    if str(handoff.get("tracker_key") or "").startswith("HANDOFF|") is False:
+        return False
+    if str(permanent.get("tracker_key") or "").startswith("HANDOFF|"):
+        return False
+    if (
+        str(permanent.get("ipo_type") or "").upper()
+        != str(handoff.get("ipo_type") or "").upper()
+    ):
+        return False
+    if (
+        str(permanent.get("issue_close") or "")
+        != str(handoff.get("issue_close") or "")
+    ):
+        return False
+
+    pp = permanent.get("issue_price")
+    hp = handoff.get("issue_price")
+    try:
+        if pp is not None and hp is not None and abs(float(pp) - float(hp)) > 0.01:
+            return False
+    except (TypeError, ValueError):
+        pass
+
+    if _v0530_tracker_names_alias(
+        permanent.get("name"), handoff.get("name")
+    ):
+        return True
+
+    aw = _v0530_tracker_words(permanent.get("name"))
+    bw = _v0530_tracker_words(handoff.get("name"))
+    return bool(
+        aw and bw
+        and aw[0] == bw[0]
+        and len(aw[0]) >= 5
+    )
+
+
+def _v0530_merge_tracker_handoff(permanent, handoff):
+    # Keep annual identity/detail metadata but retain exact closing checkpoint.
+    for field in (
+        "issue_open",
+        "issue_close",
+        "issue_price",
+        "listing_date",
+    ):
+        if handoff.get(field) not in (None, ""):
+            permanent[field] = handoff.get(field)
+
+    if permanent.get("actual_listing_gain_pct") is None:
+        permanent["provider_status"] = handoff.get(
+            "provider_status"
+        ) or permanent.get("provider_status")
+
+    if (
+        str(handoff.get("decision_source") or "")
+        == "CAPTURED_1430_IST"
+    ):
+        for field in (
+            "total_x",
+            "gmp_used_pct",
+            "gmp_used_rupees",
+            "gmp_used_at_ist",
+            "gmp_quality",
+            "decision_source",
+            "model_policy_version",
+            "model_action",
+            "model_confidence",
+            "primary_prediction_pct",
+            "gmp_prediction_pct",
+            "subscription_prediction_pct",
+            "signal_conflict",
+        ):
+            if handoff.get(field) is not None:
+                permanent[field] = handoff.get(field)
+
+    permanent["continuity_enriched"] = True
+    permanent["handoff_continuity"] = False
+    return permanent
+
+
+_tracker_rows_with_continuity_v0527 = _tracker_rows_with_continuity
+
+
+def _tracker_rows_with_continuity(db, base_rows=None, year=2026):
+    rows = _tracker_rows_with_continuity_v0527(
+        db, base_rows=base_rows, year=year
+    )
+
+    permanents = [
+        row for row in rows
+        if not str(row.get("tracker_key") or "").startswith("HANDOFF|")
+    ]
+    handoffs = [
+        row for row in rows
+        if str(row.get("tracker_key") or "").startswith("HANDOFF|")
+    ]
+    remove_ids = set()
+    merged_names = []
+
+    for handoff in handoffs:
+        match = next(
+            (
+                row for row in permanents
+                if _v0530_same_tracker_ipo(row, handoff)
+            ),
+            None,
+        )
+        if match is None:
+            continue
+
+        _v0530_merge_tracker_handoff(match, handoff)
+        remove_ids.add(id(handoff))
+        merged_names.append(
+            f"{handoff.get('name')} -> {match.get('name')}"
+        )
+
+    if remove_ids:
+        rows = [
+            row for row in rows
+            if id(row) not in remove_ids
+        ]
+        print(
+            "TRACKER_ALIAS_HANDOFF_MERGED "
+            f"removed={len(remove_ids)} aliases={merged_names}"
         )
 
     rows.sort(

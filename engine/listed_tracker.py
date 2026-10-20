@@ -129,6 +129,124 @@ def _name_score(left, right):
     return max(seq, jaccard, contains)
 
 
+# v0.5.30: identity-quality guard.
+# Fuzzy text similarity alone is not enough to bind an IPO to a traded symbol.
+_IDENTITY_GENERIC_WORDS = {
+    "and", "company", "co", "business", "industry", "industries",
+    "engineering", "engineers", "solutions", "solution",
+    "technology", "technologies", "systems", "services",
+    "enterprise", "enterprises",
+}
+
+_VERIFIED_MARKET_IDENTITIES = {
+    # Verified against public BSE market data after an NSE fuzzy-match error.
+    "vanselectroengineerings": {
+        "market": "BSE",
+        "symbol": "544971",
+        "market_symbol": "544971.BO",
+        "bse_code": "544971",
+        "series": None,
+        "isin": "INE2SO401011",
+        "listing_date": "2026-10-07",
+        "identity_source": "VERIFIED_BSE_OVERRIDE",
+        "identity_score": 1.0,
+        "identity_name": "Vans Electroengineerings",
+    },
+}
+
+
+def _identity_name_key(value):
+    text = str(value or "").replace("&", " and ")
+    words = re.findall(r"[a-z0-9]+", text.lower())
+    words = [
+        w for w in words
+        if w not in _STOPWORDS and w != "and"
+    ]
+    return "".join(words)
+
+
+def _identity_distinctive_words(value):
+    text = str(value or "").replace("&", " and ")
+    words = re.findall(r"[a-z0-9]+", text.lower())
+    return {
+        w for w in words
+        if (
+            w not in _STOPWORDS
+            and w not in _IDENTITY_GENERIC_WORDS
+            and len(w) >= 3
+        )
+    }
+
+
+def _identity_names_credible(left, right):
+    a = _identity_name_key(left)
+    b = _identity_name_key(right)
+    if not a or not b:
+        return False
+    if a == b:
+        return True
+
+    distinctive_overlap = (
+        _identity_distinctive_words(left)
+        & _identity_distinctive_words(right)
+    )
+    if not distinctive_overlap:
+        return False
+
+    return _name_score(left, right) >= 0.78
+
+
+def _clear_market_identity_cache(item, reason=None):
+    if not isinstance(item, dict):
+        return
+    if reason:
+        item["identity_rejected_reason"] = reason
+        item["identity_rejected_at_ist"] = _now().isoformat()
+
+    for key in (
+        "identity",
+        "current_price",
+        "current_price_as_of_ist",
+        "current_price_source",
+        "market_listing_price",
+        "market_listing_price_source",
+    ):
+        item.pop(key, None)
+
+
+def _cached_identity_is_credible(name, identity, masters):
+    if not isinstance(identity, dict) or not identity:
+        return False
+
+    override = _VERIFIED_MARKET_IDENTITIES.get(
+        _identity_name_key(name)
+    )
+    if override:
+        return (
+            str(identity.get("market_symbol") or "").upper()
+            == str(override.get("market_symbol") or "").upper()
+        )
+
+    matched_name = identity.get("identity_name")
+    market = str(identity.get("market") or "").upper()
+    symbol = str(identity.get("symbol") or "").upper()
+
+    if not matched_name and market == "NSE" and symbol:
+        for candidate in masters.get("all") or []:
+            if str(candidate.get("symbol") or "").upper() == symbol:
+                matched_name = candidate.get("name")
+                break
+
+    if matched_name:
+        return _identity_names_credible(name, matched_name)
+
+    # Older BSE cache rows predate identity_name. Keep them rather than
+    # destroying otherwise valid BSE coverage; new BSE resolutions carry name.
+    if market == "BSE" and identity.get("bse_code"):
+        return True
+
+    return False
+
 def _csv_value(row, *names):
     normalized = {
         re.sub(r"[^a-z0-9]", "", str(k or "").lower()): v
@@ -225,16 +343,33 @@ def _parse_master_listing_date(value):
 
 
 def _resolve_from_nse_master(name, segment, masters):
-    pool = masters.get(str(segment or "").upper()) or masters.get("all") or []
+    # Never use character similarity alone. It caused, for example,
+    # Vans Electroengineerings -> SANSERA (Sansera Engineering).
+    if _identity_name_key(name) in _VERIFIED_MARKET_IDENTITIES:
+        override = _VERIFIED_MARKET_IDENTITIES[
+            _identity_name_key(name)
+        ]
+        if override.get("market") != "NSE":
+            return None
+
+    pool = (
+        masters.get(str(segment or "").upper())
+        or masters.get("all")
+        or []
+    )
     best = None
     best_score = 0.0
+
     for candidate in pool:
-        score = _name_score(name, candidate.get("name"))
+        candidate_name = candidate.get("name")
+        if not _identity_names_credible(name, candidate_name):
+            continue
+        score = _name_score(name, candidate_name)
         if score > best_score:
             best = candidate
             best_score = score
 
-    if not best or best_score < 0.76:
+    if not best:
         return None
 
     return {
@@ -248,6 +383,7 @@ def _resolve_from_nse_master(name, segment, masters):
         ),
         "identity_source": best.get("source_kind"),
         "identity_score": round(best_score, 3),
+        "identity_name": best.get("name"),
     }
 
 
@@ -285,12 +421,14 @@ def _resolve_from_yahoo(name):
             or q.get("displayName")
             or ""
         )
+        if not _identity_names_credible(name, candidate_name):
+            continue
         score = _name_score(name, candidate_name)
         if score > best_score:
             best_score = score
             best = q
 
-    if not best or best_score < 0.74:
+    if not best:
         return None
 
     market_symbol = str(best.get("symbol") or "").upper()
@@ -305,6 +443,11 @@ def _resolve_from_yahoo(name):
         "listing_date": None,
         "identity_source": "YAHOO_SEARCH",
         "identity_score": round(best_score, 3),
+        "identity_name": (
+            best.get("longname")
+            or best.get("shortname")
+            or best.get("displayName")
+        ),
     }
 
 
@@ -707,7 +850,28 @@ def build_listed_payload(
         item["ipo_type"] = row.get("ipo_type")
         item["detail_url"] = row.get("detail_url")
 
-        identity = item.get("identity") or _resolve_from_nse_master(
+        cached_identity = item.get("identity") or {}
+        if (
+            cached_identity
+            and not _cached_identity_is_credible(
+                row.get("name"),
+                cached_identity,
+                masters,
+            )
+        ):
+            logger.warning(
+                "LISTED_IDENTITY_REJECTED name=%r market_symbol=%r source=%r",
+                row.get("name"),
+                cached_identity.get("market_symbol"),
+                cached_identity.get("identity_source"),
+            )
+            _clear_market_identity_cache(
+                item,
+                reason="NAME_IDENTITY_MISMATCH",
+            )
+            cached_identity = {}
+
+        identity = cached_identity or _resolve_from_nse_master(
             row.get("name"),
             row.get("ipo_type"),
             masters,
@@ -938,6 +1102,12 @@ def _v0522_bse_text(url, timeout=8):
 
 
 def _v0522_resolve_bse(name):
+    override = _VERIFIED_MARKET_IDENTITIES.get(
+        _identity_name_key(name)
+    )
+    if override and override.get("market") == "BSE":
+        return dict(override)
+
     params = urllib.parse.urlencode({
         "Type": "EQ",
         "text": name,
@@ -987,10 +1157,15 @@ def _v0522_resolve_bse(name):
     if not candidates:
         return None
 
+    candidates = [
+        item for item in candidates
+        if _identity_names_credible(name, item[2])
+    ]
+    if not candidates:
+        return None
+
     candidates.sort(reverse=True, key=lambda item: item[0])
     score, code, label = candidates[0]
-    if score < 0.62:
-        return None
 
     logger.info(
         "LISTED_BSE_IDENTITY_SUCCESS name=%r code=%s score=%.3f",
@@ -1006,6 +1181,7 @@ def _v0522_resolve_bse(name):
         "listing_date": None,
         "identity_source": "BSE_QUOTE_SEARCH",
         "identity_score": round(score, 3),
+        "identity_name": label,
     }
 
 
@@ -1240,28 +1416,100 @@ def _v0526_merge_listed_record(primary, other):
     return merged
 
 
+def _v0530_alias_words(value):
+    text = str(value or "").replace("&", " and ")
+    words = [
+        w for w in re.findall(r"[a-z0-9]+", text.lower())
+        if w not in _STOPWORDS and w != "and"
+    ]
+    return words
+
+
+def _v0530_names_alias(left, right):
+    a = _v0530_alias_words(left)
+    b = _v0530_alias_words(right)
+    if not a or not b:
+        return False
+    if a == b:
+        return True
+
+    # Provider prefixes such as TI Tonbo / TS TNA should not create a second IPO.
+    if len(a) > 1 and len(a[0]) <= 2 and a[1:] == b:
+        return True
+    if len(b) > 1 and len(b[0]) <= 2 and b[1:] == a:
+        return True
+
+    ka = "".join(a)
+    kb = "".join(b)
+    return SequenceMatcher(None, ka, kb).ratio() >= 0.84
+
+
+def _v0530_same_listed_ipo(left, right):
+    if (
+        str(left.get("ipo_type") or "").upper()
+        != str(right.get("ipo_type") or "").upper()
+    ):
+        return False
+
+    lsym = str(left.get("market_symbol") or "").upper()
+    rsym = str(right.get("market_symbol") or "").upper()
+    if lsym and rsym and lsym == rsym:
+        return True
+
+    ls = str(left.get("symbol") or "").upper()
+    rs = str(right.get("symbol") or "").upper()
+    if ls and rs and ls == rs:
+        return True
+
+    if (
+        str(left.get("listing_date") or "")
+        != str(right.get("listing_date") or "")
+    ):
+        return False
+
+    lp = _f(left.get("issue_price"))
+    rp = _f(right.get("issue_price"))
+    if lp is not None and rp is not None and abs(lp - rp) > 0.01:
+        return False
+
+    if _v0530_names_alias(left.get("name"), right.get("name")):
+        return True
+
+    # Temporary HANDOFF aliases may be shortened by a different upstream feed
+    # (e.g. Zetwerk vs Zetwerk Manufacturing Business).
+    lhandoff = str(left.get("tracker_key") or "").startswith("HANDOFF|")
+    rhandoff = str(right.get("tracker_key") or "").startswith("HANDOFF|")
+    if lhandoff or rhandoff:
+        aw = _v0530_alias_words(left.get("name"))
+        bw = _v0530_alias_words(right.get("name"))
+        if (
+            aw and bw
+            and aw[0] == bw[0]
+            and len(aw[0]) >= 5
+        ):
+            return True
+
+    return False
+
+
 def _v0526_dedupe_listed_records(records):
-    groups = {}
-    order = []
+    groups = []
 
     for record in records or []:
-        key = _v0526_listed_identity(record)
-        if not key[1]:
-            key = (
-                str(record.get("ipo_type") or "").upper(),
-                str(record.get("tracker_key") or ""),
-            )
-        if key not in groups:
-            groups[key] = []
-            order.append(key)
-        groups[key].append(record)
+        placed = False
+        for group in groups:
+            if _v0530_same_listed_ipo(record, group[0]):
+                group.append(record)
+                placed = True
+                break
+        if not placed:
+            groups.append([record])
 
     result = []
     removed = 0
     duplicate_names = []
 
-    for key in order:
-        group = groups[key]
+    for group in groups:
         if len(group) == 1:
             result.append(group[0])
             continue
@@ -1283,7 +1531,7 @@ def _v0526_dedupe_listed_records(records):
 
     if removed:
         logger.warning(
-            "LISTED_DUPLICATES_MERGED removed=%s names=%s",
+            "LISTED_DUPLICATES_MERGED_V0530 removed=%s names=%s",
             removed,
             duplicate_names,
         )
@@ -1310,6 +1558,33 @@ def build_listed_payload(*args, **kwargs):
         key = str(record.get("tracker_key") or "")
         item = cache.setdefault(key, {})
         identity = item.get("identity") or {}
+        masters = _load_nse_masters()
+
+        if (
+            identity
+            and not _cached_identity_is_credible(
+                record.get("name"),
+                identity,
+                masters,
+            )
+        ):
+            logger.warning(
+                "LISTED_IDENTITY_REJECTED_POST_BUILD name=%r market_symbol=%r",
+                record.get("name"),
+                identity.get("market_symbol"),
+            )
+            _clear_market_identity_cache(
+                item,
+                reason="NAME_IDENTITY_MISMATCH_POST_BUILD",
+            )
+            identity = {}
+            record["symbol"] = None
+            record["market"] = None
+            record["market_symbol"] = None
+            record["current_price"] = None
+            record["current_return_pct"] = None
+            record["current_price_as_of_ist"] = None
+            record["current_price_source"] = None
 
         # The original implementation resolves NSE well but misses many BSE-SME
         # securities. Discover BSE identity during the deeper daily sync.
