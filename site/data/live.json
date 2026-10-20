@@ -1,6 +1,6 @@
 {
-  "fetched_at_utc": "2026-10-19T22:37:53.439791+00:00",
-  "fetched_at_ist": "2026-10-20T04:07:53.439791+05:30",
+  "fetched_at_utc": "2026-10-20T03:31:06.726892+00:00",
+  "fetched_at_ist": "2026-10-20T09:01:06.726892+05:30",
   "status_filter": "LIVE",
   "type_filter": "ALL",
   "records": [],
@@ -12,10 +12,10 @@
       "api_status": "success",
       "api_status_code": 200,
       "message": "IPO details fetched successfully",
-      "response_bytes": 1938,
+      "response_bytes": 92,
       "rate_remaining_endpoint": "119",
       "rate_remaining_global": "239",
-      "count": 4
+      "count": 0
     },
     {
       "type": "SME",
@@ -24,24 +24,14 @@
       "api_status": "success",
       "api_status_code": 200,
       "message": "IPO details fetched successfully",
-      "response_bytes": 540,
+      "response_bytes": 92,
       "rate_remaining_endpoint": "119",
       "rate_remaining_global": "239",
-      "count": 1
+      "count": 0
     }
   ],
   "errors": [],
-  "decision_saved_count": 5,
-  "saved_count": 5,
-  "capture_reason": "github_action_refresh_rollover",
-  "public_filtered_closed_count": 5,
-  "public_filtered_closed_names": [
-    "Tonbo Imaging India",
-    "Zetwerk",
-    "Sahajanand Medical Technologies",
-    "Bonfiglioli Transmissions",
-    "Shellz India"
-  ],
+  "public_filtered_closed_count": 0,
   "public_signal_policy": {
     "version": "public-signal-gate-v1",
     "locked_label": "Relevant data not available"
