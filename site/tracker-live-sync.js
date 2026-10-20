@@ -353,30 +353,145 @@ function v0525TrackerProspectiveRow(sample) {
   };
 }
 
+function v0531TrackerWords(value) {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/&/g, " and ")
+    .replace(/\(india\)/g, " ")
+    .replace(/\b(limited|ltd|private|pvt|india|the|and)\b/g, " ")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean);
+}
+
+function v0531TrackerNamesAlias(left, right) {
+  const a = v0531TrackerWords(left);
+  const b = v0531TrackerWords(right);
+  if (!a.length || !b.length) return false;
+
+  const ka = a.join("");
+  const kb = b.join("");
+  if (ka === kb) return true;
+
+  if (a.length > 1 && a[0].length <= 2 && a.slice(1).join("") === kb) {
+    return true;
+  }
+  if (b.length > 1 && b[0].length <= 2 && b.slice(1).join("") === ka) {
+    return true;
+  }
+
+  const shorter = ka.length <= kb.length ? ka : kb;
+  const longer = ka.length > kb.length ? ka : kb;
+
+  // Handles source aliases such as Zetwerk vs Zetwerk Manufacturing Business.
+  return shorter.length >= 5 && longer.startsWith(shorter);
+}
+
+function v0531SameTrackerIpo(left, right) {
+  if (
+    String(left?.ipo_type || "").toUpperCase() !==
+    String(right?.ipo_type || "").toUpperCase()
+  ) {
+    return false;
+  }
+
+  const leftClose = String(left?.issue_close || "");
+  const rightClose = String(right?.issue_close || "");
+  if (leftClose && rightClose && leftClose !== rightClose) {
+    return false;
+  }
+
+  return v0531TrackerNamesAlias(left?.name, right?.name);
+}
+
+function v0531TrackerRowScore(row) {
+  const key = String(row?.tracker_key || "");
+  let score = 0;
+  if (!key.startsWith("HANDOFF|")) score += 100;
+  if (!key.startsWith("PROSPECTIVE|")) score += 30;
+  if (!key.startsWith("LIVE|")) score += 10;
+  if (row?.detail_url) score += 10;
+  if (row?.actual_listing_gain_pct != null) score += 5;
+  return score;
+}
+
+function v0531DedupeTrackerRows(rows) {
+  const out = [];
+
+  for (const row of (rows || [])) {
+    const idx = out.findIndex(existing =>
+      v0531SameTrackerIpo(existing, row)
+    );
+
+    if (idx < 0) {
+      out.push(row);
+      continue;
+    }
+
+    if (v0531TrackerRowScore(row) > v0531TrackerRowScore(out[idx])) {
+      out[idx] = row;
+    }
+  }
+  return out;
+}
+
+function v0531TrackerSort(rows) {
+  const today = istDateKey();
+
+  function stage(row) {
+    const close = String(row?.issue_close || "");
+    const open = String(row?.issue_open || "");
+
+    // User-facing Tracker starts with completed bidding cycles, newest first.
+    if (close && close < today) return 0;
+    if (close && close === today) return 1;
+    if (open && open <= today && (!close || close >= today)) return 1;
+    if (open && open > today) return 2;
+    return 3;
+  }
+
+  return [...rows].sort((a, b) => {
+    const sa = stage(a);
+    const sb = stage(b);
+    if (sa !== sb) return sa - sb;
+
+    if (sa === 0 || sa === 1) {
+      const closeCmp = String(b.issue_close || "")
+        .localeCompare(String(a.issue_close || ""));
+      if (closeCmp) return closeCmp;
+    }
+
+    if (sa === 2) {
+      const openCmp = String(a.issue_open || "")
+        .localeCompare(String(b.issue_open || ""));
+      if (openCmp) return openCmp;
+    }
+
+    return String(a.name || "").localeCompare(String(b.name || ""));
+  });
+}
+
 function v0522TrackerMergedRows(t, live, prospective=dashboardState.prospective) {
-  const base = [...(t?.rows || [])];
-  const known = new Set(base.map(row => trackerCanon(row.name)));
-  const extras = [];
+  const base = v0531DedupeTrackerRows([...(t?.rows || [])]);
+  const rows = [...base];
 
   for (const n of (live?.records || [])) {
     if (!isPubliclyLiveRecord(n)) continue;
-    const key = trackerCanon(n.name || n.symbol);
-    if (!key || known.has(key)) continue;
-    extras.push(v0522TrackerSyntheticRow(n));
-    known.add(key);
+    const candidate = v0522TrackerSyntheticRow(n);
+    if (rows.some(row => v0531SameTrackerIpo(row, candidate))) continue;
+    rows.push(candidate);
   }
 
   for (const sample of (prospective?.samples || [])) {
-    const key = trackerCanon(sample?.name);
-    if (!key || known.has(key)) continue;
-    extras.push(v0525TrackerProspectiveRow(sample));
-    known.add(key);
+    const candidate = v0525TrackerProspectiveRow(sample);
+    if (rows.some(row => v0531SameTrackerIpo(row, candidate))) continue;
+    rows.push(candidate);
   }
 
-  extras.sort((a, b) =>
-    String(b.issue_close || "").localeCompare(String(a.issue_close || ""))
+  return v0531TrackerSort(
+    v0531DedupeTrackerRows(rows)
   );
-  return [...extras, ...base];
 }
 
 

@@ -32,10 +32,15 @@ NSE_SME_MASTER_URL = (
 YAHOO_SEARCH_URL = "https://query1.finance.yahoo.com/v1/finance/search"
 YAHOO_SPARK_URL = "https://query1.finance.yahoo.com/v7/finance/spark"
 
+BSE_SCRIP_MASTER_URL = (
+    "https://api.bseindia.com/BseIndiaAPI/api/ListofScripData/w"
+)
+
 _STOPWORDS = {
     "limited", "ltd", "private", "pvt", "india", "the",
 }
 _MASTER_CACHE = None
+_BSE_MASTER_CACHE = None
 _BHAV_CACHE = None
 
 
@@ -45,6 +50,12 @@ def _now():
 
 def _f(value):
     try:
+        if isinstance(value, str):
+            value = (
+                value.replace(",", "")
+                .replace("₹", "")
+                .strip()
+            )
         return float(value)
     except (TypeError, ValueError):
         return None
@@ -138,21 +149,8 @@ _IDENTITY_GENERIC_WORDS = {
     "enterprise", "enterprises",
 }
 
-_VERIFIED_MARKET_IDENTITIES = {
-    # Verified against public BSE market data after an NSE fuzzy-match error.
-    "vanselectroengineerings": {
-        "market": "BSE",
-        "symbol": "544971",
-        "market_symbol": "544971.BO",
-        "bse_code": "544971",
-        "series": None,
-        "isin": "INE2SO401011",
-        "listing_date": "2026-10-07",
-        "identity_source": "VERIFIED_BSE_OVERRIDE",
-        "identity_score": 1.0,
-        "identity_name": "Vans Electroengineerings",
-    },
-}
+# No company-specific market mappings are used. Exchange identity must be
+# resolved from an exchange security master or another name-validated source.
 
 
 def _identity_name_key(value):
@@ -217,15 +215,6 @@ def _clear_market_identity_cache(item, reason=None):
 def _cached_identity_is_credible(name, identity, masters):
     if not isinstance(identity, dict) or not identity:
         return False
-
-    override = _VERIFIED_MARKET_IDENTITIES.get(
-        _identity_name_key(name)
-    )
-    if override:
-        return (
-            str(identity.get("market_symbol") or "").upper()
-            == str(override.get("market_symbol") or "").upper()
-        )
 
     matched_name = identity.get("identity_name")
     market = str(identity.get("market") or "").upper()
@@ -323,6 +312,174 @@ def _load_nse_masters():
     return _MASTER_CACHE
 
 
+def _bse_api_json(url, params=None, timeout=15):
+    query = urllib.parse.urlencode(params or {})
+    target = f"{url}?{query}" if query else url
+    req = urllib.request.Request(
+        target,
+        headers={
+            "Host": "api.bseindia.com",
+            "User-Agent": (
+                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                "AppleWebKit/537.36 Chrome/150 Safari/537.36"
+            ),
+            "Accept": "application/json, text/plain, */*",
+            "Accept-Language": "en-IN,en;q=0.9",
+            "Origin": "https://www.bseindia.com",
+            "Referer": "https://www.bseindia.com/",
+            "Cache-Control": "no-cache",
+        },
+    )
+    with urllib.request.urlopen(req, timeout=timeout) as resp:
+        return json.loads(
+            resp.read().decode("utf-8-sig", errors="replace")
+        )
+
+
+def _load_bse_master():
+    """Load BSE's active equity security list once per process."""
+    global _BSE_MASTER_CACHE
+    if _BSE_MASTER_CACHE is not None:
+        return _BSE_MASTER_CACHE
+
+    rows = []
+    errors = []
+    try:
+        payload = _bse_api_json(
+            BSE_SCRIP_MASTER_URL,
+            {
+                "scripcode": "",
+                "Group": "",
+                "industry": "",
+                "segment": "Equity",
+                "status": "Active",
+            },
+            timeout=18,
+        )
+
+        if isinstance(payload, dict):
+            candidates = (
+                payload.get("Table")
+                or payload.get("data")
+                or payload.get("Data")
+                or []
+            )
+        elif isinstance(payload, list):
+            candidates = payload
+        else:
+            candidates = []
+
+        for raw in candidates:
+            if not isinstance(raw, dict):
+                continue
+
+            code = (
+                raw.get("SCRIP_CD")
+                or raw.get("Scrip_Code")
+                or raw.get("scripcode")
+                or raw.get("scrip_code")
+            )
+            symbol = (
+                raw.get("scrip_id")
+                or raw.get("SCRIP_ID")
+                or raw.get("Scrip_Id")
+                or raw.get("SYMBOL")
+            )
+            name = (
+                raw.get("Scrip_Name")
+                or raw.get("SCRIP_NAME")
+                or raw.get("Long_Name")
+                or raw.get("LONG_NAME")
+                or raw.get("Security_Name")
+            )
+            isin = (
+                raw.get("ISIN_NUMBER")
+                or raw.get("ISIN")
+                or raw.get("ISIN_CODE")
+            )
+            group = (
+                raw.get("GROUP")
+                or raw.get("Group")
+                or raw.get("Group_Name")
+            )
+
+            if code in (None, "") or not name:
+                continue
+
+            rows.append({
+                "bse_code": str(code).strip(),
+                "symbol": (
+                    str(symbol).strip().upper()
+                    if symbol not in (None, "")
+                    else str(code).strip()
+                ),
+                "name": str(name).strip(),
+                "isin": (
+                    str(isin).strip()
+                    if isin not in (None, "")
+                    else None
+                ),
+                "group": (
+                    str(group).strip()
+                    if group not in (None, "")
+                    else None
+                ),
+            })
+
+        logger.info(
+            "LISTED_BSE_MASTER_SUCCESS rows=%s",
+            len(rows),
+        )
+    except Exception as exc:
+        errors.append(f"{type(exc).__name__}: {exc}")
+        logger.warning(
+            "LISTED_BSE_MASTER_FAILED error=%r",
+            str(exc),
+        )
+
+    _BSE_MASTER_CACHE = {
+        "rows": rows,
+        "errors": errors,
+    }
+    return _BSE_MASTER_CACHE
+
+
+def _resolve_from_bse_master(name, segment, bse_master):
+    """Resolve a BSE security using the same strict name-identity rule."""
+    best = None
+    best_score = 0.0
+
+    for candidate in bse_master.get("rows") or []:
+        candidate_name = candidate.get("name")
+        if not _identity_names_credible(name, candidate_name):
+            continue
+
+        score = _name_score(name, candidate_name)
+        if score > best_score:
+            best = candidate
+            best_score = score
+
+    if not best:
+        return None
+
+    code = str(best.get("bse_code") or "").strip()
+    if not code:
+        return None
+
+    return {
+        "market": "BSE",
+        "symbol": best.get("symbol") or code,
+        "market_symbol": f"{code}.BO",
+        "bse_code": code,
+        "series": best.get("group"),
+        "isin": best.get("isin"),
+        "listing_date": None,
+        "identity_source": "BSE_ACTIVE_SECURITY_MASTER",
+        "identity_score": round(best_score, 3),
+        "identity_name": best.get("name"),
+    }
+
+
 def _parse_master_listing_date(value):
     if not value:
         return None
@@ -343,15 +500,8 @@ def _parse_master_listing_date(value):
 
 
 def _resolve_from_nse_master(name, segment, masters):
-    # Never use character similarity alone. It caused, for example,
-    # Vans Electroengineerings -> SANSERA (Sansera Engineering).
-    if _identity_name_key(name) in _VERIFIED_MARKET_IDENTITIES:
-        override = _VERIFIED_MARKET_IDENTITIES[
-            _identity_name_key(name)
-        ]
-        if override.get("market") != "NSE":
-            return None
-
+    # Never use character similarity alone. A traded symbol is accepted only
+    # when the exchange master name itself is credible for the IPO name.
     pool = (
         masters.get(str(segment or "").upper())
         or masters.get("all")
@@ -839,6 +989,7 @@ def build_listed_payload(
     )
 
     masters = _load_nse_masters()
+    bse_master = _load_bse_master()
 
     unresolved = []
     for row in listed_rows:
@@ -876,6 +1027,13 @@ def build_listed_payload(
             row.get("ipo_type"),
             masters,
         )
+        if not identity:
+            identity = _resolve_from_bse_master(
+                row.get("name"),
+                row.get("ipo_type"),
+                bse_master,
+            )
+
         if identity:
             item["identity"] = identity
         elif deep_refresh:
@@ -991,6 +1149,8 @@ def build_listed_payload(
             "symbol": symbol,
             "market": identity.get("market"),
             "market_symbol": market_symbol or None,
+            "bse_code": identity.get("bse_code"),
+            "isin": identity.get("isin"),
             "ipo_type": row.get("ipo_type"),
             "listing_date": listing_date,
             "issue_price": issue_price,
@@ -1043,13 +1203,17 @@ def build_listed_payload(
             "security_master": [
                 NSE_EQUITY_MASTER_URL,
                 NSE_SME_MASTER_URL,
+                BSE_SCRIP_MASTER_URL,
             ],
             "current_price_primary": "YAHOO_FINANCE_MARKET",
             "current_price_fallback": "NSE_BHAVCOPY",
             "unlock_events": "IPOMARKETS_LOCKIN_TABLE",
         },
         "errors": {
-            "security_master": masters.get("errors") or [],
+            "security_master": (
+                (masters.get("errors") or [])
+                + (bse_master.get("errors") or [])
+            ),
             "current_price": yahoo_errors,
             "nse_bhav": bhav.get("errors") or [],
         },
@@ -1102,12 +1266,6 @@ def _v0522_bse_text(url, timeout=8):
 
 
 def _v0522_resolve_bse(name):
-    override = _VERIFIED_MARKET_IDENTITIES.get(
-        _identity_name_key(name)
-    )
-    if override and override.get("market") == "BSE":
-        return dict(override)
-
     params = urllib.parse.urlencode({
         "Type": "EQ",
         "text": name,
@@ -1203,18 +1361,31 @@ def _v0522_bse_quote(code):
         return None
 
     curr = payload.get("CurrRate") or {}
+    header = payload.get("Header") or {}
+
     if isinstance(curr, list):
         curr = curr[0] if curr else {}
+    if isinstance(header, list):
+        header = header[0] if header else {}
     if not isinstance(curr, dict):
         curr = {}
+    if not isinstance(header, dict):
+        header = {}
 
     price = _f(
         curr.get("LTP")
         or curr.get("ltp")
+        or header.get("LTP")
+        or header.get("LastTradedPrice")
         or payload.get("CurrVal")
         or payload.get("LTP")
     )
     if price is None or price <= 0:
+        logger.warning(
+            "LISTED_BSE_QUOTE_EMPTY code=%r keys=%s",
+            code,
+            sorted(payload.keys()) if isinstance(payload, dict) else [],
+        )
         return None
 
     return {
@@ -1365,6 +1536,8 @@ def _v0526_merge_listed_record(primary, other):
         "symbol",
         "market",
         "market_symbol",
+        "bse_code",
+        "isin",
         "listing_date",
         "issue_price",
         "listing_price",
@@ -1613,6 +1786,14 @@ def build_listed_payload(*args, **kwargs):
                 identity.get("market_symbol")
                 or record.get("market_symbol")
             )
+            record["bse_code"] = (
+                identity.get("bse_code")
+                or record.get("bse_code")
+            )
+            record["isin"] = (
+                identity.get("isin")
+                or record.get("isin")
+            )
 
         # During deep refresh, prefer a direct BSE quote for BSE securities.
         if (
@@ -1714,6 +1895,25 @@ def build_listed_payload(*args, **kwargs):
     summary["bse_identities_added"] = bse_resolved
     summary["bse_direct_quotes"] = bse_quotes
     summary["listing_price_market_fallbacks"] = listing_fallbacks
+    summary["current_price_missing"] = sum(
+        1 for r in records
+        if _f(r.get("current_price")) is None
+    )
+    summary["current_price_missing_due_identity"] = sum(
+        1 for r in records
+        if (
+            _f(r.get("current_price")) is None
+            and not (r.get("market") and r.get("symbol"))
+        )
+    )
+    summary["current_price_missing_after_identity"] = sum(
+        1 for r in records
+        if (
+            _f(r.get("current_price")) is None
+            and r.get("market")
+            and r.get("symbol")
+        )
+    )
 
     payload["current_prices_as_of_ist"] = _latest_timestamp([
         r.get("current_price_as_of_ist")

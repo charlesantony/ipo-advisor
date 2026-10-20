@@ -527,6 +527,24 @@ function unlockEventsHtml(row) {
     </details>`;
 }
 
+function listedIdentifier(row) {
+  const symbol = String(row?.symbol || "").trim();
+  if (symbol) return symbol;
+
+  const bseCode = String(row?.bse_code || "").trim();
+  if (bseCode) return bseCode;
+
+  const marketSymbol = String(row?.market_symbol || "").trim();
+  if (marketSymbol) {
+    return marketSymbol.replace(/\.(NS|BO)$/i, "");
+  }
+
+  const isin = String(row?.isin || "").trim();
+  if (isin) return `ISIN ${isin}`;
+
+  return "Market identifier pending";
+}
+
 function renderListed(data) {
   const records = data.records || [];
   const summary = data.summary || {};
@@ -542,7 +560,7 @@ function renderListed(data) {
       <td>
         <strong>${esc(row.name || "IPO")}</strong>
         <div class="muted listed-symbol">
-          ${esc(row.symbol || "Symbol not available")}
+          ${esc(listedIdentifier(row))}
           ${row.market ? ` · ${esc(row.market)}` : ""}
         </div>
       </td>
