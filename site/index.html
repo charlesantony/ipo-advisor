@@ -66,6 +66,21 @@
       <button class="tab" data-tab="prospective">Prospective</button>
     </nav>
 
+    <div
+      id="ipoTypeFilter"
+      class="segment-filter"
+      role="group"
+      aria-label="Filter IPOs by type"
+    >
+      <span class="segment-filter-label">IPO type</span>
+      <button type="button" class="segment-filter-button active"
+        data-segment="ALL" aria-pressed="true">All</button>
+      <button type="button" class="segment-filter-button"
+        data-segment="MAINBOARD" aria-pressed="false">Mainline</button>
+      <button type="button" class="segment-filter-button"
+        data-segment="SME" aria-pressed="false">SME</button>
+    </div>
+
     <section id="tab-live" class="tabpane active">
       <div class="section-head">
         <div>
@@ -105,7 +120,7 @@
         <div>
           <h2>Listed IPOs</h2>
           <p id="listedUpdated" class="muted">
-            Tracking issue, listing and latest market prices with upcoming share unlocks.
+            Tracking issue, listing and latest market prices with gains calculated per IPO lot.
           </p>
         </div>
       </div>
@@ -115,10 +130,12 @@
             <tr>
               <th>IPO / Symbol</th>
               <th>Type</th>
+              <th>Lot Size</th>
               <th>Issue Price</th>
               <th>Listing Price</th>
+              <th>Listing Gain / Lot</th>
               <th>Current Price</th>
-              <th>Unlock Events</th>
+              <th>Current Gain / Lot</th>
             </tr>
           </thead>
           <tbody id="listedBody"></tbody>

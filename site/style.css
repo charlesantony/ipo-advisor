@@ -678,3 +678,57 @@ footer {
     grid-template-columns:96px minmax(0,1fr);
   }
 }
+
+/* v0.5.32 IPO type filter + Listed per-lot gains */
+.segment-filter {
+  display:flex;
+  align-items:center;
+  gap:7px;
+  flex-wrap:wrap;
+  margin:-20px 0 24px;
+}
+.segment-filter-label {
+  color:var(--muted);
+  font-size:12px;
+  font-weight:700;
+}
+.segment-filter-button {
+  border:1px solid var(--border);
+  background:white;
+  color:var(--text);
+  border-radius:999px;
+  padding:7px 13px;
+  font-size:12px;
+  font-weight:700;
+  cursor:pointer;
+}
+.segment-filter-button.active {
+  color:white;
+  background:var(--blue);
+  border-color:var(--blue);
+}
+.listed-table { min-width:1120px; }
+
+@media (max-width:700px) {
+  .segment-filter {
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:7px;
+    margin:-10px 0 18px;
+  }
+  .segment-filter-label {
+    grid-column:1 / -1;
+  }
+  .segment-filter-button {
+    width:100%;
+    padding:9px 4px;
+  }
+
+  #tab-listed td:nth-child(2)::before { content:"Type"; }
+  #tab-listed td:nth-child(3)::before { content:"Lot Size"; }
+  #tab-listed td:nth-child(4)::before { content:"Issue Price"; }
+  #tab-listed td:nth-child(5)::before { content:"Listing Price"; }
+  #tab-listed td:nth-child(6)::before { content:"Listing Gain / Lot"; }
+  #tab-listed td:nth-child(7)::before { content:"Current Price"; }
+  #tab-listed td:nth-child(8)::before { content:"Current Gain / Lot"; }
+}

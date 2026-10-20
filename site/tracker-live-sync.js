@@ -570,3 +570,144 @@ rerenderLiveView = function() {
   renderTracker(dashboardState.tracker);
   renderListed(dashboardState.listed);
 };
+
+/* -------------------------------------------------------------------------
+ * v0.5.32 global All / Mainline / SME filter + Listed per-lot gains.
+ * ---------------------------------------------------------------------- */
+let dashboardSegmentFilter = "ALL";
+
+function v0532Segment(value) {
+  const segment = String(value || "").trim().toUpperCase();
+  if (segment === "MAINLINE" || segment === "MAINBOARD") return "MAINBOARD";
+  if (segment === "SME") return "SME";
+  return segment;
+}
+
+function v0532SegmentMatches(record) {
+  if (dashboardSegmentFilter === "ALL") return true;
+  return v0532Segment(record?.ipo_type || record?.type) ===
+    dashboardSegmentFilter;
+}
+
+function v0532Filter(records) {
+  return (records || []).filter(v0532SegmentMatches);
+}
+
+function v0532SignedMoney(value) {
+  if (value === null || value === undefined || value === "") return "—";
+  const n = Number(value);
+  if (!Number.isFinite(n)) return String(value);
+  const abs = Math.abs(n).toLocaleString("en-IN", {
+    minimumFractionDigits: Number.isInteger(n) ? 0 : 2,
+    maximumFractionDigits: 2,
+  });
+  if (n > 0) return `+₹${abs}`;
+  if (n < 0) return `-₹${abs}`;
+  return "₹0";
+}
+
+const v0532MergedRowsBeforeFilter = v0522TrackerMergedRows;
+v0522TrackerMergedRows = function(t, live, prospective=dashboardState.prospective) {
+  return v0532Filter(
+    v0532MergedRowsBeforeFilter(t, live, prospective)
+  );
+};
+
+const v0532RenderLiveBase = renderLive;
+renderLive = function(data) {
+  return v0532RenderLiveBase({
+    ...data,
+    records: v0532Filter(data?.records || []),
+  });
+};
+
+const v0532RenderHealthBase = renderHealth;
+renderHealth = function(h, p, live) {
+  return v0532RenderHealthBase(
+    h,
+    p,
+    {
+      ...live,
+      records: v0532Filter(live?.records || []),
+    }
+  );
+};
+
+const v0532RenderProspectiveBase = renderProspective;
+renderProspective = function(p) {
+  return v0532RenderProspectiveBase({
+    ...p,
+    samples: v0532Filter(p?.samples || []),
+  });
+};
+
+renderListed = function(data) {
+  const records = v0532Filter(data?.records || []);
+  const asOf = data?.current_prices_as_of_ist || data?.generated_at_ist;
+  const availablePrices = records.filter(
+    row => hasObservedValue(row.current_price)
+  ).length;
+
+  $("listedUpdated").textContent = asOf
+    ? `Latest price snapshot: ${formatIstTimestamp(asOf)} · ` +
+      `${fmt(availablePrices)} of ${fmt(records.length)} prices available`
+    : "Waiting for listed-market data…";
+
+  $("listedBody").innerHTML = records.map(row => `
+    <tr>
+      <td>
+        <strong>${esc(row.name || "IPO")}</strong>
+        <div class="muted listed-symbol">
+          ${esc(listedIdentifier(row))}
+          ${row.market ? ` · ${esc(row.market)}` : ""}
+        </div>
+      </td>
+      <td>${esc(row.ipo_type || "—")}</td>
+      <td class="price-cell">
+        ${hasObservedValue(row.lot_size)
+          ? `${fmt(row.lot_size)} shares`
+          : "—"}
+      </td>
+      <td class="price-cell">${esc(money(row.issue_price))}</td>
+      <td class="price-cell">
+        ${priceWithReturn(row.listing_price, row.listing_return_pct)}
+      </td>
+      <td class="price-cell ${trend(row.listing_gain_per_lot)}">
+        ${esc(v0532SignedMoney(row.listing_gain_per_lot))}
+      </td>
+      <td class="price-cell">
+        ${priceWithReturn(row.current_price, row.current_return_pct)}
+      </td>
+      <td class="price-cell ${trend(row.current_gain_per_lot)}">
+        ${esc(v0532SignedMoney(row.current_gain_per_lot))}
+      </td>
+    </tr>
+  `).join("") || `
+    <tr>
+      <td colspan="8">No listed IPO records are available for this filter.</td>
+    </tr>`;
+};
+
+function setupV0532SegmentFilter() {
+  const buttons = document.querySelectorAll(
+    "#ipoTypeFilter .segment-filter-button"
+  );
+  buttons.forEach(button => {
+    button.addEventListener("click", () => {
+      dashboardSegmentFilter = String(
+        button.dataset.segment || "ALL"
+      ).toUpperCase();
+
+      buttons.forEach(item => {
+        const active = item === button;
+        item.classList.toggle("active", active);
+        item.setAttribute("aria-pressed", active ? "true" : "false");
+      });
+
+      rerenderLiveView();
+      renderProspective(dashboardState.prospective);
+    });
+  });
+}
+
+setupV0532SegmentFilter();

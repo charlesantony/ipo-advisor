@@ -2179,3 +2179,172 @@ def build_listed_payload(*args, **kwargs):
         summary.get("listed_records"),
     )
     return payload
+
+# ---------------------------------------------------------------------------
+# v0.5.32: static lot-size enrichment and per-lot gain calculations.
+# ---------------------------------------------------------------------------
+_build_listed_payload_v0531 = build_listed_payload
+
+
+def _v0532_parse_lot_size(detail_url):
+    body, _, _ = _fetch(
+        detail_url,
+        "LISTED_LOT_SIZE_DETAIL",
+        timeout=15,
+    )
+    parser = RichTableParser()
+    parser.feed(body)
+
+    candidates = []
+    for table in parser.tables:
+        if not table:
+            continue
+        headers = [
+            re.sub(
+                r"[^a-z0-9]",
+                "",
+                str(c.get("text") or "").lower(),
+            )
+            for c in table[0]
+        ]
+        if "lots" not in headers or "shares" not in headers:
+            continue
+
+        lots_i = headers.index("lots")
+        shares_i = headers.index("shares")
+        for row in table[1:]:
+            if max(lots_i, shares_i) >= len(row):
+                continue
+            lots = _f(row[lots_i].get("text"))
+            shares = _f(row[shares_i].get("text"))
+            if (
+                lots is None
+                or shares is None
+                or lots <= 0
+                or shares <= 0
+            ):
+                continue
+
+            per_lot = shares / lots
+            rounded = round(per_lot)
+            if rounded > 0 and abs(per_lot - rounded) < 0.01:
+                candidates.append(int(rounded))
+
+    if not candidates:
+        return None
+
+    counts = {}
+    for value in candidates:
+        counts[value] = counts.get(value, 0) + 1
+
+    return max(
+        counts,
+        key=lambda value: (counts[value], -value),
+    )
+
+
+def build_listed_payload(*args, **kwargs):
+    payload = _build_listed_payload_v0531(*args, **kwargs)
+    deep_refresh = bool(kwargs.get("deep_refresh", False))
+    persist = bool(kwargs.get("persist", False))
+
+    state = _load_state()
+    cache = state.setdefault("records", {})
+    records = payload.get("records") or []
+
+    fetched = 0
+    max_lot_fetches = 40
+
+    # Newest listings are already sorted first by the base builder.
+    if deep_refresh:
+        for record in records:
+            if fetched >= max_lot_fetches:
+                break
+
+            key = str(record.get("tracker_key") or "")
+            item = cache.setdefault(key, {})
+            if item.get("lot_size") is not None:
+                continue
+
+            detail_url = record.get("detail_url")
+            if not detail_url:
+                continue
+
+            try:
+                lot_size = _v0532_parse_lot_size(detail_url)
+                if lot_size is not None:
+                    item["lot_size"] = int(lot_size)
+                    item["lot_size_source"] = "IPOMARKETS_LOT_SIZE_TABLE"
+                    logger.info(
+                        "LISTED_LOT_SIZE_REFRESH name=%r lot_size=%s",
+                        record.get("name"),
+                        lot_size,
+                    )
+                else:
+                    logger.warning(
+                        "LISTED_LOT_SIZE_NOT_FOUND name=%r url=%r",
+                        record.get("name"),
+                        detail_url,
+                    )
+            except Exception as exc:
+                logger.warning(
+                    "LISTED_LOT_SIZE_FAILED name=%r url=%r error=%r",
+                    record.get("name"),
+                    detail_url,
+                    str(exc),
+                )
+
+            fetched += 1
+            time.sleep(0.05)
+
+    lot_available = 0
+    for record in records:
+        key = str(record.get("tracker_key") or "")
+        item = cache.get(key) or {}
+
+        lot_size = _f(item.get("lot_size"))
+        if lot_size is not None and lot_size > 0:
+            lot_size = int(round(lot_size))
+            lot_available += 1
+        else:
+            lot_size = None
+
+        issue = _f(record.get("issue_price"))
+        listing = _f(record.get("listing_price"))
+        current = _f(record.get("current_price"))
+
+        record["lot_size"] = lot_size
+        record["lot_size_source"] = item.get("lot_size_source")
+        record["listing_gain_per_lot"] = (
+            round((listing - issue) * lot_size, 2)
+            if (
+                lot_size is not None
+                and issue is not None
+                and listing is not None
+            )
+            else None
+        )
+        record["current_gain_per_lot"] = (
+            round((current - issue) * lot_size, 2)
+            if (
+                lot_size is not None
+                and issue is not None
+                and current is not None
+            )
+            else None
+        )
+
+    payload.setdefault("summary", {})["lot_size_available"] = lot_available
+    payload.setdefault("sources", {})["lot_size"] = "IPOMARKETS_LOT_SIZE_TABLE"
+
+    if persist:
+        state["records"] = cache
+        _save_state(state)
+
+    logger.info(
+        "LISTED_LOT_SIZE_ENRICH available=%s/%s fetched=%s",
+        lot_available,
+        len(records),
+        fetched,
+    )
+    return payload
