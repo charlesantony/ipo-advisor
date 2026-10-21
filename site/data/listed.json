@@ -1,10 +1,10 @@
 {
   "version": "listed-tracker-v1",
-  "generated_at_ist": "2026-10-21T03:22:31.843824+05:30",
+  "generated_at_ist": "2026-10-21T14:31:17.240034+05:30",
   "current_prices_as_of_ist": "2026-10-20T16:00:00+05:30",
   "summary": {
     "listed_records": 286,
-    "market_identity_resolved": 280,
+    "market_identity_resolved": 281,
     "current_price_available": 278,
     "unlock_schedule_available": 259,
     "duplicate_rows_removed": 0,
@@ -13,19 +13,19 @@
     "bse_direct_quotes": 0,
     "listing_price_market_fallbacks": 0,
     "current_price_missing": 8,
-    "current_price_missing_due_identity": 6,
-    "current_price_missing_after_identity": 2,
+    "current_price_missing_due_identity": 5,
+    "current_price_missing_after_identity": 3,
     "application_size_available": 120
   },
   "records": [
     {
       "tracker_key": "2026|SME|vaibhavvyapaar",
       "name": "Vaibhav Vyapaar",
-      "symbol": null,
-      "market": null,
-      "market_symbol": null,
+      "symbol": "LOANFRONT",
+      "market": "NSE",
+      "market_symbol": "LOANFRONT.NS",
       "bse_code": null,
-      "isin": null,
+      "isin": "INE1KAA01025",
       "ipo_type": "SME",
       "listing_date": "2026-10-21",
       "issue_price": 54.0,
@@ -15597,6 +15597,7 @@
       "2026-10-20: empty BSE bhavcopy"
     ],
     "current_price": [
+      "HTTPError: HTTP Error 429: Too Many Requests",
       "HTTPError: HTTP Error 429: Too Many Requests",
       "HTTPError: HTTP Error 429: Too Many Requests",
       "HTTPError: HTTP Error 429: Too Many Requests",
