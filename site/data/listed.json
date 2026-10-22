@@ -1,21 +1,21 @@
 {
   "version": "listed-tracker-v1",
-  "generated_at_ist": "2026-10-22T15:03:18.535395+05:30",
-  "current_prices_as_of_ist": "2026-10-21T16:00:00+05:30",
+  "generated_at_ist": "2026-10-22T17:12:29.272670+05:30",
+  "current_prices_as_of_ist": "2026-10-22T16:00:00+05:30",
   "summary": {
     "listed_records": 288,
     "market_identity_resolved": 283,
-    "current_price_available": 280,
+    "current_price_available": 282,
     "unlock_schedule_available": 259,
     "duplicate_rows_removed": 0,
     "bse_identities_added": 0,
     "bse_identity_resolved_total": 116,
     "bse_direct_quotes": 0,
     "listing_price_market_fallbacks": 2,
-    "current_price_missing": 8,
+    "current_price_missing": 6,
     "current_price_missing_due_identity": 5,
-    "current_price_missing_after_identity": 3,
-    "application_size_available": 200
+    "current_price_missing_after_identity": 1,
+    "application_size_available": 234
   },
   "records": [
     {
@@ -29,24 +29,25 @@
       "ipo_type": "SME",
       "listing_date": "2026-10-22",
       "issue_price": 112.0,
-      "listing_price": null,
-      "listing_return_pct": null,
-      "current_price": null,
-      "current_return_pct": null,
-      "current_price_as_of_ist": null,
-      "current_price_source": null,
+      "listing_price": 112.0,
+      "listing_return_pct": 0.0,
+      "current_price": 116.45,
+      "current_return_pct": 3.97,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
+      "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [],
       "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_status": "NOT_AVAILABLE",
+      "unlock_checked_at_ist": "2026-10-22T17:12:29.272670+05:30",
       "detail_url": "https://ipomarkets.com/ipo/ravita-engineering-services-ipo-c708xyc",
-      "application_shares": null,
-      "application_amount": null,
-      "application_lots": null,
-      "application_tier": null,
-      "application_source": null,
-      "listing_gain_loss": null,
-      "current_gain_loss": null
+      "listing_price_source": "NSE_LISTING_DAY_OPEN",
+      "application_shares": 2400,
+      "application_amount": 268800.0,
+      "application_lots": 2,
+      "application_tier": "Individual · min",
+      "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
+      "listing_gain_loss": 0.0,
+      "current_gain_loss": 10680.0
     },
     {
       "tracker_key": "2026|MAINBOARD|fusioncx",
@@ -59,24 +60,25 @@
       "ipo_type": "MAINBOARD",
       "listing_date": "2026-10-22",
       "issue_price": 289.0,
-      "listing_price": null,
-      "listing_return_pct": null,
-      "current_price": null,
-      "current_return_pct": null,
-      "current_price_as_of_ist": null,
-      "current_price_source": null,
+      "listing_price": 305.0,
+      "listing_return_pct": 5.54,
+      "current_price": 291.0,
+      "current_return_pct": 0.69,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
+      "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [],
       "next_unlock": null,
-      "unlock_status": "PENDING_DISCOVERY",
-      "unlock_checked_at_ist": null,
+      "unlock_status": "NOT_AVAILABLE",
+      "unlock_checked_at_ist": "2026-10-22T17:12:29.272670+05:30",
       "detail_url": "https://ipomarkets.com/ipo/fusion-cx-ipo-w3nwtx3",
-      "application_shares": null,
-      "application_amount": null,
-      "application_lots": null,
-      "application_tier": null,
-      "application_source": null,
-      "listing_gain_loss": null,
-      "current_gain_loss": null
+      "listing_price_source": "NSE_LISTING_DAY_OPEN",
+      "application_shares": 51,
+      "application_amount": 14739.0,
+      "application_lots": 1,
+      "application_tier": "Retail · min",
+      "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
+      "listing_gain_loss": 816.0,
+      "current_gain_loss": 102.0
     },
     {
       "tracker_key": "2026|SME|vaibhavvyapaar",
@@ -91,23 +93,22 @@
       "issue_price": 54.0,
       "listing_price": 52.9,
       "listing_return_pct": -2.04,
-      "current_price": 52.95,
-      "current_return_pct": -1.94,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 53.0,
+      "current_return_pct": -1.85,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [],
       "next_unlock": null,
       "unlock_status": "NOT_AVAILABLE",
       "unlock_checked_at_ist": "2026-10-21T17:09:49.835316+05:30",
       "detail_url": "https://ipomarkets.com/ipo/vaibhav-vyapaar-ipo-yhh9dgt",
-      "listing_price_source": "NSE_LISTING_DAY_OPEN",
       "application_shares": 4000,
       "application_amount": 216000.0,
       "application_lots": 2,
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": -4400.0,
-      "current_gain_loss": -4200.0
+      "current_gain_loss": -4000.0
     },
     {
       "tracker_key": "2026|MAINBOARD|hdfireprotect",
@@ -122,23 +123,22 @@
       "issue_price": 271.0,
       "listing_price": 335.0,
       "listing_return_pct": 23.62,
-      "current_price": 302.5,
-      "current_return_pct": 11.62,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 276.1,
+      "current_return_pct": 1.88,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [],
       "next_unlock": null,
       "unlock_status": "NOT_AVAILABLE",
       "unlock_checked_at_ist": "2026-10-21T17:09:49.835316+05:30",
       "detail_url": "https://ipomarkets.com/ipo/hd-fire-protect-ipo-hqnvrj4",
-      "listing_price_source": "NSE_LISTING_DAY_OPEN",
       "application_shares": 55,
       "application_amount": 14905.0,
       "application_lots": 1,
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 3520.0,
-      "current_gain_loss": 1732.5
+      "current_gain_loss": 280.5
     },
     {
       "tracker_key": "2026|SME|rkfashionaccessories",
@@ -153,9 +153,9 @@
       "issue_price": 82.0,
       "listing_price": 80.0,
       "listing_return_pct": -2.44,
-      "current_price": 65.2,
-      "current_return_pct": -20.49,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 61.95,
+      "current_return_pct": -24.45,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -186,7 +186,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": -6400.0,
-      "current_gain_loss": -53760.0
+      "current_gain_loss": -64160.0
     },
     {
       "tracker_key": "2026|SME|tstnasolutions",
@@ -381,9 +381,9 @@
       "issue_price": 220.0,
       "listing_price": 215.0,
       "listing_return_pct": -2.27,
-      "current_price": 135.54,
-      "current_return_pct": -38.39,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 128.77,
+      "current_return_pct": -41.47,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -432,7 +432,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": -340.0,
-      "current_gain_loss": -5743.28
+      "current_gain_loss": -6203.64
     },
     {
       "tracker_key": "2026|SME|sollfegesmartelectronics",
@@ -630,9 +630,9 @@
       "issue_price": 75.0,
       "listing_price": 80.0,
       "listing_return_pct": 6.67,
-      "current_price": 75.37,
-      "current_return_pct": 0.49,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 74.12,
+      "current_return_pct": -1.17,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -681,7 +681,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 1000.0,
-      "current_gain_loss": 74.0
+      "current_gain_loss": -176.0
     },
     {
       "tracker_key": "2026|SME|everestimstechnologies",
@@ -762,9 +762,9 @@
       "issue_price": 118.0,
       "listing_price": 111.0,
       "listing_return_pct": -5.93,
-      "current_price": 70.15,
-      "current_return_pct": -40.55,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 66.65,
+      "current_return_pct": -43.52,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -795,7 +795,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": -16800.0,
-      "current_gain_loss": -114840.0
+      "current_gain_loss": -123240.0
     },
     {
       "tracker_key": "2026|SME|dovesoft",
@@ -924,9 +924,9 @@
       "issue_price": 72.0,
       "listing_price": 72.3,
       "listing_return_pct": 0.42,
-      "current_price": 43.45,
-      "current_return_pct": -39.65,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 47.75,
+      "current_return_pct": -33.68,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -957,7 +957,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 960.0,
-      "current_gain_loss": -91360.0
+      "current_gain_loss": -77600.0
     },
     {
       "tracker_key": "2026|SME|greenasiaimpex",
@@ -972,9 +972,9 @@
       "issue_price": 89.0,
       "listing_price": 89.0,
       "listing_return_pct": 0.0,
-      "current_price": 74.9,
-      "current_return_pct": -15.84,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 67.0,
+      "current_return_pct": -24.72,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -1005,7 +1005,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 0.0,
-      "current_gain_loss": -45120.0
+      "current_gain_loss": -70400.0
     },
     {
       "tracker_key": "2026|SME|blackopalconsultants",
@@ -1134,9 +1134,9 @@
       "issue_price": 167.0,
       "listing_price": 171.0,
       "listing_return_pct": 2.4,
-      "current_price": 142.3,
-      "current_return_pct": -14.79,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 140.0,
+      "current_return_pct": -16.17,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -1203,7 +1203,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 340.0,
-      "current_gain_loss": -2099.5
+      "current_gain_loss": -2295.0
     },
     {
       "tracker_key": "2026|MAINBOARD|sritindia",
@@ -1218,9 +1218,9 @@
       "issue_price": 130.0,
       "listing_price": 148.0,
       "listing_return_pct": 13.85,
-      "current_price": 102.44,
-      "current_return_pct": -21.2,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 108.95,
+      "current_return_pct": -16.19,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -1287,7 +1287,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 2070.0,
-      "current_gain_loss": -3169.4
+      "current_gain_loss": -2420.75
     },
     {
       "tracker_key": "2026|SME|pindhospitality",
@@ -1494,9 +1494,9 @@
       "issue_price": 305.0,
       "listing_price": 305.0,
       "listing_return_pct": 0.0,
-      "current_price": 230.15,
-      "current_return_pct": -24.54,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 221.9,
+      "current_return_pct": -27.25,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -1563,7 +1563,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 0.0,
-      "current_gain_loss": -3667.65
+      "current_gain_loss": -4071.9
     },
     {
       "tracker_key": "2026|MAINBOARD|orientcablesindia",
@@ -1578,9 +1578,9 @@
       "issue_price": 272.0,
       "listing_price": 450.0,
       "listing_return_pct": 65.44,
-      "current_price": 373.0,
-      "current_return_pct": 37.13,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 361.0,
+      "current_return_pct": 32.72,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -1647,7 +1647,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 9790.0,
-      "current_gain_loss": 5555.0
+      "current_gain_loss": 4895.0
     },
     {
       "tracker_key": "2026|SME|himalayansolar",
@@ -1662,9 +1662,9 @@
       "issue_price": 103.0,
       "listing_price": 85.0,
       "listing_return_pct": -17.48,
-      "current_price": 74.9,
-      "current_return_pct": -27.28,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 84.95,
+      "current_return_pct": -17.52,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -1704,7 +1704,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": -43200.0,
-      "current_gain_loss": -67440.0
+      "current_gain_loss": -43320.0
     },
     {
       "tracker_key": "2026|MAINBOARD|germangreensteelpower",
@@ -1719,9 +1719,9 @@
       "issue_price": 139.0,
       "listing_price": 142.0,
       "listing_return_pct": 2.16,
-      "current_price": 104.75,
-      "current_return_pct": -24.64,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 103.0,
+      "current_return_pct": -25.9,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -1770,7 +1770,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 321.0,
-      "current_gain_loss": -3664.75
+      "current_gain_loss": -3852.0
     },
     {
       "tracker_key": "2026|SME|dudaniretail",
@@ -1815,9 +1815,9 @@
       "issue_price": 110.0,
       "listing_price": 110.0,
       "listing_return_pct": 0.0,
-      "current_price": 230.05,
-      "current_return_pct": 109.14,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 204.0,
+      "current_return_pct": 85.45,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -1857,7 +1857,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 0.0,
-      "current_gain_loss": 288120.0
+      "current_gain_loss": 225600.0
     },
     {
       "tracker_key": "2026|MAINBOARD|acevector",
@@ -1872,9 +1872,9 @@
       "issue_price": 32.0,
       "listing_price": 28.32,
       "listing_return_pct": -11.5,
-      "current_price": 22.98,
-      "current_return_pct": -28.19,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 21.55,
+      "current_return_pct": -32.66,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -1941,7 +1941,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": -1722.24,
-      "current_gain_loss": -4221.36
+      "current_gain_loss": -4890.6
     },
     {
       "tracker_key": "2026|SME|roopascreen",
@@ -2043,9 +2043,9 @@
       "issue_price": 34.0,
       "listing_price": 55.0,
       "listing_return_pct": 61.76,
-      "current_price": 54.76,
-      "current_return_pct": 61.06,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 52.5,
+      "current_return_pct": 54.41,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -2112,7 +2112,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 9261.0,
-      "current_gain_loss": 9155.16
+      "current_gain_loss": 8158.5
     },
     {
       "tracker_key": "2026|MAINBOARD|aonesteelsindia",
@@ -2127,9 +2127,9 @@
       "issue_price": 405.0,
       "listing_price": 455.0,
       "listing_return_pct": 12.35,
-      "current_price": 406.0,
-      "current_return_pct": 0.25,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 386.0,
+      "current_return_pct": -4.69,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -2196,7 +2196,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 1850.0,
-      "current_gain_loss": 37.0
+      "current_gain_loss": -703.0
     },
     {
       "tracker_key": "2026|SME|unitecfibres",
@@ -2268,9 +2268,9 @@
       "issue_price": 185.0,
       "listing_price": 200.0,
       "listing_return_pct": 8.11,
-      "current_price": 238.0,
-      "current_return_pct": 28.65,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 205.0,
+      "current_return_pct": 10.81,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -2337,7 +2337,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 1215.0,
-      "current_gain_loss": 4293.0
+      "current_gain_loss": 1620.0
     },
     {
       "tracker_key": "2026|SME|skoffset",
@@ -2409,9 +2409,9 @@
       "issue_price": 115.0,
       "listing_price": 118.0,
       "listing_return_pct": 2.61,
-      "current_price": 125.15,
-      "current_return_pct": 8.83,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 125.0,
+      "current_return_pct": 8.7,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -2451,7 +2451,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 7200.0,
-      "current_gain_loss": 24360.0
+      "current_gain_loss": 24000.0
     },
     {
       "tracker_key": "2026|SME|liqvddigitalindia",
@@ -2496,9 +2496,9 @@
       "issue_price": 362.0,
       "listing_price": 355.1,
       "listing_return_pct": -1.91,
-      "current_price": 303.0,
-      "current_return_pct": -16.3,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 300.1,
+      "current_return_pct": -17.1,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -2565,7 +2565,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": -282.9,
-      "current_gain_loss": -2419.0
+      "current_gain_loss": -2537.9
     },
     {
       "tracker_key": "2026|SME|coreintegraconsultingservices",
@@ -2580,9 +2580,9 @@
       "issue_price": 78.0,
       "listing_price": 78.1,
       "listing_return_pct": 0.13,
-      "current_price": 112.6,
-      "current_return_pct": 44.36,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 107.0,
+      "current_return_pct": 37.18,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [],
       "next_unlock": null,
@@ -2595,7 +2595,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 320.0,
-      "current_gain_loss": 110720.0
+      "current_gain_loss": 92800.0
     },
     {
       "tracker_key": "2026|MAINBOARD|armeeinfotech",
@@ -2610,9 +2610,9 @@
       "issue_price": 375.0,
       "listing_price": 375.0,
       "listing_return_pct": 0.0,
-      "current_price": 247.25,
-      "current_return_pct": -34.07,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 266.1,
+      "current_return_pct": -29.04,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -2661,7 +2661,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 0.0,
-      "current_gain_loss": -5110.0
+      "current_gain_loss": -4356.0
     },
     {
       "tracker_key": "2026|MAINBOARD|adroitindustriesindia",
@@ -2676,9 +2676,9 @@
       "issue_price": 134.0,
       "listing_price": 235.0,
       "listing_return_pct": 75.37,
-      "current_price": 165.75,
-      "current_return_pct": 23.69,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 161.5,
+      "current_return_pct": 20.52,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -2727,7 +2727,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 11211.0,
-      "current_gain_loss": 3524.25
+      "current_gain_loss": 3052.5
     },
     {
       "tracker_key": "2026|MAINBOARD|varmoragranito",
@@ -2742,9 +2742,9 @@
       "issue_price": 148.0,
       "listing_price": 155.0,
       "listing_return_pct": 4.73,
-      "current_price": 131.02,
-      "current_return_pct": -11.47,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 135.01,
+      "current_return_pct": -8.78,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -2811,7 +2811,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 707.0,
-      "current_gain_loss": -1714.98
+      "current_gain_loss": -1311.99
     },
     {
       "tracker_key": "2026|SME|himalayanutravedicsindia",
@@ -3084,9 +3084,9 @@
       "issue_price": 54.0,
       "listing_price": 54.75,
       "listing_return_pct": 1.39,
-      "current_price": 36.9,
-      "current_return_pct": -31.67,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 34.85,
+      "current_return_pct": -35.46,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -3126,7 +3126,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 3000.0,
-      "current_gain_loss": -68400.0
+      "current_gain_loss": -76600.0
     },
     {
       "tracker_key": "2026|SME|spectraatechnologysolutions",
@@ -3141,9 +3141,9 @@
       "issue_price": 118.0,
       "listing_price": 224.2,
       "listing_return_pct": 90.0,
-      "current_price": 248.0,
-      "current_return_pct": 110.17,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 246.0,
+      "current_return_pct": 108.47,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -3183,7 +3183,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 254880.0,
-      "current_gain_loss": 312000.0
+      "current_gain_loss": 307200.0
     },
     {
       "tracker_key": "2026|MAINBOARD|sonaselectionindia",
@@ -3198,9 +3198,9 @@
       "issue_price": 99.0,
       "listing_price": 102.31,
       "listing_return_pct": 3.34,
-      "current_price": 94.5,
-      "current_return_pct": -4.55,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 95.4,
+      "current_return_pct": -3.64,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -3267,7 +3267,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 496.5,
-      "current_gain_loss": -675.0
+      "current_gain_loss": -540.0
     },
     {
       "tracker_key": "2026|MAINBOARD|nationalstockexchangeofindia",
@@ -3339,9 +3339,9 @@
       "issue_price": 101.0,
       "listing_price": 104.9,
       "listing_return_pct": 3.86,
-      "current_price": 87.4,
-      "current_return_pct": -13.47,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 101.75,
+      "current_return_pct": 0.74,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -3381,7 +3381,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 9360.0,
-      "current_gain_loss": -32640.0
+      "current_gain_loss": 1800.0
     },
     {
       "tracker_key": "2026|MAINBOARD|ssretail",
@@ -3396,9 +3396,9 @@
       "issue_price": 424.0,
       "listing_price": 624.0,
       "listing_return_pct": 47.17,
-      "current_price": 692.0,
-      "current_return_pct": 63.21,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 673.0,
+      "current_return_pct": 58.73,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -3456,7 +3456,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 7000.0,
-      "current_gain_loss": 9380.0
+      "current_gain_loss": 8715.0
     },
     {
       "tracker_key": "2026|MAINBOARD|jindalsupremeindia",
@@ -3471,9 +3471,9 @@
       "issue_price": 93.0,
       "listing_price": 120.0,
       "listing_return_pct": 29.03,
-      "current_price": 148.59,
-      "current_return_pct": 59.77,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 143.11,
+      "current_return_pct": 53.88,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -3531,7 +3531,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 4347.0,
-      "current_gain_loss": 8949.99
+      "current_gain_loss": 8067.71
     },
     {
       "tracker_key": "2026|MAINBOARD|heromotors",
@@ -3546,9 +3546,9 @@
       "issue_price": 84.0,
       "listing_price": 82.0,
       "listing_return_pct": -2.38,
-      "current_price": 122.71,
-      "current_return_pct": 46.08,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 116.58,
+      "current_return_pct": 38.79,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -3606,7 +3606,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": -356.0,
-      "current_gain_loss": 6890.38
+      "current_gain_loss": 5799.24
     },
     {
       "tracker_key": "2026|SME|vamawovenfab",
@@ -3729,9 +3729,9 @@
       "issue_price": 43.0,
       "listing_price": 43.0,
       "listing_return_pct": 0.0,
-      "current_price": 46.59,
-      "current_return_pct": 8.35,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 45.65,
+      "current_return_pct": 6.16,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -3771,7 +3771,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 0.0,
-      "current_gain_loss": 1249.32
+      "current_gain_loss": 922.2
     },
     {
       "tracker_key": "2026|SME|injectopolymers",
@@ -3882,9 +3882,9 @@
       "issue_price": 140.0,
       "listing_price": 154.0,
       "listing_return_pct": 10.0,
-      "current_price": 132.93,
-      "current_return_pct": -5.05,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 130.0,
+      "current_return_pct": -7.14,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -3942,7 +3942,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 1498.0,
-      "current_gain_loss": -756.49
+      "current_gain_loss": -1070.0
     },
     {
       "tracker_key": "2026|SME|raksantransformers",
@@ -4131,9 +4131,9 @@
       "issue_price": 94.0,
       "listing_price": 94.0,
       "listing_return_pct": 0.0,
-      "current_price": 24.85,
-      "current_return_pct": -73.56,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 23.65,
+      "current_return_pct": -74.84,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [],
       "next_unlock": null,
@@ -4146,7 +4146,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 0.0,
-      "current_gain_loss": -165960.0
+      "current_gain_loss": -168840.0
     },
     {
       "tracker_key": "2026|MAINBOARD|steamhouseindia",
@@ -4161,9 +4161,9 @@
       "issue_price": 81.0,
       "listing_price": 94.5,
       "listing_return_pct": 16.67,
-      "current_price": 128.32,
-      "current_return_pct": 58.42,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 129.18,
+      "current_return_pct": 59.48,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -4221,7 +4221,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 2497.5,
-      "current_gain_loss": 8754.2
+      "current_gain_loss": 8913.3
     },
     {
       "tracker_key": "2026|MAINBOARD|rentomojo",
@@ -4236,9 +4236,9 @@
       "issue_price": 404.0,
       "listing_price": 482.45,
       "listing_return_pct": 19.42,
-      "current_price": 551.0,
-      "current_return_pct": 36.39,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 532.0,
+      "current_return_pct": 31.68,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -4296,7 +4296,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 2902.65,
-      "current_gain_loss": 5439.0
+      "current_gain_loss": 4736.0
     },
     {
       "tracker_key": "2026|MAINBOARD|manipalpaymentidentitysolutions",
@@ -4311,9 +4311,9 @@
       "issue_price": 339.0,
       "listing_price": 330.0,
       "listing_return_pct": -2.65,
-      "current_price": 314.0,
-      "current_return_pct": -7.37,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 309.2,
+      "current_return_pct": -8.79,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -4353,7 +4353,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": -396.0,
-      "current_gain_loss": -1100.0
+      "current_gain_loss": -1311.2
     },
     {
       "tracker_key": "2026|MAINBOARD|lccprojects",
@@ -4368,9 +4368,9 @@
       "issue_price": 146.0,
       "listing_price": 189.0,
       "listing_return_pct": 29.45,
-      "current_price": 128.0,
-      "current_return_pct": -12.33,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 123.95,
+      "current_return_pct": -15.1,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -4428,7 +4428,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 4386.0,
-      "current_gain_loss": -1836.0
+      "current_gain_loss": -2249.1
     },
     {
       "tracker_key": "2026|MAINBOARD|karamtaraengineering",
@@ -4443,9 +4443,9 @@
       "issue_price": 254.0,
       "listing_price": 320.0,
       "listing_return_pct": 25.98,
-      "current_price": 359.0,
-      "current_return_pct": 41.34,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 361.25,
+      "current_return_pct": 42.22,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -4503,7 +4503,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 3894.0,
-      "current_gain_loss": 6195.0
+      "current_gain_loss": 6327.75
     },
     {
       "tracker_key": "2026|SME|infraxrenewable",
@@ -4548,9 +4548,9 @@
       "issue_price": 139.0,
       "listing_price": 139.0,
       "listing_return_pct": 0.0,
-      "current_price": 130.2,
-      "current_return_pct": -6.33,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 123.0,
+      "current_return_pct": -11.51,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -4590,7 +4590,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 0.0,
-      "current_gain_loss": -941.6
+      "current_gain_loss": -1712.0
     },
     {
       "tracker_key": "2026|SME|amtechesters",
@@ -4653,9 +4653,9 @@
       "issue_price": 676.0,
       "listing_price": 610.0,
       "listing_return_pct": -9.76,
-      "current_price": 701.5,
-      "current_return_pct": 3.77,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 701.8,
+      "current_return_pct": 3.82,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -4713,7 +4713,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": -1452.0,
-      "current_gain_loss": 561.0
+      "current_gain_loss": 567.6
     },
     {
       "tracker_key": "2026|MAINBOARD|kanoharelectricals",
@@ -4728,9 +4728,9 @@
       "issue_price": 632.0,
       "listing_price": 685.5,
       "listing_return_pct": 8.47,
-      "current_price": 1035.0,
-      "current_return_pct": 63.77,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 988.05,
+      "current_return_pct": 56.34,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -4788,7 +4788,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 1230.5,
-      "current_gain_loss": 9269.0
+      "current_gain_loss": 8189.15
     },
     {
       "tracker_key": "2026|MAINBOARD|glasswallsystemsindia",
@@ -4803,9 +4803,9 @@
       "issue_price": 182.0,
       "listing_price": 194.0,
       "listing_return_pct": 6.59,
-      "current_price": 230.0,
-      "current_return_pct": 26.37,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 218.0,
+      "current_return_pct": 19.78,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -4845,7 +4845,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 984.0,
-      "current_gain_loss": 3936.0
+      "current_gain_loss": 2952.0
     },
     {
       "tracker_key": "2026|MAINBOARD|pranavconstructions",
@@ -4860,9 +4860,9 @@
       "issue_price": 124.0,
       "listing_price": 165.0,
       "listing_return_pct": 33.06,
-      "current_price": 89.9,
-      "current_return_pct": -27.5,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 91.3,
+      "current_return_pct": -26.37,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -4920,7 +4920,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 4920.0,
-      "current_gain_loss": -4092.0
+      "current_gain_loss": -3924.0
     },
     {
       "tracker_key": "2026|SME|apanalogistics",
@@ -4935,9 +4935,9 @@
       "issue_price": 60.0,
       "listing_price": 60.0,
       "listing_return_pct": 0.0,
-      "current_price": 39.75,
-      "current_return_pct": -33.75,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 39.5,
+      "current_return_pct": -34.17,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [],
       "next_unlock": null,
@@ -4950,7 +4950,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 0.0,
-      "current_gain_loss": -81000.0
+      "current_gain_loss": -82000.0
     },
     {
       "tracker_key": "2026|SME|qualianceinternational",
@@ -4965,9 +4965,9 @@
       "issue_price": 127.0,
       "listing_price": 224.9,
       "listing_return_pct": 77.09,
-      "current_price": 170.75,
-      "current_return_pct": 34.45,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 176.0,
+      "current_return_pct": 38.58,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -4998,7 +4998,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 195800.0,
-      "current_gain_loss": 87500.0
+      "current_gain_loss": 98000.0
     },
     {
       "tracker_key": "2026|MAINBOARD|raysofbelief",
@@ -5013,9 +5013,9 @@
       "issue_price": 239.0,
       "listing_price": 239.0,
       "listing_return_pct": 0.0,
-      "current_price": 272.9,
-      "current_return_pct": 14.18,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 257.14,
+      "current_return_pct": 7.59,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -5073,7 +5073,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 0.0,
-      "current_gain_loss": 2101.8
+      "current_gain_loss": 1124.68
     },
     {
       "tracker_key": "2026|SME|flyhimaritimetravels",
@@ -5148,9 +5148,9 @@
       "issue_price": 177.0,
       "listing_price": 221.0,
       "listing_return_pct": 24.86,
-      "current_price": 250.51,
-      "current_return_pct": 41.53,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 243.9,
+      "current_return_pct": 37.8,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -5208,7 +5208,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 3696.0,
-      "current_gain_loss": 6174.84
+      "current_gain_loss": 5619.6
     },
     {
       "tracker_key": "2026|SME|shantiinorganics",
@@ -5223,9 +5223,9 @@
       "issue_price": 83.0,
       "listing_price": 157.7,
       "listing_return_pct": 90.0,
-      "current_price": 198.0,
-      "current_return_pct": 138.55,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 209.95,
+      "current_return_pct": 152.95,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -5256,7 +5256,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 239040.0,
-      "current_gain_loss": 368000.0
+      "current_gain_loss": 406240.0
     },
     {
       "tracker_key": "2026|MAINBOARD|purplestylelabs",
@@ -5271,9 +5271,9 @@
       "issue_price": 575.0,
       "listing_price": 535.0,
       "listing_return_pct": -6.96,
-      "current_price": 517.75,
-      "current_return_pct": -9.96,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 522.9,
+      "current_return_pct": -9.06,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -5331,7 +5331,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": -1040.0,
-      "current_gain_loss": -1488.5
+      "current_gain_loss": -1354.6
     },
     {
       "tracker_key": "2026|SME|phychemtechnologies",
@@ -5394,9 +5394,9 @@
       "issue_price": 92.0,
       "listing_price": 140.0,
       "listing_return_pct": 52.17,
-      "current_price": 128.0,
-      "current_return_pct": 39.13,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 127.0,
+      "current_return_pct": 38.04,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -5427,7 +5427,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 115200.0,
-      "current_gain_loss": 86400.0
+      "current_gain_loss": 84000.0
     },
     {
       "tracker_key": "2026|MAINBOARD|priorityjewels",
@@ -5442,9 +5442,9 @@
       "issue_price": 200.0,
       "listing_price": 230.0,
       "listing_return_pct": 15.0,
-      "current_price": 307.0,
-      "current_return_pct": 53.5,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 300.0,
+      "current_return_pct": 50.0,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -5502,7 +5502,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 2250.0,
-      "current_gain_loss": 8025.0
+      "current_gain_loss": 7500.0
     },
     {
       "tracker_key": "2026|SME|palucktechnologies",
@@ -5565,9 +5565,9 @@
       "issue_price": 429.0,
       "listing_price": 757.0,
       "listing_return_pct": 76.46,
-      "current_price": 1364.7,
-      "current_return_pct": 218.11,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 1296.5,
+      "current_return_pct": 202.21,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -5607,7 +5607,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 11152.0,
-      "current_gain_loss": 31813.8
+      "current_gain_loss": 29495.0
     },
     {
       "tracker_key": "2026|SME|completesportsmanagementindia",
@@ -5670,9 +5670,9 @@
       "issue_price": 82.0,
       "listing_price": 110.0,
       "listing_return_pct": 34.15,
-      "current_price": 97.0,
-      "current_return_pct": 18.29,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 93.0,
+      "current_return_pct": 13.41,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -5730,7 +5730,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 5096.0,
-      "current_gain_loss": 2730.0
+      "current_gain_loss": 2002.0
     },
     {
       "tracker_key": "2026|SME|kwickforensicsolutions",
@@ -5793,9 +5793,9 @@
       "issue_price": 101.0,
       "listing_price": 111.0,
       "listing_return_pct": 9.9,
-      "current_price": 96.0,
-      "current_return_pct": -4.95,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 94.0,
+      "current_return_pct": -6.93,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -5835,7 +5835,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 24000.0,
-      "current_gain_loss": -12000.0
+      "current_gain_loss": -16800.0
     },
     {
       "tracker_key": "2026|MAINBOARD|annuprojects",
@@ -5850,9 +5850,9 @@
       "issue_price": 99.0,
       "listing_price": 72.0,
       "listing_return_pct": -27.27,
-      "current_price": 41.3,
-      "current_return_pct": -58.28,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 38.42,
+      "current_return_pct": -61.19,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -5901,7 +5901,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": -4077.0,
-      "current_gain_loss": -8712.7
+      "current_gain_loss": -9147.58
     },
     {
       "tracker_key": "2026|MAINBOARD|symbiotecpharmalab",
@@ -5916,9 +5916,9 @@
       "issue_price": 988.0,
       "listing_price": 988.0,
       "listing_return_pct": 0.0,
-      "current_price": 1199.1,
-      "current_return_pct": 21.37,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 1195.2,
+      "current_return_pct": 20.97,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -5976,7 +5976,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 0.0,
-      "current_gain_loss": 3166.5
+      "current_gain_loss": 3108.0
     },
     {
       "tracker_key": "2026|MAINBOARD|skywaysairservices",
@@ -5991,9 +5991,9 @@
       "issue_price": 138.0,
       "listing_price": 124.0,
       "listing_return_pct": -10.14,
-      "current_price": 103.11,
-      "current_return_pct": -25.28,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 99.9,
+      "current_return_pct": -27.61,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -6051,7 +6051,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": -1400.0,
-      "current_gain_loss": -3489.0
+      "current_gain_loss": -3810.0
     },
     {
       "tracker_key": "2026|SME|madhurknitcrafts",
@@ -6066,9 +6066,9 @@
       "issue_price": 100.0,
       "listing_price": 100.0,
       "listing_return_pct": 0.0,
-      "current_price": 58.0,
-      "current_return_pct": -42.0,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 57.75,
+      "current_return_pct": -42.25,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -6108,7 +6108,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 0.0,
-      "current_gain_loss": -100800.0
+      "current_gain_loss": -101400.0
     },
     {
       "tracker_key": "2026|MAINBOARD|hytechengineers",
@@ -6123,9 +6123,9 @@
       "issue_price": 53.0,
       "listing_price": 75.0,
       "listing_return_pct": 41.51,
-      "current_price": 78.99,
-      "current_return_pct": 49.04,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 76.78,
+      "current_return_pct": 44.87,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -6183,7 +6183,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 6226.0,
-      "current_gain_loss": 7355.17
+      "current_gain_loss": 6729.74
     },
     {
       "tracker_key": "2026|SME|abhhealthcare",
@@ -6198,9 +6198,9 @@
       "issue_price": 102.0,
       "listing_price": 99.0,
       "listing_return_pct": -2.94,
-      "current_price": 41.0,
-      "current_return_pct": -59.8,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 43.05,
+      "current_return_pct": -57.79,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -6231,7 +6231,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": -7200.0,
-      "current_gain_loss": -146400.0
+      "current_gain_loss": -141480.0
     },
     {
       "tracker_key": "2026|MAINBOARD|augmontenterprises",
@@ -6246,9 +6246,9 @@
       "issue_price": 788.0,
       "listing_price": 961.0,
       "listing_return_pct": 21.95,
-      "current_price": 1214.6,
-      "current_return_pct": 54.14,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 1153.9,
+      "current_return_pct": 46.43,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -6306,7 +6306,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 3287.0,
-      "current_gain_loss": 8105.4
+      "current_gain_loss": 6952.1
     },
     {
       "tracker_key": "2026|MAINBOARD|tempsensinstrumentsindia",
@@ -6321,9 +6321,9 @@
       "issue_price": 300.0,
       "listing_price": 634.0,
       "listing_return_pct": 111.33,
-      "current_price": 516.0,
-      "current_return_pct": 72.0,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 506.0,
+      "current_return_pct": 68.67,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -6381,7 +6381,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 16700.0,
-      "current_gain_loss": 10800.0
+      "current_gain_loss": 10300.0
     },
     {
       "tracker_key": "2026|SME|mopshopdistribution",
@@ -6444,9 +6444,9 @@
       "issue_price": 160.0,
       "listing_price": 185.0,
       "listing_return_pct": 15.63,
-      "current_price": 126.0,
-      "current_return_pct": -21.25,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 124.15,
+      "current_return_pct": -22.41,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -6504,7 +6504,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 2325.0,
-      "current_gain_loss": -3162.0
+      "current_gain_loss": -3334.05
     },
     {
       "tracker_key": "2026|SME|dhanwelhybridseeds",
@@ -6567,9 +6567,9 @@
       "issue_price": 360.0,
       "listing_price": 395.9,
       "listing_return_pct": 9.97,
-      "current_price": 413.75,
-      "current_return_pct": 14.93,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 388.5,
+      "current_return_pct": 7.92,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -6627,7 +6627,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 1471.9,
-      "current_gain_loss": 2203.75
+      "current_gain_loss": 1168.5
     },
     {
       "tracker_key": "2026|MAINBOARD|shankeshjewellers",
@@ -6642,9 +6642,9 @@
       "issue_price": 93.0,
       "listing_price": 103.3,
       "listing_return_pct": 11.08,
-      "current_price": 103.11,
-      "current_return_pct": 10.87,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 101.1,
+      "current_return_pct": 8.71,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -6702,7 +6702,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 1648.0,
-      "current_gain_loss": 1617.6
+      "current_gain_loss": 1296.0
     },
     {
       "tracker_key": "2026|MAINBOARD|lalithaajewellerymart",
@@ -6717,9 +6717,9 @@
       "issue_price": 201.0,
       "listing_price": 265.0,
       "listing_return_pct": 31.84,
-      "current_price": 355.25,
-      "current_return_pct": 76.74,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 350.0,
+      "current_return_pct": 74.13,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -6777,7 +6777,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 4736.0,
-      "current_gain_loss": 11414.5
+      "current_gain_loss": 11026.0
     },
     {
       "tracker_key": "2026|MAINBOARD|horizonindustrialparks",
@@ -6792,9 +6792,9 @@
       "issue_price": 60.0,
       "listing_price": 60.25,
       "listing_return_pct": 0.42,
-      "current_price": 45.55,
-      "current_return_pct": -24.08,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 43.65,
+      "current_return_pct": -27.25,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -6852,7 +6852,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 62.5,
-      "current_gain_loss": -3612.5
+      "current_gain_loss": -4087.5
     },
     {
       "tracker_key": "2026|SME|fascinatetextiles",
@@ -6867,9 +6867,9 @@
       "issue_price": 151.0,
       "listing_price": 120.8,
       "listing_return_pct": -20.0,
-      "current_price": 100.45,
-      "current_return_pct": -33.48,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 100.95,
+      "current_return_pct": -33.15,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -6900,7 +6900,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": -48320.0,
-      "current_gain_loss": -80880.0
+      "current_gain_loss": -80080.0
     },
     {
       "tracker_key": "2026|SME|technocratsplasmasystems",
@@ -6972,9 +6972,9 @@
       "issue_price": 77.0,
       "listing_price": 74.0,
       "listing_return_pct": -3.9,
-      "current_price": 36.75,
-      "current_return_pct": -52.27,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 34.95,
+      "current_return_pct": -54.61,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -7005,7 +7005,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": -9600.0,
-      "current_gain_loss": -128800.0
+      "current_gain_loss": -134560.0
     },
     {
       "tracker_key": "2026|SME|ensenterprises",
@@ -7077,9 +7077,9 @@
       "issue_price": 189.0,
       "listing_price": 359.1,
       "listing_return_pct": 90.0,
-      "current_price": 323.5,
-      "current_return_pct": 71.16,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 310.9,
+      "current_return_pct": 64.5,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -7119,7 +7119,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 204120.0,
-      "current_gain_loss": 161400.0
+      "current_gain_loss": 146280.0
     },
     {
       "tracker_key": "2026|MAINBOARD|shiprocket",
@@ -7134,9 +7134,9 @@
       "issue_price": 97.0,
       "listing_price": 131.0,
       "listing_return_pct": 35.05,
-      "current_price": 121.49,
-      "current_return_pct": 25.25,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 121.8,
+      "current_return_pct": 25.57,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -7194,7 +7194,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 5236.0,
-      "current_gain_loss": 3771.46
+      "current_gain_loss": 3819.2
     },
     {
       "tracker_key": "2026|SME|pramodinimedicare",
@@ -7209,9 +7209,9 @@
       "issue_price": 118.0,
       "listing_price": 120.0,
       "listing_return_pct": 1.69,
-      "current_price": 110.8,
-      "current_return_pct": -6.1,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 111.05,
+      "current_return_pct": -5.89,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -7251,7 +7251,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 4800.0,
-      "current_gain_loss": -17280.0
+      "current_gain_loss": -16680.0
     },
     {
       "tracker_key": "2026|MAINBOARD|beharilalengineering",
@@ -7266,9 +7266,9 @@
       "issue_price": 285.0,
       "listing_price": 465.0,
       "listing_return_pct": 63.16,
-      "current_price": 447.5,
-      "current_return_pct": 57.02,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 448.8,
+      "current_return_pct": 57.47,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -7326,7 +7326,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 9360.0,
-      "current_gain_loss": 8450.0
+      "current_gain_loss": 8517.6
     },
     {
       "tracker_key": "2026|SME|shamfoam",
@@ -7389,9 +7389,9 @@
       "issue_price": 140.0,
       "listing_price": 165.0,
       "listing_return_pct": 17.86,
-      "current_price": 277.6,
-      "current_return_pct": 98.29,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 276.0,
+      "current_return_pct": 97.14,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -7449,7 +7449,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 2675.0,
-      "current_gain_loss": 14723.2
+      "current_gain_loss": 14552.0
     },
     {
       "tracker_key": "2026|MAINBOARD|molbiodiagnostics",
@@ -7464,9 +7464,9 @@
       "issue_price": 807.0,
       "listing_price": 980.0,
       "listing_return_pct": 21.44,
-      "current_price": 1322.0,
-      "current_return_pct": 63.82,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 1267.0,
+      "current_return_pct": 57.0,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -7524,7 +7524,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 3114.0,
-      "current_gain_loss": 9270.0
+      "current_gain_loss": 8280.0
     },
     {
       "tracker_key": "2026|MAINBOARD|dhoottransmission",
@@ -7539,9 +7539,9 @@
       "issue_price": 871.0,
       "listing_price": 1200.0,
       "listing_return_pct": 37.77,
-      "current_price": 1429.0,
-      "current_return_pct": 64.06,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 1401.0,
+      "current_return_pct": 60.85,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -7599,7 +7599,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 5593.0,
-      "current_gain_loss": 9486.0
+      "current_gain_loss": 9010.0
     },
     {
       "tracker_key": "2026|MAINBOARD|technocraftventures",
@@ -7614,9 +7614,9 @@
       "issue_price": 212.0,
       "listing_price": 284.0,
       "listing_return_pct": 33.96,
-      "current_price": 491.0,
-      "current_return_pct": 131.6,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 489.35,
+      "current_return_pct": 130.83,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -7674,7 +7674,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 5040.0,
-      "current_gain_loss": 19530.0
+      "current_gain_loss": 19414.5
     },
     {
       "tracker_key": "2026|SME|optimystixentertainmentindia",
@@ -7689,9 +7689,9 @@
       "issue_price": 175.0,
       "listing_price": 180.0,
       "listing_return_pct": 2.86,
-      "current_price": 151.0,
-      "current_return_pct": -13.71,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 148.15,
+      "current_return_pct": -15.34,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -7731,7 +7731,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 8000.0,
-      "current_gain_loss": -38400.0
+      "current_gain_loss": -42960.0
     },
     {
       "tracker_key": "2026|MAINBOARD|leapindia",
@@ -7746,9 +7746,9 @@
       "issue_price": 159.0,
       "listing_price": 165.9,
       "listing_return_pct": 4.34,
-      "current_price": 129.0,
-      "current_return_pct": -18.87,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 125.0,
+      "current_return_pct": -21.38,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -7806,7 +7806,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 648.6,
-      "current_gain_loss": -2820.0
+      "current_gain_loss": -3196.0
     },
     {
       "tracker_key": "2026|SME|gvelectricals",
@@ -7878,9 +7878,9 @@
       "issue_price": 53.0,
       "listing_price": 72.0,
       "listing_return_pct": 35.85,
-      "current_price": 44.03,
-      "current_return_pct": -16.92,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 43.28,
+      "current_return_pct": -18.34,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -7938,7 +7938,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 5339.0,
-      "current_gain_loss": -2520.57
+      "current_gain_loss": -2731.32
     },
     {
       "tracker_key": "2026|SME|aegeustechnologies",
@@ -8010,9 +8010,9 @@
       "issue_price": 270.0,
       "listing_price": 329.65,
       "listing_return_pct": 22.09,
-      "current_price": 408.0,
-      "current_return_pct": 51.11,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 402.45,
+      "current_return_pct": 49.06,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -8052,7 +8052,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 47720.0,
-      "current_gain_loss": 110400.0
+      "current_gain_loss": 105960.0
     },
     {
       "tracker_key": "2026|SME|fusionklassroomedutech",
@@ -8181,9 +8181,9 @@
       "issue_price": 425.0,
       "listing_price": 520.0,
       "listing_return_pct": 22.35,
-      "current_price": 865.7,
-      "current_return_pct": 103.69,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 814.0,
+      "current_return_pct": 91.53,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -8241,7 +8241,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 3230.0,
-      "current_gain_loss": 14983.8
+      "current_gain_loss": 13226.0
     },
     {
       "tracker_key": "2026|MAINBOARD|junipergreenenergy",
@@ -8256,9 +8256,9 @@
       "issue_price": 225.0,
       "listing_price": 245.0,
       "listing_return_pct": 8.89,
-      "current_price": 249.95,
-      "current_return_pct": 11.09,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 244.75,
+      "current_return_pct": 8.78,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -8316,7 +8316,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 1320.0,
-      "current_gain_loss": 1646.7
+      "current_gain_loss": 1303.5
     },
     {
       "tracker_key": "2026|SME|dhavalpackaging",
@@ -8388,9 +8388,9 @@
       "issue_price": 590.0,
       "listing_price": 652.0,
       "listing_return_pct": 10.51,
-      "current_price": 629.9,
-      "current_return_pct": 6.76,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 625.5,
+      "current_return_pct": 6.02,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -8448,7 +8448,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 1550.0,
-      "current_gain_loss": 997.5
+      "current_gain_loss": 887.5
     },
     {
       "tracker_key": "2026|SME|hrhygieneproducts",
@@ -8787,9 +8787,9 @@
       "issue_price": 127.0,
       "listing_price": 136.0,
       "listing_return_pct": 7.09,
-      "current_price": 285.5,
-      "current_return_pct": 124.8,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 282.0,
+      "current_return_pct": 122.05,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -8847,7 +8847,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 990.0,
-      "current_gain_loss": 17435.0
+      "current_gain_loss": 17050.0
     },
     {
       "tracker_key": "2026|MAINBOARD|lohiacorp",
@@ -8862,9 +8862,9 @@
       "issue_price": 425.0,
       "listing_price": 461.0,
       "listing_return_pct": 8.47,
-      "current_price": 574.0,
-      "current_return_pct": 35.06,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 565.2,
+      "current_return_pct": 32.99,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -8904,7 +8904,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 1260.0,
-      "current_gain_loss": 5215.0
+      "current_gain_loss": 4907.0
     },
     {
       "tracker_key": "2026|MAINBOARD|indomim",
@@ -8919,9 +8919,9 @@
       "issue_price": 485.0,
       "listing_price": 700.0,
       "listing_return_pct": 44.33,
-      "current_price": 1121.2,
-      "current_return_pct": 131.18,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 1094.4,
+      "current_return_pct": 125.65,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -8979,7 +8979,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 6450.0,
-      "current_gain_loss": 19086.0
+      "current_gain_loss": 18282.0
     },
     {
       "tracker_key": "2026|SME|shreebalajimalatextiles",
@@ -9051,9 +9051,9 @@
       "issue_price": 77.0,
       "listing_price": 87.0,
       "listing_return_pct": 12.99,
-      "current_price": 155.5,
-      "current_return_pct": 101.95,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 152.25,
+      "current_return_pct": 97.73,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -9093,7 +9093,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 32000.0,
-      "current_gain_loss": 251200.0
+      "current_gain_loss": 240800.0
     },
     {
       "tracker_key": "2026|SME|gulflloydsindia",
@@ -9156,9 +9156,9 @@
       "issue_price": 424.0,
       "listing_price": 500.25,
       "listing_return_pct": 17.98,
-      "current_price": 528.0,
-      "current_return_pct": 24.53,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 523.0,
+      "current_return_pct": 23.35,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -9207,7 +9207,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 2668.75,
-      "current_gain_loss": 3640.0
+      "current_gain_loss": 3465.0
     },
     {
       "tracker_key": "2026|SME|sotefinbharat",
@@ -9270,9 +9270,9 @@
       "issue_price": 574.0,
       "listing_price": 613.3,
       "listing_return_pct": 6.85,
-      "current_price": 477.8,
-      "current_return_pct": -16.76,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 472.0,
+      "current_return_pct": -17.77,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -9303,7 +9303,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 1021.8,
-      "current_gain_loss": -2501.2
+      "current_gain_loss": -2652.0
     },
     {
       "tracker_key": "2026|SME|millworkstechnologies",
@@ -9366,9 +9366,9 @@
       "issue_price": 105.0,
       "listing_price": 105.0,
       "listing_return_pct": 0.0,
-      "current_price": 38.2,
-      "current_return_pct": -63.62,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 37.5,
+      "current_return_pct": -64.29,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -9417,7 +9417,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 0.0,
-      "current_gain_loss": -9485.6
+      "current_gain_loss": -9585.0
     },
     {
       "tracker_key": "2026|MAINBOARD|laserpowerinfra",
@@ -9432,9 +9432,9 @@
       "issue_price": 214.0,
       "listing_price": 250.0,
       "listing_return_pct": 16.82,
-      "current_price": 217.3,
-      "current_return_pct": 1.54,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 215.2,
+      "current_return_pct": 0.56,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -9483,7 +9483,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 2520.0,
-      "current_gain_loss": 231.0
+      "current_gain_loss": 84.0
     },
     {
       "tracker_key": "2026|SME|happysteels",
@@ -9498,9 +9498,9 @@
       "issue_price": 66.0,
       "listing_price": 68.0,
       "listing_return_pct": 3.03,
-      "current_price": 65.95,
-      "current_return_pct": -0.08,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 64.95,
+      "current_return_pct": -1.59,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -9531,7 +9531,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 8000.0,
-      "current_gain_loss": -200.0
+      "current_gain_loss": -4200.0
     },
     {
       "tracker_key": "2026|SME|devsoncatalyst",
@@ -9594,9 +9594,9 @@
       "issue_price": 419.0,
       "listing_price": 569.0,
       "listing_return_pct": 35.8,
-      "current_price": 581.5,
-      "current_return_pct": 38.78,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 566.0,
+      "current_return_pct": 35.08,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -9627,7 +9627,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 5250.0,
-      "current_gain_loss": 5687.5
+      "current_gain_loss": 5145.0
     },
     {
       "tracker_key": "2026|SME|icelectricalsco",
@@ -9642,9 +9642,9 @@
       "issue_price": 99.0,
       "listing_price": 166.0,
       "listing_return_pct": 67.68,
-      "current_price": 104.0,
-      "current_return_pct": 5.05,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 107.5,
+      "current_return_pct": 8.59,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -9675,7 +9675,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 160800.0,
-      "current_gain_loss": 12000.0
+      "current_gain_loss": 20400.0
     },
     {
       "tracker_key": "2026|MAINBOARD|knackpackaging",
@@ -9690,9 +9690,9 @@
       "issue_price": 170.0,
       "listing_price": 188.0,
       "listing_return_pct": 10.59,
-      "current_price": 200.29,
-      "current_return_pct": 17.82,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 205.57,
+      "current_return_pct": 20.92,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -9741,7 +9741,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 1584.0,
-      "current_gain_loss": 2665.52
+      "current_gain_loss": 3130.16
     },
     {
       "tracker_key": "2026|SME|vinitmobile",
@@ -9756,9 +9756,9 @@
       "issue_price": 158.0,
       "listing_price": 155.0,
       "listing_return_pct": -1.9,
-      "current_price": 47.25,
-      "current_return_pct": -70.09,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 43.5,
+      "current_return_pct": -72.47,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -9789,7 +9789,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": -4800.0,
-      "current_gain_loss": -177200.0
+      "current_gain_loss": -183200.0
     },
     {
       "tracker_key": "2026|SME|tejaengineeringindustries",
@@ -10140,9 +10140,9 @@
       "issue_price": 136.0,
       "listing_price": 130.0,
       "listing_return_pct": -4.41,
-      "current_price": 24.83,
-      "current_return_pct": -81.74,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 23.59,
+      "current_return_pct": -82.65,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -10191,7 +10191,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": -660.0,
-      "current_gain_loss": -12228.7
+      "current_gain_loss": -12365.1
     },
     {
       "tracker_key": "2026|SME|crazysnacks",
@@ -10302,9 +10302,9 @@
       "issue_price": 113.0,
       "listing_price": 113.0,
       "listing_return_pct": 0.0,
-      "current_price": 87.0,
-      "current_return_pct": -23.01,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 84.99,
+      "current_return_pct": -24.79,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -10353,7 +10353,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 0.0,
-      "current_gain_loss": -3432.0
+      "current_gain_loss": -3697.32
     },
     {
       "tracker_key": "2026|MAINBOARD|waterwaysleisuretourism",
@@ -10368,9 +10368,9 @@
       "issue_price": 808.0,
       "listing_price": 681.0,
       "listing_return_pct": -15.72,
-      "current_price": 90.43,
-      "current_return_pct": -88.81,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 91.75,
+      "current_return_pct": -88.64,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -10419,7 +10419,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": -2286.0,
-      "current_gain_loss": -12916.26
+      "current_gain_loss": -12892.5
     },
     {
       "tracker_key": "2026|SME|shreedharspinners",
@@ -10434,9 +10434,9 @@
       "issue_price": 53.0,
       "listing_price": 54.4,
       "listing_return_pct": 2.64,
-      "current_price": 161.5,
-      "current_return_pct": 204.72,
-      "current_price_as_of_ist": "2026-10-20T16:00:00+05:30",
+      "current_price": 161.0,
+      "current_return_pct": 203.77,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -10467,7 +10467,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 5600.0,
-      "current_gain_loss": 434000.0
+      "current_gain_loss": 432000.0
     },
     {
       "tracker_key": "2026|SME|riyaasatlifestyle",
@@ -10578,9 +10578,9 @@
       "issue_price": 138.0,
       "listing_price": 188.9,
       "listing_return_pct": 36.88,
-      "current_price": 382.65,
-      "current_return_pct": 177.28,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 371.55,
+      "current_return_pct": 169.24,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -10629,7 +10629,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 5090.0,
-      "current_gain_loss": 24465.0
+      "current_gain_loss": 23355.0
     },
     {
       "tracker_key": "2026|MAINBOARD|turtlemintfintechsolutions",
@@ -10644,9 +10644,9 @@
       "issue_price": 152.0,
       "listing_price": 134.9,
       "listing_return_pct": -11.25,
-      "current_price": 62.67,
-      "current_return_pct": -58.77,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 59.54,
+      "current_return_pct": -60.83,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -10695,7 +10695,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": -1675.8,
-      "current_gain_loss": -8754.34
+      "current_gain_loss": -9061.08
     },
     {
       "tracker_key": "2026|SME|anubhavplast",
@@ -10758,9 +10758,9 @@
       "issue_price": 208.0,
       "listing_price": 395.2,
       "listing_return_pct": 90.0,
-      "current_price": 253.0,
-      "current_return_pct": 21.63,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 247.5,
+      "current_return_pct": 18.99,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -10791,7 +10791,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 224640.0,
-      "current_gain_loss": 54000.0
+      "current_gain_loss": 47400.0
     },
     {
       "tracker_key": "2026|SME|liotechindustries",
@@ -10950,9 +10950,9 @@
       "issue_price": 203.0,
       "listing_price": 211.0,
       "listing_return_pct": 3.94,
-      "current_price": 159.05,
-      "current_return_pct": -21.65,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 158.0,
+      "current_return_pct": -22.17,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -10983,7 +10983,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 9600.0,
-      "current_gain_loss": -52740.0
+      "current_gain_loss": -54000.0
     },
     {
       "tracker_key": "2026|SME|horizonreclaimindia",
@@ -11046,9 +11046,9 @@
       "issue_price": 127.0,
       "listing_price": 186.0,
       "listing_return_pct": 46.46,
-      "current_price": 100.5,
-      "current_return_pct": -20.87,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 101.5,
+      "current_return_pct": -20.08,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -11079,7 +11079,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 118000.0,
-      "current_gain_loss": -53000.0
+      "current_gain_loss": -51000.0
     },
     {
       "tracker_key": "2026|SME|utkalspecialityindustriesindia",
@@ -11094,9 +11094,9 @@
       "issue_price": 66.0,
       "listing_price": 66.0,
       "listing_return_pct": 0.0,
-      "current_price": 47.45,
-      "current_return_pct": -28.11,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 46.25,
+      "current_return_pct": -29.92,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -11127,7 +11127,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 0.0,
-      "current_gain_loss": -74200.0
+      "current_gain_loss": -79000.0
     },
     {
       "tracker_key": "2026|MAINBOARD|hexagonnutrition",
@@ -11142,9 +11142,9 @@
       "issue_price": 45.0,
       "listing_price": 53.19,
       "listing_return_pct": 18.2,
-      "current_price": 64.8,
-      "current_return_pct": 44.0,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 65.15,
+      "current_return_pct": 44.78,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -11175,7 +11175,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 2727.27,
-      "current_gain_loss": 6593.4
+      "current_gain_loss": 6709.95
     },
     {
       "tracker_key": "2026|SME|genxaianalytics",
@@ -11190,9 +11190,9 @@
       "issue_price": 116.0,
       "listing_price": 92.8,
       "listing_return_pct": -20.0,
-      "current_price": 76.1,
-      "current_return_pct": -34.4,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 78.5,
+      "current_return_pct": -32.33,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -11223,7 +11223,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": -55680.0,
-      "current_gain_loss": -95760.0
+      "current_gain_loss": -90000.0
     },
     {
       "tracker_key": "2026|SME|uhmvacation",
@@ -11286,9 +11286,9 @@
       "issue_price": 192.0,
       "listing_price": 268.0,
       "listing_return_pct": 39.58,
-      "current_price": 212.66,
-      "current_return_pct": 10.76,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 208.5,
+      "current_return_pct": 8.59,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -11319,7 +11319,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 5928.0,
-      "current_gain_loss": 1611.48
+      "current_gain_loss": 1287.0
     },
     {
       "tracker_key": "2026|SME|smrjewels",
@@ -11670,9 +11670,9 @@
       "issue_price": 343.0,
       "listing_price": 452.0,
       "listing_return_pct": 31.78,
-      "current_price": 571.8,
-      "current_return_pct": 66.71,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 565.0,
+      "current_return_pct": 64.72,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -11697,13 +11697,13 @@
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-08-26T12:33:42.971772+05:30",
       "detail_url": "https://ipomarkets.com/ipo/q-line-biotec-ipo-kczcbnd",
-      "application_shares": null,
-      "application_amount": null,
-      "application_lots": null,
-      "application_tier": null,
-      "application_source": null,
-      "listing_gain_loss": null,
-      "current_gain_loss": null
+      "application_shares": 800,
+      "application_amount": 274400.0,
+      "application_lots": 2,
+      "application_tier": "Individual · min",
+      "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
+      "listing_gain_loss": 87200.0,
+      "current_gain_loss": 177600.0
     },
     {
       "tracker_key": "2026|SME|biomedicalaboratories",
@@ -11720,7 +11720,7 @@
       "listing_return_pct": -20.0,
       "current_price": 155.0,
       "current_return_pct": 11.51,
-      "current_price_as_of_ist": "2026-10-20T16:00:00+05:30",
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -11745,13 +11745,13 @@
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-08-26T12:33:42.971772+05:30",
       "detail_url": "https://ipomarkets.com/ipo/bio-medica-laboratories-ipo-mb0m77t",
-      "application_shares": null,
-      "application_amount": null,
-      "application_lots": null,
-      "application_tier": null,
-      "application_source": null,
-      "listing_gain_loss": null,
-      "current_gain_loss": null
+      "application_shares": 2000,
+      "application_amount": 278000.0,
+      "application_lots": 2,
+      "application_tier": "Individual · min",
+      "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
+      "listing_gain_loss": -55600.0,
+      "current_gain_loss": 32000.0
     },
     {
       "tracker_key": "2026|SME|autofurnish",
@@ -11841,13 +11841,13 @@
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-08-26T12:33:42.971772+05:30",
       "detail_url": "https://ipomarkets.com/ipo/vegorama-punjabi-angithi-ipo-nvgf09q",
-      "application_shares": null,
-      "application_amount": null,
-      "application_lots": null,
-      "application_tier": null,
-      "application_source": null,
-      "listing_gain_loss": null,
-      "current_gain_loss": null
+      "application_shares": 3200,
+      "application_amount": 246400.0,
+      "application_lots": 2,
+      "application_tier": "Individual · min",
+      "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
+      "listing_gain_loss": 131520.0,
+      "current_gain_loss": 512000.0
     },
     {
       "tracker_key": "2026|SME|teamtechformworksolutions",
@@ -11862,9 +11862,9 @@
       "issue_price": 63.0,
       "listing_price": 75.0,
       "listing_return_pct": 19.05,
-      "current_price": 138.0,
-      "current_return_pct": 119.05,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 139.0,
+      "current_return_pct": 120.63,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -11889,13 +11889,13 @@
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-08-26T12:33:42.971772+05:30",
       "detail_url": "https://ipomarkets.com/ipo/teamtech-formwork-solutions-ipo-qgjz6ns",
-      "application_shares": null,
-      "application_amount": null,
-      "application_lots": null,
-      "application_tier": null,
-      "application_source": null,
-      "listing_gain_loss": null,
-      "current_gain_loss": null
+      "application_shares": 4000,
+      "application_amount": 252000.0,
+      "application_lots": 2,
+      "application_tier": "Individual · min",
+      "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
+      "listing_gain_loss": 48000.0,
+      "current_gain_loss": 304000.0
     },
     {
       "tracker_key": "2026|SME|nfpsampoornafoods",
@@ -11937,13 +11937,13 @@
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-08-26T12:33:42.971772+05:30",
       "detail_url": "https://ipomarkets.com/ipo/nfp-sampoorna-foods-ipo-g9mkeh3",
-      "application_shares": null,
-      "application_amount": null,
-      "application_lots": null,
-      "application_tier": null,
-      "application_source": null,
-      "listing_gain_loss": null,
-      "current_gain_loss": null
+      "application_shares": 4000,
+      "application_amount": 220000.0,
+      "application_lots": 2,
+      "application_tier": "Individual · min",
+      "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
+      "listing_gain_loss": -2000.0,
+      "current_gain_loss": -139000.0
     },
     {
       "tracker_key": "2026|SME|rfblflexipack",
@@ -11958,9 +11958,9 @@
       "issue_price": 50.0,
       "listing_price": 52.5,
       "listing_return_pct": 5.0,
-      "current_price": 100.05,
-      "current_return_pct": 100.1,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 100.0,
+      "current_return_pct": 100.0,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -11985,13 +11985,13 @@
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-08-26T12:33:42.971772+05:30",
       "detail_url": "https://ipomarkets.com/ipo/rfbl-flexi-pack-ipo-s6y5z70",
-      "application_shares": null,
-      "application_amount": null,
-      "application_lots": null,
-      "application_tier": null,
-      "application_source": null,
-      "listing_gain_loss": null,
-      "current_gain_loss": null
+      "application_shares": 6000,
+      "application_amount": 300000.0,
+      "application_lots": 2,
+      "application_tier": "Individual · min",
+      "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
+      "listing_gain_loss": 15000.0,
+      "current_gain_loss": 300000.0
     },
     {
       "tracker_key": "2026|SME|goldlinepharmaceutical",
@@ -12033,13 +12033,13 @@
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-08-26T12:33:42.971772+05:30",
       "detail_url": "https://ipomarkets.com/ipo/goldline-pharmaceutical-ipo-awjgt4s",
-      "application_shares": null,
-      "application_amount": null,
-      "application_lots": null,
-      "application_tier": null,
-      "application_source": null,
-      "listing_gain_loss": null,
-      "current_gain_loss": null
+      "application_shares": 6000,
+      "application_amount": 258000.0,
+      "application_lots": 2,
+      "application_tier": "Individual · min",
+      "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
+      "listing_gain_loss": 100500.0,
+      "current_gain_loss": -66000.0
     },
     {
       "tracker_key": "2026|SME|sasimcaadvertising",
@@ -12054,9 +12054,9 @@
       "issue_price": 183.0,
       "listing_price": 156.0,
       "listing_return_pct": -14.75,
-      "current_price": 421.0,
-      "current_return_pct": 130.05,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 428.0,
+      "current_return_pct": 133.88,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -12081,13 +12081,13 @@
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-08-26T12:33:42.971772+05:30",
       "detail_url": "https://ipomarkets.com/ipo/simca-advertising-ipo-et0pz7m",
-      "application_shares": null,
-      "application_amount": null,
-      "application_lots": null,
-      "application_tier": null,
-      "application_source": null,
-      "listing_gain_loss": null,
-      "current_gain_loss": null
+      "application_shares": 1200,
+      "application_amount": 219600.0,
+      "application_lots": 2,
+      "application_tier": "Individual · min",
+      "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
+      "listing_gain_loss": -32400.0,
+      "current_gain_loss": 294000.0
     },
     {
       "tracker_key": "2026|MAINBOARD|bagmaneprimeofficereit",
@@ -12195,13 +12195,13 @@
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-08-26T12:33:42.971772+05:30",
       "detail_url": "https://ipomarkets.com/ipo/recode-studios-ipo-cdebfqf",
-      "application_shares": null,
-      "application_amount": null,
-      "application_lots": null,
-      "application_tier": null,
-      "application_source": null,
-      "listing_gain_loss": null,
-      "current_gain_loss": null
+      "application_shares": 1600,
+      "application_amount": 252800.0,
+      "application_lots": 2,
+      "application_tier": "Individual · min",
+      "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
+      "listing_gain_loss": 88160.0,
+      "current_gain_loss": 419200.0
     },
     {
       "tracker_key": "2026|SME|value360communications",
@@ -12216,9 +12216,9 @@
       "issue_price": 98.0,
       "listing_price": 78.4,
       "listing_return_pct": -20.0,
-      "current_price": 84.5,
-      "current_return_pct": -13.78,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 85.0,
+      "current_return_pct": -13.27,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -12243,13 +12243,13 @@
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-08-26T12:33:42.971772+05:30",
       "detail_url": "https://ipomarkets.com/ipo/value-360-communications-ipo-qfkg0n4",
-      "application_shares": null,
-      "application_amount": null,
-      "application_lots": null,
-      "application_tier": null,
-      "application_source": null,
-      "listing_gain_loss": null,
-      "current_gain_loss": null
+      "application_shares": 2400,
+      "application_amount": 235200.0,
+      "application_lots": 2,
+      "application_tier": "Individual · min",
+      "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
+      "listing_gain_loss": -47040.0,
+      "current_gain_loss": -31200.0
     },
     {
       "tracker_key": "2026|MAINBOARD|onemitechnologysolutions",
@@ -12264,9 +12264,9 @@
       "issue_price": 171.0,
       "listing_price": 190.0,
       "listing_return_pct": 11.11,
-      "current_price": 329.7,
-      "current_return_pct": 92.81,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 322.75,
+      "current_return_pct": 88.74,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -12309,13 +12309,13 @@
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-08-26T12:33:42.971772+05:30",
       "detail_url": "https://ipomarkets.com/ipo/onemi-technology-ipo-v2x9xn5",
-      "application_shares": null,
-      "application_amount": null,
-      "application_lots": null,
-      "application_tier": null,
-      "application_source": null,
-      "listing_gain_loss": null,
-      "current_gain_loss": null
+      "application_shares": 87,
+      "application_amount": 14877.0,
+      "application_lots": 1,
+      "application_tier": "Retail · min",
+      "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
+      "listing_gain_loss": 1653.0,
+      "current_gain_loss": 13202.25
     },
     {
       "tracker_key": "2026|SME|ambaautosalesservices",
@@ -12357,13 +12357,13 @@
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-08-26T12:33:42.971772+05:30",
       "detail_url": "https://ipomarkets.com/ipo/amba-auto-sales-services-ipo-rdswvt5",
-      "application_shares": null,
-      "application_amount": null,
-      "application_lots": null,
-      "application_tier": null,
-      "application_source": null,
-      "listing_gain_loss": null,
-      "current_gain_loss": null
+      "application_shares": 2000,
+      "application_amount": 270000.0,
+      "application_lots": 2,
+      "application_tier": "Individual · min",
+      "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
+      "listing_gain_loss": -1000.0,
+      "current_gain_loss": -52000.0
     },
     {
       "tracker_key": "2026|SME|adisofttechnologies",
@@ -12378,9 +12378,9 @@
       "issue_price": 172.0,
       "listing_price": 205.0,
       "listing_return_pct": 19.19,
-      "current_price": 295.0,
-      "current_return_pct": 71.51,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 293.0,
+      "current_return_pct": 70.35,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -12405,13 +12405,13 @@
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-08-26T12:33:42.971772+05:30",
       "detail_url": "https://ipomarkets.com/ipo/adisoft-technologies-ipo-c8hdbvh",
-      "application_shares": null,
-      "application_amount": null,
-      "application_lots": null,
-      "application_tier": null,
-      "application_source": null,
-      "listing_gain_loss": null,
-      "current_gain_loss": null
+      "application_shares": 1600,
+      "application_amount": 275200.0,
+      "application_lots": 2,
+      "application_tier": "Individual · min",
+      "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
+      "listing_gain_loss": 52800.0,
+      "current_gain_loss": 193600.0
     },
     {
       "tracker_key": "2026|MAINBOARD|citiustransnetinvestmenttrustinvit",
@@ -12567,13 +12567,13 @@
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-08-26T12:33:42.971772+05:30",
       "detail_url": "https://ipomarkets.com/ipo/mehul-telecom-ipo-btvb1ss",
-      "application_shares": null,
-      "application_amount": null,
-      "application_lots": null,
-      "application_tier": null,
-      "application_source": null,
-      "listing_gain_loss": null,
-      "current_gain_loss": null
+      "application_shares": 2400,
+      "application_amount": 235200.0,
+      "application_lots": 2,
+      "application_tier": "Individual · min",
+      "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
+      "listing_gain_loss": 24000.0,
+      "current_gain_loss": 81600.0
     },
     {
       "tracker_key": "2026|MAINBOARD|ompowertransmission",
@@ -12588,9 +12588,9 @@
       "issue_price": 175.0,
       "listing_price": 186.0,
       "listing_return_pct": 6.29,
-      "current_price": 152.9,
-      "current_return_pct": -12.63,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 135.0,
+      "current_return_pct": -22.86,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -12663,13 +12663,13 @@
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-08-26T12:33:42.971772+05:30",
       "detail_url": "https://ipomarkets.com/ipo/safety-controls-and-devices-ipo-wnttsxs",
-      "application_shares": null,
-      "application_amount": null,
-      "application_lots": null,
-      "application_tier": null,
-      "application_source": null,
-      "listing_gain_loss": null,
-      "current_gain_loss": null
+      "application_shares": 3200,
+      "application_amount": 256000.0,
+      "application_lots": 2,
+      "application_tier": "Individual · min",
+      "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
+      "listing_gain_loss": 9600.0,
+      "current_gain_loss": -3008.0
     },
     {
       "tracker_key": "2026|SME|emiactechnologies",
@@ -12711,13 +12711,13 @@
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-08-26T12:33:42.971772+05:30",
       "detail_url": "https://ipomarkets.com/ipo/emiac-technologies-ipo-w0p92yq",
-      "application_shares": null,
-      "application_amount": null,
-      "application_lots": null,
-      "application_tier": null,
-      "application_source": null,
-      "listing_gain_loss": null,
-      "current_gain_loss": null
+      "application_shares": 2400,
+      "application_amount": 235200.0,
+      "application_lots": 2,
+      "application_tier": "Individual · min",
+      "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
+      "listing_gain_loss": 23520.0,
+      "current_gain_loss": -36000.0
     },
     {
       "tracker_key": "2026|SME|vividelectromech",
@@ -12732,9 +12732,9 @@
       "issue_price": 555.0,
       "listing_price": 565.0,
       "listing_return_pct": 1.8,
-      "current_price": 1443.9,
-      "current_return_pct": 160.16,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 1320.0,
+      "current_return_pct": 137.84,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -12759,13 +12759,13 @@
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-08-26T12:33:42.971772+05:30",
       "detail_url": "https://ipomarkets.com/ipo/vivid-electromech-ipo-ys6yrrr",
-      "application_shares": null,
-      "application_amount": null,
-      "application_lots": null,
-      "application_tier": null,
-      "application_source": null,
-      "listing_gain_loss": null,
-      "current_gain_loss": null
+      "application_shares": 480,
+      "application_amount": 266400.0,
+      "application_lots": 2,
+      "application_tier": "Individual · min",
+      "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
+      "listing_gain_loss": 4800.0,
+      "current_gain_loss": 367200.0
     },
     {
       "tracker_key": "2026|MAINBOARD|saiparenterals",
@@ -12780,22 +12780,22 @@
       "issue_price": 392.0,
       "listing_price": 400.0,
       "listing_return_pct": 2.04,
-      "current_price": 468.05,
-      "current_return_pct": 19.4,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 450.05,
+      "current_return_pct": 14.81,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [],
       "next_unlock": null,
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-08-26T12:33:42.971772+05:30",
       "detail_url": "https://ipomarkets.com/ipo/sai-parenterals-ipo-prjdapb",
-      "application_shares": null,
-      "application_amount": null,
-      "application_lots": null,
-      "application_tier": null,
-      "application_source": null,
-      "listing_gain_loss": null,
-      "current_gain_loss": null
+      "application_shares": 38,
+      "application_amount": 14896.0,
+      "application_lots": 1,
+      "application_tier": "Retail · min",
+      "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
+      "listing_gain_loss": 304.0,
+      "current_gain_loss": 2205.9
     },
     {
       "tracker_key": "2026|MAINBOARD|powerica",
@@ -12810,22 +12810,22 @@
       "issue_price": 395.0,
       "listing_price": 366.0,
       "listing_return_pct": -7.34,
-      "current_price": 537.0,
-      "current_return_pct": 35.95,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 534.95,
+      "current_return_pct": 35.43,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [],
       "next_unlock": null,
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-08-26T12:33:42.971772+05:30",
       "detail_url": "https://ipomarkets.com/ipo/powerica-ipo-m78w92g",
-      "application_shares": null,
-      "application_amount": null,
-      "application_lots": null,
-      "application_tier": null,
-      "application_source": null,
-      "listing_gain_loss": null,
-      "current_gain_loss": null
+      "application_shares": 37,
+      "application_amount": 14615.0,
+      "application_lots": 1,
+      "application_tier": "Retail · min",
+      "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
+      "listing_gain_loss": -1073.0,
+      "current_gain_loss": 5178.15
     },
     {
       "tracker_key": "2026|SME|highnessmicroelectronics",
@@ -12867,13 +12867,13 @@
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-08-26T19:06:42.724552+05:30",
       "detail_url": "https://ipomarkets.com/ipo/highness-microelectronics-ipo-bfzgtb5",
-      "application_shares": null,
-      "application_amount": null,
-      "application_lots": null,
-      "application_tier": null,
-      "application_source": null,
-      "listing_gain_loss": null,
-      "current_gain_loss": null
+      "application_shares": 2400,
+      "application_amount": 288000.0,
+      "application_lots": 2,
+      "application_tier": "Individual · min",
+      "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
+      "listing_gain_loss": 12000.0,
+      "current_gain_loss": 433920.0
     },
     {
       "tracker_key": "2026|MAINBOARD|amirchandjagdishkumarexports",
@@ -12888,22 +12888,22 @@
       "issue_price": 212.0,
       "listing_price": 200.0,
       "listing_return_pct": -5.66,
-      "current_price": 207.0,
-      "current_return_pct": -2.36,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 201.1,
+      "current_return_pct": -5.14,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [],
       "next_unlock": null,
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-08-26T19:06:42.724552+05:30",
       "detail_url": "https://ipomarkets.com/ipo/amir-chand-jagdish-kumar-ipo-f2dqf0h",
-      "application_shares": null,
-      "application_amount": null,
-      "application_lots": null,
-      "application_tier": null,
-      "application_source": null,
-      "listing_gain_loss": null,
-      "current_gain_loss": null
+      "application_shares": 70,
+      "application_amount": 14840.0,
+      "application_lots": 1,
+      "application_tier": "Retail · min",
+      "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
+      "listing_gain_loss": -840.0,
+      "current_gain_loss": -763.0
     },
     {
       "tracker_key": "2026|SME|tipcoengineeringindia",
@@ -12945,13 +12945,13 @@
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-08-26T19:06:42.724552+05:30",
       "detail_url": "https://ipomarkets.com/ipo/tipco-engineering-ipo-v8tchrd",
-      "application_shares": null,
-      "application_amount": null,
-      "application_lots": null,
-      "application_tier": null,
-      "application_source": null,
-      "listing_gain_loss": null,
-      "current_gain_loss": null
+      "application_shares": 3200,
+      "application_amount": 284800.0,
+      "application_lots": 2,
+      "application_tier": "Individual · min",
+      "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
+      "listing_gain_loss": 800.0,
+      "current_gain_loss": 596000.0
     },
     {
       "tracker_key": "2026|SME|specialitymedicines",
@@ -12993,13 +12993,13 @@
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-08-26T19:06:42.724552+05:30",
       "detail_url": "https://ipomarkets.com/ipo/speciality-medicines-ipo-ezk4frc",
-      "application_shares": null,
-      "application_amount": null,
-      "application_lots": null,
-      "application_tier": null,
-      "application_source": null,
-      "listing_gain_loss": null,
-      "current_gain_loss": null
+      "application_shares": 2000,
+      "application_amount": 248000.0,
+      "application_lots": 2,
+      "application_tier": "Individual · min",
+      "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
+      "listing_gain_loss": 0.0,
+      "current_gain_loss": 82000.0
     },
     {
       "tracker_key": "2026|MAINBOARD|centralmineplanningdesigninstitute",
@@ -13014,22 +13014,22 @@
       "issue_price": 172.0,
       "listing_price": 160.0,
       "listing_return_pct": -6.98,
-      "current_price": 189.98,
-      "current_return_pct": 10.45,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 181.35,
+      "current_return_pct": 5.44,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [],
       "next_unlock": null,
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-08-26T19:06:42.724552+05:30",
       "detail_url": "https://ipomarkets.com/ipo/central-mine-planning-design-institute-ipo-qp0bppx",
-      "application_shares": null,
-      "application_amount": null,
-      "application_lots": null,
-      "application_tier": null,
-      "application_source": null,
-      "listing_gain_loss": null,
-      "current_gain_loss": null
+      "application_shares": 80,
+      "application_amount": 13760.0,
+      "application_lots": 1,
+      "application_tier": "Retail · min",
+      "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
+      "listing_gain_loss": -960.0,
+      "current_gain_loss": 748.0
     },
     {
       "tracker_key": "2026|SME|novusloyalty",
@@ -13071,13 +13071,13 @@
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-08-26T19:06:42.724552+05:30",
       "detail_url": "https://ipomarkets.com/ipo/novus-loyalty-ipo-aet5hhv",
-      "application_shares": null,
-      "application_amount": null,
-      "application_lots": null,
-      "application_tier": null,
-      "application_source": null,
-      "listing_gain_loss": null,
-      "current_gain_loss": null
+      "application_shares": 2000,
+      "application_amount": 292000.0,
+      "application_lots": 2,
+      "application_tier": "Individual · min",
+      "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
+      "listing_gain_loss": 0.0,
+      "current_gain_loss": 92000.0
     },
     {
       "tracker_key": "2026|MAINBOARD|raajmarginfrainvestmenttrustinvit",
@@ -13122,22 +13122,22 @@
       "issue_price": 320.0,
       "listing_price": 328.0,
       "listing_return_pct": 2.5,
-      "current_price": 451.5,
-      "current_return_pct": 41.09,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 454.0,
+      "current_return_pct": 41.88,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [],
       "next_unlock": null,
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-08-26T19:06:42.724552+05:30",
       "detail_url": "https://ipomarkets.com/ipo/gsp-crop-ipo-ej28bfh",
-      "application_shares": null,
-      "application_amount": null,
-      "application_lots": null,
-      "application_tier": null,
-      "application_source": null,
-      "listing_gain_loss": null,
-      "current_gain_loss": null
+      "application_shares": 46,
+      "application_amount": 14720.0,
+      "application_lots": 1,
+      "application_tier": "Retail · min",
+      "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
+      "listing_gain_loss": 368.0,
+      "current_gain_loss": 6164.0
     },
     {
       "tracker_key": "2026|MAINBOARD|innovision",
@@ -13152,22 +13152,22 @@
       "issue_price": 519.0,
       "listing_price": 467.7,
       "listing_return_pct": -9.88,
-      "current_price": 223.0,
-      "current_return_pct": -57.03,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 214.45,
+      "current_return_pct": -58.68,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [],
       "next_unlock": null,
-      "unlock_status": "NOT_AVAILABLE",
-      "unlock_checked_at_ist": "2026-10-15T16:49:57.305310+05:30",
+      "unlock_status": "FETCH_FAILED",
+      "unlock_checked_at_ist": "2026-10-22T17:12:29.272670+05:30",
       "detail_url": "https://ipomarkets.com/ipo/innovision-limited-ipo-fxsea9e",
-      "application_shares": null,
-      "application_amount": null,
-      "application_lots": null,
-      "application_tier": null,
-      "application_source": null,
-      "listing_gain_loss": null,
-      "current_gain_loss": null
+      "application_shares": 27,
+      "application_amount": 14013.0,
+      "application_lots": 1,
+      "application_tier": "Retail · min",
+      "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
+      "listing_gain_loss": -1385.1,
+      "current_gain_loss": -8222.85
     },
     {
       "tracker_key": "2026|MAINBOARD|rajputanastainless",
@@ -13182,22 +13182,22 @@
       "issue_price": 122.0,
       "listing_price": 122.0,
       "listing_return_pct": 0.0,
-      "current_price": 178.8,
-      "current_return_pct": 46.56,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 172.6,
+      "current_return_pct": 41.48,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [],
       "next_unlock": null,
       "unlock_status": "NOT_AVAILABLE",
-      "unlock_checked_at_ist": "2026-10-15T16:49:57.305310+05:30",
+      "unlock_checked_at_ist": "2026-10-22T17:12:29.272670+05:30",
       "detail_url": "https://ipomarkets.com/ipo/rajputana-stainless-ipo-e954xry",
-      "application_shares": null,
-      "application_amount": null,
-      "application_lots": null,
-      "application_tier": null,
-      "application_source": null,
-      "listing_gain_loss": null,
-      "current_gain_loss": null
+      "application_shares": 110,
+      "application_amount": 13420.0,
+      "application_lots": 1,
+      "application_tier": "Retail · min",
+      "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
+      "listing_gain_loss": 0.0,
+      "current_gain_loss": 5566.0
     },
     {
       "tracker_key": "2026|SME|apsisaerocom",
@@ -13212,9 +13212,9 @@
       "issue_price": 110.0,
       "listing_price": 153.0,
       "listing_return_pct": 39.09,
-      "current_price": 581.1,
-      "current_return_pct": 428.27,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 569.5,
+      "current_return_pct": 417.73,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -13239,13 +13239,13 @@
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-08-26T19:06:42.724552+05:30",
       "detail_url": "https://ipomarkets.com/ipo/apsis-aerocom-ipo-wgp91s8",
-      "application_shares": null,
-      "application_amount": null,
-      "application_lots": null,
-      "application_tier": null,
-      "application_source": null,
-      "listing_gain_loss": null,
-      "current_gain_loss": null
+      "application_shares": 2400,
+      "application_amount": 264000.0,
+      "application_lots": 2,
+      "application_tier": "Individual · min",
+      "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
+      "listing_gain_loss": 103200.0,
+      "current_gain_loss": 1102800.0
     },
     {
       "tracker_key": "2026|SME|srinibaspradhanconstructions",
@@ -13287,13 +13287,13 @@
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-08-26T19:06:42.724552+05:30",
       "detail_url": "https://ipomarkets.com/ipo/srinibas-pradhan-ipo-kvv5tjx",
-      "application_shares": null,
-      "application_amount": null,
-      "application_lots": null,
-      "application_tier": null,
-      "application_source": null,
-      "listing_gain_loss": null,
-      "current_gain_loss": null
+      "application_shares": 2400,
+      "application_amount": 235200.0,
+      "application_lots": 2,
+      "application_tier": "Individual · min",
+      "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
+      "listing_gain_loss": 4920.0,
+      "current_gain_loss": 266400.0
     },
     {
       "tracker_key": "2026|SME|elfinagroindia",
@@ -13335,13 +13335,13 @@
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-08-26T19:06:42.724552+05:30",
       "detail_url": "https://ipomarkets.com/ipo/elfin-agro-india-ipo-tya6qh7",
-      "application_shares": null,
-      "application_amount": null,
-      "application_lots": null,
-      "application_tier": null,
-      "application_source": null,
-      "listing_gain_loss": null,
-      "current_gain_loss": null
+      "application_shares": 6000,
+      "application_amount": 282000.0,
+      "application_lots": 2,
+      "application_tier": "Individual · min",
+      "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
+      "listing_gain_loss": 1800.0,
+      "current_gain_loss": 258000.0
     },
     {
       "tracker_key": "2026|MAINBOARD|sedemacmechatronics",
@@ -13356,22 +13356,22 @@
       "issue_price": 1352.0,
       "listing_price": 1535.0,
       "listing_return_pct": 13.54,
-      "current_price": 3080.0,
-      "current_return_pct": 127.81,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 3100.0,
+      "current_return_pct": 129.29,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [],
       "next_unlock": null,
       "unlock_status": "AVAILABLE",
       "unlock_checked_at_ist": "2026-08-26T19:06:42.724552+05:30",
       "detail_url": "https://ipomarkets.com/ipo/sedemac-mechatronics-ipo-kegf9p0",
-      "application_shares": null,
-      "application_amount": null,
-      "application_lots": null,
-      "application_tier": null,
-      "application_source": null,
-      "listing_gain_loss": null,
-      "current_gain_loss": null
+      "application_shares": 11,
+      "application_amount": 14872.0,
+      "application_lots": 1,
+      "application_tier": "Retail · min",
+      "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
+      "listing_gain_loss": 2013.0,
+      "current_gain_loss": 19228.0
     },
     {
       "tracker_key": "2026|SME|acetechecommerce",
@@ -13482,9 +13482,9 @@
       "issue_price": 145.0,
       "listing_price": 127.0,
       "listing_return_pct": -12.41,
-      "current_price": 99.2,
-      "current_return_pct": -31.59,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 95.0,
+      "current_return_pct": -34.48,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -13530,9 +13530,9 @@
       "issue_price": 227.0,
       "listing_price": 202.0,
       "listing_return_pct": -11.01,
-      "current_price": 582.2,
-      "current_return_pct": 156.48,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 674.0,
+      "current_return_pct": 196.92,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -13587,9 +13587,9 @@
       "issue_price": 386.0,
       "listing_price": 375.0,
       "listing_return_pct": -2.85,
-      "current_price": 680.0,
-      "current_return_pct": 76.17,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 657.0,
+      "current_return_pct": 70.21,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -13644,9 +13644,9 @@
       "issue_price": 104.0,
       "listing_price": 68.0,
       "listing_return_pct": -34.62,
-      "current_price": 36.3,
-      "current_return_pct": -65.1,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 36.22,
+      "current_return_pct": -65.17,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -13692,9 +13692,9 @@
       "issue_price": 80.0,
       "listing_price": 64.1,
       "listing_return_pct": -19.88,
-      "current_price": 102.0,
-      "current_return_pct": 27.5,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 104.2,
+      "current_return_pct": 30.25,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -13788,9 +13788,9 @@
       "issue_price": 1053.0,
       "listing_price": 960.0,
       "listing_return_pct": -8.83,
-      "current_price": 1210.6,
-      "current_return_pct": 14.97,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 1197.0,
+      "current_return_pct": 13.68,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -13932,9 +13932,9 @@
       "issue_price": 79.0,
       "listing_price": 83.0,
       "listing_return_pct": 5.06,
-      "current_price": 94.1,
-      "current_return_pct": 19.11,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 93.45,
+      "current_return_pct": 18.29,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -14085,9 +14085,9 @@
       "issue_price": 117.0,
       "listing_price": 120.0,
       "listing_return_pct": 2.56,
-      "current_price": 111.0,
-      "current_return_pct": -5.13,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 109.25,
+      "current_return_pct": -6.62,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -14133,9 +14133,9 @@
       "issue_price": 900.0,
       "listing_price": 876.0,
       "listing_return_pct": -2.67,
-      "current_price": 794.1,
-      "current_return_pct": -11.77,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 747.0,
+      "current_return_pct": -17.0,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -14181,9 +14181,9 @@
       "issue_price": 129.0,
       "listing_price": 129.0,
       "listing_return_pct": 0.0,
-      "current_price": 139.6,
-      "current_return_pct": 8.22,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 132.1,
+      "current_return_pct": 2.4,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -14325,9 +14325,9 @@
       "issue_price": 88.0,
       "listing_price": 96.0,
       "listing_return_pct": 9.09,
-      "current_price": 394.8,
-      "current_return_pct": 348.64,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 375.1,
+      "current_return_pct": 326.25,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -14373,9 +14373,9 @@
       "issue_price": 176.0,
       "listing_price": 183.0,
       "listing_return_pct": 3.98,
-      "current_price": 158.65,
-      "current_return_pct": -9.86,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 155.9,
+      "current_return_pct": -11.42,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -14421,9 +14421,9 @@
       "issue_price": 163.0,
       "listing_price": 163.0,
       "listing_return_pct": 0.0,
-      "current_price": 298.7,
-      "current_return_pct": 83.25,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 313.6,
+      "current_return_pct": 92.39,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -14757,9 +14757,9 @@
       "issue_price": 135.0,
       "listing_price": 172.1,
       "listing_return_pct": 27.48,
-      "current_price": 239.0,
-      "current_return_pct": 77.04,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 232.2,
+      "current_return_pct": 72.0,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -14805,9 +14805,9 @@
       "issue_price": 124.0,
       "listing_price": 112.6,
       "listing_return_pct": -9.19,
-      "current_price": 272.05,
-      "current_return_pct": 119.4,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 275.95,
+      "current_return_pct": 122.54,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -14951,7 +14951,7 @@
       "listing_return_pct": -20.0,
       "current_price": 24.0,
       "current_return_pct": -57.89,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -15141,9 +15141,9 @@
       "issue_price": 361.0,
       "listing_price": 318.0,
       "listing_return_pct": -11.91,
-      "current_price": 565.0,
-      "current_return_pct": 56.51,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 555.5,
+      "current_return_pct": 53.88,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -15189,9 +15189,9 @@
       "issue_price": 59.0,
       "listing_price": 77.5,
       "listing_return_pct": 31.36,
-      "current_price": 153.9,
-      "current_return_pct": 160.85,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 161.55,
+      "current_return_pct": 173.81,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -15285,9 +15285,9 @@
       "issue_price": 23.0,
       "listing_price": 45.0,
       "listing_return_pct": 95.65,
-      "current_price": 30.36,
-      "current_return_pct": 32.0,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 30.15,
+      "current_return_pct": 31.09,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [],
       "next_unlock": null,
@@ -15363,9 +15363,9 @@
       "issue_price": 41.0,
       "listing_price": 34.45,
       "listing_return_pct": -15.98,
-      "current_price": 12.4,
-      "current_return_pct": -69.76,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 12.65,
+      "current_return_pct": -69.15,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -15459,9 +15459,9 @@
       "issue_price": 60.0,
       "listing_price": 70.0,
       "listing_return_pct": 16.67,
-      "current_price": 588.0,
-      "current_return_pct": 880.0,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 590.5,
+      "current_return_pct": 884.17,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -15507,9 +15507,9 @@
       "issue_price": 94.0,
       "listing_price": 135.0,
       "listing_return_pct": 43.62,
-      "current_price": 221.0,
-      "current_return_pct": 135.11,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 216.4,
+      "current_return_pct": 130.21,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -15564,9 +15564,9 @@
       "issue_price": 115.0,
       "listing_price": 115.0,
       "listing_return_pct": 0.0,
-      "current_price": 395.9,
-      "current_return_pct": 244.26,
-      "current_price_as_of_ist": "2026-10-21T16:00:00+05:30",
+      "current_price": 385.95,
+      "current_return_pct": 235.61,
+      "current_price_as_of_ist": "2026-10-22T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -15619,7 +15619,7 @@
   },
   "errors": {
     "security_master": [
-      "2026-10-22: empty BSE bhavcopy",
+      "2026-10-21: TimeoutError: The read operation timed out",
       "2026-10-20: empty BSE bhavcopy"
     ],
     "current_price": [
@@ -15634,12 +15634,8 @@
       "HTTPError: HTTP Error 429: Too Many Requests"
     ],
     "nse_bhav": [
-      "https://nsearchives.nseindia.com/products/content/sec_bhavdata_full_22102026.csv: HTTPError: HTTP Error 404: Not Found",
-      "https://archives.nseindia.com/products/content/sec_bhavdata_full_22102026.csv: HTTPError: HTTP Error 404: Not Found",
       "https://nsearchives.nseindia.com/emerge/corporates/content/sme22102026.csv: HTTPError: HTTP Error 404: Not Found",
-      "https://archives.nseindia.com/emerge/corporates/content/sme22102026.csv: HTTPError: HTTP Error 404: Not Found",
-      "https://nsearchives.nseindia.com/emerge/corporates/content/sme21102026.csv: HTTPError: HTTP Error 404: Not Found",
-      "https://archives.nseindia.com/emerge/corporates/content/sme21102026.csv: HTTPError: HTTP Error 404: Not Found"
+      "https://archives.nseindia.com/emerge/corporates/content/sme22102026.csv: HTTPError: HTTP Error 404: Not Found"
     ]
   }
 }
