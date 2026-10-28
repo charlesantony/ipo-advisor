@@ -1,6 +1,6 @@
 {
   "version": "listed-tracker-v1",
-  "generated_at_ist": "2026-10-28T22:18:04.995999+05:30",
+  "generated_at_ist": "2026-10-28T22:46:07.169038+05:30",
   "current_prices_as_of_ist": "2026-10-28T16:00:00+05:30",
   "summary": {
     "listed_records": 295,
@@ -12470,7 +12470,7 @@
       "HTTPError: HTTP Error 429: Too Many Requests"
     ],
     "nse_bhav": [
-      "https://nsearchives.nseindia.com/emerge/corporates/content/sme28102026.csv: HTTPError: HTTP Error 404: Not Found",
+      "https://nsearchives.nseindia.com/emerge/corporates/content/sme28102026.csv: TimeoutError: The read operation timed out",
       "https://archives.nseindia.com/emerge/corporates/content/sme28102026.csv: HTTPError: HTTP Error 404: Not Found"
     ]
   }
