@@ -1,31 +1,10 @@
 {
-  "completed_at_ist": "2026-11-02T14:31:22.952085+05:30",
+  "completed_at_ist": "2026-11-02T18:16:37.122705+05:30",
   "result": {
-    "mode": "decision",
-    "fetched_at_ist": "2026-11-02T14:31:02.177425+05:30",
+    "mode": "refresh",
+    "phase": "morning",
+    "fetched_at_ist": "2026-11-02T18:16:18.012676+05:30",
     "live_records": 7,
-    "decision_saved_count": 7,
-    "email_alert": {
-      "eligible_alerts": 1,
-      "new_alerts": 1,
-      "email": {
-        "configured": true,
-        "alerts": 1,
-        "sent_alerts": 1,
-        "failed_alerts": 0,
-        "batch_sent": true,
-        "batch_kind": "CLOSING",
-        "status": 200,
-        "response": {
-          "ok": true,
-          "sent": 4,
-          "subscribers": 4,
-          "alerts": 1,
-          "failed": 0,
-          "quota_remaining": 96
-        }
-      }
-    },
     "prospective_status": "MODEL_REVIEW_COMPLETED"
   }
 }
