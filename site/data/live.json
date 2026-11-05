@@ -1,194 +1,9 @@
 {
-  "fetched_at_utc": "2026-11-05T18:13:55.932726+00:00",
-  "fetched_at_ist": "2026-11-05T23:43:55.932726+05:30",
+  "fetched_at_utc": "2026-11-05T18:54:22.514678+00:00",
+  "fetched_at_ist": "2026-11-06T00:24:22.514678+05:30",
   "status_filter": "LIVE",
   "type_filter": "ALL",
-  "records": [
-    {
-      "symbol": "ANTALA",
-      "type": "SME",
-      "name": "Antala Industries",
-      "status": "LIVE",
-      "exchanges": null,
-      "details_url": null,
-      "drhp_url": null,
-      "rhp_url": null,
-      "start_date": "2026-10-29",
-      "end_date": "2026-11-05",
-      "listing_date": "2026-11-11",
-      "price_low": 62.0,
-      "price_high": 66.0,
-      "lot_size": 2000.0,
-      "issue_size_cr": null,
-      "fresh_issue_cr": null,
-      "ofs_cr": null,
-      "gmp_value": null,
-      "gmp_gain_pct": null,
-      "gmp_date": null,
-      "gmp_source": null,
-      "gmp_trends": [],
-      "qib_x": 66.72,
-      "nii_x": 37.38,
-      "retail_x": 5.1,
-      "total_x": 12.09,
-      "strengths": [],
-      "risks": [],
-      "about_company": null,
-      "raw": {
-        "symbol": "ANTALA",
-        "type": "SME",
-        "name": "Antala Industries",
-        "priceRange": "₹62 – ₹66",
-        "lotSize": "2000",
-        "status": "LIVE",
-        "schedule": {
-          "startDate": "2026-10-29",
-          "endDate": "2026-11-05",
-          "listingDate": "2026-11-11",
-          "upiMandateDeadline": "2026-11-05",
-          "allotmentFinalization": "2026-11-06",
-          "refundInitiation": "2026-11-09",
-          "shareCredit": "2026-11-09",
-          "mandateEndDate": "2026-11-20",
-          "lockInEndDateAnchor50": "2026-12-05",
-          "lockInEndDateAnchorRemaining": "2027-02-03"
-        }
-      },
-      "gmp_raw_value": 0.0,
-      "gmp_raw_gain_pct": 0.0,
-      "gmp_status": "NOT_AVAILABLE",
-      "gmp_validation": {
-        "complete": true,
-        "status": "ZERO_UNVERIFIED",
-        "provider_gmp_missing": true,
-        "attempted_sources": [
-          "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
-        ],
-        "errors": [],
-        "source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/",
-        "source_kind": "IPOWATCH_LATEST_DASHBOARD",
-        "raw_gmp_value": 0.0,
-        "raw_gmp_gain_pct": 0.0
-      },
-      "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-11-05T23:43:55.932726+05:30",
-      "subscription_age_minutes": 0.0,
-      "subscription_validation": {
-        "complete": true,
-        "status": "FALLBACK",
-        "source": "https://groww.in/ipo/subscription",
-        "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-11-05T23:43:55.932726+05:30",
-        "age_minutes": 0.0,
-        "provider_subscription_missing": true,
-        "attempted_sources": [
-          "https://groww.in/ipo/subscription"
-        ],
-        "errors": [],
-        "field_sources": {
-          "qib_x": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-          "nii_x": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-          "retail_x": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-          "total_x": "GROWW_CONSOLIDATED_SUBSCRIPTION"
-        }
-      },
-      "readiness": {
-        "identity": true,
-        "schedule": true,
-        "price": true,
-        "issue_size": false,
-        "gmp": false,
-        "gmp_history": false,
-        "qib": true,
-        "nii": true,
-        "retail": true,
-        "total_subscription": true,
-        "prospectus": false,
-        "risks": false
-      },
-      "features": {
-        "gmp_latest_pct": null,
-        "gmp_change_1obs": null,
-        "gmp_change_3obs": null,
-        "log_qib": 4.2153815572649345,
-        "log_nii": 3.647536490579554,
-        "log_retail": 1.8082887711792655,
-        "log_total": 2.5718485799218085,
-        "log_issue_size": null,
-        "ofs_ratio": null
-      },
-      "velocity": {
-        "minutes_since_previous": 192.9,
-        "qib_x_per_hour": 0.0,
-        "nii_x_per_hour": 0.0,
-        "retail_x_per_hour": 0.0,
-        "total_x_per_hour": 0.0
-      },
-      "is_closing_today": true,
-      "would_be_1430_decision_snapshot": false,
-      "recommendation": {
-        "policy_version": "research-v1.1",
-        "segment": "SME",
-        "action": "AVOID",
-        "action_priority": 2,
-        "research_confidence": "LOW",
-        "finality": {
-          "canonical": true,
-          "code": "CAPTURED_1430_IST",
-          "label": "CANONICAL_1430_RETAINED",
-          "captured_at_ist": "2026-11-05T14:31:04.036455+05:30"
-        },
-        "predictions": {
-          "gmp_input_pct": null,
-          "total_subscription_x": 12.09,
-          "log_total": 2.5718485799218085,
-          "gmp_prediction_pct": null,
-          "subscription_prediction_pct": 3.99,
-          "prediction_cap_pct": 90.0
-        },
-        "primary_prediction_pct": -4.1,
-        "ranking_score": 3.99,
-        "signal_conflict": false,
-        "reason": [
-          "GMP is unavailable and subscription model is below +10%.",
-          "POST-2:30 PM — latest research signal; canonical snapshot should be retained"
-        ],
-        "training": {
-          "source_year": 2024,
-          "source_rows": 97,
-          "gmp_complete_rows": 25,
-          "subscription_complete_rows": 97
-        },
-        "evidence": {
-          "gmp_ge_10": {
-            "cases": 7,
-            "win_rate_pct": 85.7,
-            "avg_gain_pct": 55.18,
-            "worst_gain_pct": -20.0
-          },
-          "gmp_ge_20": {
-            "cases": 4,
-            "win_rate_pct": 100.0,
-            "avg_gain_pct": 90.0,
-            "worst_gain_pct": 90.0
-          },
-          "subscription_ge_20": {
-            "cases": 86,
-            "win_rate_pct": 88.4,
-            "avg_gain_pct": 37.22,
-            "worst_gain_pct": -20.0
-          }
-        },
-        "disclaimer": "Research model only. It estimates listing-gain potential from historical GMP and subscription patterns; it does not consider your financial situation or guarantee profit.",
-        "display_decision_source": "CAPTURED_1430_IST",
-        "public_signal": {
-          "locked": false,
-          "action": "AVOID",
-          "reason": null
-        }
-      }
-    }
-  ],
+  "records": [],
   "source_meta": [
     {
       "type": "MAINBOARD",
@@ -218,8 +33,11 @@
   "errors": [],
   "decision_saved_count": 1,
   "saved_count": 1,
-  "capture_reason": "github_action_refresh_sme_close",
-  "public_filtered_closed_count": 0,
+  "capture_reason": "github_action_refresh_mainboard_close",
+  "public_filtered_closed_count": 1,
+  "public_filtered_closed_names": [
+    "Antala Industries"
+  ],
   "public_signal_policy": {
     "version": "public-signal-gate-v1",
     "locked_label": "Relevant data not available"
