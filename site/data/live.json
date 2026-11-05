@@ -1,6 +1,6 @@
 {
-  "fetched_at_utc": "2026-11-04T23:55:26.443183+00:00",
-  "fetched_at_ist": "2026-11-05T05:25:26.443183+05:30",
+  "fetched_at_utc": "2026-11-05T09:01:04.036455+00:00",
+  "fetched_at_ist": "2026-11-05T14:31:04.036455+05:30",
   "status_filter": "LIVE",
   "type_filter": "ALL",
   "records": [
@@ -28,9 +28,9 @@
       "gmp_source": null,
       "gmp_trends": [],
       "qib_x": 66.72,
-      "nii_x": 16.74,
-      "retail_x": 0.8,
-      "total_x": 4.63,
+      "nii_x": 23.43,
+      "retail_x": 2.31,
+      "total_x": 7.14,
       "strengths": [],
       "risks": [],
       "about_company": null,
@@ -71,14 +71,14 @@
         "raw_gmp_gain_pct": 0.0
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-11-05T05:25:26.443183+05:30",
+      "subscription_observed_at_ist": "2026-11-05T14:31:04.036455+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-11-05T05:25:26.443183+05:30",
+        "observed_at_ist": "2026-11-05T14:31:04.036455+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -111,21 +111,21 @@
         "gmp_change_1obs": null,
         "gmp_change_3obs": null,
         "log_qib": 4.2153815572649345,
-        "log_nii": 2.8758219768814333,
-        "log_retail": 0.5877866649021191,
-        "log_total": 1.728109442151599,
+        "log_nii": 3.195811885269649,
+        "log_retail": 1.1969481893889715,
+        "log_total": 2.096790180014449,
         "log_issue_size": null,
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 309.2,
+        "minutes_since_previous": 545.6,
         "qib_x_per_hour": 0.0,
-        "nii_x_per_hour": 0.0,
-        "retail_x_per_hour": 0.0,
-        "total_x_per_hour": 0.0
+        "nii_x_per_hour": 0.736,
+        "retail_x_per_hour": 0.166,
+        "total_x_per_hour": 0.276
       },
       "is_closing_today": true,
-      "would_be_1430_decision_snapshot": false,
+      "would_be_1430_decision_snapshot": true,
       "recommendation": {
         "policy_version": "research-v1.1",
         "segment": "SME",
@@ -133,24 +133,24 @@
         "action_priority": 2,
         "research_confidence": "LOW",
         "finality": {
-          "code": "CLOSING_DAY_PRE_1430",
-          "label": "PRELIMINARY — closes today; wait for 2:30 PM IST snapshot",
-          "canonical": false
+          "canonical": true,
+          "code": "CAPTURED_1430_IST",
+          "label": "CANONICAL_1430_RETAINED",
+          "captured_at_ist": "2026-11-05T14:31:04.036455+05:30"
         },
         "predictions": {
           "gmp_input_pct": null,
-          "total_subscription_x": 4.63,
-          "log_total": 1.728109442151599,
+          "total_subscription_x": 7.14,
+          "log_total": 2.096790180014449,
           "gmp_prediction_pct": null,
-          "subscription_prediction_pct": -10.38,
+          "subscription_prediction_pct": -4.1,
           "prediction_cap_pct": 90.0
         },
-        "primary_prediction_pct": -10.38,
-        "ranking_score": -10.38,
+        "primary_prediction_pct": -4.1,
+        "ranking_score": -4.1,
         "signal_conflict": false,
         "reason": [
-          "GMP is unavailable and subscription model is below +10%.",
-          "PRELIMINARY — closes today; wait for 2:30 PM IST snapshot"
+          "GMP is unavailable and subscription model is below +10%."
         ],
         "training": {
           "source_year": 2024,
@@ -179,6 +179,13 @@
           }
         },
         "disclaimer": "Research model only. It estimates listing-gain potential from historical GMP and subscription patterns; it does not consider your financial situation or guarantee profit.",
+        "data_quality": {
+          "subscription_fresh_for_canonical": true,
+          "subscription_age_minutes": 0.0,
+          "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
+          "canonical_max_age_minutes": 45
+        },
+        "display_decision_source": "CAPTURED_1430_IST",
         "public_signal": {
           "locked": false,
           "action": "AVOID",
@@ -216,7 +223,7 @@
   "errors": [],
   "decision_saved_count": 1,
   "saved_count": 1,
-  "capture_reason": "github_action_refresh_rollover",
+  "capture_reason": "manual_1430_recovery",
   "public_filtered_closed_count": 0,
   "public_signal_policy": {
     "version": "public-signal-gate-v1",
