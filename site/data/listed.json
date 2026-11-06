@@ -1,19 +1,19 @@
 {
   "version": "listed-tracker-v1",
-  "generated_at_ist": "2026-11-06T14:31:03.137737+05:30",
-  "current_prices_as_of_ist": "2026-11-05T16:00:00+05:30",
+  "generated_at_ist": "2026-11-06T17:52:12.147689+05:30",
+  "current_prices_as_of_ist": "2026-11-06T16:00:00+05:30",
   "summary": {
     "listed_records": 308,
-    "market_identity_resolved": 302,
-    "current_price_available": 299,
+    "market_identity_resolved": 304,
+    "current_price_available": 301,
     "unlock_schedule_available": 77,
     "duplicate_rows_removed": 0,
     "bse_identities_added": 0,
-    "bse_identity_resolved_total": 122,
+    "bse_identity_resolved_total": 124,
     "bse_direct_quotes": 0,
-    "listing_price_market_fallbacks": 11,
-    "current_price_missing": 9,
-    "current_price_missing_due_identity": 6,
+    "listing_price_market_fallbacks": 12,
+    "current_price_missing": 7,
+    "current_price_missing_due_identity": 4,
     "current_price_missing_after_identity": 3,
     "application_size_available": 296
   },
@@ -21,20 +21,20 @@
     {
       "tracker_key": "HANDOFF|2026|SME|vectrasenprocon|2026-11-03",
       "name": "Vectras Enprocon",
-      "symbol": null,
-      "market": null,
-      "market_symbol": null,
-      "bse_code": null,
-      "isin": null,
+      "symbol": "VECTRAS",
+      "market": "BSE",
+      "market_symbol": "545020.BO",
+      "bse_code": "545020",
+      "isin": "INE1FD201014",
       "ipo_type": "SME",
       "listing_date": "2026-11-06",
       "issue_price": 105.0,
       "listing_price": null,
       "listing_return_pct": null,
-      "current_price": null,
-      "current_return_pct": null,
-      "current_price_as_of_ist": null,
-      "current_price_source": null,
+      "current_price": 108.0,
+      "current_return_pct": 2.86,
+      "current_price_as_of_ist": "2026-11-06T16:00:00+05:30",
+      "current_price_source": "BSE_UDIFF_BHAVCOPY",
       "unlock_events": [],
       "next_unlock": null,
       "unlock_status": "NOT_AVAILABLE",
@@ -81,20 +81,20 @@
     {
       "tracker_key": "HANDOFF|2026|SME|johnsoncabelectricals|2026-11-03",
       "name": "Johnsoncab Electricals",
-      "symbol": null,
-      "market": null,
-      "market_symbol": null,
-      "bse_code": null,
-      "isin": null,
+      "symbol": "JOHNSONCAB",
+      "market": "BSE",
+      "market_symbol": "545021.BO",
+      "bse_code": "545021",
+      "isin": "INE1ZSR01011",
       "ipo_type": "SME",
       "listing_date": "2026-11-06",
       "issue_price": 200.0,
       "listing_price": null,
       "listing_return_pct": null,
-      "current_price": null,
-      "current_return_pct": null,
-      "current_price_as_of_ist": null,
-      "current_price_source": null,
+      "current_price": 237.4,
+      "current_return_pct": 18.7,
+      "current_price_as_of_ist": "2026-11-06T16:00:00+05:30",
+      "current_price_source": "BSE_UDIFF_BHAVCOPY",
       "unlock_events": [],
       "next_unlock": null,
       "unlock_status": "NOT_AVAILABLE",
@@ -119,8 +119,8 @@
       "ipo_type": "SME",
       "listing_date": "2026-11-06",
       "issue_price": 120.0,
-      "listing_price": null,
-      "listing_return_pct": null,
+      "listing_price": 160.0,
+      "listing_return_pct": 33.33,
       "current_price": null,
       "current_return_pct": null,
       "current_price_as_of_ist": null,
@@ -130,6 +130,7 @@
       "unlock_status": "NOT_AVAILABLE",
       "unlock_checked_at_ist": null,
       "detail_url": null,
+      "listing_price_source": "NSE_LISTING_DAY_OPEN",
       "application_shares": null,
       "application_amount": null,
       "application_lots": null,
@@ -2382,9 +2383,9 @@
       "issue_price": 32.0,
       "listing_price": 28.32,
       "listing_return_pct": -11.5,
-      "current_price": 19.8,
-      "current_return_pct": -38.12,
-      "current_price_as_of_ist": "2026-11-05T16:00:00+05:30",
+      "current_price": 18.85,
+      "current_return_pct": -41.09,
+      "current_price_as_of_ist": "2026-11-06T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -2442,7 +2443,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": -1722.24,
-      "current_gain_loss": -5709.6
+      "current_gain_loss": -6154.2
     },
     {
       "tracker_key": "2026|SME|roopascreen",
@@ -3096,9 +3097,9 @@
       "issue_price": 134.0,
       "listing_price": 235.0,
       "listing_return_pct": 75.37,
-      "current_price": 171.48,
-      "current_return_pct": 27.97,
-      "current_price_as_of_ist": "2026-11-05T16:00:00+05:30",
+      "current_price": 165.0,
+      "current_return_pct": 23.13,
+      "current_price_as_of_ist": "2026-11-06T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [
         {
@@ -3138,7 +3139,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 11211.0,
-      "current_gain_loss": 4160.28
+      "current_gain_loss": 3441.0
     },
     {
       "tracker_key": "2026|MAINBOARD|varmoragranito",
@@ -6132,9 +6133,9 @@
       "issue_price": 102.0,
       "listing_price": 99.0,
       "listing_return_pct": -2.94,
-      "current_price": 42.75,
-      "current_return_pct": -58.09,
-      "current_price_as_of_ist": "2026-11-05T16:00:00+05:30",
+      "current_price": 41.15,
+      "current_return_pct": -59.66,
+      "current_price_as_of_ist": "2026-11-06T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [],
       "next_unlock": null,
@@ -6147,7 +6148,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": -7200.0,
-      "current_gain_loss": -142200.0
+      "current_gain_loss": -146040.0
     },
     {
       "tracker_key": "2026|MAINBOARD|augmontenterprises",
@@ -8112,9 +8113,9 @@
       "issue_price": 136.0,
       "listing_price": 130.0,
       "listing_return_pct": -4.41,
-      "current_price": 25.13,
-      "current_return_pct": -81.52,
-      "current_price_as_of_ist": "2026-11-05T16:00:00+05:30",
+      "current_price": 24.68,
+      "current_return_pct": -81.85,
+      "current_price_as_of_ist": "2026-11-06T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [],
       "next_unlock": null,
@@ -8127,7 +8128,7 @@
       "application_tier": "Retail · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": -660.0,
-      "current_gain_loss": -12195.7
+      "current_gain_loss": -12245.2
     },
     {
       "tracker_key": "2026|SME|crazysnacks",
@@ -9432,9 +9433,9 @@
       "issue_price": 172.0,
       "listing_price": 205.0,
       "listing_return_pct": 19.19,
-      "current_price": 270.7,
-      "current_return_pct": 57.38,
-      "current_price_as_of_ist": "2026-11-05T16:00:00+05:30",
+      "current_price": 282.0,
+      "current_return_pct": 63.95,
+      "current_price_as_of_ist": "2026-11-06T16:00:00+05:30",
       "current_price_source": "NSE_BHAVCOPY",
       "unlock_events": [],
       "next_unlock": null,
@@ -9447,7 +9448,7 @@
       "application_tier": "Individual · min",
       "application_source": "IPOMARKETS_MIN_APPLICATION_TABLE",
       "listing_gain_loss": 52800.0,
-      "current_gain_loss": 157920.0
+      "current_gain_loss": 176000.0
     },
     {
       "tracker_key": "2026|MAINBOARD|citiustransnetinvestmenttrustinvit",
@@ -11538,9 +11539,7 @@
     "application_size": "IPOMARKETS_MIN_APPLICATION_TABLE"
   },
   "errors": {
-    "security_master": [
-      "2026-11-06: empty BSE bhavcopy"
-    ],
+    "security_master": [],
     "current_price": [
       "HTTPError: HTTP Error 429: Too Many Requests",
       "HTTPError: HTTP Error 429: Too Many Requests",
@@ -11553,12 +11552,8 @@
       "HTTPError: HTTP Error 429: Too Many Requests"
     ],
     "nse_bhav": [
-      "https://nsearchives.nseindia.com/products/content/sec_bhavdata_full_06112026.csv: HTTPError: HTTP Error 404: Not Found",
-      "https://archives.nseindia.com/products/content/sec_bhavdata_full_06112026.csv: HTTPError: HTTP Error 404: Not Found",
       "https://nsearchives.nseindia.com/emerge/corporates/content/sme06112026.csv: HTTPError: HTTP Error 404: Not Found",
-      "https://archives.nseindia.com/emerge/corporates/content/sme06112026.csv: HTTPError: HTTP Error 404: Not Found",
-      "https://nsearchives.nseindia.com/emerge/corporates/content/sme05112026.csv: HTTPError: HTTP Error 404: Not Found",
-      "https://archives.nseindia.com/emerge/corporates/content/sme05112026.csv: HTTPError: HTTP Error 404: Not Found"
+      "https://archives.nseindia.com/emerge/corporates/content/sme06112026.csv: HTTPError: HTTP Error 404: Not Found"
     ]
   }
 }
