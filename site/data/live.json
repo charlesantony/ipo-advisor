@@ -1,6 +1,6 @@
 {
-  "fetched_at_utc": "2026-11-20T15:19:15.775564+00:00",
-  "fetched_at_ist": "2026-11-20T20:49:15.775564+05:30",
+  "fetched_at_utc": "2026-11-20T18:46:00.634867+00:00",
+  "fetched_at_ist": "2026-11-21T00:16:00.634867+05:30",
   "status_filter": "LIVE",
   "type_filter": "ALL",
   "records": [
@@ -24,11 +24,11 @@
       "ofs_cr": null,
       "gmp_value": 1.0,
       "gmp_gain_pct": 0.74,
-      "gmp_date": "20 November",
+      "gmp_date": "21 November",
       "gmp_source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/",
       "gmp_trends": [
         {
-          "date": "20 November",
+          "date": "21 November",
           "gmp": "₹1",
           "gain": "0.74%",
           "source": "IPOWATCH_LATEST_DASHBOARD"
@@ -77,14 +77,14 @@
         "gmp_gain_pct": 0.74
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-11-20T20:49:15.775564+05:30",
+      "subscription_observed_at_ist": "2026-11-21T00:16:00.634867+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-11-20T20:49:15.775564+05:30",
+        "observed_at_ist": "2026-11-21T00:16:00.634867+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -124,7 +124,7 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 18.2,
+        "minutes_since_previous": 224.9,
         "qib_x_per_hour": 0.0,
         "nii_x_per_hour": 0.0,
         "retail_x_per_hour": 0.0,
@@ -194,197 +194,6 @@
       }
     },
     {
-      "symbol": "CRYSTALCP",
-      "type": "Mainboard",
-      "name": "Crystal Crop Protection",
-      "status": "LIVE",
-      "exchanges": null,
-      "details_url": null,
-      "drhp_url": null,
-      "rhp_url": null,
-      "start_date": "2026-11-18",
-      "end_date": "2026-11-20",
-      "listing_date": "2026-11-26",
-      "price_low": 259.0,
-      "price_high": 272.0,
-      "lot_size": 55.0,
-      "issue_size_cr": null,
-      "fresh_issue_cr": null,
-      "ofs_cr": null,
-      "gmp_value": 14.0,
-      "gmp_gain_pct": 5.15,
-      "gmp_date": "20 November",
-      "gmp_source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/",
-      "gmp_trends": [
-        {
-          "date": "20 November",
-          "gmp": "₹14",
-          "gain": "5.15%",
-          "source": "IPOWATCH_LATEST_DASHBOARD"
-        }
-      ],
-      "qib_x": 15.47,
-      "nii_x": 37.43,
-      "retail_x": 8.53,
-      "total_x": 16.63,
-      "strengths": [],
-      "risks": [],
-      "about_company": null,
-      "raw": {
-        "symbol": "CRYSTALCP",
-        "type": "Mainboard",
-        "name": "Crystal Crop Protection",
-        "priceRange": "₹259 – ₹272",
-        "lotSize": "55",
-        "status": "LIVE",
-        "schedule": {
-          "startDate": "2026-11-18",
-          "endDate": "2026-11-20",
-          "listingDate": "2026-11-26",
-          "upiMandateDeadline": "2026-11-20",
-          "allotmentFinalization": "2026-11-23",
-          "refundInitiation": "2026-11-25",
-          "shareCredit": "2026-11-25",
-          "mandateEndDate": "2026-12-05",
-          "lockInEndDateAnchor50": "2026-12-22",
-          "lockInEndDateAnchorRemaining": "2027-02-20"
-        }
-      },
-      "gmp_fallback_source": "IPOWATCH_LATEST_DASHBOARD",
-      "gmp_status": "VERIFIED",
-      "gmp_validation": {
-        "complete": true,
-        "status": "FALLBACK",
-        "provider_gmp_missing": true,
-        "attempted_sources": [
-          "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
-        ],
-        "errors": [],
-        "source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/",
-        "source_kind": "IPOWATCH_LATEST_DASHBOARD",
-        "gmp_value": 14.0,
-        "gmp_gain_pct": 5.15
-      },
-      "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-11-20T20:49:15.775564+05:30",
-      "subscription_age_minutes": 0.0,
-      "subscription_validation": {
-        "complete": true,
-        "status": "FALLBACK",
-        "source": "https://groww.in/ipo/subscription",
-        "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-11-20T20:49:15.775564+05:30",
-        "age_minutes": 0.0,
-        "provider_subscription_missing": true,
-        "attempted_sources": [
-          "https://groww.in/ipo/subscription"
-        ],
-        "errors": [],
-        "field_sources": {
-          "qib_x": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-          "nii_x": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-          "retail_x": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-          "total_x": "GROWW_CONSOLIDATED_SUBSCRIPTION"
-        }
-      },
-      "readiness": {
-        "identity": true,
-        "schedule": true,
-        "price": true,
-        "issue_size": false,
-        "gmp": true,
-        "gmp_history": false,
-        "qib": true,
-        "nii": true,
-        "retail": true,
-        "total_subscription": true,
-        "prospectus": false,
-        "risks": false
-      },
-      "features": {
-        "gmp_latest_pct": 5.15,
-        "gmp_change_1obs": null,
-        "gmp_change_3obs": null,
-        "log_qib": 2.801540544189549,
-        "log_nii": 3.6488384045767526,
-        "log_retail": 2.254444717666111,
-        "log_total": 2.869601996409779,
-        "log_issue_size": null,
-        "ofs_ratio": null
-      },
-      "velocity": {
-        "minutes_since_previous": 18.2,
-        "qib_x_per_hour": 0.0,
-        "nii_x_per_hour": 0.0,
-        "retail_x_per_hour": 0.0,
-        "total_x_per_hour": 0.0
-      },
-      "is_closing_today": true,
-      "would_be_1430_decision_snapshot": false,
-      "recommendation": {
-        "policy_version": "research-v1.1",
-        "segment": "MAINBOARD",
-        "action": "AVOID",
-        "action_priority": 2,
-        "research_confidence": "MEDIUM",
-        "finality": {
-          "canonical": true,
-          "code": "CAPTURED_1430_IST",
-          "label": "CANONICAL_1430_RETAINED",
-          "captured_at_ist": "2026-11-20T14:31:06.398358+05:30"
-        },
-        "predictions": {
-          "gmp_input_pct": 5.15,
-          "total_subscription_x": 16.63,
-          "log_total": 2.869601996409779,
-          "gmp_prediction_pct": 1.84,
-          "subscription_prediction_pct": 26.78,
-          "prediction_cap_pct": null
-        },
-        "primary_prediction_pct": 3.01,
-        "ranking_score": 1.84,
-        "signal_conflict": false,
-        "reason": [
-          "GMP model is below the +5% research threshold.",
-          "Total-subscription model is strongly supportive.",
-          "POST-2:30 PM — latest research signal; canonical snapshot should be retained"
-        ],
-        "training": {
-          "source_year": 2024,
-          "source_rows": 52,
-          "gmp_complete_rows": 25,
-          "subscription_complete_rows": 51
-        },
-        "evidence": {
-          "gmp_ge_10": {
-            "cases": 6,
-            "win_rate_pct": 100.0,
-            "avg_gain_pct": 31.2,
-            "worst_gain_pct": 12.9
-          },
-          "gmp_ge_20": {
-            "cases": 4,
-            "win_rate_pct": 100.0,
-            "avg_gain_pct": 37.8,
-            "worst_gain_pct": 20.09
-          },
-          "subscription_ge_20": {
-            "cases": 58,
-            "win_rate_pct": 84.5,
-            "avg_gain_pct": 17.01,
-            "worst_gain_pct": -3.42
-          }
-        },
-        "disclaimer": "Research model only. It estimates listing-gain potential from historical GMP and subscription patterns; it does not consider your financial situation or guarantee profit.",
-        "display_decision_source": "CAPTURED_1430_IST",
-        "public_signal": {
-          "locked": false,
-          "action": "AVOID",
-          "reason": null
-        }
-      }
-    },
-    {
       "symbol": "WATRANA",
       "type": "SME",
       "name": "Watrana Rentals",
@@ -404,11 +213,11 @@
       "ofs_cr": null,
       "gmp_value": 67.0,
       "gmp_gain_pct": 27.35,
-      "gmp_date": "20 November",
+      "gmp_date": "21 November",
       "gmp_source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/",
       "gmp_trends": [
         {
-          "date": "20 November",
+          "date": "21 November",
           "gmp": "₹67",
           "gain": "27.35%",
           "source": "IPOWATCH_LATEST_DASHBOARD"
@@ -457,14 +266,14 @@
         "gmp_gain_pct": 27.35
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-11-20T20:49:15.775564+05:30",
+      "subscription_observed_at_ist": "2026-11-21T00:16:00.634867+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-11-20T20:49:15.775564+05:30",
+        "observed_at_ist": "2026-11-21T00:16:00.634867+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -504,7 +313,7 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 18.2,
+        "minutes_since_previous": 224.9,
         "qib_x_per_hour": 0.0,
         "nii_x_per_hour": 0.0,
         "retail_x_per_hour": 0.0,
@@ -600,7 +409,13 @@
     }
   ],
   "errors": [],
-  "public_filtered_closed_count": 0,
+  "decision_saved_count": 3,
+  "saved_count": 3,
+  "capture_reason": "github_action_refresh_sme_close",
+  "public_filtered_closed_count": 1,
+  "public_filtered_closed_names": [
+    "Crystal Crop Protection"
+  ],
   "public_signal_policy": {
     "version": "public-signal-gate-v1",
     "locked_label": "Relevant data not available"
