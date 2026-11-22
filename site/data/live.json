@@ -1,6 +1,6 @@
 {
-  "fetched_at_utc": "2026-11-21T23:34:58.202500+00:00",
-  "fetched_at_ist": "2026-11-22T05:04:58.202500+05:30",
+  "fetched_at_utc": "2026-11-22T23:49:55.211225+00:00",
+  "fetched_at_ist": "2026-11-23T05:19:55.211225+05:30",
   "status_filter": "LIVE",
   "type_filter": "ALL",
   "records": [
@@ -71,14 +71,14 @@
         "raw_gmp_gain_pct": 0.0
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-11-22T05:04:58.202500+05:30",
+      "subscription_observed_at_ist": "2026-11-23T05:19:55.211225+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-11-22T05:04:58.202500+05:30",
+        "observed_at_ist": "2026-11-23T05:19:55.211225+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -118,13 +118,13 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 1401.8,
+        "minutes_since_previous": 1455.0,
         "qib_x_per_hour": 0.0,
         "nii_x_per_hour": 0.0,
         "retail_x_per_hour": 0.0,
         "total_x_per_hour": 0.0
       },
-      "is_closing_today": false,
+      "is_closing_today": true,
       "would_be_1430_decision_snapshot": false,
       "recommendation": {
         "policy_version": "research-v1.1",
@@ -133,8 +133,8 @@
         "action_priority": 2,
         "research_confidence": "LOW",
         "finality": {
-          "code": "EARLY",
-          "label": "EARLY SIGNAL — NOT FINAL; use closing-day 2:30 PM IST decision",
+          "code": "CLOSING_DAY_PRE_1430",
+          "label": "PRELIMINARY — closes today; wait for 2:30 PM IST snapshot",
           "canonical": false
         },
         "predictions": {
@@ -150,7 +150,7 @@
         "signal_conflict": false,
         "reason": [
           "GMP is unavailable and subscription model is below +10%.",
-          "EARLY SIGNAL — NOT FINAL; use closing-day 2:30 PM IST decision"
+          "PRELIMINARY — closes today; wait for 2:30 PM IST snapshot"
         ],
         "training": {
           "source_year": 2024,
@@ -206,11 +206,11 @@
       "ofs_cr": null,
       "gmp_value": 65.0,
       "gmp_gain_pct": 26.53,
-      "gmp_date": "22 November",
+      "gmp_date": "23 November",
       "gmp_source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/",
       "gmp_trends": [
         {
-          "date": "22 November",
+          "date": "23 November",
           "gmp": "₹65",
           "gain": "26.53%",
           "source": "IPOWATCH_LATEST_DASHBOARD"
@@ -259,14 +259,14 @@
         "gmp_gain_pct": 26.53
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-11-22T05:04:58.202500+05:30",
+      "subscription_observed_at_ist": "2026-11-23T05:19:55.211225+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-11-22T05:04:58.202500+05:30",
+        "observed_at_ist": "2026-11-23T05:19:55.211225+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -306,13 +306,13 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 1401.8,
+        "minutes_since_previous": 1455.0,
         "qib_x_per_hour": 0.0,
         "nii_x_per_hour": 0.0,
         "retail_x_per_hour": 0.0,
         "total_x_per_hour": 0.0
       },
-      "is_closing_today": false,
+      "is_closing_today": true,
       "would_be_1430_decision_snapshot": false,
       "recommendation": {
         "policy_version": "research-v1.1",
@@ -321,8 +321,8 @@
         "action_priority": 3,
         "research_confidence": "LOW",
         "finality": {
-          "code": "EARLY",
-          "label": "EARLY SIGNAL — NOT FINAL; use closing-day 2:30 PM IST decision",
+          "code": "CLOSING_DAY_PRE_1430",
+          "label": "PRELIMINARY — closes today; wait for 2:30 PM IST snapshot",
           "canonical": false
         },
         "predictions": {
@@ -338,7 +338,7 @@
         "signal_conflict": false,
         "reason": [
           "SME GMP is +10% to +20%; the holdout contained a -20% false positive in this zone.",
-          "EARLY SIGNAL — NOT FINAL; use closing-day 2:30 PM IST decision"
+          "PRELIMINARY — closes today; wait for 2:30 PM IST snapshot"
         ],
         "training": {
           "source_year": 2024,
