@@ -1,6 +1,6 @@
 {
-  "fetched_at_utc": "2026-11-24T22:41:37.553842+00:00",
-  "fetched_at_ist": "2026-11-25T04:11:37.553842+05:30",
+  "fetched_at_utc": "2026-11-25T02:46:19.648111+00:00",
+  "fetched_at_ist": "2026-11-25T08:16:19.648111+05:30",
   "status_filter": "LIVE",
   "type_filter": "ALL",
   "records": [
@@ -117,7 +117,7 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 74.7,
+        "minutes_since_previous": 319.4,
         "qib_x_per_hour": null,
         "nii_x_per_hour": null,
         "retail_x_per_hour": null,
@@ -212,6 +212,9 @@
     }
   ],
   "errors": [],
+  "decision_saved_count": 1,
+  "saved_count": 1,
+  "capture_reason": "github_action_refresh_rollover",
   "public_filtered_closed_count": 0,
   "public_signal_policy": {
     "version": "public-signal-gate-v1",
