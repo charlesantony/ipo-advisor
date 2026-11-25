@@ -1,6 +1,6 @@
 {
-  "fetched_at_utc": "2026-11-25T17:04:52.157696+00:00",
-  "fetched_at_ist": "2026-11-25T22:34:52.157696+05:30",
+  "fetched_at_utc": "2026-11-25T20:06:33.314164+00:00",
+  "fetched_at_ist": "2026-11-26T01:36:33.314164+05:30",
   "status_filter": "LIVE",
   "type_filter": "ALL",
   "records": [
@@ -24,11 +24,11 @@
       "ofs_cr": null,
       "gmp_value": 20.0,
       "gmp_gain_pct": 14.08,
-      "gmp_date": "25 November",
+      "gmp_date": "26 November",
       "gmp_source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/",
       "gmp_trends": [
         {
-          "date": "25 November",
+          "date": "26 November",
           "gmp": "₹20",
           "gain": "14.08%",
           "source": "IPOWATCH_LATEST_DASHBOARD"
@@ -77,14 +77,14 @@
         "gmp_gain_pct": 14.08
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-11-25T22:34:52.157696+05:30",
+      "subscription_observed_at_ist": "2026-11-26T01:36:33.314164+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-11-25T22:34:52.157696+05:30",
+        "observed_at_ist": "2026-11-26T01:36:33.314164+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -124,7 +124,7 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 123.8,
+        "minutes_since_previous": 305.5,
         "qib_x_per_hour": 0.0,
         "nii_x_per_hour": 0.0,
         "retail_x_per_hour": 0.0,
@@ -220,6 +220,9 @@
     }
   ],
   "errors": [],
+  "decision_saved_count": 1,
+  "saved_count": 1,
+  "capture_reason": "github_action_refresh_sme_close",
   "public_filtered_closed_count": 0,
   "public_signal_policy": {
     "version": "public-signal-gate-v1",
