@@ -13,12 +13,13 @@ on:
 
 permissions:
   contents: read
+  actions: read
   pages: write
   id-token: write
 
 concurrency:
-  group: pages-only
-  cancel-in-progress: true
+  group: ipo-advisor-state-and-pages
+  cancel-in-progress: false
 
 jobs:
   deploy:
@@ -27,6 +28,9 @@ jobs:
       name: github-pages
     steps:
       - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
 
       - uses: actions/setup-python@v6
         with:
@@ -37,6 +41,30 @@ jobs:
 
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
+        id: pages_artifact
         with:
           path: site
+          name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
+
+      - name: Wait for Pages artifact availability
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARTIFACT_NAME: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
+        shell: bash
+        run: |
+          for i in {1..24}; do
+            if gh api --paginate "repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/artifacts?per_page=100" \
+                --jq '.artifacts[] | select(.expired == false) | .name' | grep -Fx -- "$ARTIFACT_NAME"; then
+              echo "Pages artifact is visible."
+              sleep 5
+              exit 0
+            fi
+            echo "Waiting for Pages artifact ($i/24)..."
+            sleep 5
+          done
+          echo "::error::Pages artifact not visible after retries"
+          exit 1
+
       - uses: actions/deploy-pages@v5
+        with:
+          artifact_name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}

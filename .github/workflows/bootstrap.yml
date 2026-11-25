@@ -5,6 +5,7 @@ on:
 
 permissions:
   contents: write
+  actions: read
   pages: write
   id-token: write
 
@@ -20,6 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with:
+          ref: ${{ github.ref_name }}
           fetch-depth: 0
 
       - uses: actions/setup-python@v6
@@ -35,7 +37,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: ipo-advisor-bootstrap-${{ github.run_id }}-logs
+          name: ipo-advisor-bootstrap-${{ github.run_id }}-${{ github.run_attempt }}-logs
           path: |
             engine/logs/ipo_advisor.log
             engine/logs/ipo_advisor.log.*
@@ -49,12 +51,36 @@ jobs:
           git add state site/data
           if ! git diff --cached --quiet; then
             git commit -m "chore: bootstrap IPO Advisor state"
-            git pull --rebase origin "${GITHUB_REF_NAME}"
+            # Fail safely if another writer advanced the branch; never merge SQLite blindly.
             git push origin HEAD:"${GITHUB_REF_NAME}"
           fi
 
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
+        id: pages_artifact
         with:
           path: site
+          name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
+
+      - name: Wait for Pages artifact availability
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARTIFACT_NAME: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
+        shell: bash
+        run: |
+          for i in {1..24}; do
+            if gh api --paginate "repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/artifacts?per_page=100" \
+                --jq '.artifacts[] | select(.expired == false) | .name' | grep -Fx -- "$ARTIFACT_NAME"; then
+              echo "Pages artifact is visible."
+              sleep 5
+              exit 0
+            fi
+            echo "Waiting for Pages artifact ($i/24)..."
+            sleep 5
+          done
+          echo "::error::Pages artifact not visible after retries"
+          exit 1
+
       - uses: actions/deploy-pages@v5
+        with:
+          artifact_name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}

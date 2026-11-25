@@ -1,9 +1,7 @@
 name: Day-2 IPO Early Email
 
 on:
-  # Time-critical execution is dispatched externally by the existing
-  # Google Apps Script project. GitHub `schedule:` is deliberately not used
-  # because GitHub documents that scheduled events can be delayed or dropped.
+  # Dispatched externally by Google Apps Script for time-critical execution.
   workflow_dispatch:
     inputs:
       wait_for_checkpoint:
@@ -13,6 +11,7 @@ on:
 
 permissions:
   contents: write
+  actions: read
   pages: write
   id-token: write
 
@@ -29,6 +28,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with:
+          ref: ${{ github.ref_name }}
           fetch-depth: 0
 
       - uses: actions/setup-python@v6
@@ -47,7 +47,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: ipo-advisor-day2-${{ github.run_id }}-logs
+          name: ipo-advisor-day2-${{ github.run_id }}-${{ github.run_attempt }}-logs
           path: |
             engine/logs/ipo_advisor.log
             engine/logs/ipo_advisor.log.*
@@ -62,7 +62,7 @@ jobs:
           git add state site/data
           if ! git diff --cached --quiet; then
             git commit -m "chore: Day-2 IPO early signal snapshot"
-            git pull --rebase origin "${GITHUB_REF_NAME}"
+            # Fail safely if another writer advanced the branch; never merge SQLite blindly.
             git push origin HEAD:"${GITHUB_REF_NAME}"
           fi
 
@@ -70,7 +70,32 @@ jobs:
         if: ${{ hashFiles('.stale_schedule_skip') == '' }}
       - uses: actions/upload-pages-artifact@v5
         if: ${{ hashFiles('.stale_schedule_skip') == '' }}
+        id: pages_artifact
         with:
           path: site
+          name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
+
+      - name: Wait for Pages artifact availability
+        if: ${{ hashFiles('.stale_schedule_skip') == '' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARTIFACT_NAME: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
+        shell: bash
+        run: |
+          for i in {1..24}; do
+            if gh api --paginate "repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/artifacts?per_page=100" \
+                --jq '.artifacts[] | select(.expired == false) | .name' | grep -Fx -- "$ARTIFACT_NAME"; then
+              echo "Pages artifact is visible."
+              sleep 5
+              exit 0
+            fi
+            echo "Waiting for Pages artifact ($i/24)..."
+            sleep 5
+          done
+          echo "::error::Pages artifact not visible after retries"
+          exit 1
+
       - uses: actions/deploy-pages@v5
         if: ${{ hashFiles('.stale_schedule_skip') == '' }}
+        with:
+          artifact_name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
