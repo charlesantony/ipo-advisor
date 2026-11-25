@@ -234,6 +234,30 @@
       "segment": "Mainboard",
       "start_date": "2026-09-30",
       "end_date": "2026-10-05"
+    },
+    "MAINBOARD|JPL|2026-10-21": {
+      "sent_at_ist": "2026-10-22T20:31:35.501925+05:30",
+      "action": "SUBSCRIBE",
+      "name": "Jio Platforms",
+      "segment": "Mainboard",
+      "start_date": "2026-10-21",
+      "end_date": "2026-10-23"
+    },
+    "MAINBOARD|BLSPOLY|2026-10-27": {
+      "sent_at_ist": "2026-10-28T20:31:29.962589+05:30",
+      "action": "SUBSCRIBE",
+      "name": "BLS Polymers",
+      "segment": "Mainboard",
+      "start_date": "2026-10-27",
+      "end_date": "2026-10-29"
+    },
+    "SME|MAXENGS|2026-10-30": {
+      "sent_at_ist": "2026-11-02T20:31:25.593254+05:30",
+      "action": "SUBSCRIBE",
+      "name": "Maxwell Engineering Solutions",
+      "segment": "SME",
+      "start_date": "2026-10-30",
+      "end_date": "2026-11-03"
     }
   },
   "closing": {
@@ -524,6 +548,46 @@
       "name": "Bonfiglioli Transmissions",
       "segment": "Mainboard",
       "end_date": "2026-10-19"
+    },
+    "MAINBOARD|JPL|2026-10-21": {
+      "sent_at_ist": "2026-10-23T14:31:36.832958+05:30",
+      "action": "SUBSCRIBE",
+      "previous_signal": "SUBSCRIBE",
+      "name": "Jio Platforms",
+      "segment": "Mainboard",
+      "end_date": "2026-10-23"
+    },
+    "MAINBOARD|BLSPOLY|2026-10-27": {
+      "sent_at_ist": "2026-10-29T14:31:28.559953+05:30",
+      "action": "STRONG SUBSCRIBE",
+      "previous_signal": "SUBSCRIBE",
+      "name": "BLS Polymers",
+      "segment": "Mainboard",
+      "end_date": "2026-10-29"
+    },
+    "MAINBOARD|BCSSL|2026-10-29": {
+      "sent_at_ist": "2026-11-02T14:31:22.944517+05:30",
+      "action": "SUBSCRIBE",
+      "previous_signal": "",
+      "name": "Bombay Coated & Special Steels",
+      "segment": "Mainboard",
+      "end_date": "2026-11-02"
+    },
+    "SME|MAXENGS|2026-10-30": {
+      "sent_at_ist": "2026-11-03T14:31:24.450630+05:30",
+      "action": "SUBSCRIBE",
+      "previous_signal": "SUBSCRIBE",
+      "name": "Maxwell Engineering Solutions",
+      "segment": "SME",
+      "end_date": "2026-11-03"
+    },
+    "SME|HGSINDIALT|2026-10-30": {
+      "sent_at_ist": "2026-11-03T14:31:24.450630+05:30",
+      "action": "SUBSCRIBE",
+      "previous_signal": "",
+      "name": "HGS (India)",
+      "segment": "SME",
+      "end_date": "2026-11-03"
     }
   }
 }
