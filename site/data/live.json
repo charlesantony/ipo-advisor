@@ -1,13 +1,13 @@
 {
-  "fetched_at_utc": "2026-11-26T15:01:06.213278+00:00",
-  "fetched_at_ist": "2026-11-26T20:31:06.213278+05:30",
+  "fetched_at_utc": "2026-11-26T16:45:16.023984+00:00",
+  "fetched_at_ist": "2026-11-26T22:15:16.023984+05:30",
   "status_filter": "LIVE",
   "type_filter": "ALL",
   "records": [
     {
       "symbol": "FOODLINK",
-      "type": "Mainboard",
-      "name": "Foodlink F&B Holdings (India)",
+      "type": "MAINBOARD",
+      "name": "Foodlink F&B Holdings",
       "status": "LIVE",
       "exchanges": null,
       "details_url": null,
@@ -43,10 +43,10 @@
       "about_company": null,
       "raw": {
         "symbol": "FOODLINK",
-        "type": "Mainboard",
-        "name": "Foodlink F&B Holdings (India)",
-        "priceRange": "₹181 – ₹191",
-        "lotSize": "78",
+        "type": "MAINBOARD",
+        "name": "Foodlink F&B Holdings",
+        "priceRange": "₹181.00 - ₹191.00",
+        "lotSize": "78 Shares",
         "status": "LIVE",
         "schedule": {
           "startDate": "2026-11-26",
@@ -77,14 +77,14 @@
         "gmp_gain_pct": 6.28
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-11-26T20:31:06.213278+05:30",
+      "subscription_observed_at_ist": "2026-11-26T22:15:16.023984+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-11-26T20:31:06.213278+05:30",
+        "observed_at_ist": "2026-11-26T22:15:16.023984+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -124,7 +124,7 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 46.7,
+        "minutes_since_previous": 104.2,
         "qib_x_per_hour": 0.0,
         "nii_x_per_hour": 0.0,
         "retail_x_per_hour": 0.0,
@@ -234,8 +234,8 @@
         "symbol": "SHREESIDHI",
         "type": "SME",
         "name": "Shree Siddhivinayak Greentech Industries",
-        "priceRange": "₹130 – ₹142",
-        "lotSize": "1000",
+        "priceRange": "₹130.00 - ₹142.00",
+        "lotSize": "1000 Shares",
         "status": "LIVE",
         "schedule": {
           "startDate": "2026-11-25",
@@ -266,14 +266,14 @@
         "gmp_gain_pct": 5.63
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-11-26T20:31:06.213278+05:30",
+      "subscription_observed_at_ist": "2026-11-26T22:15:16.023984+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-11-26T20:31:06.213278+05:30",
+        "observed_at_ist": "2026-11-26T22:15:16.023984+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -313,7 +313,7 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 46.7,
+        "minutes_since_previous": 104.2,
         "qib_x_per_hour": 0.0,
         "nii_x_per_hour": 0.0,
         "retail_x_per_hour": 0.0,
@@ -390,7 +390,7 @@
       "api_status": "success",
       "api_status_code": 200,
       "message": "IPO details fetched successfully",
-      "response_bytes": 564,
+      "response_bytes": 567,
       "rate_remaining_endpoint": "119",
       "rate_remaining_global": "239",
       "count": 1
@@ -402,16 +402,13 @@
       "api_status": "success",
       "api_status_code": 200,
       "message": "IPO details fetched successfully",
-      "response_bytes": 573,
+      "response_bytes": 584,
       "rate_remaining_endpoint": "119",
       "rate_remaining_global": "239",
       "count": 1
     }
   ],
   "errors": [],
-  "decision_saved_count": 2,
-  "saved_count": 2,
-  "capture_reason": "github_action_day2_2030",
   "public_filtered_closed_count": 0,
   "public_signal_policy": {
     "version": "public-signal-gate-v1",
