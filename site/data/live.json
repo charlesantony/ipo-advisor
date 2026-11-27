@@ -1,6 +1,6 @@
 {
-  "fetched_at_utc": "2026-11-27T16:31:23.630031+00:00",
-  "fetched_at_ist": "2026-11-27T22:01:23.630031+05:30",
+  "fetched_at_utc": "2026-11-27T19:37:05.619740+00:00",
+  "fetched_at_ist": "2026-11-28T01:07:05.619740+05:30",
   "status_filter": "LIVE",
   "type_filter": "ALL",
   "records": [
@@ -24,11 +24,11 @@
       "ofs_cr": null,
       "gmp_value": 4.0,
       "gmp_gain_pct": 2.09,
-      "gmp_date": "27 November",
+      "gmp_date": "28 November",
       "gmp_source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/",
       "gmp_trends": [
         {
-          "date": "27 November",
+          "date": "28 November",
           "gmp": "₹4",
           "gain": "2.09%",
           "source": "IPOWATCH_LATEST_DASHBOARD"
@@ -77,14 +77,14 @@
         "gmp_gain_pct": 2.09
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-11-27T22:01:23.630031+05:30",
+      "subscription_observed_at_ist": "2026-11-28T01:07:05.619740+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-11-27T22:01:23.630031+05:30",
+        "observed_at_ist": "2026-11-28T01:07:05.619740+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -124,7 +124,7 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 90.3,
+        "minutes_since_previous": 276.0,
         "qib_x_per_hour": 0.0,
         "nii_x_per_hour": 0.0,
         "retail_x_per_hour": 0.0,
@@ -194,196 +194,6 @@
       }
     },
     {
-      "symbol": "SHREESIDHI",
-      "type": "SME",
-      "name": "Shree Siddhivinayak Greentech Industries",
-      "status": "LIVE",
-      "exchanges": null,
-      "details_url": null,
-      "drhp_url": null,
-      "rhp_url": null,
-      "start_date": "2026-11-25",
-      "end_date": "2026-11-27",
-      "listing_date": "2026-12-02",
-      "price_low": 130.0,
-      "price_high": 142.0,
-      "lot_size": 1000.0,
-      "issue_size_cr": null,
-      "fresh_issue_cr": null,
-      "ofs_cr": null,
-      "gmp_value": 1.0,
-      "gmp_gain_pct": 0.7,
-      "gmp_date": "27 November",
-      "gmp_source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/",
-      "gmp_trends": [
-        {
-          "date": "27 November",
-          "gmp": "₹1",
-          "gain": "0.70%",
-          "source": "IPOWATCH_LATEST_DASHBOARD"
-        }
-      ],
-      "qib_x": 4.27,
-      "nii_x": 0.97,
-      "retail_x": 2.35,
-      "total_x": 1.65,
-      "strengths": [],
-      "risks": [],
-      "about_company": null,
-      "raw": {
-        "symbol": "SHREESIDHI",
-        "type": "SME",
-        "name": "Shree Siddhivinayak Greentech Industries",
-        "priceRange": "₹130.00 - ₹142.00",
-        "lotSize": "1000 Shares",
-        "status": "LIVE",
-        "schedule": {
-          "startDate": "2026-11-25",
-          "endDate": "2026-11-27",
-          "listingDate": "2026-12-02",
-          "upiMandateDeadline": "2026-11-27",
-          "allotmentFinalization": "2026-11-30",
-          "refundInitiation": "2026-12-01",
-          "shareCredit": "2026-12-01",
-          "mandateEndDate": "2026-12-12",
-          "lockInEndDateAnchor50": "2026-12-29",
-          "lockInEndDateAnchorRemaining": "2027-02-27"
-        }
-      },
-      "gmp_fallback_source": "IPOWATCH_LATEST_DASHBOARD",
-      "gmp_status": "VERIFIED",
-      "gmp_validation": {
-        "complete": true,
-        "status": "FALLBACK",
-        "provider_gmp_missing": true,
-        "attempted_sources": [
-          "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/"
-        ],
-        "errors": [],
-        "source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/",
-        "source_kind": "IPOWATCH_LATEST_DASHBOARD",
-        "gmp_value": 1.0,
-        "gmp_gain_pct": 0.7
-      },
-      "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-11-27T22:01:23.630031+05:30",
-      "subscription_age_minutes": 0.0,
-      "subscription_validation": {
-        "complete": true,
-        "status": "FALLBACK",
-        "source": "https://groww.in/ipo/subscription",
-        "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-11-27T22:01:23.630031+05:30",
-        "age_minutes": 0.0,
-        "provider_subscription_missing": true,
-        "attempted_sources": [
-          "https://groww.in/ipo/subscription"
-        ],
-        "errors": [],
-        "field_sources": {
-          "qib_x": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-          "nii_x": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-          "retail_x": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-          "total_x": "GROWW_CONSOLIDATED_SUBSCRIPTION"
-        }
-      },
-      "readiness": {
-        "identity": true,
-        "schedule": true,
-        "price": true,
-        "issue_size": false,
-        "gmp": true,
-        "gmp_history": false,
-        "qib": true,
-        "nii": true,
-        "retail": true,
-        "total_subscription": true,
-        "prospectus": false,
-        "risks": false
-      },
-      "features": {
-        "gmp_latest_pct": 0.7,
-        "gmp_change_1obs": null,
-        "gmp_change_3obs": null,
-        "log_qib": 1.6620303625532709,
-        "log_nii": 0.6780335427498971,
-        "log_retail": 1.208960345836975,
-        "log_total": 0.9745596399981308,
-        "log_issue_size": null,
-        "ofs_ratio": null
-      },
-      "velocity": {
-        "minutes_since_previous": 90.3,
-        "qib_x_per_hour": 0.0,
-        "nii_x_per_hour": 0.0,
-        "retail_x_per_hour": 0.0,
-        "total_x_per_hour": 0.0
-      },
-      "is_closing_today": true,
-      "would_be_1430_decision_snapshot": false,
-      "recommendation": {
-        "policy_version": "research-v1.1",
-        "segment": "SME",
-        "action": "AVOID",
-        "action_priority": 2,
-        "research_confidence": "MEDIUM",
-        "finality": {
-          "canonical": true,
-          "code": "CAPTURED_1430_IST",
-          "label": "CANONICAL_1430_RETAINED",
-          "captured_at_ist": "2026-11-27T14:31:05.251751+05:30"
-        },
-        "predictions": {
-          "gmp_input_pct": 0.7,
-          "total_subscription_x": 1.65,
-          "log_total": 0.9745596399981308,
-          "gmp_prediction_pct": -13.03,
-          "subscription_prediction_pct": -23.22,
-          "prediction_cap_pct": 90.0
-        },
-        "primary_prediction_pct": -12.2,
-        "ranking_score": -13.03,
-        "signal_conflict": false,
-        "reason": [
-          "SME GMP model is below +5%.",
-          "POST-2:30 PM — latest research signal; canonical snapshot should be retained"
-        ],
-        "training": {
-          "source_year": 2024,
-          "source_rows": 97,
-          "gmp_complete_rows": 25,
-          "subscription_complete_rows": 97
-        },
-        "evidence": {
-          "gmp_ge_10": {
-            "cases": 7,
-            "win_rate_pct": 85.7,
-            "avg_gain_pct": 55.18,
-            "worst_gain_pct": -20.0
-          },
-          "gmp_ge_20": {
-            "cases": 4,
-            "win_rate_pct": 100.0,
-            "avg_gain_pct": 90.0,
-            "worst_gain_pct": 90.0
-          },
-          "subscription_ge_20": {
-            "cases": 86,
-            "win_rate_pct": 88.4,
-            "avg_gain_pct": 37.22,
-            "worst_gain_pct": -20.0
-          }
-        },
-        "disclaimer": "Research model only. It estimates listing-gain potential from historical GMP and subscription patterns; it does not consider your financial situation or guarantee profit.",
-        "display_decision_source": "CAPTURED_1430_IST",
-        "public_signal": {
-          "locked": false,
-          "action": "AVOID",
-          "reason": null
-        }
-      }
-    },
-    {
       "symbol": "AIRPRO",
       "type": "SME",
       "name": "Airpro Technology",
@@ -403,11 +213,11 @@
       "ofs_cr": null,
       "gmp_value": 3.0,
       "gmp_gain_pct": 3.03,
-      "gmp_date": "27 November",
+      "gmp_date": "28 November",
       "gmp_source": "https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/",
       "gmp_trends": [
         {
-          "date": "27 November",
+          "date": "28 November",
           "gmp": "₹3",
           "gain": "3.03%",
           "source": "IPOWATCH_LATEST_DASHBOARD"
@@ -456,14 +266,14 @@
         "gmp_gain_pct": 3.03
       },
       "subscription_source": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-      "subscription_observed_at_ist": "2026-11-27T22:01:23.630031+05:30",
+      "subscription_observed_at_ist": "2026-11-28T01:07:05.619740+05:30",
       "subscription_age_minutes": 0.0,
       "subscription_validation": {
         "complete": true,
         "status": "FALLBACK",
         "source": "https://groww.in/ipo/subscription",
         "source_kind": "GROWW_CONSOLIDATED_SUBSCRIPTION",
-        "observed_at_ist": "2026-11-27T22:01:23.630031+05:30",
+        "observed_at_ist": "2026-11-28T01:07:05.619740+05:30",
         "age_minutes": 0.0,
         "provider_subscription_missing": true,
         "attempted_sources": [
@@ -503,7 +313,7 @@
         "ofs_ratio": null
       },
       "velocity": {
-        "minutes_since_previous": 90.3,
+        "minutes_since_previous": 276.0,
         "qib_x_per_hour": 0.0,
         "nii_x_per_hour": 0.0,
         "retail_x_per_hour": 0.0,
@@ -599,7 +409,13 @@
     }
   ],
   "errors": [],
-  "public_filtered_closed_count": 0,
+  "decision_saved_count": 3,
+  "saved_count": 3,
+  "capture_reason": "github_action_refresh_sme_close",
+  "public_filtered_closed_count": 1,
+  "public_filtered_closed_names": [
+    "Shree Siddhivinayak Greentech Industries"
+  ],
   "public_signal_policy": {
     "version": "public-signal-gate-v1",
     "locked_label": "Relevant data not available"
